@@ -224,3 +224,19 @@ main {
 body {
     padding-bottom: 50px; 
 }
+
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('theme-toggle');
+        
+        body.classList.toggle('dark-mode');
+        
+        // বাটন টেক্সট পরিবর্তন
+        if (body.classList.contains('dark-mode')) {
+            btn.innerText = "☀️ Light Mode";
+        } else {
+            btn.innerText = "🌙 Dark Mode";
+        }
+    }
+</script>
