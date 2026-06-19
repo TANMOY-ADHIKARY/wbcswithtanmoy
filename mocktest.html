@@ -5,36 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subject-wise Mock Test</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            text-align: center;
-            padding: 50px 20px;
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f4f7f6; 
+            text-align: center; 
+            padding: 50px 20px; 
         }
-        h2 {
-            color: #2c3e50;
-            margin-bottom: 30px;
+        h2 { 
+            color: #2c3e50; 
+            margin-bottom: 30px; 
         }
-        .subject-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 400px;
-            margin: 0 auto;
+        .subject-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            max-width: 400px; 
+            margin: 0 auto; 
         }
-        .subject-btn {
-            display: block;
-            padding: 15px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: background 0.3s;
+        .subject-btn { 
+            display: block; 
+            padding: 15px 20px; 
+            background-color: #3498db; 
+            color: white; 
+            text-decoration: none; 
+            font-size: 18px; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            transition: background 0.3s; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .subject-btn:hover {
-            background-color: #2980b9;
+        .subject-btn:hover { 
+            background-color: #2980b9; 
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -43,17 +45,12 @@
     <h2>বিষয়ভিত্তিক মক টেস্ট নির্বাচন করুন</h2>
 
     <div class="subject-container">
-        <!-- এখানে আমরা আলাদা আলাদা বিষয়ের পেজের লিংক দিয়েছি -->
-        <a href="history.html" class="subject-btn"> Wbcs Indian History (ভারতের ইতিহাস)</a>
-        <a href="english.html" class="subject-btn english-btn"> Wbcs General English (ইংরেজি)</a>
+        <!-- বাটনগুলো ছবির মতো সাজানো রইল -->
+        <a href="history.html" class="subject-btn">Wbcs Indian History (ভারতের ইতিহাস)</a>
+        <a href="english.html" class="subject-btn">Wbcs General English (ইংরেজি)</a>
         <a href="geography.html" class="subject-btn">Wbcs Geography (ভূগোল)</a>
-        <a href="polity.html" class="subject-btn"> Wbcs Indian Polity (ভারতের সংবিধান)</a>
+        <a href="polity.html" class="subject-btn">Wbcs Indian Polity (ভারতের সংবিধান)</a>
     </div>
-<!-- Scrolling Notification Ticker -->
-    <div class="scrolling-ticker">
-        <div class="ticker-text">
-            <span class="new-badge">NEW</span> Welcome to WBCS WITH TANMOY! 🚀 This website is currently a work in progress. Stay tuned for exciting updates and premium study materials! 📚
-        </div>
-    </div>
+
 </body>
 </html>
