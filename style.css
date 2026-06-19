@@ -122,30 +122,16 @@ main h1 {
     gap: 12px; /* Logo ar text er majhkhaner faka jayga */
 }
 
-/* WT Icon Design */
-.css-logo {
-    background-color: #1976d2; /* Main Blue Rong */
-    color: #ffffff; /* Sada lekha */
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    padding: 6px 10px;
-    border-radius: 6px; /* Ekdum square na kore ektu gol gol korlam */
-    box-shadow: 0 3px 6px rgba(25, 118, 210, 0.3); /* Halka blue shadow */
-    font-family: 'Arial Black', sans-serif;
-}
-
-
-
-.blue-box-logo {
-    background-color: #007bff; /* এটি গাঢ় নীল রঙ */
-    padding: 10px;
-    border-radius: 8px; /* কোনাগুলো একটু গোল করার জন্য */
+.wt-logo {
+    background-color: #0000FF; /* নীল রঙ */
+    color: white;             /* লেখা সাদা রঙ */
+    font-size: 24px;          /* লেখার সাইজ */
+    font-weight: bold;        /* লেখা মোটা করার জন্য */
+    padding: 10px 15px;       /* বক্সের ভেতরের জায়গা */
+    border-radius: 5px;       /* কোনাগুলো হালকা গোল করার জন্য */
     display: inline-block;
+    text-align: center;
+    font-family: Arial, sans-serif;
 }
 
-.blue-box-logo img {
-    width: 100px; /* লোগোর সাইজ আপনার পছন্দমতো ঠিক করে নিন */
-    height: auto;
-    display: block;
-}
+
