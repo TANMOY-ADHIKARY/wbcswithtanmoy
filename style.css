@@ -170,3 +170,57 @@ main {
         margin: 0 10px;
     }
 }
+
+/* =========================================
+   Scrolling Notification Ticker Styling
+========================================== */
+.scrolling-ticker {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%); /* সুন্দর নীল গ্রেডিয়েন্ট */
+    color: #fff;
+    padding: 10px 0;
+    overflow: hidden;
+    z-index: 1000;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+}
+
+.ticker-text {
+    white-space: nowrap;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    animation: scrollText 25s linear infinite; /* ২৫ সেকেন্ডে একবার ঘুরবে */
+}
+
+/* NEW লেখাটার জন্য লাল রঙের ব্লিঙ্কিং ব্যাজ */
+.new-badge {
+    background-color: #ff4757;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 10px;
+    font-weight: 900;
+    animation: blink 1s infinite alternate; 
+}
+
+/* লেখাটা ডানদিক থেকে বাঁদিকে যাওয়ার অ্যানিমেশন */
+@keyframes scrollText {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+}
+
+/* NEW ব্যাজটার ব্লিঙ্ক করার অ্যানিমেশন */
+@keyframes blink {
+    0% { opacity: 1; box-shadow: 0 0 8px #ff4757; }
+    100% { opacity: 0.6; box-shadow: none; }
+}
+
+/* ওয়েবসাইটের মূল কন্টেন্ট যাতে এর নিচে ঢাকা না পড়ে যায় */
+body {
+    padding-bottom: 50px; 
+}

@@ -6,24 +6,21 @@
     <title>Wbcs With Tanmoy</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
-   <body>
-    <!-- <body> ট্যাগের ঠিক নিচে এই পুরো অংশটুকু পেস্ট করুন -->
     <header class="top-header">
-    <!-- বাঁ-দিকের লোগো -->
-    <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo">
+        <!-- বাঁ-দিকের লোগো -->
+        <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo">
 
-    <!-- মাঝখানের নাম -->
-    <h1 class="main-title">WBCS WITH TANMOY</h1>
+        <!-- মাঝখানের নাম -->
+        <h1 class="main-title">WBCS WITH TANMOY</h1>
 
-    <!-- ডানদিকের মেনু -->
-    <nav class="top-nav">
-        <a href="index.html">Home</a>
-        <a href="#">Notes</a>
-        <a href="mocktest.html">Mock Test</a>
-    </nav>
-</header>
+        <!-- ডানদিকের মেনু -->
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="#">Notes</a>
+            <a href="mocktest.html">Mock Test</a>
+        </nav>
+    </header>
     
     <div class="container">
         <!-- Left Sidebar (Syllabus) -->
@@ -34,7 +31,8 @@
                 <li onclick="changeSubject('History', this)">History of India</li>
                 <li onclick="changeSubject('Geography', this)">Indian Geography</li>
                 <li onclick="changeSubject('Science', this)">General Science</li>
-                <li onclick="changeSubject('Science', this)">General English</li>
+                <!-- English-এর বাটন ঠিক করা হলো -->
+                <li onclick="changeSubject('English', this)">General English</li>
             </ul>
         </aside>
         
@@ -76,9 +74,6 @@
                     <div class="note-box">
                         <h2>Chapter 1: Indus Valley Civilization</h2>
                         <p>Coming Soon...</p>
-
-
-                        
                     </div>
                 `;
             } else if (subjectName === 'Geography') {
@@ -87,7 +82,6 @@
                     <div class="note-box">
                         <h2>Chapter 1: Physical Features of India</h2>
                         <p>Coming Soon...</p>
-                        
                     </div>
                 `;
             } else if (subjectName === 'Science') {
@@ -98,8 +92,23 @@
                         <p>Coming Soon...</p>
                     </div>
                 `;
+            } else if (subjectName === 'English') {
+                // English-এর লজিক ঠিক করা হলো
+                contentArea.innerHTML = `
+                    <h1>General English</h1>
+                    <div class="note-box">
+                        <h2>Chapter 1: Sentences and alphabets</h2>
+                        <p>Coming Soon...</p>
+                    </div>
+                `;
             }
         }
     </script>
+    <!-- Scrolling Notification Ticker -->
+    <div class="scrolling-ticker">
+        <div class="ticker-text">
+            <span class="new-badge">NEW</span> Welcome to Wbcs With Tanmoy! 🚀 This website is currently work in progress. Stay tuned for exciting updates and premium study materials! 📚
+        </div>
+    </div>
 </body>
 </html>
