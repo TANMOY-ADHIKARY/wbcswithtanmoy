@@ -3,143 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WBCS Mock Test</title>
+    <title>Subject-wise Mock Test</title>
     <style>
-        /* বেসিক স্টাইলিং */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .quiz-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 50px 20px;
         }
         h2 {
-            text-align: center;
             color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+            margin-bottom: 30px;
         }
-        .question {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 10px;
+        .subject-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
         }
-        .options label {
+        .subject-btn {
             display: block;
-            background: #e9ecef;
-            padding: 10px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .options label:hover {
-            background: #d4edda;
-        }
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
+            padding: 15px 20px;
             background-color: #3498db;
             color: white;
-            border: none;
-            border-radius: 5px;
+            text-decoration: none;
             font-size: 18px;
             font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
+            border-radius: 8px;
             transition: background 0.3s;
         }
-        .submit-btn:hover {
+        .subject-btn:hover {
             background-color: #2980b9;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <div class="quiz-container">
-        <h2>WBCS Practice Mock Test</h2>
-        
-        <div id="quiz-form">
-            <!-- Question 1 -->
-            <div class="question">১. ভারতের সংবিধান কবে গৃহীত হয়?</div>
-            <div class="options">
-                <label><input type="radio" name="q1" value="a"> ২৬ শে জানুয়ারি ১৯৫০</label>
-                <label><input type="radio" name="q1" value="b"> ২৬ শে নভেম্বর ১৯৪৯</label>
-                <label><input type="radio" name="q1" value="c"> ১৫ ই আগস্ট ১৯৪৭</label>
-                <label><input type="radio" name="q1" value="d"> ২৬ শে জানুয়ারি ১৯৩০</label>
-            </div>
+    <h2>বিষয়ভিত্তিক মক টেস্ট নির্বাচন করুন</h2>
 
-            <!-- Question 2 -->
-            <div class="question">২. 'ইন্ডিকা' গ্রন্থটি কে রচনা করেন?</div>
-            <div class="options">
-                <label><input type="radio" name="q2" value="a"> মেগাস্থিনিস</label>
-                <label><input type="radio" name="q2" value="b"> কৌটিল্য</label>
-                <label><input type="radio" name="q2" value="c"> ফাহিয়েন</label>
-                <label><input type="radio" name="q2" value="d"> হিউয়েন সাং</label>
-            </div>
-
-            <button class="submit-btn" onclick="calculateScore()">Submit Test</button>
-        </div>
-
-        <div id="result"></div>
+    <div class="subject-container">
+        <!-- এখানে আমরা আলাদা আলাদা বিষয়ের পেজের লিংক দিয়েছি -->
+        <a href="history.html" class="subject-btn">Indian History (ভারতের ইতিহাস)</a>
+        <a href="geography.html" class="subject-btn">Geography (ভূগোল)</a>
+        <a href="polity.html" class="subject-btn">Indian Polity (ভারতের সংবিধান)</a>
     </div>
-
-    <!-- জাভাস্ক্রিপ্ট লজিক -->
-    <script>
-        function calculateScore() {
-            let score = 0;
-            const totalQuestions = 2;
-
-            // সঠিক উত্তরগুলো এখানে সেট করা আছে
-            const correctAnswers = {
-                q1: "b",
-                q2: "a"
-            };
-
-            // ইউজারের উত্তর চেক করা
-            let q1_answer = document.querySelector('input[name="q1"]:checked');
-            let q2_answer = document.querySelector('input[name="q2"]:checked');
-
-            if (q1_answer && q1_answer.value === correctAnswers.q1) {
-                score++;
-            }
-            if (q2_answer && q2_answer.value === correctAnswers.q2) {
-                score++;
-            }
-
-            // রেজাল্ট দেখানো
-            let resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = "তোমার প্রাপ্ত নম্বর: " + score + " / " + totalQuestions;
-            
-            // সব উত্তর দিলে বা না দিলে মেসেজের রঙ পরিবর্তন
-            if (!q1_answer || !q2_answer) {
-                resultDiv.innerHTML = "দয়া করে সবকটি প্রশ্নের উত্তর দাও!";
-                resultDiv.style.color = "orange";
-            } else if(score === totalQuestions) {
-                resultDiv.style.color = "green";
-                resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স!";
-            } else {
-                resultDiv.style.color = "red";
-                resultDiv.innerHTML += "<br>আরও প্রস্তুতির প্রয়োজন।";
-            }
-        }
-    </script>
 
 </body>
 </html>
