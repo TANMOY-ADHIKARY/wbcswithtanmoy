@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polity Mock Test</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .quiz-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .back-btn { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #3498db; font-weight: bold; }
+        h2 { text-align: center; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .question-block { margin-bottom: 25px; }
+        .question { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; }
+        .options label:hover { background: #e2e6ea; }
+        .options input[type="radio"] { margin-right: 10px; }
+        .correct-ans { background-color: #d4edda !important; color: #155724; border: 1px solid #c3e6cb !important; }
+        .wrong-ans { background-color: #f8d7da !important; color: #721c24; border: 1px solid #f5c6cb !important; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .submit-btn:hover { background-color: #2980b9; }
+        .submit-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
+        #result { margin-top: 25px; font-size: 20px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <a href="mocktest.html" class="back-btn">← মেইন মেনুতে ফিরে যান</a>
+        
+        <h2>Indian Polity Mock Test - 01</h2>
+        
+        <div id="quiz-form">
+            <div class="question-block">
+                <div class="question">১. ভারতের সংবিধানের খসড়া কমিটির (Drafting Committee) চেয়ারম্যান কে ছিলেন?</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="a"> জওহরলাল নেহেরু</label>
+                    <label><input type="radio" name="q1" value="b"> ডঃ বি. আর. আম্বেদকর</label>
+                    <label><input type="radio" name="q1" value="c"> ডঃ রাজেন্দ্র প্রসাদ</label>
+                    <label><input type="radio" name="q1" value="d"> সর্দার বল্লভভাই প্যাটেল</label>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question">২. কততম সংবিধান সংশোধনীর মাধ্যমে 'ধর্মনিরপেক্ষ' (Secular) শব্দটি যুক্ত করা হয়?</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="a"> ৪২ তম</label>
+                    <label><input type="radio" name="q2" value="b"> ৪৪ তম</label>
+                    <label><input type="radio" name="q2" value="c"> ৮৬ তম</label>
+                    <label><input type="radio" name="q2" value="d"> ৭৩ তম</label>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question">৩. মৌলিক অধিকার (Fundamental Rights) সংবিধানের কোন অংশে (Part) রয়েছে?</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="a"> Part II</label>
+                    <label><input type="radio" name="q3" value="b"> Part III</label>
+                    <label><input type="radio" name="q3" value="c"> Part IV</label>
+                    <label><input type="radio" name="q3" value="d"> Part V</label>
+                </div>
+            </div>
+
+            <button id="submit-button" class="submit-btn" onclick="calculateScore()">Submit Test</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            let score = 0; const totalQuestions = 3;
+            const correctAnswers = { q1: "b", q2: "a", q3: "b" };
+
+            for (let q in correctAnswers) {
+                let selectedInput = document.querySelector(`input[name="${q}"]:checked`);
+                let correctInput = document.querySelector(`input[name="${q}"][value="${correctAnswers[q]}"]`);
+                let allInputsForQ = document.querySelectorAll(`input[name="${q}"]`);
+
+                if (correctInput) correctInput.parentElement.classList.add("correct-ans");
+
+                if (selectedInput) {
+                    if (selectedInput.value !== correctAnswers[q]) {
+                        selectedInput.parentElement.classList.add("wrong-ans");
+                    } else {
+                        score++;
+                    }
+                }
+                allInputsForQ.forEach(input => input.disabled = true);
+            }
+
+            let resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `তোমার প্রাপ্ত নম্বর: ${score} / ${totalQuestions}`;
+            if(score === totalQuestions) { resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724"; resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স!"; } 
+            else if (score > 0) { resultDiv.style.backgroundColor = "#fff3cd"; resultDiv.style.color = "#856404"; resultDiv.innerHTML += "<br>ভালো চেষ্টা, আরও প্রস্তুতি নাও।"; } 
+            else { resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.color = "#721c24"; resultDiv.innerHTML += "<br>আরও অনেক পড়তে হবে!"; }
+
+            let submitBtn = document.getElementById("submit-button");
+            submitBtn.disabled = true; submitBtn.innerText = "Test Submitted";
+        }
+    </script>
+
+</body>
+</html>
