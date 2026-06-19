@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History Mock Test</title>
+    <title>History Mock Test - 50 Questions</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
-        .quiz-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .quiz-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         .back-btn { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #3498db; font-weight: bold; }
         h2 { text-align: center; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        .question-block { margin-bottom: 25px; }
-        .question { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        .question-block { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #ccc; }
+        .question { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #2c3e50; }
         .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; }
         .options label:hover { background: #e2e6ea; }
         .options input[type="radio"] { margin-right: 10px; }
@@ -19,7 +19,7 @@
         .submit-btn { display: block; width: 100%; padding: 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
         .submit-btn:hover { background-color: #2980b9; }
         .submit-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
-        #result { margin-top: 25px; font-size: 20px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; }
+        #result { margin-top: 25px; font-size: 22px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -27,118 +27,69 @@
     <div class="quiz-container">
         <a href="mocktest.html" class="back-btn">← মেইন মেনুতে ফিরে যান</a>
         
-        <h2>History Mock Test - 01</h2>
+        <h2>Indian History Grand Mock Test</h2>
+        <p style="text-align: center; color: #7f8c8d; font-weight: bold;">মোট প্রশ্ন: ৫০ | পূর্ণমান: ৫০</p>
         
         <div id="quiz-form">
-            <!-- Question 1 -->
-            <div class="question-block">
-                <div class="question">১. সিন্ধু সভ্যতার আবিষ্কারক কে?</div>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="a"> দয়ারাম সাহানি</label>
-                    <label><input type="radio" name="q1" value="b"> রাখালদাস বন্দ্যোপাধ্যায়</label>
-                    <label><input type="radio" name="q1" value="c"> আলেকজান্ডার কানিংহাম</label>
-                    <label><input type="radio" name="q1" value="d"> জন মার্শাল</label>
-                </div>
-            </div>
+            <!-- Questions 1 to 10 -->
+            <div class="question-block"><div class="question">প্রশ্ন ১/৫০: সিন্ধু সভ্যতার আবিষ্কারক কে?</div><div class="options"><label><input type="radio" name="q1" value="a"> দয়ারাম সাহানি</label><label><input type="radio" name="q1" value="b"> রাখালদাস বন্দ্যোপাধ্যায়</label><label><input type="radio" name="q1" value="c"> আলেকজান্ডার কানিংহাম</label><label><input type="radio" name="q1" value="d"> জন মার্শাল</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২/৫০: 'ইন্ডিকা' গ্রন্থটি কে রচনা করেন?</div><div class="options"><label><input type="radio" name="q2" value="a"> মেগাস্থিনিস</label><label><input type="radio" name="q2" value="b"> কৌটিল্য</label><label><input type="radio" name="q2" value="c"> ফাহিয়েন</label><label><input type="radio" name="q2" value="d"> হিউয়েন সাং</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩/৫০: ভারতের নেপোলিয়ন কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q3" value="a"> চন্দ্রগুপ্ত মৌর্য</label><label><input type="radio" name="q3" value="b"> সমুদ্রগুপ্ত</label><label><input type="radio" name="q3" value="c"> অশোক</label><label><input type="radio" name="q3" value="d"> হর্ষবর্ধন</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪/৫০: কবে বঙ্গভঙ্গ রদ করা হয়?</div><div class="options"><label><input type="radio" name="q4" value="a"> ১৯০৫ সালে</label><label><input type="radio" name="q4" value="b"> ১৯০৯ সালে</label><label><input type="radio" name="q4" value="c"> ১৯১১ সালে</label><label><input type="radio" name="q4" value="d"> ১৯১৪ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৫/৫০: 'স্বরাজ আমার জন্মগত অধিকার' - কার উক্তি?</div><div class="options"><label><input type="radio" name="q5" value="a"> বাল গঙ্গাধর তিলক</label><label><input type="radio" name="q5" value="b"> মহাত্মা গান্ধী</label><label><input type="radio" name="q5" value="c"> সুভাষচন্দ্র বসু</label><label><input type="radio" name="q5" value="d"> লালা লাজপত রায়</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৬/৫০: জাতীয় কংগ্রেসের প্রথম সভাপতি কে ছিলেন?</div><div class="options"><label><input type="radio" name="q6" value="a"> অ্যালান অক্টাভিয়ান হিউম</label><label><input type="radio" name="q6" value="b"> সুরেন্দ্রনাথ বন্দ্যোপাধ্যায়</label><label><input type="radio" name="q6" value="c"> দাদাভাই নওরোজি</label><label><input type="radio" name="q6" value="d"> উমেশচন্দ্র বন্দ্যোপাধ্যায়</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৭/৫০: ফরোয়ার্ড ব্লক কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q7" value="a"> সুভাষচন্দ্র বসু</label><label><input type="radio" name="q7" value="b"> চিত্তরঞ্জন দাশ</label><label><input type="radio" name="q7" value="c"> রাসবিহারী বসু</label><label><input type="radio" name="q7" value="d"> জওহরলাল নেহেরু</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৮/৫০: সীমান্ত গান্ধী নামে কে পরিচিত ছিলেন?</div><div class="options"><label><input type="radio" name="q8" value="a"> মহাত্মা গান্ধী</label><label><input type="radio" name="q8" value="b"> মহম্মদ আলী জিন্নাহ</label><label><input type="radio" name="q8" value="c"> খান আব্দুল গফফর খান</label><label><input type="radio" name="q8" value="d"> আবুল কালাম আজাদ</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৯/৫০: 'সত্যশোধক সমাজ' কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q9" value="a"> শ্রী নারায়ণ গুরু</label><label><input type="radio" name="q9" value="b"> জ্যোতিরাও ফুলে</label><label><input type="radio" name="q9" value="c"> বি. আর. আম্বেদকর</label><label><input type="radio" name="q9" value="d"> পেরিয়ার ই. ভি. রামস্বামী</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১০/৫০: ভারতের প্রথম ভাইসরয় কে ছিলেন?</div><div class="options"><label><input type="radio" name="q10" value="a"> লর্ড ডালহৌসি</label><label><input type="radio" name="q10" value="b"> লর্ড ক্যানিং</label><label><input type="radio" name="q10" value="c"> লর্ড মাউন্টব্যাটেন</label><label><input type="radio" name="q10" value="d"> রবার্ট ক্লাইভ</label></div></div>
 
-            <!-- Question 2 -->
-            <div class="question-block">
-                <div class="question">২. 'ইন্ডিকা' গ্রন্থটি কে রচনা করেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="a"> মেগাস্থিনিস</label>
-                    <label><input type="radio" name="q2" value="b"> কৌটিল্য</label>
-                    <label><input type="radio" name="q2" value="c"> ফাহিয়েন</label>
-                    <label><input type="radio" name="q2" value="d"> হিউয়েন সাং</label>
-                </div>
-            </div>
+            <!-- Questions 11 to 20 -->
+            <div class="question-block"><div class="question">প্রশ্ন ১১/৫০: পাল বংশের প্রতিষ্ঠাতা কে?</div><div class="options"><label><input type="radio" name="q11" value="a"> ধর্মপাল</label><label><input type="radio" name="q11" value="b"> দেবপাল</label><label><input type="radio" name="q11" value="c"> গোপাল</label><label><input type="radio" name="q11" value="d"> মহীপাল</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১২/৫০: সেন বংশের শ্রেষ্ঠ রাজা কে ছিলেন?</div><div class="options"><label><input type="radio" name="q12" value="a"> বিজয় সেন</label><label><input type="radio" name="q12" value="b"> বল্লাল সেন</label><label><input type="radio" name="q12" value="c"> লক্ষণ সেন</label><label><input type="radio" name="q12" value="d"> সামন্ত সেন</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১৩/৫০: 'তহকক-ই-হিন্দ' কার রচনা?</div><div class="options"><label><input type="radio" name="q13" value="a"> অলবেরুনি</label><label><input type="radio" name="q13" value="b"> ইবন বতুতা</label><label><input type="radio" name="q13" value="c"> আবুল ফজল</label><label><input type="radio" name="q13" value="d"> বদাউনি</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১৪/৫০: ভারতের তোতাপাখি কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q14" value="a"> তানসেন</label><label><input type="radio" name="q14" value="b"> আমির খসরু</label><label><input type="radio" name="q14" value="c"> তুলসীদাস</label><label><input type="radio" name="q14" value="d"> কবির</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১৫/৫০: পানিপথের প্রথম যুদ্ধ কবে হয়?</div><div class="options"><label><input type="radio" name="q15" value="a"> ১৫২৬ সালে</label><label><input type="radio" name="q15" value="b"> ১৫৫৬ সালে</label><label><input type="radio" name="q15" value="c"> ১৭৬১ সালে</label><label><input type="radio" name="q15" value="d"> ১৫৭৬ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১৬/৫০: দ্বীন-ই-ইলাহী কে প্রবর্তন করেন?</div><div class="options"><label><input type="radio" name="q16" value="a"> বাবর</label><label><input type="radio" name="q16" value="b"> আকবর</label><label><input type="radio" name="q16" value="c"> জাহাঙ্গীর</label><label><input type="radio" name="q16" value="d"> শাহজাহান</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১৭/৫০: মুঘল সাম্রাজ্যের প্রকৃত প্রতিষ্ঠাতা কে?</div><div class="options"><label><input type="radio" name="q17" value="a"> বাবর</label><label><input type="radio" name="q17" value="b"> হুমায়ুন</label><label><input type="radio" name="q17" value="c"> আকবর</label><label><input type="radio" name="q17" value="d"> ঔরঙ্গজেব</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১৮/৫০: শিবাজীর রাজ্যাভিষেক কোথায় হয়েছিল?</div><div class="options"><label><input type="radio" name="q18" value="a"> পুনে</label><label><input type="radio" name="q18" value="b"> রায়গড়</label><label><input type="radio" name="q18" value="c"> সুরাট</label><label><input type="radio" name="q18" value="d"> পুরন্দর</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ১৯/৫০: 'অষ্টপ্রধান' কোন রাজসভায় ছিল?</div><div class="options"><label><input type="radio" name="q19" value="a"> আকবর</label><label><input type="radio" name="q19" value="b"> কৃষ্ণদেবরায়</label><label><input type="radio" name="q19" value="c"> শিবাজী</label><label><input type="radio" name="q19" value="d"> হর্ষবর্ধন</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২০/৫০: খালসা প্রথা কে প্রবর্তন করেন?</div><div class="options"><label><input type="radio" name="q20" value="a"> গুরু নানক</label><label><input type="radio" name="q20" value="b"> গুরু তেগবাহাদুর</label><label><input type="radio" name="q20" value="c"> গুরু গোবিন্দ সিং</label><label><input type="radio" name="q20" value="d"> গুরু অর্জুন</label></div></div>
 
-            <!-- Question 3 -->
-            <div class="question-block">
-                <div class="question">৩. ভারতের নেপোলিয়ন কাকে বলা হয়?</div>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="a"> চন্দ্রগুপ্ত মৌর্য</label>
-                    <label><input type="radio" name="q3" value="b"> সমুদ্রগুপ্ত</label>
-                    <label><input type="radio" name="q3" value="c"> অশোক</label>
-                    <label><input type="radio" name="q3" value="d"> হর্ষবর্ধন</label>
-                </div>
-            </div>
+            <!-- Questions 21 to 30 -->
+            <div class="question-block"><div class="question">প্রশ্ন ২১/৫০: সিপাহী বিদ্রোহ কবে শুরু হয়?</div><div class="options"><label><input type="radio" name="q21" value="a"> ১৮৫৭ সালে</label><label><input type="radio" name="q21" value="b"> ১৮৫৮ সালে</label><label><input type="radio" name="q21" value="c"> ১৯০৫ সালে</label><label><input type="radio" name="q21" value="d"> ১৯৪২ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২২/৫০: ব্রাহ্মসমাজ কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q22" value="a"> স্বামী বিবেকানন্দ</label><label><input type="radio" name="q22" value="b"> রাজা রামমোহন রায়</label><label><input type="radio" name="q22" value="c"> দয়ানন্দ সরস্বতী</label><label><input type="radio" name="q22" value="d"> দেবেন্দ্রনাথ ঠাকুর</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২৩/৫০: আর্য সমাজ কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q23" value="a"> স্বামী দয়ানন্দ সরস্বতী</label><label><input type="radio" name="q23" value="b"> কেশবচন্দ্র সেন</label><label><input type="radio" name="q23" value="c"> আত্মারাম পাণ্ডুরঙ্গ</label><label><input type="radio" name="q23" value="d"> ঈশ্বরচন্দ্র বিদ্যাসাগর</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২৪/৫০: রামকৃষ্ণ মিশন কবে প্রতিষ্ঠিত হয়?</div><div class="options"><label><input type="radio" name="q24" value="a"> ১৮৯৩ সালে</label><label><input type="radio" name="q24" value="b"> ১৮৯৭ সালে</label><label><input type="radio" name="q24" value="c"> ১৯০১ সালে</label><label><input type="radio" name="q24" value="d"> ১৯০৫ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২৫/৫০: ভারতের লৌহমানব কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q25" value="a"> জওহরলাল নেহেরু</label><label><input type="radio" name="q25" value="b"> সুভাষচন্দ্র বসু</label><label><input type="radio" name="q25" value="c"> সর্দার বল্লভভাই প্যাটেল</label><label><input type="radio" name="q25" value="d"> ভগত সিং</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২৬/৫০: মহাত্মা গান্ধী কবে দক্ষিণ আফ্রিকা থেকে ভারতে ফেরেন?</div><div class="options"><label><input type="radio" name="q26" value="a"> ১৯০৫ সালে</label><label><input type="radio" name="q26" value="b"> ১৯০৯ সালে</label><label><input type="radio" name="q26" value="c"> ১৯১৫ সালে</label><label><input type="radio" name="q26" value="d"> ১৯১৭ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২৭/৫০: জালিয়ানওয়ালাবাগ হত্যাকাণ্ড কবে ঘটে?</div><div class="options"><label><input type="radio" name="q27" value="a"> ১৯১৯ সালে</label><label><input type="radio" name="q27" value="b"> ১৯২০ সালে</label><label><input type="radio" name="q27" value="c"> ১৯২২ সালে</label><label><input type="radio" name="q27" value="d"> ১৯২৪ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২৮/৫০: রাওলাট আইন কবে পাস হয়?</div><div class="options"><label><input type="radio" name="q28" value="a"> ১৯০৯ সালে</label><label><input type="radio" name="q28" value="b"> ১৯১৯ সালে</label><label><input type="radio" name="q28" value="c"> ১৯৩৫ সালে</label><label><input type="radio" name="q28" value="d"> ১৯০৫ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ২৯/৫০: 'অসহযোগ আন্দোলন' কবে শুরু হয়?</div><div class="options"><label><input type="radio" name="q29" value="a"> ১৯১৮ সালে</label><label><input type="radio" name="q29" value="b"> ১৯২০ সালে</label><label><input type="radio" name="q29" value="c"> ১৯২২ সালে</label><label><input type="radio" name="q29" value="d"> ১৯৩০ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩০/৫০: চৌরিচৌরা ঘটনা কবে ঘটেছিল?</div><div class="options"><label><input type="radio" name="q30" value="a"> ১৯২০ সালে</label><label><input type="radio" name="q30" value="b"> ১৯২২ সালে</label><label><input type="radio" name="q30" value="c"> ১৯২৫ সালে</label><label><input type="radio" name="q30" value="d"> ১৯২৮ সালে</label></div></div>
 
-            <!-- Question 4 -->
-            <div class="question-block">
-                <div class="question">৪. কবে বঙ্গভঙ্গ রদ করা হয়?</div>
-                <div class="options">
-                    <label><input type="radio" name="q4" value="a"> ১৯০৫ সালে</label>
-                    <label><input type="radio" name="q4" value="b"> ১৯০৯ সালে</label>
-                    <label><input type="radio" name="q4" value="c"> ১৯১১ সালে</label>
-                    <label><input type="radio" name="q4" value="d"> ১৯১৪ সালে</label>
-                </div>
-            </div>
+            <!-- Questions 31 to 40 -->
+            <div class="question-block"><div class="question">প্রশ্ন ৩১/৫০: কাকোরি ষড়যন্ত্র মামলা কবে হয়?</div><div class="options"><label><input type="radio" name="q31" value="a"> ১৯২২ সালে</label><label><input type="radio" name="q31" value="b"> ১৯২৫ সালে</label><label><input type="radio" name="q31" value="c"> ১৯২৮ সালে</label><label><input type="radio" name="q31" value="d"> ১৯৩০ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩২/৫০: সাইমন কমিশন কবে ভারতে আসে?</div><div class="options"><label><input type="radio" name="q32" value="a"> ১৯২৭ সালে</label><label><input type="radio" name="q32" value="b"> ১৯২৮ সালে</label><label><input type="radio" name="q32" value="c"> ১৯২৯ সালে</label><label><input type="radio" name="q32" value="d"> ১৯৩০ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩৩/৫০: 'পূর্ণ স্বরাজ'-এর দাবি কবে তোলা হয়?</div><div class="options"><label><input type="radio" name="q33" value="a"> ১৯০৬ সালে</label><label><input type="radio" name="q33" value="b"> ১৯১৬ সালে</label><label><input type="radio" name="q33" value="c"> ১৯২৯ সালে (লাহোর অধিবেশনে)</label><label><input type="radio" name="q33" value="d"> ১৯৩০ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩৪/৫০: ডান্ডি অভিযান কবে শুরু হয়?</div><div class="options"><label><input type="radio" name="q34" value="a"> ১৯২৮ সালে</label><label><input type="radio" name="q34" value="b"> ১৯৩০ সালে</label><label><input type="radio" name="q34" value="c"> ১৯৩২ সালে</label><label><input type="radio" name="q34" value="d"> ১৯৩৪ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩৫/৫০: গান্ধী-আরউইন চুক্তি কবে স্বাক্ষরিত হয়?</div><div class="options"><label><input type="radio" name="q35" value="a"> ১৯৩০ সালে</label><label><input type="radio" name="q35" value="b"> ১৯৩১ সালে</label><label><input type="radio" name="q35" value="c"> ১৯৩২ সালে</label><label><input type="radio" name="q35" value="d"> ১৯৩৩ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩৬/৫০: ক্রিপস মিশন কবে ভারতে আসে?</div><div class="options"><label><input type="radio" name="q36" value="a"> ১৯৪০ সালে</label><label><input type="radio" name="q36" value="b"> ১৯৪২ সালে</label><label><input type="radio" name="q36" value="c"> ১৯৪৫ সালে</label><label><input type="radio" name="q36" value="d"> ১৯৪৬ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩৭/৫০: ভারত ছাড়ো আন্দোলন কবে শুরু হয়?</div><div class="options"><label><input type="radio" name="q37" value="a"> ৮ আগস্ট ১৯৪২</label><label><input type="radio" name="q37" value="b"> ৯ আগস্ট ১৯৪২</label><label><input type="radio" name="q37" value="c"> ১৫ আগস্ট ১৯৪৭</label><label><input type="radio" name="q37" value="d"> ২৬ জানুয়ারি ১৯৫০</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩৮/৫০: আজাদ হিন্দ ফৌজ কে গঠন করেন?</div><div class="options"><label><input type="radio" name="q38" value="a"> সুভাষচন্দ্র বসু</label><label><input type="radio" name="q38" value="b"> রাসবিহারী বসু</label><label><input type="radio" name="q38" value="c"> মোহন সিং</label><label><input type="radio" name="q38" value="d"> চিত্তরঞ্জন দাশ</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৩৯/৫০: ক্যাবিনেট মিশন কবে ভারতে আসে?</div><div class="options"><label><input type="radio" name="q39" value="a"> ১৯৪২ সালে</label><label><input type="radio" name="q39" value="b"> ১৯৪৪ সালে</label><label><input type="radio" name="q39" value="c"> ১৯৪৬ সালে</label><label><input type="radio" name="q39" value="d"> ১৯৪৭ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪০/৫০: ভারতের শেষ ভাইসরয় কে ছিলেন?</div><div class="options"><label><input type="radio" name="q40" value="a"> লর্ড ওয়াভেল</label><label><input type="radio" name="q40" value="b"> লর্ড লিনলিথগো</label><label><input type="radio" name="q40" value="c"> লর্ড মাউন্টব্যাটেন</label><label><input type="radio" name="q40" value="d"> চক্রবর্তী রাজাগোপালাচারী</label></div></div>
 
-            <!-- Question 5 -->
-            <div class="question-block">
-                <div class="question">৫. 'স্বরাজ আমার জন্মগত অধিকার' - কার উক্তি?</div>
-                <div class="options">
-                    <label><input type="radio" name="q5" value="a"> বাল গঙ্গাধর তিলক</label>
-                    <label><input type="radio" name="q5" value="b"> মহাত্মা গান্ধী</label>
-                    <label><input type="radio" name="q5" value="c"> সুভাষচন্দ্র বসু</label>
-                    <label><input type="radio" name="q5" value="d"> লালা লাজপত রায়</label>
-                </div>
-            </div>
-
-            <!-- Question 6 -->
-            <div class="question-block">
-                <div class="question">৬. জাতীয় কংগ্রেসের প্রথম সভাপতি কে ছিলেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q6" value="a"> অ্যালান অক্টাভিয়ান হিউম</label>
-                    <label><input type="radio" name="q6" value="b"> সুরেন্দ্রনাথ বন্দ্যোপাধ্যায়</label>
-                    <label><input type="radio" name="q6" value="c"> দাদাভাই নওরোজি</label>
-                    <label><input type="radio" name="q6" value="d"> উমেশচন্দ্র বন্দ্যোপাধ্যায়</label>
-                </div>
-            </div>
-
-            <!-- Question 7 -->
-            <div class="question-block">
-                <div class="question">৭. ফরোয়ার্ড ব্লক কে প্রতিষ্ঠা করেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q7" value="a"> সুভাষচন্দ্র বসু</label>
-                    <label><input type="radio" name="q7" value="b"> চিত্তরঞ্জন দাশ</label>
-                    <label><input type="radio" name="q7" value="c"> রাসবিহারী বসু</label>
-                    <label><input type="radio" name="q7" value="d"> জওহরলাল নেহেরু</label>
-                </div>
-            </div>
-
-            <!-- Question 8 -->
-            <div class="question-block">
-                <div class="question">৮. সীমান্ত গান্ধী নামে কে পরিচিত ছিলেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q8" value="a"> মহাত্মা গান্ধী</label>
-                    <label><input type="radio" name="q8" value="b"> মহম্মদ আলী জিন্নাহ</label>
-                    <label><input type="radio" name="q8" value="c"> খান আব্দুল গফফর খান</label>
-                    <label><input type="radio" name="q8" value="d"> আবুল কালাম আজাদ</label>
-                </div>
-            </div>
-
-            <!-- Question 9 -->
-            <div class="question-block">
-                <div class="question">৯. 'সত্যশোধক সমাজ' কে প্রতিষ্ঠা করেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q9" value="a"> শ্রী নারায়ণ গুরু</label>
-                    <label><input type="radio" name="q9" value="b"> জ্যোতিরাও ফুলে</label>
-                    <label><input type="radio" name="q9" value="c"> বি. আর. আম্বেদকর</label>
-                    <label><input type="radio" name="q9" value="d"> পেরিয়ার ই. ভি. রামস্বামী</label>
-                </div>
-            </div>
-
-            <!-- Question 10 -->
-            <div class="question-block">
-                <div class="question">১০. ভারতের প্রথম ভাইসরয় কে ছিলেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q10" value="a"> লর্ড ডালহৌসি</label>
-                    <label><input type="radio" name="q10" value="b"> লর্ড ক্যানিং</label>
-                    <label><input type="radio" name="q10" value="c"> লর্ড মাউন্টব্যাটেন</label>
-                    <label><input type="radio" name="q10" value="d"> রবার্ট ক্লাইভ</label>
-                </div>
-            </div>
+            <!-- Questions 41 to 50 -->
+            <div class="question-block"><div class="question">প্রশ্ন ৪১/৫০: স্বাধীন ভারতের প্রথম গভর্নর জেনারেল কে ছিলেন?</div><div class="options"><label><input type="radio" name="q41" value="a"> জওহরলাল নেহেরু</label><label><input type="radio" name="q41" value="b"> ডঃ রাজেন্দ্র প্রসাদ</label><label><input type="radio" name="q41" value="c"> লর্ড মাউন্টব্যাটেন</label><label><input type="radio" name="q41" value="d"> চক্রবর্তী রাজাগোপালাচারী</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪২/৫০: স্বাধীন ভারতের প্রথম ভারতীয় গভর্নর জেনারেল কে ছিলেন?</div><div class="options"><label><input type="radio" name="q42" value="a"> জওহরলাল নেহেরু</label><label><input type="radio" name="q42" value="b"> সর্দার প্যাটেল</label><label><input type="radio" name="q42" value="c"> চক্রবর্তী রাজাগোপালাচারী</label><label><input type="radio" name="q42" value="d"> বি. আর. আম্বেদকর</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪৩/৫০: আলিগড় মুসলিম বিশ্ববিদ্যালয়ের প্রতিষ্ঠাতা কে?</div><div class="options"><label><input type="radio" name="q43" value="a"> মহম্মদ আলী জিন্নাহ</label><label><input type="radio" name="q43" value="b"> স্যার সৈয়দ আহমেদ খান</label><label><input type="radio" name="q43" value="c"> আবুল কালাম আজাদ</label><label><input type="radio" name="q43" value="d"> বদরুদ্দিন তৈয়বজি</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪৪/৫০: 'বন্দেমাতরম' গানটি কোন উপন্যাসের অন্তর্গত?</div><div class="options"><label><input type="radio" name="q44" value="a"> বিষবৃক্ষ</label><label><input type="radio" name="q44" value="b"> কপালকুণ্ডলা</label><label><input type="radio" name="q44" value="c"> গোরা</label><label><input type="radio" name="q44" value="d"> আনন্দমঠ</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪৫/৫০: 'নীলদর্পণ' নাটকের রচয়িতা কে?</div><div class="options"><label><input type="radio" name="q45" value="a"> বঙ্কিমচন্দ্র চট্টোপাধ্যায়</label><label><input type="radio" name="q45" value="b"> দীনবন্ধু মিত্র</label><label><input type="radio" name="q45" value="c"> মাইকেল মধুসূদন দত্ত</label><label><input type="radio" name="q45" value="d"> রবীন্দ্রনাথ ঠাকুর</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪৬/৫০: 'বর্তমান ভারত' কে রচনা করেন?</div><div class="options"><label><input type="radio" name="q46" value="a"> স্বামী বিবেকানন্দ</label><label><input type="radio" name="q46" value="b"> রামমোহন রায়</label><label><input type="radio" name="q46" value="c"> ঈশ্বরচন্দ্র বিদ্যাসাগর</label><label><input type="radio" name="q46" value="d"> শ্রী অরবিন্দ</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪৭/৫০: অনুশীলন সমিতি কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q47" value="a"> বারীন্দ্রকুমার ঘোষ</label><label><input type="radio" name="q47" value="b"> প্রমথনাথ মিত্র</label><label><input type="radio" name="q47" value="c"> চিত্তরঞ্জন দাশ</label><label><input type="radio" name="q47" value="d"> সুরেন্দ্রনাথ বন্দ্যোপাধ্যায়</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪৮/৫০: গদর পার্টি কোথায় প্রতিষ্ঠিত হয়?</div><div class="options"><label><input type="radio" name="q48" value="a"> লন্ডন</label><label><input type="radio" name="q48" value="b"> প্যারিস</label><label><input type="radio" name="q48" value="c"> সান ফ্রান্সিসকো</label><label><input type="radio" name="q48" value="d"> বার্লিন</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৪৯/৫০: মুসলিম লীগ কবে প্রতিষ্ঠিত হয়?</div><div class="options"><label><input type="radio" name="q49" value="a"> ১৯০৫ সালে</label><label><input type="radio" name="q49" value="b"> ১৯০৬ সালে</label><label><input type="radio" name="q49" value="c"> ১৯০৯ সালে</label><label><input type="radio" name="q49" value="d"> ১৯১১ সালে</label></div></div>
+            <div class="question-block"><div class="question">প্রশ্ন ৫০/৫০: চট্টগ্রাম অস্ত্রাগার লুণ্ঠনের নেতৃত্ব কে দেন?</div><div class="options"><label><input type="radio" name="q50" value="a"> ভগত সিং</label><label><input type="radio" name="q50" value="b"> চন্দ্রশেখর আজাদ</label><label><input type="radio" name="q50" value="c"> সূর্য সেন</label><label><input type="radio" name="q50" value="d"> রাসবিহারী বসু</label></div></div>
 
             <button id="submit-button" class="submit-btn" onclick="calculateScore()">Submit Test</button>
         </div>
@@ -149,12 +100,15 @@
     <script>
         function calculateScore() {
             let score = 0;
-            const totalQuestions = 10;
+            const totalQuestions = 50;
             
-            // ১০টি প্রশ্নের সঠিক উত্তর
+            // ৫০টি প্রশ্নের সঠিক উত্তর
             const correctAnswers = { 
-                q1: "b", q2: "a", q3: "b", q4: "c", q5: "a", 
-                q6: "d", q7: "a", q8: "c", q9: "b", q10: "b"
+                q1:"b", q2:"a", q3:"b", q4:"c", q5:"a", q6:"d", q7:"a", q8:"c", q9:"b", q10:"b",
+                q11:"c", q12:"b", q13:"a", q14:"b", q15:"a", q16:"b", q17:"c", q18:"b", q19:"c", q20:"c",
+                q21:"a", q22:"b", q23:"a", q24:"b", q25:"c", q26:"c", q27:"a", q28:"b", q29:"b", q30:"b",
+                q31:"b", q32:"b", q33:"c", q34:"b", q35:"b", q36:"b", q37:"a", q38:"b", q39:"c", q40:"c",
+                q41:"c", q42:"c", q43:"b", q44:"d", q45:"b", q46:"a", q47:"b", q48:"c", q49:"b", q50:"c"
             };
 
             for (let q in correctAnswers) {
@@ -182,23 +136,28 @@
             let resultDiv = document.getElementById("result");
             resultDiv.innerHTML = `তোমার প্রাপ্ত নম্বর: ${score} / ${totalQuestions}`;
             
+            // প্রাপ্ত নম্বরের উপর ভিত্তি করে মেসেজ
             if(score === totalQuestions) {
                 resultDiv.style.backgroundColor = "#d4edda";
                 resultDiv.style.color = "#155724";
-                resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স!";
-            } else if (score >= 5) {
+                resultDiv.innerHTML += "<br>অবিশ্বাস্য! তুমি ইতিহাসে একদম পারফেক্ট!";
+            } else if (score >= 40) {
+                resultDiv.style.backgroundColor = "#d4edda";
+                resultDiv.style.color = "#155724";
+                resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স! তোমার প্রস্তুতি খুব ভালো।";
+            } else if (score >= 25) {
                 resultDiv.style.backgroundColor = "#fff3cd";
                 resultDiv.style.color = "#856404";
-                resultDiv.innerHTML += "<br>ভালো চেষ্টা, আরও প্রস্তুতি নাও।";
+                resultDiv.innerHTML += "<br>ভালো চেষ্টা! তবে আরও একটু পড়তে হবে।";
             } else {
                 resultDiv.style.backgroundColor = "#f8d7da";
                 resultDiv.style.color = "#721c24";
-                resultDiv.innerHTML += "<br>আরও অনেক পড়তে হবে!";
+                resultDiv.innerHTML += "<br>আরও অনেক বেশি রিভিশন প্রয়োজন!";
             }
 
             let submitBtn = document.getElementById("submit-button");
             submitBtn.disabled = true;
-            submitBtn.innerText = "Test Submitted";
+            submitBtn.innerText = "Test Submitted successfully";
         }
     </script>
 
