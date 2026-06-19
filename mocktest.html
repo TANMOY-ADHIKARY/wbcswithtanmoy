@@ -6,7 +6,7 @@
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; padding: 20px; }
         .quiz-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .option-btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; text-align: left; }
+        .option-btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; text-align: left; transition: 0.3s; }
         .option-btn:hover { background: #f1f1f1; }
         #subject-selector { margin-bottom: 20px; }
     </style>
@@ -34,8 +34,7 @@
 </div>
 
 <script>
-    // তোমার দেওয়া সব প্রশ্ন এখানে আছে
-    const quizData = [
+   const quizData = [
     // ইতিহাস (২৫টি প্রশ্ন)
     { subject: "ইতিহাস", question: "১. সিন্ধু সভ্যতার আবিষ্কারক কে?", options: ["দয়ারাম সাহানি", "রাখালদাস বন্দ্যোপাধ্যায়", "আলেকজান্ডার কানিংহাম", "জন মার্শাল"], answer: "দয়ারাম সাহানি" },
     { subject: "ইতিহাস", question: "২. 'ইন্ডিকা' গ্রন্থটি কে রচনা করেন?", options: ["ফাহিয়েন", "হিউয়েন সাং", "মেগাস্থিনিস", "কৌটিল্য"], answer: "মেগাস্থিনিস" },
@@ -150,26 +149,16 @@
     let score = 0;
     let subjectScores = { "ইতিহাস": 0, "ভূগোল": 0, "সংবিধান": 0, "বিজ্ঞান": 0 };
 
-    function filterQuestions() <script>
-    // ... উপরের অন্যান্য কোড বা quizData এখানে থাকবে ...
-
-    // এখান থেকে তোমার filterQuestions ফাংশনটি শুরু করো
     function filterQuestions() {
         const sub = document.getElementById('sub-list').value;
         filteredQuiz = (sub === "সব") ? quizData : quizData.filter(q => q.subject === sub);
-        
         currentQuiz = 0; 
         score = 0;
-        
-        // এখানে লাইন দুটি যোগ করা হলো
+        subjectScores = { "ইতিহাস": 0, "ভূগোল": 0, "সংবিধান": 0, "বিজ্ঞান": 0 };
         document.getElementById('quiz-area').style.display = 'block'; 
         document.getElementById('result').style.display = 'none';
-        
         loadQuiz();
     }
-
-    // ... এর পরের ফাংশনগুলো (loadQuiz, selectOption ইত্যাদি) যেমন আছে তেমনই থাকবে ...
-</script>
 
     function loadQuiz() {
         if(filteredQuiz.length === 0) {
