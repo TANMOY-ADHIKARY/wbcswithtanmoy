@@ -135,9 +135,17 @@ main h1 {
     font-family: 'Arial Black', sans-serif;
 }
 
-/* Website Name Text */
-.logo-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: #1976d2;
+
+
+.blue-box-logo {
+    background-color: #007bff; /* এটি গাঢ় নীল রঙ */
+    padding: 10px;
+    border-radius: 8px; /* কোনাগুলো একটু গোল করার জন্য */
+    display: inline-block;
+}
+
+.blue-box-logo img {
+    width: 100px; /* লোগোর সাইজ আপনার পছন্দমতো ঠিক করে নিন */
+    height: auto;
+    display: block;
 }
