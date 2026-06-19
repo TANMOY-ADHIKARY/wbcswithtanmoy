@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Wbcs General English Mock Test - PRO</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .quiz-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: relative; }
+        .header-section { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #9b59b6; padding-bottom: 10px; margin-bottom: 20px; }
+        .back-btn { text-decoration: none; color: #9b59b6; font-weight: bold; }
+        
+        #timer-container { font-size: 18px; font-weight: bold; color: #e74c3c; background: #fadbd8; padding: 5px 15px; border-radius: 5px; }
+        #question-counter { font-size: 18px; font-weight: bold; color: #2c3e50; background: #e9ecef; padding: 5px 15px; border-radius: 5px; text-align: center; margin-bottom: 20px; }
+        
+        .question-block { display: none; margin-bottom: 25px; padding-bottom: 15px; }
+        .question { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #2c3e50; }
+        .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; font-size: 16px; }
+        .options label:hover { background: #dcdde1; }
+        .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        
+        .correct-ans { background-color: #d4edda !important; color: #155724; border: 1px solid #c3e6cb !important; font-weight: bold; }
+        .wrong-ans { background-color: #f8d7da !important; color: #721c24; border: 1px solid #f5c6cb !important; text-decoration: line-through; }
+        
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+        .nav-btn { padding: 12px 25px; background-color: #9b59b6; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .nav-btn:hover { background-color: #8e44ad; }
+        .nav-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
+        .submit-btn { background-color: #27ae60; display: none; }
+        .submit-btn:hover { background-color: #2ecc71; }
+        
+        #result { margin-bottom: 25px; font-size: 22px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <div class="header-section">
+            <a href="mocktest.html" class="back-btn">← Main Menu</a>
+            <div id="timer-container">⏱ <span id="time-left">30:00</span></div>
+        </div>
+        
+        <h2 style="text-align: center; color: #2c3e50; margin-top: 0;">General English Mock Test</h2>
+        
+        <div id="result"></div>
+        <div id="question-counter">Question: 1 / 50</div>
+        
+        <div id="quiz-form">
+            <!-- Synonyms (1-5) -->
+            <div class="question-block"><div class="question">1. Choose the correct synonym of 'LUCID':</div><div class="options"><label><input type="radio" name="q1" value="a"> Confusing</label><label><input type="radio" name="q1" value="b"> Clear</label><label><input type="radio" name="q1" value="c"> Dull</label><label><input type="radio" name="q1" value="d"> Complicated</label></div></div>
+            <div class="question-block"><div class="question">2. Choose the correct synonym of 'MITIGATE':</div><div class="options"><label><input type="radio" name="q2" value="a"> Lessen</label><label><input type="radio" name="q2" value="b"> Increase</label><label><input type="radio" name="q2" value="c"> Agitate</label><label><input type="radio" name="q2" value="d"> Praise</label></div></div>
+            <div class="question-block"><div class="question">3. Choose the correct synonym of 'CANDID':</div><div class="options"><label><input type="radio" name="q3" value="a"> Secretive</label><label><input type="radio" name="q3" value="b"> Dishonest</label><label><input type="radio" name="q3" value="c"> Frank</label><label><input type="radio" name="q3" value="d"> Reserved</label></div></div>
+            <div class="question-block"><div class="question">4. Choose the correct synonym of 'OBSCURE':</div><div class="options"><label><input type="radio" name="q4" value="a"> Famous</label><label><input type="radio" name="q4" value="b"> Bright</label><label><input type="radio" name="q4" value="c"> Distinct</label><label><input type="radio" name="q4" value="d"> Unclear</label></div></div>
+            <div class="question-block"><div class="question">5. Choose the correct synonym of 'DILIGENT':</div><div class="options"><label><input type="radio" name="q5" value="a"> Lazy</label><label><input type="radio" name="q5" value="b"> Hardworking</label><label><input type="radio" name="q5" value="c"> Careless</label><label><input type="radio" name="q5" value="d"> Foolish</label></div></div>
+
+            <!-- Antonyms (6-10) -->
+            <div class="question-block"><div class="question">6. Choose the correct antonym of 'ABUNDANT':</div><div class="options"><label><input type="radio" name="q6" value="a"> Scarce</label><label><input type="radio" name="q6" value="b"> Plentiful</label><label><input type="radio" name="q6" value="c"> Rich</label><label><input type="radio" name="q6" value="d"> Heavy</label></div></div>
+            <div class="question-block"><div class="question">7. Choose the correct antonym of 'BARREN':</div><div class="options"><label><input type="radio" name="q7" value="a"> Empty</label><label><input type="radio" name="q7" value="b"> Dry</label><label><input type="radio" name="q7" value="c"> Fertile</label><label><input type="radio" name="q7" value="d"> Rough</label></div></div>
+            <div class="question-block"><div class="question">8. Choose the correct antonym of 'RELUCTANT':</div><div class="options"><label><input type="radio" name="q8" value="a"> Hesitant</label><label><input type="radio" name="q8" value="b"> Willing</label><label><input type="radio" name="q8" value="c"> Unwilling</label><label><input type="radio" name="q8" value="d"> Slow</label></div></div>
+            <div class="question-block"><div class="question">9. Choose the correct antonym of 'VAGUE':</div><div class="options"><label><input type="radio" name="q9" value="a"> Definite</label><label><input type="radio" name="q9" value="b"> Unclear</label><label><input type="radio" name="q9" value="c"> Blurry</label><label><input type="radio" name="q9" value="d"> Doubtful</label></div></div>
+            <div class="question-block"><div class="question">10. Choose the correct antonym of 'OPTIMISTIC':</div><div class="options"><label><input type="radio" name="q10" value="a"> Hopeful</label><label><input type="radio" name="q10" value="b"> Cheerful</label><label><input type="radio" name="q10" value="c"> Happy</label><label><input type="radio" name="q10" value="d"> Pessimistic</label></div></div>
+
+            <!-- One Word Substitution (11-15) -->
+            <div class="question-block"><div class="question">11. A person who looks at the bright side of things:</div><div class="options"><label><input type="radio" name="q11" value="a"> Optimist</label><label><input type="radio" name="q11" value="b"> Pessimist</label><label><input type="radio" name="q11" value="c"> Atheist</label><label><input type="radio" name="q11" value="d"> Introvert</label></div></div>
+            <div class="question-block"><div class="question">12. One who cannot make a mistake:</div><div class="options"><label><input type="radio" name="q12" value="a"> Invincible</label><label><input type="radio" name="q12" value="b"> Infallible</label><label><input type="radio" name="q12" value="c"> Inaudible</label><label><input type="radio" name="q12" value="d"> Invisible</label></div></div>
+            <div class="question-block"><div class="question">13. One who is present everywhere:</div><div class="options"><label><input type="radio" name="q13" value="a"> Omnipotent</label><label><input type="radio" name="q13" value="b"> Omniscient</label><label><input type="radio" name="q13" value="c"> Omnipresent</label><label><input type="radio" name="q13" value="d"> Almighty</label></div></div>
+            <div class="question-block"><div class="question">14. A lover of mankind:</div><div class="options"><label><input type="radio" name="q14" value="a"> Misanthrope</label><label><input type="radio" name="q14" value="b"> Philanthropist</label><label><input type="radio" name="q14" value="c"> Patriot</label><label><input type="radio" name="q14" value="d"> Cosmopolitan</label></div></div>
+            <div class="question-block"><div class="question">15. A government by the people:</div><div class="options"><label><input type="radio" name="q15" value="a"> Democracy</label><label><input type="radio" name="q15" value="b"> Autocracy</label><label><input type="radio" name="q15" value="c"> Monarchy</label><label><input type="radio" name="q15" value="d"> Aristocracy</label></div></div>
+
+            <!-- Idioms and Phrases (16-20) -->
+            <div class="question-block"><div class="question">16. The idiom 'Once in a blue moon' means:</div><div class="options"><label><input type="radio" name="q16" value="a"> Frequently</label><label><input type="radio" name="q16" value="b"> Never</label><label><input type="radio" name="q16" value="c"> Always</label><label><input type="radio" name="q16" value="d"> Very rarely</label></div></div>
+            <div class="question-block"><div class="question">17. The idiom 'Break the ice' means:</div><div class="options"><label><input type="radio" name="q17" value="a"> To start a conversation</label><label><input type="radio" name="q17" value="b"> To break something expensive</label><label><input type="radio" name="q17" value="c"> To feel very cold</label><label><input type="radio" name="q17" value="d"> To cry loudly</label></div></div>
+            <div class="question-block"><div class="question">18. The idiom 'A piece of cake' means:</div><div class="options"><label><input type="radio" name="q18" value="a"> A tasty food</label><label><input type="radio" name="q18" value="b"> A very easy task</label><label><input type="radio" name="q18" value="c"> A difficult job</label><label><input type="radio" name="q18" value="d"> A share of profit</label></div></div>
+            <div class="question-block"><div class="question">19. The idiom 'Under the weather' means:</div><div class="options"><label><input type="radio" name="q19" value="a"> Enjoying the rain</label><label><input type="radio" name="q19" value="b"> Facing bad weather</label><label><input type="radio" name="q19" value="c"> Feeling somewhat ill</label><label><input type="radio" name="q19" value="d"> Depressed</label></div></div>
+            <div class="question-block"><div class="question">20. The idiom 'Spill the beans' means:</div><div class="options"><label><input type="radio" name="q20" value="a"> Drop your food</label><label><input type="radio" name="q20" value="b"> Cook vegetables</label><label><input type="radio" name="q20" value="c"> Talk too much</label><label><input type="radio" name="q20" value="d"> Reveal a secret</label></div></div>
+
+            <!-- Prepositions (21-30) -->
+            <div class="question-block"><div class="question">21. He is fond ___ music.</div><div class="options"><label><input type="radio" name="q21" value="a"> with</label><label><input type="radio" name="q21" value="b"> of</label><label><input type="radio" name="q21" value="c"> for</label><label><input type="radio" name="q21" value="d"> about</label></div></div>
+            <div class="question-block"><div class="question">22. She is afraid ___ dogs.</div><div class="options"><label><input type="radio" name="q22" value="a"> of</label><label><input type="radio" name="q22" value="b"> from</label><label><input type="radio" name="q22" value="c"> by</label><label><input type="radio" name="q22" value="d"> with</label></div></div>
+            <div class="question-block"><div class="question">23. You can rely ___ me.</div><div class="options"><label><input type="radio" name="q23" value="a"> with</label><label><input type="radio" name="q23" value="b"> for</label><label><input type="radio" name="q23" value="c"> on</label><label><input type="radio" name="q23" value="d"> at</label></div></div>
+            <div class="question-block"><div class="question">24. He insisted ___ going there.</div><div class="options"><label><input type="radio" name="q24" value="a"> on</label><label><input type="radio" name="q24" value="b"> to</label><label><input type="radio" name="q24" value="c"> for</label><label><input type="radio" name="q24" value="d"> in</label></div></div>
+            <div class="question-block"><div class="question">25. I prefer tea ___ coffee.</div><div class="options"><label><input type="radio" name="q25" value="a"> than</label><label><input type="radio" name="q25" value="b"> over</label><label><input type="radio" name="q25" value="c"> from</label><label><input type="radio" name="q25" value="d"> to</label></div></div>
+            <div class="question-block"><div class="question">26. He is superior ___ me in knowledge.</div><div class="options"><label><input type="radio" name="q26" value="a"> than</label><label><input type="radio" name="q26" value="b"> to</label><label><input type="radio" name="q26" value="c"> from</label><label><input type="radio" name="q26" value="d"> against</label></div></div>
+            <div class="question-block"><div class="question">27. She is angry ___ her brother.</div><div class="options"><label><input type="radio" name="q27" value="a"> on</label><label><input type="radio" name="q27" value="b"> upon</label><label><input type="radio" name="q27" value="c"> with</label><label><input type="radio" name="q27" value="d"> for</label></div></div>
+            <div class="question-block"><div class="question">28. He is addicted ___ gambling.</div><div class="options"><label><input type="radio" name="q28" value="a"> to</label><label><input type="radio" name="q28" value="b"> with</label><label><input type="radio" name="q28" value="c"> of</label><label><input type="radio" name="q28" value="d"> for</label></div></div>
+            <div class="question-block"><div class="question">29. The book belongs ___ me.</div><div class="options"><label><input type="radio" name="q29" value="a"> with</label><label><input type="radio" name="q29" value="b"> to</label><label><input type="radio" name="q29" value="c"> for</label><label><input type="radio" name="q29" value="d"> on</label></div></div>
+            <div class="question-block"><div class="question">30. We should abstain ___ smoking.</div><div class="options"><label><input type="radio" name="q30" value="a"> to</label><label><input type="radio" name="q30" value="b"> of</label><label><input type="radio" name="q30" value="c"> from</label><label><input type="radio" name="q30" value="d"> by</label></div></div>
+
+            <!-- Phrasal Verbs (31-35) -->
+            <div class="question-block"><div class="question">31. The strike was ___ (cancelled) by the union.</div><div class="options"><label><input type="radio" name="q31" value="a"> called off</label><label><input type="radio" name="q31" value="b"> called out</label><label><input type="radio" name="q31" value="c"> called in</label><label><input type="radio" name="q31" value="d"> called up</label></div></div>
+            <div class="question-block"><div class="question">32. I cannot ___ (tolerate) this insult.</div><div class="options"><label><input type="radio" name="q32" value="a"> put out</label><label><input type="radio" name="q32" value="b"> put up with</label><label><input type="radio" name="q32" value="c"> put down</label><label><input type="radio" name="q32" value="d"> put off</label></div></div>
+            <div class="question-block"><div class="question">33. The orphan was ___ (reared) by his aunt.</div><div class="options"><label><input type="radio" name="q33" value="a"> brought about</label><label><input type="radio" name="q33" value="b"> brought down</label><label><input type="radio" name="q33" value="c"> brought up</label><label><input type="radio" name="q33" value="d"> brought out</label></div></div>
+            <div class="question-block"><div class="question">34. He ___ (rejected) my proposal.</div><div class="options"><label><input type="radio" name="q34" value="a"> turned out</label><label><input type="radio" name="q34" value="b"> turned up</label><label><input type="radio" name="q34" value="c"> turned on</label><label><input type="radio" name="q34" value="d"> turned down</label></div></div>
+            <div class="question-block"><div class="question">35. Please ___ (remove) your shoes before entering.</div><div class="options"><label><input type="radio" name="q35" value="a"> take off</label><label><input type="radio" name="q35" value="b"> take over</label><label><input type="radio" name="q35" value="c"> take up</label><label><input type="radio" name="q35" value="d"> take back</label></div></div>
+
+            <!-- Spelling Correction (36-40) -->
+            <div class="question-block"><div class="question">36. Choose the correct spelling:</div><div class="options"><label><input type="radio" name="q36" value="a"> Committee</label><label><input type="radio" name="q36" value="b"> Comittee</label><label><input type="radio" name="q36" value="c"> Commitee</label><label><input type="radio" name="q36" value="d"> Comitee</label></div></div>
+            <div class="question-block"><div class="question">37. Choose the correct spelling:</div><div class="options"><label><input type="radio" name="q37" value="a"> Acommodation</label><label><input type="radio" name="q37" value="b"> Accommodation</label><label><input type="radio" name="q37" value="c"> Accomodation</label><label><input type="radio" name="q37" value="d"> Acomodation</label></div></div>
+            <div class="question-block"><div class="question">38. Choose the correct spelling:</div><div class="options"><label><input type="radio" name="q38" value="a"> Receive</label><label><input type="radio" name="q38" value="b"> Recieve</label><label><input type="radio" name="q38" value="c"> Receve</label><label><input type="radio" name="q38" value="d"> Recive</label></div></div>
+            <div class="question-block"><div class="question">39. Choose the correct spelling:</div><div class="options"><label><input type="radio" name="q39" value="a"> Ocurrence</label><label><input type="radio" name="q39" value="b"> Occurence</label><label><input type="radio" name="q39" value="c"> Occurrence</label><label><input type="radio" name="q39" value="d"> Occurrance</label></div></div>
+            <div class="question-block"><div class="question">40. Choose the correct spelling:</div><div class="options"><label><input type="radio" name="q40" value="a"> Seperate</label><label><input type="radio" name="q40" value="b"> Separate</label><label><input type="radio" name="q40" value="c"> Seperat</label><label><input type="radio" name="q40" value="d"> Separat</label></div></div>
+
+            <!-- Grammar: Articles & Tense (41-47) -->
+            <div class="question-block"><div class="question">41. He is ___ honourable man.</div><div class="options"><label><input type="radio" name="q41" value="a"> a</label><label><input type="radio" name="q41" value="b"> an</label><label><input type="radio" name="q41" value="c"> the</label><label><input type="radio" name="q41" value="d"> no article</label></div></div>
+            <div class="question-block"><div class="question">42. I saw ___ one-eyed man walking down the street.</div><div class="options"><label><input type="radio" name="q42" value="a"> a</label><label><input type="radio" name="q42" value="b"> an</label><label><input type="radio" name="q42" value="c"> the</label><label><input type="radio" name="q42" value="d"> no article</label></div></div>
+            <div class="question-block"><div class="question">43. The cow is ___ useful animal.</div><div class="options"><label><input type="radio" name="q43" value="a"> a</label><label><input type="radio" name="q43" value="b"> an</label><label><input type="radio" name="q43" value="c"> the</label><label><input type="radio" name="q43" value="d"> no article</label></div></div>
+            <div class="question-block"><div class="question">44. He is ___ best boy in the class.</div><div class="options"><label><input type="radio" name="q44" value="a"> a</label><label><input type="radio" name="q44" value="b"> an</label><label><input type="radio" name="q44" value="c"> the</label><label><input type="radio" name="q44" value="d"> no article</label></div></div>
+            <div class="question-block"><div class="question">45. I ___ him for a long time.</div><div class="options"><label><input type="radio" name="q45" value="a"> know</label><label><input type="radio" name="q45" value="b"> have known</label><label><input type="radio" name="q45" value="c"> am knowing</label><label><input type="radio" name="q45" value="d"> had known</label></div></div>
+            <div class="question-block"><div class="question">46. The train ___ before I reached the station.</div><div class="options"><label><input type="radio" name="q46" value="a"> left</label><label><input type="radio" name="q46" value="b"> has left</label><label><input type="radio" name="q46" value="c"> had left</label><label><input type="radio" name="q46" value="d"> was leaving</label></div></div>
+            <div class="question-block"><div class="question">47. If I ___ a bird, I would fly to you.</div><div class="options"><label><input type="radio" name="q47" value="a"> am</label><label><input type="radio" name="q47" value="b"> was</label><label><input type="radio" name="q47" value="c"> were</label><label><input type="radio" name="q47" value="d"> have been</label></div></div>
+
+            <!-- Voice, Narration & Error Correction (48-50) -->
+            <div class="question-block"><div class="question">48. Change the voice: 'He wrote a letter.'</div><div class="options"><label><input type="radio" name="q48" value="a"> A letter was written by him.</label><label><input type="radio" name="q48" value="b"> A letter is written by him.</label><label><input type="radio" name="q48" value="c"> A letter has been written by him.</label><label><input type="radio" name="q48" value="d"> A letter had been written by him.</label></div></div>
+            <div class="question-block"><div class="question">49. Change the narration: He said, "The earth is round."</div><div class="options"><label><input type="radio" name="q49" value="a"> He said that the earth was round.</label><label><input type="radio" name="q49" value="b"> He said that the earth is round.</label><label><input type="radio" name="q49" value="c"> He told that the earth is round.</label><label><input type="radio" name="q49" value="d"> He said that the earth has been round.</label></div></div>
+            <div class="question-block"><div class="question">50. Find the error in the sentence: Mathematics (A) / are (B) / a difficult subject. (C) / No error (D)</div><div class="options"><label><input type="radio" name="q50" value="a"> Part A</label><label><input type="radio" name="q50" value="b"> Part B</label><label><input type="radio" name="q50" value="c"> Part C</label><label><input type="radio" name="q50" value="d"> Part D</label></div></div>
+
+            <div class="nav-buttons" id="nav-container">
+                <button type="button" class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
+                <button type="button" class="nav-btn" id="next-btn" onclick="nextQuestion()">Next</button>
+                <button type="button" class="nav-btn submit-btn" id="submit-btn" onclick="calculateScore()">Submit Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        let questions;
+        let timerInterval;
+        let timeLeft = 30 * 60; 
+
+        window.onload = function() {
+            questions = document.querySelectorAll('.question-block');
+            showQuestion(currentQuestion);
+            startTimer();
+        };
+
+        function startTimer() {
+            let timerDisplay = document.getElementById('time-left');
+            timerInterval = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    calculateScore(); 
+                } else {
+                    timeLeft--;
+                    let m = Math.floor(timeLeft / 60);
+                    let s = timeLeft % 60;
+                    timerDisplay.innerText = m + ":" + (s < 10 ? "0" + s : s);
+                    
+                    if(timeLeft <= 300) {
+                        document.getElementById('timer-container').style.background = "#e74c3c";
+                        document.getElementById('timer-container').style.color = "#fff";
+                    }
+                }
+            }, 1000);
+        }
+
+        function showQuestion(index) {
+            questions.forEach((q, i) => { q.style.display = (i === index) ? "block" : "none"; });
+            document.getElementById('question-counter').innerText = "Question: " + (index + 1) + " / " + questions.length;
+            
+            document.getElementById('prev-btn').style.display = (index === 0) ? "none" : "inline-block";
+            
+            if (index === questions.length - 1) {
+                document.getElementById('next-btn').style.display = "none";
+                document.getElementById('submit-btn').style.display = "inline-block";
+            } else {
+                document.getElementById('next-btn').style.display = "inline-block";
+                document.getElementById('submit-btn').style.display = "none";
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextQuestion() { if (currentQuestion < questions.length - 1) { currentQuestion++; showQuestion(currentQuestion); } }
+        function prevQuestion() { if (currentQuestion > 0) { currentQuestion--; showQuestion(currentQuestion); } }
+
+        function calculateScore() {
+            clearInterval(timerInterval);
+            document.getElementById('timer-container').style.display = 'none';
+            document.getElementById('nav-container').style.display = 'none';
+            document.getElementById('question-counter').style.display = 'none';
+
+            let score = 0;
+            // 50 English Answer Key
+            const correctAnswers = { 
+                q1:"b", q2:"a", q3:"c", q4:"d", q5:"b", q6:"a", q7:"c", q8:"b", q9:"a", q10:"d",
+                q11:"a", q12:"b", q13:"c", q14:"b", q15:"a", q16:"d", q17:"a", q18:"b", q19:"c", q20:"d",
+                q21:"b", q22:"a", q23:"c", q24:"a", q25:"d", q26:"b", q27:"c", q28:"a", q29:"b", q30:"c",
+                q31:"a", q32:"b", q33:"c", q34:"d", q35:"a", q36:"a", q37:"b", q38:"a", q39:"c", q40:"b",
+                q41:"b", q42:"a", q43:"a", q44:"c", q45:"b", q46:"c", q47:"c", q48:"a", q49:"b", q50:"b"
+            };
+
+            questions.forEach((qBlock, index) => {
+                qBlock.style.display = "block"; 
+                let qName = "q" + (index + 1);
+                let selectedInput = document.querySelector(`input[name="${qName}"]:checked`);
+                let correctInput = document.querySelector(`input[name="${qName}"][value="${correctAnswers[qName]}"]`);
+                let allInputs = document.querySelectorAll(`input[name="${qName}"]`);
+
+                if (correctInput) { correctInput.parentElement.classList.add("correct-ans"); }
+
+                if (selectedInput) {
+                    if (selectedInput.value !== correctAnswers[qName]) {
+                        selectedInput.parentElement.classList.add("wrong-ans"); 
+                    } else { score++; }
+                }
+
+                allInputs.forEach(input => input.disabled = true);
+            });
+
+            let resultDiv = document.getElementById("result");
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = `Your Score: ${score} / 50`;
+            
+            if(score >= 40) {
+                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
+                resultDiv.innerHTML += "<br>Excellent performance! You are well prepared.";
+            } else if (score >= 25) {
+                resultDiv.style.backgroundColor = "#fff3cd"; resultDiv.style.color = "#856404";
+                resultDiv.innerHTML += "<br>Good try! But grammar & vocabulary need more revision.";
+            } else {
+                resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.color = "#721c24";
+                resultDiv.innerHTML += "<br>Please check the correct answers below and revise properly.";
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
