@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Test - WBCS with Tanmoy</title>
+    <!-- আধুনিক ফন্ট (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* আধুনিক UI ডিজাইন */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6; /* সুন্দর হালকা ব্যাকগ্রাউন্ড */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quiz-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* কার্ডে হালকা শ্যাডো */
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h2 {
+            color: #2f3542;
+            margin-top: 0;
+        }
+        .timer {
+            font-size: 18px;
+            color: #ff4757; /* লাল রঙের টাইমার */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2f3542;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option-btn {
+            padding: 12px;
+            border: 1px solid #dfe4ea;
+            background: #f1f2f6;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .option-btn:hover {
+            background: #1e90ff; /* হোভার করলে নীল হবে */
+            color: #ffffff;
+            border-color: #1e90ff;
+        }
+        #result {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2ed573; /* সফলতার সবুজ রঙ */
+        }
+        .home-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #2f3542;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h2>WBCS Mock Test</h2>
+        
+        <!-- প্রশ্ন ও টাইমার অংশ -->
+        <div id="quiz-area">
+            <div class="timer" id="time">সময় বাকি: 30s</div>
+            <div class="question" id="question">প্রশ্ন এখানে দেখাবে</div>
+            <div class="options" id="options">
+                <!-- অপশনগুলো জাভাস্ক্রিপ্ট থেকে আসবে -->
+            </div>
+        </div>
+
+        <!-- রেজাল্ট অংশ -->
+        <div id="result">
+            <!-- স্কোর এখানে দেখাবে -->
+        </div>
+        <a href="index.html" class="home-btn" id="home-btn" style="display: none;">হোমে ফিরে যান</a>
+    </div>
+
+    <script>
+        // আপনার মক টেস্টের প্রশ্নগুলো (এখানে আরও প্রশ্ন যোগ করতে পারেন)
+        const quizData = [
+            { question: "১. ভারতের রাজধানী কোনটি?", options: ["দিল্লি", "কলকাতা", "মুম্বাই", "চেন্নাই"], answer: "দিল্লি" },
+            { question: "২. পশ্চিমবঙ্গের প্রথম মুখ্যমন্ত্রী কে ছিলেন?", options: ["বিধানচন্দ্র রায়", "প্রফুল্ল চন্দ্র ঘোষ", "অজয় মুখোপাধ্যায়", "জ্যোতি বসু"], answer: "প্রফুল্ল চন্দ্র ঘোষ" },
+            { question: "৩. 'স্বরাজ আমার জন্মগত অধিকার' - কার উক্তি?", options: ["মহাত্মা গান্ধী", "নেতাজি সুভাষচন্দ্র বসু", "বাল গঙ্গাধর তিলক", "ভগত সিং"], answer: "বাল গঙ্গাধর তিলক" }
+        ];
+
+        let currentQuiz = 0;
+        let score = 0;
+        let timeLeft = 30;
+        let timer;
+
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const timeEl = document.getElementById('time');
+        const quizArea = document.getElementById('quiz-area');
+        const resultEl = document.getElementById('result');
+        const homeBtn = document.getElementById('home-btn');
+
+        // প্রশ্ন লোড করার ফাংশন
+        function loadQuiz() {
+            clearInterval(timer);
+            timeLeft = 30; // প্রতি প্রশ্নে ৩০ সেকেন্ড
+            timeEl.innerText = `সময় বাকি: ${timeLeft}s`;
+            
+            optionsEl.innerHTML = '';
+            const currentQuizData = quizData[currentQuiz];
+            questionEl.innerText = currentQuizData.question;
+
+            // অপশনগুলো তৈরি করা
+            currentQuizData.options.forEach(option => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.classList.add('option-btn');
+                button.onclick = () => selectOption(option);
+                optionsEl.appendChild(button);
+            });
+
+            // টাইমার চালু করা
+            timer = setInterval(updateTime, 1000);
+        }
+
+        // সময় কমানোর ফাংশন
+        function updateTime() {
+            timeLeft--;
+            timeEl.innerText = `সময় বাকি: ${timeLeft}s`;
+            if(timeLeft === 0) {
+                clearInterval(timer);
+                nextQuestion(); // সময় শেষ হলে পরের প্রশ্নে চলে যাবে
+            }
+        }
+
+        // উত্তর সিলেক্ট করার ফাংশন
+        function selectOption(selectedOption) {
+            clearInterval(timer);
+            if(selectedOption === quizData[currentQuiz].answer) {
+                score++; // সঠিক হলে ১ নম্বর বাড়বে
+            }
+            nextQuestion();
+        }
+
+        // পরের প্রশ্নে যাওয়ার ফাংশন
+        function nextQuestion() {
+            currentQuiz++;
+            if(currentQuiz < quizData.length) {
+                loadQuiz();
+            } else {
+                showResult(); // প্রশ্ন শেষ হলে রেজাল্ট দেখাবে
+            }
+        }
+
+        // রেজাল্ট দেখানোর ফাংশন
+        function showResult() {
+            quizArea.style.display = 'none';
+            resultEl.style.display = 'block';
+            homeBtn.style.display = 'inline-block';
+            resultEl.innerText = `মক টেস্ট শেষ! \nআপনার স্কোর: ${score} / ${quizData.length}`;
+        }
+
+        // প্রথম প্রশ্ন লোড দিয়ে শুরু করা
+        loadQuiz();
+    </script>
+</body>
+</html>
