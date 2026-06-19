@@ -1,30 +1,11 @@
-/* বেসিক স্টাইল */
-body {
-    transition: background-color 0.4s, color 0.4s;
-    background-color: #ffffff;
-    color: #333333;
-    font-family: Arial, sans-serif;
-}
-
-.top-header { background: #f4f4f4; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-
-/* ডার্ক মোড অ্যাক্টিভ হলে যা হবে */
-body.dark-mode {
-    background-color: #121212 !important;
-    color: #ffffff !important;
-}
-
-body.dark-mode .top-header {
-    background-color: #1e1e1e !important;
-}
-
-body.dark-mode .note-box {
-    background-color: #1e1e1e !important;
-    color: #ffffff !important;
-    border: 1px solid #444 !important;
-}
-
-body.dark-mode aside {
-    background-color: #1e1e1e !important;
-    color: #ffffff !important;
-}
+body { font-family: sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
+.top-header { background: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.top-logo { height: 50px; }
+.main-title { margin: 0; }
+.top-nav a { margin-left: 15px; text-decoration: none; color: #333; font-weight: bold; }
+.container { display: flex; padding: 20px; gap: 20px; }
+aside { width: 250px; background: #fff; padding: 15px; border-radius: 8px; }
+#menu-list { list-style: none; padding: 0; }
+#menu-list li { padding: 10px; cursor: pointer; border-radius: 5px; }
+#menu-list li.active { background: #3498db; color: white; }
+.note-box { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #ddd; }
