@@ -1,3 +1,6 @@
+/* ---------------------------------
+   Reset & Body
+------------------------------------ */
 * {
     margin: 0;
     padding: 0;
@@ -13,76 +16,40 @@ body {
 }
 
 /* ---------------------------------
-   পুরনো Header ডিজাইন (যদি কোথাও লাগে)
------------------------------------- */
-header {
-    background-color: #ffffff;
-    color: #333;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #1976d2; 
-}
-
-header nav a {
-    text-decoration: none;
-    color: #333;
-    margin-left: 20px;
-    font-weight: 500;
-}
-
-header nav a:hover {
-    color: #1976d2; 
-}
-
-/* ---------------------------------
-   নতুন Top-Header ডিজাইন
+   Top Header & Navigation
 ------------------------------------ */
 .top-header {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     padding: 10px 30px;
     background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-    position: relative; /* লেখাটিকে মাঝখানে রাখার জন্য */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+    height: 70px;
 }
 
-/* লোগো এবং নামের কন্টেইনার */
-.logo-title-container {
-    display: flex;
-    align-items: center;
-    gap: 15px; 
-}
-
-/* লোগোর সাইজ */
 .top-logo {
-    width: 70px;
+    width: 60px;
     height: auto;
 }
 
-/* একদম মাঝখানের বড় হেডিং */
+/* কালারফুল হেডিং */
 .main-title {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
     margin: 0;
     font-size: 32px;
-    color: #2f3542;
     font-family: 'Poppins', sans-serif;
-    font-weight: bold;
+    font-weight: 800;
     letter-spacing: 1px;
+    background: linear-gradient(90deg, #1e90ff, #ff4757, #2ed573);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-/* মেনুগুলোর ডিজাইন */
 .top-nav a {
     margin-left: 20px;
     text-decoration: none;
@@ -97,13 +64,13 @@ header nav a:hover {
 }
 
 /* ---------------------------------
-   Layout Container & Sidebar
+   Layout Container (Sidebar & Main)
 ------------------------------------ */
 .container {
     display: flex;
     flex: 1;
     overflow: hidden;
-    flex-direction: row; /* ল্যাপটপের জন্য */
+    flex-direction: row;
 }
 
 aside {
@@ -133,24 +100,19 @@ aside ul li {
 }
 
 aside ul li:hover, aside ul li.active {
-    background-color: #e3f2fd; 
-    color: #1976d2; 
-    border-left: 4px solid #1976d2; 
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border-left: 4px solid #1976d2;
     font-weight: bold;
 }
 
 /* ---------------------------------
-   Main Content & Notes
+   Main Content Area
 ------------------------------------ */
 main {
     flex: 1;
     padding: 40px;
     overflow-y: auto;
-}
-
-main h1 {
-    color: #222;
-    margin-bottom: 20px;
 }
 
 .note-box {
@@ -172,57 +134,39 @@ main h1 {
     line-height: 1.6;
 }
 
-/* Logo Container (বিকল্প লোগোর জন্য) */
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 12px; 
-}
-
-.wt-logo {
-    background-color: #0000FF; 
-    color: white;             
-    font-size: 24px;          
-    font-weight: bold;        
-    padding: 10px 15px;       
-    border-radius: 5px;       
-    display: inline-block;
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
 /* ---------------------------------
-   মোবাইলের জন্য রেসপন্সিভ ডিজাইন
+   Responsive Design (Mobile)
 ------------------------------------ */
 @media screen and (max-width: 768px) {
     .container {
-        flex-direction: column; 
+        flex-direction: column;
     }
     
     aside {
-        width: 100%; 
+        width: 100%;
         margin-bottom: 20px;
-    }
-
-    nav, .top-nav {
-        text-align: center; 
-    }
-    
-    nav a, .top-nav a {
-        display: block; 
-        margin: 10px 0;
     }
 
     .top-header {
         flex-direction: column;
+        height: auto;
         padding: 15px;
     }
 
     .main-title {
-        position: static; 
+        position: static;
         transform: none;
         font-size: 24px;
         margin: 15px 0;
         text-align: center;
+    }
+
+    .top-nav {
+        margin-top: 10px;
+    }
+
+    .top-nav a {
+        display: inline-block;
+        margin: 0 10px;
     }
 }
