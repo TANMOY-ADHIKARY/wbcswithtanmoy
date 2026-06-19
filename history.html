@@ -5,100 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History Mock Test</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .quiz-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
-        }
-        h2 {
-            text-align: center;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .question-block {
-            margin-bottom: 25px;
-        }
-        .question {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .options label {
-            display: block;
-            background: #e9ecef;
-            padding: 12px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-            border: 1px solid transparent;
-        }
-        .options label:hover {
-            background: #e2e6ea;
-        }
-        .options input[type="radio"] {
-            margin-right: 10px;
-        }
-        
-        /* সঠিক ও ভুল উত্তরের জন্য ক্লাস (রঙ পরিবর্তন) */
-        .correct-ans {
-            background-color: #d4edda !important;
-            color: #155724;
-            border: 1px solid #c3e6cb !important;
-        }
-        .wrong-ans {
-            background-color: #f8d7da !important;
-            color: #721c24;
-            border: 1px solid #f5c6cb !important;
-        }
-
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
-        .submit-btn:hover {
-            background-color: #2980b9;
-        }
-        .submit-btn:disabled {
-            background-color: #95a5a6;
-            cursor: not-allowed;
-        }
-        #result {
-            margin-top: 25px;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            padding: 15px;
-            border-radius: 5px;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .quiz-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .back-btn { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #3498db; font-weight: bold; }
+        h2 { text-align: center; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .question-block { margin-bottom: 25px; }
+        .question { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; }
+        .options label:hover { background: #e2e6ea; }
+        .options input[type="radio"] { margin-right: 10px; }
+        .correct-ans { background-color: #d4edda !important; color: #155724; border: 1px solid #c3e6cb !important; }
+        .wrong-ans { background-color: #f8d7da !important; color: #721c24; border: 1px solid #f5c6cb !important; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .submit-btn:hover { background-color: #2980b9; }
+        .submit-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
+        #result { margin-top: 25px; font-size: 20px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -142,6 +63,83 @@
                 </div>
             </div>
 
+            <!-- Question 4 -->
+            <div class="question-block">
+                <div class="question">৪. কবে বঙ্গভঙ্গ রদ করা হয়?</div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="a"> ১৯০৫ সালে</label>
+                    <label><input type="radio" name="q4" value="b"> ১৯০৯ সালে</label>
+                    <label><input type="radio" name="q4" value="c"> ১৯১১ সালে</label>
+                    <label><input type="radio" name="q4" value="d"> ১৯১৪ সালে</label>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-block">
+                <div class="question">৫. 'স্বরাজ আমার জন্মগত অধিকার' - কার উক্তি?</div>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="a"> বাল গঙ্গাধর তিলক</label>
+                    <label><input type="radio" name="q5" value="b"> মহাত্মা গান্ধী</label>
+                    <label><input type="radio" name="q5" value="c"> সুভাষচন্দ্র বসু</label>
+                    <label><input type="radio" name="q5" value="d"> লালা লাজপত রায়</label>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-block">
+                <div class="question">৬. জাতীয় কংগ্রেসের প্রথম সভাপতি কে ছিলেন?</div>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="a"> অ্যালান অক্টাভিয়ান হিউম</label>
+                    <label><input type="radio" name="q6" value="b"> সুরেন্দ্রনাথ বন্দ্যোপাধ্যায়</label>
+                    <label><input type="radio" name="q6" value="c"> দাদাভাই নওরোজি</label>
+                    <label><input type="radio" name="q6" value="d"> উমেশচন্দ্র বন্দ্যোপাধ্যায়</label>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-block">
+                <div class="question">৭. ফরোয়ার্ড ব্লক কে প্রতিষ্ঠা করেন?</div>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="a"> সুভাষচন্দ্র বসু</label>
+                    <label><input type="radio" name="q7" value="b"> চিত্তরঞ্জন দাশ</label>
+                    <label><input type="radio" name="q7" value="c"> রাসবিহারী বসু</label>
+                    <label><input type="radio" name="q7" value="d"> জওহরলাল নেহেরু</label>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-block">
+                <div class="question">৮. সীমান্ত গান্ধী নামে কে পরিচিত ছিলেন?</div>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="a"> মহাত্মা গান্ধী</label>
+                    <label><input type="radio" name="q8" value="b"> মহম্মদ আলী জিন্নাহ</label>
+                    <label><input type="radio" name="q8" value="c"> খান আব্দুল গফফর খান</label>
+                    <label><input type="radio" name="q8" value="d"> আবুল কালাম আজাদ</label>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question-block">
+                <div class="question">৯. 'সত্যশোধক সমাজ' কে প্রতিষ্ঠা করেন?</div>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="a"> শ্রী নারায়ণ গুরু</label>
+                    <label><input type="radio" name="q9" value="b"> জ্যোতিরাও ফুলে</label>
+                    <label><input type="radio" name="q9" value="c"> বি. আর. আম্বেদকর</label>
+                    <label><input type="radio" name="q9" value="d"> পেরিয়ার ই. ভি. রামস্বামী</label>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question-block">
+                <div class="question">১০. ভারতের প্রথম ভাইসরয় কে ছিলেন?</div>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="a"> লর্ড ডালহৌসি</label>
+                    <label><input type="radio" name="q10" value="b"> লর্ড ক্যানিং</label>
+                    <label><input type="radio" name="q10" value="c"> লর্ড মাউন্টব্যাটেন</label>
+                    <label><input type="radio" name="q10" value="d"> রবার্ট ক্লাইভ</label>
+                </div>
+            </div>
+
             <button id="submit-button" class="submit-btn" onclick="calculateScore()">Submit Test</button>
         </div>
 
@@ -151,43 +149,36 @@
     <script>
         function calculateScore() {
             let score = 0;
-            const totalQuestions = 3;
+            const totalQuestions = 10;
             
-            // এখানে সঠিক উত্তরগুলো লেখা আছে
+            // ১০টি প্রশ্নের সঠিক উত্তর
             const correctAnswers = { 
-                q1: "b", 
-                q2: "a",
-                q3: "b"
+                q1: "b", q2: "a", q3: "b", q4: "c", q5: "a", 
+                q6: "d", q7: "a", q8: "c", q9: "b", q10: "b"
             };
 
-            // প্রতিটি প্রশ্নের উত্তর চেক করা
             for (let q in correctAnswers) {
                 let selectedInput = document.querySelector(`input[name="${q}"]:checked`);
                 let correctInput = document.querySelector(`input[name="${q}"][value="${correctAnswers[q]}"]`);
                 let allInputsForQ = document.querySelectorAll(`input[name="${q}"]`);
 
-                // সঠিক উত্তরটিতে সবুজ রঙ দেওয়া
                 if (correctInput) {
                     correctInput.parentElement.classList.add("correct-ans");
                 }
 
-                // ইউজার যদি উত্তর দিয়ে থাকে
                 if (selectedInput) {
-                    // উত্তর ভুল হলে লাল রঙ দেওয়া
                     if (selectedInput.value !== correctAnswers[q]) {
                         selectedInput.parentElement.classList.add("wrong-ans");
                     } else {
-                        score++; // উত্তর সঠিক হলে নম্বর বাড়বে
+                        score++;
                     }
                 }
 
-                // সাবমিট করার পর অপশনগুলো লক (disable) করে দেওয়া
                 allInputsForQ.forEach(input => {
                     input.disabled = true;
                 });
             }
 
-            // রেজাল্ট দেখানো
             let resultDiv = document.getElementById("result");
             resultDiv.innerHTML = `তোমার প্রাপ্ত নম্বর: ${score} / ${totalQuestions}`;
             
@@ -195,7 +186,7 @@
                 resultDiv.style.backgroundColor = "#d4edda";
                 resultDiv.style.color = "#155724";
                 resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স!";
-            } else if (score > 0) {
+            } else if (score >= 5) {
                 resultDiv.style.backgroundColor = "#fff3cd";
                 resultDiv.style.color = "#856404";
                 resultDiv.innerHTML += "<br>ভালো চেষ্টা, আরও প্রস্তুতি নাও।";
@@ -205,7 +196,6 @@
                 resultDiv.innerHTML += "<br>আরও অনেক পড়তে হবে!";
             }
 
-            // সাবমিট বাটন লক করা
             let submitBtn = document.getElementById("submit-button");
             submitBtn.disabled = true;
             submitBtn.innerText = "Test Submitted";
