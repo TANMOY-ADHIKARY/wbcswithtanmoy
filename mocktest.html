@@ -16,9 +16,9 @@
 <div class="quiz-container">
     <h2>WBCS Mock Test</h2>
     <div id="subject-selector">
-        <label>বিষয় নির্বাচন করুন: </label>
+        <label>বিষয় নির্বাচন করুন: </label>
         <select id="sub-list" onchange="filterQuestions()">
-            <option value="সব">সব বিষয়</option>
+            <option value="সব">সব বিষয়</option>
             <option value="ইতিহাস">ইতিহাস</option>
             <option value="ভূগোল">ভূগোল</option>
             <option value="সংবিধান">সংবিধান</option>
@@ -34,7 +34,7 @@
 </div>
 
 <script>
-   const quizData = [
+    const quizData = [
     // ইতিহাস (২৫টি প্রশ্ন)
     { subject: "ইতিহাস", question: "১. সিন্ধু সভ্যতার আবিষ্কারক কে?", options: ["দয়ারাম সাহানি", "রাখালদাস বন্দ্যোপাধ্যায়", "আলেকজান্ডার কানিংহাম", "জন মার্শাল"], answer: "দয়ারাম সাহানি" },
     { subject: "ইতিহাস", question: "২. 'ইন্ডিকা' গ্রন্থটি কে রচনা করেন?", options: ["ফাহিয়েন", "হিউয়েন সাং", "মেগাস্থিনিস", "কৌটিল্য"], answer: "মেগাস্থিনিস" },
@@ -152,26 +152,18 @@
     function filterQuestions() {
         const sub = document.getElementById('sub-list').value;
         filteredQuiz = (sub === "সব") ? quizData : quizData.filter(q => q.subject === sub);
-        
         currentQuiz = 0; 
         score = 0;
         subjectScores = { "ইতিহাস": 0, "ভূগোল": 0, "সংবিধান": 0, "বিজ্ঞান": 0 };
-        
-        // রেজাল্ট লুকিয়ে প্রশ্ন এরিয়া দেখানোর জন্য এটি নিশ্চিত করবে
         document.getElementById('quiz-area').style.display = 'block'; 
         document.getElementById('result').style.display = 'none';
-        
-        // যদি ফিল্টার করা প্রশ্ন থাকে, তবেই লোড হবে
-        if (filteredQuiz.length > 0) {
-            loadQuiz();
-        } else {
-            document.getElementById('question').innerText = "এই বিষয়ে কোনো প্রশ্ন নেই।";
-            document.getElementById('options').innerHTML = "";
-        }
+        document.getElementById('home-btn').style.display = 'none';
+        loadQuiz();
     }
+
     function loadQuiz() {
         if(filteredQuiz.length === 0) {
-            document.getElementById('question').innerText = "এই বিষয়ে কোনো প্রশ্ন নেই।";
+            document.getElementById('question').innerText = "এই বিষয়ে কোনো প্রশ্ন নেই।";
             document.getElementById('options').innerHTML = "";
             return;
         }
@@ -211,7 +203,7 @@
         document.getElementById('quiz-area').style.display = 'none';
         const res = document.getElementById('result');
         res.style.display = 'block';
-        res.innerHTML = `মক টেস্ট শেষ!<br>মোট স্কোর: ${score}<br>বিষয়ভিত্তিক: ${JSON.stringify(subjectScores)}`;
+        res.innerHTML = `মক টেস্ট শেষ!<br>মোট স্কোর: ${score}<br>বিষয়ভিত্তিক: ${JSON.stringify(subjectScores)}`;
         document.getElementById('home-btn').style.display = 'block';
     }
 
