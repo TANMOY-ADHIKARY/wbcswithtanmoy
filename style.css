@@ -1,226 +1,99 @@
-/* ---------------------------------
-   Reset & Body
------------------------------------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+/* গুগল ফন্ট ব্যবহার */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
     background-color: #f8f9fa;
+    color: #333;
 }
 
-/* ---------------------------------
-   Top Header & Navigation
------------------------------------- */
+/* Header Design */
 .top-header {
+    background: #ffffff;
+    padding: 15px 30px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px 30px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    position: relative;
-    height: 70px;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .top-logo {
-    width: 60px;
-    height: auto;
+    height: 50px;
+    width: auto;
 }
 
-/* কালারফুল হেডিং */
-.main-title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    font-size: 32px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
+.main-title { 
+    margin: 0; 
+    color: #2c3e50; 
+    font-size: 24px; 
     letter-spacing: 1px;
-    background: linear-gradient(90deg, #1e90ff, #ff4757, #2ed573);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .top-nav a {
     margin-left: 20px;
     text-decoration: none;
-    color: #2f3542;
-    font-size: 18px;
-    font-weight: bold;
-    transition: 0.3s;
+    color: #34495e;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
 }
 
 .top-nav a:hover {
-    color: #1e90ff;
+    color: #3498db;
 }
 
-/* ---------------------------------
-   Layout Container (Sidebar & Main)
------------------------------------- */
+/* Sidebar & Content Container */
 .container {
     display: flex;
-    flex: 1;
-    overflow: hidden;
-    flex-direction: row;
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+    gap: 20px;
 }
 
 aside {
-    width: 260px;
-    background-color: #ffffff;
-    border-right: 1px solid #e0e0e0;
-    padding: 20px 0;
-    overflow-y: auto;
+    width: 250px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    height: fit-content;
 }
 
-aside h3 {
-    padding: 0 20px 10px 20px;
-    color: #555;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
-}
+h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
 
-aside ul {
-    list-style: none;
-}
+#menu-list { list-style: none; padding: 0; }
 
-aside ul li {
-    padding: 12px 20px;
+#menu-list li {
+    padding: 15px;
     cursor: pointer;
-    color: #444;
-    transition: 0.3s;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #555;
 }
 
-aside ul li:hover, aside ul li.active {
-    background-color: #e3f2fd;
-    color: #1976d2;
-    border-left: 4px solid #1976d2;
-    font-weight: bold;
+#menu-list li.active, #menu-list li:hover {
+    background: #3498db;
+    color: #fff;
+    transform: translateX(5px);
 }
 
-/* ---------------------------------
-   Main Content Area
------------------------------------- */
-main {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
-}
+/* Card Design for Content */
+main { flex: 1; }
 
 .note-box {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    border-left: 8px solid #3498db;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 .note-box h2 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 20px;
-}
-
-.note-box p {
-    color: #555;
-    line-height: 1.6;
-}
-
-/* ---------------------------------
-   Responsive Design (Mobile)
------------------------------------- */
-@media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-    
-    aside {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .top-header {
-        flex-direction: column;
-        height: auto;
-        padding: 15px;
-    }
-
-    .main-title {
-        position: static;
-        transform: none;
-        font-size: 24px;
-        margin: 15px 0;
-        text-align: center;
-    }
-
-    .top-nav {
-        margin-top: 10px;
-    }
-
-    .top-nav a {
-        display: inline-block;
-        margin: 0 10px;
-    }
-}
-
-/* =========================================
-   Scrolling Notification Ticker Styling
-========================================== */
-.scrolling-ticker {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%); /* সুন্দর নীল গ্রেডিয়েন্ট */
-    color: #fff;
-    padding: 10px 0;
-    overflow: hidden;
-    z-index: 1000;
-    box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
-}
-
-.ticker-text {
-    white-space: nowrap;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    animation: scrollText 25s linear infinite; /* ২৫ সেকেন্ডে একবার ঘুরবে */
-}
-
-/* NEW লেখাটার জন্য লাল রঙের ব্লিঙ্কিং ব্যাজ */
-.new-badge {
-    background-color: #ff4757;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-right: 10px;
-    font-weight: 900;
-    animation: blink 1s infinite alternate; 
-}
-
-/* লেখাটা ডানদিক থেকে বাঁদিকে যাওয়ার অ্যানিমেশন */
-@keyframes scrollText {
-    0% { transform: translateX(100vw); }
-    100% { transform: translateX(-100%); }
-}
-
-/* NEW ব্যাজটার ব্লিঙ্ক করার অ্যানিমেশন */
-@keyframes blink {
-    0% { opacity: 1; box-shadow: 0 0 8px #ff4757; }
-    100% { opacity: 0.6; box-shadow: none; }
-}
-
-/* ওয়েবসাইটের মূল কন্টেন্ট যাতে এর নিচে ঢাকা না পড়ে যায় */
-body {
-    padding-bottom: 50px; 
+    color: #2c3e50;
+    margin-top: 0;
 }
