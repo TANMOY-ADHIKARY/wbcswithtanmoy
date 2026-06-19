@@ -161,3 +161,46 @@ main h1 {
         margin: 10px 0;
     }
 }
+
+
+/* পুরো হেডার অংশের ডিজাইন */
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* লোগো বাঁয়ে এবং মেনু ডানে পাঠাবে */
+    padding: 10px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* হেডারের নিচে হালকা ছায়া */
+}
+
+/* লোগো এবং নামের কন্টেইনার */
+.logo-title-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* লোগো এবং লেখার মাঝখানে ফাঁকা জায়গা */
+}
+
+/* বড় হেডিং বা লেখার ডিজাইন */
+.main-title {
+    margin: 0;
+    font-size: 32px; /* লেখা কতটা বড় হবে */
+    color: #2f3542; /* সুন্দর গাঢ় রঙ */
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* মেনুগুলোর ডিজাইন */
+.top-nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #2f3542;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* মেনুর ওপর মাউস রাখলে কালার পরিবর্তন হবে */
+.top-nav a:hover {
+    color: #1e90ff; /* নীল রঙ */
+}
