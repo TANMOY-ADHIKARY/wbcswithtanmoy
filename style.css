@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+/* Navbar Design */
+header {
+    background-color: #ffffff;
+    color: #333;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1976d2; /* Main Blue Color */
+}
+
+header nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+header nav a:hover {
+    color: #1976d2; /* Main Blue Color */
+}
+
+/* Layout Container */
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Sidebar Design */
+aside {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+aside h3 {
+    padding: 0 20px 10px 20px;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    padding: 12px 20px;
+    cursor: pointer;
+    color: #444;
+    transition: 0.3s;
+}
+
+/* Active subject highlight */
+aside ul li:hover, aside ul li.active {
+    background-color: #e3f2fd; /* Light Blue Background */
+    color: #1976d2; /* Main Blue Color */
+    border-left: 4px solid #1976d2; /* Main Blue Color */
+    font-weight: bold;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+main h1 {
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* Note Container */
+.note-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.note-box h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.note-box p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Logo ar text er majhkhaner faka jayga */
+}
+
+/* WT Icon Design */
+.css-logo {
+    background-color: #1976d2; /* Main Blue Rong */
+    color: #ffffff; /* Sada lekha */
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: 6px 10px;
+    border-radius: 6px; /* Ekdum square na kore ektu gol gol korlam */
+    box-shadow: 0 3px 6px rgba(25, 118, 210, 0.3); /* Halka blue shadow */
+    font-family: 'Arial Black', sans-serif;
+}
+
+/* Website Name Text */
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1976d2;
+}

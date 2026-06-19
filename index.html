@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WBCS with Tanmoy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navbar -->
+    <header>
+        <div class="logo-container">
+            <div class="css-logo">WT</div>
+            <div class="logo-text">WBCS with Tanmoy</div>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Notes</a>
+            <a href="#">Mock Test</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <!-- Left Sidebar (Syllabus) -->
+        <aside>
+            <h3>WBCS Syllabus</h3>
+            <ul id="menu-list">
+                <li class="active" onclick="changeSubject('Polity', this)">Indian Polity</li>
+                <li onclick="changeSubject('History', this)">History of India</li>
+                <li onclick="changeSubject('Geography', this)">Indian Geography</li>
+                <li onclick="changeSubject('Science', this)">General Science</li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main id="content-area">
+            <h1>Indian Polity Notes</h1>
+            <div class="note-box">
+                <h2>Chapter 1: Making of the Constitution</h2>
+                <p>Ekhane GeeksforGeeks er moto point by point notes asbe. Tumi pore ekhane content update korbe.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript code (Sidebar ke active korar jonno) -->
+    <script>
+        function changeSubject(subjectName, clickedElement) {
+            // 1. Sob gulo menu theke blue color (active) soriye nibe
+            let allItems = document.querySelectorAll('#menu-list li');
+            allItems.forEach(item => item.classList.remove('active'));
+
+            // 2. Jei menu te click korecho, setate blue color (active) add korbe
+            clickedElement.classList.add('active');
+
+            // 3. Main content area ke dhorbe
+            let contentArea = document.getElementById('content-area');
+
+            // 4. Click kora subject onujayi pora change korbe
+            if (subjectName === 'Polity') {
+                contentArea.innerHTML = `
+                    <h1>Indian Polity Notes</h1>
+                    <div class="note-box">
+                        <h2>Chapter 1: Making of the Constitution</h2>
+                        <p>Ekhane Indian Polity er notes asbe.</p>
+                    </div>
+                `;
+            } else if (subjectName === 'History') {
+                contentArea.innerHTML = `
+                    <h1>History of India</h1>
+                    <div class="note-box">
+                        <h2>Chapter 1: Indus Valley Civilization</h2>
+                        <p>Harappan civilization er details ekhane thakbe.</p>
+                    </div>
+                `;
+            } else if (subjectName === 'Geography') {
+                contentArea.innerHTML = `
+                    <h1>Indian Geography</h1>
+                    <div class="note-box">
+                        <h2>Chapter 1: Physical Features of India</h2>
+                        <p>Himalaya, Rivers, Mountains niye ekhane lekha hobe.</p>
+                    </div>
+                `;
+            } else if (subjectName === 'Science') {
+                contentArea.innerHTML = `
+                    <h1>General Science</h1>
+                    <div class="note-box">
+                        <h2>Chapter 1: Physics & Chemistry basics</h2>
+                        <p>General science er basic jinish potro ekhane thakbe.</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
