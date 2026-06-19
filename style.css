@@ -135,3 +135,29 @@ main h1 {
 }
 
 
+/* ল্যাপটপের জন্য ডিজাইন */
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+/* মোবাইলের জন্য ডিজাইন (স্ক্রিন ছোট হলে এটি কাজ করবে) */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; 
+    }
+    
+    aside {
+        width: 100%; 
+        margin-bottom: 20px;
+    }
+
+    nav {
+        text-align: center; 
+    }
+    
+    nav a {
+        display: block; 
+        margin: 10px 0;
+    }
+}
