@@ -150,14 +150,26 @@
     let score = 0;
     let subjectScores = { "ইতিহাস": 0, "ভূগোল": 0, "সংবিধান": 0, "বিজ্ঞান": 0 };
 
+    function filterQuestions() <script>
+    // ... উপরের অন্যান্য কোড বা quizData এখানে থাকবে ...
+
+    // এখান থেকে তোমার filterQuestions ফাংশনটি শুরু করো
     function filterQuestions() {
         const sub = document.getElementById('sub-list').value;
         filteredQuiz = (sub === "সব") ? quizData : quizData.filter(q => q.subject === sub);
-        currentQuiz = 0; score = 0;
-        document.getElementById('quiz-area').style.display = 'block';
+        
+        currentQuiz = 0; 
+        score = 0;
+        
+        // এখানে লাইন দুটি যোগ করা হলো
+        document.getElementById('quiz-area').style.display = 'block'; 
         document.getElementById('result').style.display = 'none';
+        
         loadQuiz();
     }
+
+    // ... এর পরের ফাংশনগুলো (loadQuiz, selectOption ইত্যাদি) যেমন আছে তেমনই থাকবে ...
+</script>
 
     function loadQuiz() {
         if(filteredQuiz.length === 0) {
