@@ -4,11 +4,66 @@
     <meta charset="UTF-8">
     <title>WBCS Mock Test</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; padding: 20px; }
-        .quiz-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .option-btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; text-align: left; transition: 0.3s; }
-        .option-btn:hover { background: #f1f1f1; }
-        #subject-selector { margin-bottom: 20px; }
+        <style>
+    /* ওয়েবসাইটের মূল বডি ও কন্টেইনারের সাথে মিল রাখা */
+    body { 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        background-color: #f8f9fa; 
+        padding: 0; 
+        margin: 0;
+    }
+    
+    .quiz-container { 
+        max-width: 700px; 
+        margin: 50px auto; 
+        background: white; 
+        padding: 30px; 
+        border-radius: 8px; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        border: 1px solid #eee;
+    }
+
+    h2 { color: #333; margin-bottom: 20px; text-align: center; }
+
+    .option-btn { 
+        display: block; 
+        width: 100%; 
+        padding: 14px; 
+        margin: 10px 0; 
+        border: 1px solid #e0e0e0; 
+        border-radius: 6px; 
+        cursor: pointer; 
+        text-align: left; 
+        font-size: 16px;
+        transition: 0.3s; 
+    }
+    
+    .option-btn:hover { 
+        background-color: #e3f2fd; 
+        border-color: #1976d2;
+        color: #1976d2;
+    }
+
+    #subject-selector { 
+        margin-bottom: 25px; 
+        text-align: center;
+    }
+    
+    select {
+        padding: 8px 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    #home-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #1976d2;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+</style>
     </style>
 </head>
 <body>
@@ -25,10 +80,12 @@
             <option value="বিজ্ঞান">বিজ্ঞান</option>
         </select>
     </div>
+    
     <div id="quiz-area">
         <div id="question" style="font-weight:bold; margin-bottom:15px;"></div>
         <div id="options"></div>
     </div>
+    
     <div id="result" style="display:none; text-align:center;"></div>
     <a href="index.html" id="home-btn" style="display:none; text-align:center; display:block; margin-top:20px;">হোমে ফিরে যান</a>
 </div>
@@ -152,12 +209,15 @@
     function filterQuestions() {
         const sub = document.getElementById('sub-list').value;
         filteredQuiz = (sub === "সব") ? quizData : quizData.filter(q => q.subject === sub);
+        
         currentQuiz = 0; 
         score = 0;
         subjectScores = { "ইতিহাস": 0, "ভূগোল": 0, "সংবিধান": 0, "বিজ্ঞান": 0 };
+        
         document.getElementById('quiz-area').style.display = 'block'; 
         document.getElementById('result').style.display = 'none';
         document.getElementById('home-btn').style.display = 'none';
+        
         loadQuiz();
     }
 
@@ -207,6 +267,7 @@
         document.getElementById('home-btn').style.display = 'block';
     }
 
+    // পেজ লোড হওয়ার সাথে সাথেই প্রশ্ন লোড হবে
     loadQuiz();
 </script>
 </body>
