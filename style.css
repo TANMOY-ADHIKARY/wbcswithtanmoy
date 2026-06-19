@@ -1,21 +1,14 @@
-/* বেসিক ডিজাইন */
-body { font-family: sans-serif; transition: background 0.3s, color 0.3s; }
-.top-header { background: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-.container { display: flex; padding: 20px; gap: 20px; }
-aside { width: 250px; }
-#menu-list li { padding: 10px; cursor: pointer; }
-#menu-list li.active { color: blue; font-weight: bold; }
-.note-box { padding: 20px; border: 1px solid #ccc; }
+/* বেসিক স্টাইল */
+body {
+    transition: background-color 0.4s, color 0.4s;
+    background-color: #ffffff;
+    color: #333333;
+    font-family: Arial, sans-serif;
+}
 
-/* ডার্ক মোড ডিজাইন */
-body.dark-mode { background-color: #121212; color: #ffffff; }
-body.dark-mode .top-header { background-color: #1e1e1e; }
-body.dark-mode .note-box { background-color: #1e1e1e; border: 1px solid #444; }
-body.dark-mode #menu-list li { color: #ccc; }
-body.dark-mode #menu-list li.active { color: #3498db; }
+.top-header { background: #f4f4f4; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
 
-
-/* ডার্ক মোড স্টাইলস */
+/* ডার্ক মোড অ্যাক্টিভ হলে যা হবে */
 body.dark-mode {
     background-color: #121212 !important;
     color: #ffffff !important;
@@ -27,17 +20,11 @@ body.dark-mode .top-header {
 
 body.dark-mode .note-box {
     background-color: #1e1e1e !important;
+    color: #ffffff !important;
     border: 1px solid #444 !important;
 }
 
 body.dark-mode aside {
     background-color: #1e1e1e !important;
-}
-
-/* টেক্সট কালার ঠিক রাখা */
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3, 
-body.dark-mode p {
     color: #ffffff !important;
 }
