@@ -152,14 +152,23 @@
     function filterQuestions() {
         const sub = document.getElementById('sub-list').value;
         filteredQuiz = (sub === "সব") ? quizData : quizData.filter(q => q.subject === sub);
+        
         currentQuiz = 0; 
         score = 0;
         subjectScores = { "ইতিহাস": 0, "ভূগোল": 0, "সংবিধান": 0, "বিজ্ঞান": 0 };
+        
+        // রেজাল্ট লুকিয়ে প্রশ্ন এরিয়া দেখানোর জন্য এটি নিশ্চিত করবে
         document.getElementById('quiz-area').style.display = 'block'; 
         document.getElementById('result').style.display = 'none';
-        loadQuiz();
+        
+        // যদি ফিল্টার করা প্রশ্ন থাকে, তবেই লোড হবে
+        if (filteredQuiz.length > 0) {
+            loadQuiz();
+        } else {
+            document.getElementById('question').innerText = "এই বিষয়ে কোনো প্রশ্ন নেই।";
+            document.getElementById('options').innerHTML = "";
+        }
     }
-
     function loadQuiz() {
         if(filteredQuiz.length === 0) {
             document.getElementById('question').innerText = "এই বিষয়ে কোনো প্রশ্ন নেই।";
