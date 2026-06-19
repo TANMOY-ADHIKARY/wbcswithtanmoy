@@ -12,7 +12,9 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Navbar Design */
+/* ---------------------------------
+   পুরনো Header ডিজাইন (যদি কোথাও লাগে)
+------------------------------------ */
 header {
     background-color: #ffffff;
     color: #333;
@@ -27,7 +29,7 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #1976d2; /* Main Blue Color */
+    color: #1976d2; 
 }
 
 header nav a {
@@ -38,17 +40,72 @@ header nav a {
 }
 
 header nav a:hover {
-    color: #1976d2; /* Main Blue Color */
+    color: #1976d2; 
 }
 
-/* Layout Container */
+/* ---------------------------------
+   নতুন Top-Header ডিজাইন
+------------------------------------ */
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    position: relative; /* লেখাটিকে মাঝখানে রাখার জন্য */
+}
+
+/* লোগো এবং নামের কন্টেইনার */
+.logo-title-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+/* লোগোর সাইজ */
+.top-logo {
+    width: 70px;
+    height: auto;
+}
+
+/* একদম মাঝখানের বড় হেডিং */
+.main-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); 
+    margin: 0;
+    font-size: 32px;
+    color: #2f3542;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* মেনুগুলোর ডিজাইন */
+.top-nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #2f3542;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.top-nav a:hover {
+    color: #1e90ff;
+}
+
+/* ---------------------------------
+   Layout Container & Sidebar
+------------------------------------ */
 .container {
     display: flex;
     flex: 1;
     overflow: hidden;
+    flex-direction: row; /* ল্যাপটপের জন্য */
 }
 
-/* Sidebar Design */
 aside {
     width: 260px;
     background-color: #ffffff;
@@ -75,15 +132,16 @@ aside ul li {
     transition: 0.3s;
 }
 
-/* Active subject highlight */
 aside ul li:hover, aside ul li.active {
-    background-color: #e3f2fd; /* Light Blue Background */
-    color: #1976d2; /* Main Blue Color */
-    border-left: 4px solid #1976d2; /* Main Blue Color */
+    background-color: #e3f2fd; 
+    color: #1976d2; 
+    border-left: 4px solid #1976d2; 
     font-weight: bold;
 }
 
-/* Main Content */
+/* ---------------------------------
+   Main Content & Notes
+------------------------------------ */
 main {
     flex: 1;
     padding: 40px;
@@ -95,7 +153,6 @@ main h1 {
     margin-bottom: 20px;
 }
 
-/* Note Container */
 .note-box {
     background: #ffffff;
     padding: 25px;
@@ -115,33 +172,28 @@ main h1 {
     line-height: 1.6;
 }
 
-/* Logo Container */
+/* Logo Container (বিকল্প লোগোর জন্য) */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 12px; /* Logo ar text er majhkhaner faka jayga */
+    gap: 12px; 
 }
 
 .wt-logo {
-    background-color: #0000FF; /* নীল রঙ */
-    color: white;             /* লেখা সাদা রঙ */
-    font-size: 24px;          /* লেখার সাইজ */
-    font-weight: bold;        /* লেখা মোটা করার জন্য */
-    padding: 10px 15px;       /* বক্সের ভেতরের জায়গা */
-    border-radius: 5px;       /* কোনাগুলো হালকা গোল করার জন্য */
+    background-color: #0000FF; 
+    color: white;             
+    font-size: 24px;          
+    font-weight: bold;        
+    padding: 10px 15px;       
+    border-radius: 5px;       
     display: inline-block;
     text-align: center;
     font-family: Arial, sans-serif;
 }
 
-
-/* ল্যাপটপের জন্য ডিজাইন */
-.container {
-    display: flex;
-    flex-direction: row;
-}
-
-/* মোবাইলের জন্য ডিজাইন (স্ক্রিন ছোট হলে এটি কাজ করবে) */
+/* ---------------------------------
+   মোবাইলের জন্য রেসপন্সিভ ডিজাইন
+------------------------------------ */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column; 
@@ -152,55 +204,25 @@ main h1 {
         margin-bottom: 20px;
     }
 
-    nav {
+    nav, .top-nav {
         text-align: center; 
     }
     
-    nav a {
+    nav a, .top-nav a {
         display: block; 
         margin: 10px 0;
     }
-}
 
+    .top-header {
+        flex-direction: column;
+        padding: 15px;
+    }
 
-/* পুরো হেডার অংশের ডিজাইন */
-.top-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* লোগো বাঁয়ে এবং মেনু ডানে পাঠাবে */
-    padding: 10px 30px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* হেডারের নিচে হালকা ছায়া */
-}
-
-/* লোগো এবং নামের কন্টেইনার */
-.logo-title-container {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* লোগো এবং লেখার মাঝখানে ফাঁকা জায়গা */
-}
-
-/* বড় হেডিং বা লেখার ডিজাইন */
-.main-title {
-    margin: 0;
-    font-size: 32px; /* লেখা কতটা বড় হবে */
-    color: #2f3542; /* সুন্দর গাঢ় রঙ */
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-/* মেনুগুলোর ডিজাইন */
-.top-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #2f3542;
-    font-size: 18px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-/* মেনুর ওপর মাউস রাখলে কালার পরিবর্তন হবে */
-.top-nav a:hover {
-    color: #1e90ff; /* নীল রঙ */
+    .main-title {
+        position: static; 
+        transform: none;
+        font-size: 24px;
+        margin: 15px 0;
+        text-align: center;
+    }
 }
