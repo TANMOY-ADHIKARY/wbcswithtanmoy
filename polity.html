@@ -3,99 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polity Mock Test</title>
+    <title> Wbcs Polity Mock Test - PRO</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
-        .quiz-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .back-btn { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #3498db; font-weight: bold; }
-        h2 { text-align: center; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        .question-block { margin-bottom: 25px; }
-        .question { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
-        .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; }
-        .options label:hover { background: #e2e6ea; }
-        .options input[type="radio"] { margin-right: 10px; }
-        .correct-ans { background-color: #d4edda !important; color: #155724; border: 1px solid #c3e6cb !important; }
-        .wrong-ans { background-color: #f8d7da !important; color: #721c24; border: 1px solid #f5c6cb !important; }
-        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
-        .submit-btn:hover { background-color: #2980b9; }
-        .submit-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
-        #result { margin-top: 25px; font-size: 20px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; }
+        .quiz-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: relative; }
+        .header-section { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 20px; }
+        .back-btn { text-decoration: none; color: #3498db; font-weight: bold; }
+        
+        /* টাইমার এবং কাউন্টার স্টাইল */
+        #timer-container { font-size: 18px; font-weight: bold; color: #e74c3c; background: #fadbd8; padding: 5px 15px; border-radius: 5px; }
+        #question-counter { font-size: 18px; font-weight: bold; color: #2c3e50; background: #e9ecef; padding: 5px 15px; border-radius: 5px; text-align: center; margin-bottom: 20px; }
+        
+        /* প্রশ্ন স্টাইল */
+        .question-block { display: none; margin-bottom: 25px; padding-bottom: 15px; }
+        .question { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #2c3e50; }
+        .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; font-size: 16px; }
+        .options label:hover { background: #dcdde1; }
+        .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        
+        /* সঠিক ও ভুল উত্তরের স্টাইল */
+        .correct-ans { background-color: #d4edda !important; color: #155724; border: 1px solid #c3e6cb !important; font-weight: bold; }
+        .wrong-ans { background-color: #f8d7da !important; color: #721c24; border: 1px solid #f5c6cb !important; text-decoration: line-through; }
+        
+        /* নেভিগেশন বাটন */
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+        .nav-btn { padding: 12px 25px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .nav-btn:hover { background-color: #2980b9; }
+        .nav-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
+        .submit-btn { background-color: #27ae60; display: none; }
+        .submit-btn:hover { background-color: #2ecc71; }
+        
+        #result { margin-bottom: 25px; font-size: 22px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; display: none; }
     </style>
 </head>
 <body>
 
     <div class="quiz-container">
-        <a href="mocktest.html" class="back-btn">← মেইন মেনুতে ফিরে যান</a>
+        <div class="header-section">
+            <a href="mocktest.html" class="back-btn">← মেইন মেনু</a>
+            <div id="timer-container">⏱ <span id="time-left">30:00</span></div>
+        </div>
         
-        <h2>Indian Polity Mock Test - 01</h2>
+        <h2 style="text-align: center; color: #2c3e50; margin-top: 0;">Indian Polity Mock Test</h2>
+        
+        <div id="result"></div>
+        <div id="question-counter">প্রশ্ন: ১ / ৫০</div>
         
         <div id="quiz-form">
-            <div class="question-block">
-                <div class="question">১. ভারতের সংবিধানের খসড়া কমিটির (Drafting Committee) চেয়ারম্যান কে ছিলেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="a"> জওহরলাল নেহেরু</label>
-                    <label><input type="radio" name="q1" value="b"> ডঃ বি. আর. আম্বেদকর</label>
-                    <label><input type="radio" name="q1" value="c"> ডঃ রাজেন্দ্র প্রসাদ</label>
-                    <label><input type="radio" name="q1" value="d"> সর্দার বল্লভভাই প্যাটেল</label>
-                </div>
-            </div>
+            <!-- Questions 1 to 10 -->
+            <div class="question-block"><div class="question">১. গণপরিষদের প্রথম অস্থায়ী সভাপতি কে ছিলেন?</div><div class="options"><label><input type="radio" name="q1" value="a"> ডঃ সচ্চিদানন্দ সিনহা</label><label><input type="radio" name="q1" value="b"> ডঃ রাজেন্দ্র প্রসাদ</label><label><input type="radio" name="q1" value="c"> ডঃ বি. আর. আম্বেদকর</label><label><input type="radio" name="q1" value="d"> জওহরলাল নেহেরু</label></div></div>
+            <div class="question-block"><div class="question">২. খসড়া কমিটির (Drafting Committee) চেয়ারম্যান কে ছিলেন?</div><div class="options"><label><input type="radio" name="q2" value="a"> জওহরলাল নেহেরু</label><label><input type="radio" name="q2" value="b"> ডঃ বি. আর. আম্বেদকর</label><label><input type="radio" name="q2" value="c"> সর্দার প্যাটেল</label><label><input type="radio" name="q2" value="d"> কে. এম. মুন্সি</label></div></div>
+            <div class="question-block"><div class="question">৩. ভারতের সংবিধান কবে গৃহীত (Adopted) হয়?</div><div class="options"><label><input type="radio" name="q3" value="a"> ১৫ আগস্ট ১৯৪৭</label><label><input type="radio" name="q3" value="b"> ২৬ জানুয়ারি ১৯৫০</label><label><input type="radio" name="q3" value="c"> ২৬ নভেম্বর ১৯৪৯</label><label><input type="radio" name="q3" value="d"> ২৪ জানুয়ারি ১৯৫০</label></div></div>
+            <div class="question-block"><div class="question">৪. ভারতের সংবিধান কবে কার্যকর (Came into force) হয়?</div><div class="options"><label><input type="radio" name="q4" value="a"> ২৬ নভেম্বর ১৯৪৯</label><label><input type="radio" name="q4" value="b"> ২৬ জানুয়ারি ১৯৫০</label><label><input type="radio" name="q4" value="c"> ১৫ আগস্ট ১৯৪৭</label><label><input type="radio" name="q4" value="d"> ২৬ জানুয়ারি ১৯৪৮</label></div></div>
+            <div class="question-block"><div class="question">৫. মূল সংবিধানে কটি ধারা (Articles) ছিল?</div><div class="options"><label><input type="radio" name="q5" value="a"> ৩৯৫টি</label><label><input type="radio" name="q5" value="b"> ৩৭০টি</label><label><input type="radio" name="q5" value="c"> ৪৪৮টি</label><label><input type="radio" name="q5" value="d"> ৩৯৫টির কম</label></div></div>
+            <div class="question-block"><div class="question">৬. 'ধর্মনিরপেক্ষ' ও 'সমাজতান্ত্রিক' শব্দ দুটি কোন সংশোধনীর মাধ্যমে যুক্ত হয়?</div><div class="options"><label><input type="radio" name="q6" value="a"> ৪৪ তম</label><label><input type="radio" name="q6" value="b"> ৪২ তম</label><label><input type="radio" name="q6" value="c"> ৮৬ তম</label><label><input type="radio" name="q6" value="d"> ৭৩ তম</label></div></div>
+            <div class="question-block"><div class="question">৭. মৌলিক অধিকার (Fundamental Rights) সংবিধানের কোন অংশে রয়েছে?</div><div class="options"><label><input type="radio" name="q7" value="a"> Part II</label><label><input type="radio" name="q7" value="b"> Part IV</label><label><input type="radio" name="q7" value="c"> Part III</label><label><input type="radio" name="q7" value="d"> Part V</label></div></div>
+            <div class="question-block"><div class="question">৮. নির্দেশমূলক নীতি (DPSP) কোন দেশের সংবিধান থেকে নেওয়া হয়েছে?</div><div class="options"><label><input type="radio" name="q8" value="a"> ব্রিটেন</label><label><input type="radio" name="q8" value="b"> আমেরিকা</label><label><input type="radio" name="q8" value="c"> রাশিয়া</label><label><input type="radio" name="q8" value="d"> আয়ারল্যান্ড</label></div></div>
+            <div class="question-block"><div class="question">৯. মৌলিক কর্তব্য (Fundamental Duties) কোন দেশের সংবিধান থেকে গৃহীত?</div><div class="options"><label><input type="radio" name="q9" value="a"> সোভিয়েত ইউনিয়ন (রাশিয়া)</label><label><input type="radio" name="q9" value="b"> অস্ট্রেলিয়া</label><label><input type="radio" name="q9" value="c"> কানাডা</label><label><input type="radio" name="q9" value="d"> ফ্রান্স</label></div></div>
+            <div class="question-block"><div class="question">১০. অস্পৃশ্যতা দূরীকরণ (Abolition of Untouchability) কোন ধারায় বলা হয়েছে?</div><div class="options"><label><input type="radio" name="q10" value="a"> ধারা ১৪</label><label><input type="radio" name="q10" value="b"> ধারা ১৫</label><label><input type="radio" name="q10" value="c"> ধারা ১৭</label><label><input type="radio" name="q10" value="d"> ধারা ১৮</label></div></div>
 
-            <div class="question-block">
-                <div class="question">২. কততম সংবিধান সংশোধনীর মাধ্যমে 'ধর্মনিরপেক্ষ' (Secular) শব্দটি যুক্ত করা হয়?</div>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="a"> ৪২ তম</label>
-                    <label><input type="radio" name="q2" value="b"> ৪৪ তম</label>
-                    <label><input type="radio" name="q2" value="c"> ৮৬ তম</label>
-                    <label><input type="radio" name="q2" value="d"> ৭৩ তম</label>
-                </div>
-            </div>
+            <!-- Questions 11 to 20 -->
+            <div class="question-block"><div class="question">১১. বাক স্বাধীনতার অধিকার কোন ধারায় রয়েছে?</div><div class="options"><label><input type="radio" name="q11" value="a"> ধারা ২১</label><label><input type="radio" name="q11" value="b"> ধারা ১৯</label><label><input type="radio" name="q11" value="c"> ধারা ২০</label><label><input type="radio" name="q11" value="d"> ধারা ২২</label></div></div>
+            <div class="question-block"><div class="question">১২. রাইট টু এডুকেশন বা শিক্ষার অধিকার কোন ধারায় যুক্ত হয়েছে?</div><div class="options"><label><input type="radio" name="q12" value="a"> ধারা ২১A</label><label><input type="radio" name="q12" value="b"> ধারা ৪৫</label><label><input type="radio" name="q12" value="c"> ধারা ৫১A</label><label><input type="radio" name="q12" value="d"> ধারা ১৯</label></div></div>
+            <div class="question-block"><div class="question">১৩. সংবিধান সংশোধনের পদ্ধতি কোন ধারা অনুযায়ী হয়?</div><div class="options"><label><input type="radio" name="q13" value="a"> ধারা ৩৫২</label><label><input type="radio" name="q13" value="b"> ধারা ৩৭০</label><label><input type="radio" name="q13" value="c"> ধারা ৩২৪</label><label><input type="radio" name="q13" value="d"> ধারা ৩৬৮</label></div></div>
+            <div class="question-block"><div class="question">১৪. জরুরি অবস্থা (Emergency) ঘোষণা কে করতে পারেন?</div><div class="options"><label><input type="radio" name="q14" value="a"> রাষ্ট্রপতি</label><label><input type="radio" name="q14" value="b"> প্রধানমন্ত্রী</label><label><input type="radio" name="q14" value="c"> সুপ্রিম কোর্টের প্রধান বিচারপতি</label><label><input type="radio" name="q14" value="d"> লোকসভার স্পিকার</label></div></div>
+            <div class="question-block"><div class="question">১৫. জাতীয় জরুরি অবস্থা কোন ধারায় উল্লেখ আছে?</div><div class="options"><label><input type="radio" name="q15" value="a"> ধারা ৩৫৬</label><label><input type="radio" name="q15" value="b"> ধারা ৩৫২</label><label><input type="radio" name="q15" value="c"> ধারা ৩৬০</label><label><input type="radio" name="q15" value="d"> ধারা ৩৭০</label></div></div>
+            <div class="question-block"><div class="question">১৬. রাজ্যের শাসনতান্ত্রিক অচলাবস্থা বা President's Rule কোন ধারায়?</div><div class="options"><label><input type="radio" name="q16" value="a"> ধারা ৩৫২</label><label><input type="radio" name="q16" value="b"> ধারা ৩৬০</label><label><input type="radio" name="q16" value="c"> ধারা ৩৫৬</label><label><input type="radio" name="q16" value="d"> ধারা ৬৫</label></div></div>
+            <div class="question-block"><div class="question">১৭. আর্থিক জরুরি অবস্থা (Financial Emergency) কোন ধারায়?</div><div class="options"><label><input type="radio" name="q17" value="a"> ধারা ৩৫২</label><label><input type="radio" name="q17" value="b"> ধারা ৩৫৬</label><label><input type="radio" name="q17" value="c"> ধারা ২৮০</label><label><input type="radio" name="q17" value="d"> ধারা ৩৬০</label></div></div>
+            <div class="question-block"><div class="question">১৮. ভারতে এখনও পর্যন্ত কতবার আর্থিক জরুরি অবস্থা জারি হয়েছে?</div><div class="options"><label><input type="radio" name="q18" value="a"> একবারও নয়</label><label><input type="radio" name="q18" value="b"> ১ বার</label><label><input type="radio" name="q18" value="c"> ২ বার</label><label><input type="radio" name="q18" value="d"> ৩ বার</label></div></div>
+            <div class="question-block"><div class="question">১৯. রাষ্ট্রপতিকে ইমপিচমেন্ট বা পদচ্যুত করার পদ্ধতি কোন ধারায় আছে?</div><div class="options"><label><input type="radio" name="q19" value="a"> ধারা ৭২</label><label><input type="radio" name="q19" value="b"> ধারা ৬১</label><label><input type="radio" name="q19" value="c"> ধারা ৫২</label><label><input type="radio" name="q19" value="d"> ধারা ৭৪</label></div></div>
+            <div class="question-block"><div class="question">২০. ভারতের প্রথম রাষ্ট্রপতি কে ছিলেন?</div><div class="options"><label><input type="radio" name="q20" value="a"> এস. রাধাকৃষ্ণণ</label><label><input type="radio" name="q20" value="b"> জওহরলাল নেহেরু</label><label><input type="radio" name="q20" value="c"> ডঃ রাজেন্দ্র প্রসাদ</label><label><input type="radio" name="q20" value="d"> ভি. ভি. গিরি</label></div></div>
 
-            <div class="question-block">
-                <div class="question">৩. মৌলিক অধিকার (Fundamental Rights) সংবিধানের কোন অংশে (Part) রয়েছে?</div>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="a"> Part II</label>
-                    <label><input type="radio" name="q3" value="b"> Part III</label>
-                    <label><input type="radio" name="q3" value="c"> Part IV</label>
-                    <label><input type="radio" name="q3" value="d"> Part V</label>
-                </div>
-            </div>
+            <!-- Questions 21 to 30 -->
+            <div class="question-block"><div class="question">২১. লোকসভার সর্বোচ্চ সদস্য সংখ্যা কত হতে পারে?</div><div class="options"><label><input type="radio" name="q21" value="a"> ৫৪৫</label><label><input type="radio" name="q21" value="b"> ২৫০</label><label><input type="radio" name="q21" value="c"> ৫৪৩</label><label><input type="radio" name="q21" value="d"> ৫৫২</label></div></div>
+            <div class="question-block"><div class="question">২২. রাজ্যসভার সদস্যদের কার্যকাল কত বছর?</div><div class="options"><label><input type="radio" name="q22" value="a"> ৬ বছর</label><label><input type="radio" name="q22" value="b"> ৫ বছর</label><label><input type="radio" name="q22" value="c"> ৪ বছর</label><label><input type="radio" name="q22" value="d"> আজীবন</label></div></div>
+            <div class="question-block"><div class="question">২৩. লোকসভার সদস্য হওয়ার ন্যূনতম বয়স কত?</div><div class="options"><label><input type="radio" name="q23" value="a"> ২১ বছর</label><label><input type="radio" name="q23" value="b"> ২৫ বছর</label><label><input type="radio" name="q23" value="c"> ৩০ বছর</label><label><input type="radio" name="q23" value="d"> ৩৫ বছর</label></div></div>
+            <div class="question-block"><div class="question">২৪. রাজ্যসভার সদস্য হওয়ার ন্যূনতম বয়স কত?</div><div class="options"><label><input type="radio" name="q24" value="a"> ২১ বছর</label><label><input type="radio" name="q24" value="b"> ২৫ বছর</label><label><input type="radio" name="q24" value="c"> ৩০ বছর</label><label><input type="radio" name="q24" value="d"> ৩৫ বছর</label></div></div>
+            <div class="question-block"><div class="question">২৫. ভারতের উপরাষ্ট্রপতি পদাধিকার বলে কোন সভার সভাপতি হন?</div><div class="options"><label><input type="radio" name="q25" value="a"> লোকসভা</label><label><input type="radio" name="q25" value="b"> বিধানসভা</label><label><input type="radio" name="q25" value="c"> বিধানপরিষদ</label><label><input type="radio" name="q25" value="d"> রাজ্যসভা</label></div></div>
+            <div class="question-block"><div class="question">২৬. অর্থ বিল (Money Bill) সংজ্ঞায়িত করা হয়েছে কোন ধারায়?</div><div class="options"><label><input type="radio" name="q26" value="a"> ধারা ১১০</label><label><input type="radio" name="q26" value="b"> ধারা ১১২</label><label><input type="radio" name="q26" value="c"> ধারা ১১৭</label><label><input type="radio" name="q26" value="d"> ধারা ১০৮</label></div></div>
+            <div class="question-block"><div class="question">২৭. অর্থ বিল প্রথমে কোথায় উত্থাপন করা যায়?</div><div class="options"><label><input type="radio" name="q27" value="a"> শুধুমাত্র রাজ্যসভায়</label><label><input type="radio" name="q27" value="b"> শুধুমাত্র লোকসভায়</label><label><input type="radio" name="q27" value="c"> যেকোনো কক্ষে</label><label><input type="radio" name="q27" value="d"> বিধানসভায়</label></div></div>
+            <div class="question-block"><div class="question">২৮. সুপ্রিম কোর্টের বিচারপতিদের অবসরের বয়স কত?</div><div class="options"><label><input type="radio" name="q28" value="a"> ৬০ বছর</label><label><input type="radio" name="q28" value="b"> ৬২ বছর</label><label><input type="radio" name="q28" value="c"> ৬৫ বছর</label><label><input type="radio" name="q28" value="d"> ৭০ বছর</label></div></div>
+            <div class="question-block"><div class="question">২৯. হাইকোর্টের বিচারপতিদের অবসরের বয়স কত?</div><div class="options"><label><input type="radio" name="q29" value="a"> ৬০ বছর</label><label><input type="radio" name="q29" value="b"> ৬৫ বছর</label><label><input type="radio" name="q29" value="c"> ৭০ বছর</label><label><input type="radio" name="q29" value="d"> ৬২ বছর</label></div></div>
+            <div class="question-block"><div class="question">৩০. হাইকোর্টের বিচারপতিদের কে নিয়োগ করেন?</div><div class="options"><label><input type="radio" name="q30" value="a"> রাষ্ট্রপতি</label><label><input type="radio" name="q30" value="b"> রাজ্যপাল</label><label><input type="radio" name="q30" value="c"> সুপ্রিম কোর্টের প্রধান বিচারপতি</label><label><input type="radio" name="q30" value="d"> মুখ্যমন্ত্রী</label></div></div>
 
-            <button id="submit-button" class="submit-btn" onclick="calculateScore()">Submit Test</button>
+            <!-- Questions 31 to 40 -->
+            <div class="question-block"><div class="question">৩১. সুপ্রিম কোর্ট কোন ধারার অধীনে রিট (Writ) জারি করতে পারে?</div><div class="options"><label><input type="radio" name="q31" value="a"> ধারা ২২৬</label><label><input type="radio" name="q31" value="b"> ধারা ৩২</label><label><input type="radio" name="q31" value="c"> ধারা ১৩৬</label><label><input type="radio" name="q31" value="d"> ধারা ১৪৩</label></div></div>
+            <div class="question-block"><div class="question">৩২. পঞ্চায়েতি রাজ ব্যবস্থা প্রথম কোন রাজ্যে শুরু হয়?</div><div class="options"><label><input type="radio" name="q32" value="a"> পশ্চিমবঙ্গ</label><label><input type="radio" name="q32" value="b"> অন্ধ্রপ্রদেশ</label><label><input type="radio" name="q32" value="c"> রাজস্থান</label><label><input type="radio" name="q32" value="d"> গুজরাট</label></div></div>
+            <div class="question-block"><div class="question">৩৩. পঞ্চায়েতি রাজ ব্যবস্থা কোন সংশোধনীর মাধ্যমে সাংবিধানিক মর্যাদা পায়?</div><div class="options"><label><input type="radio" name="q33" value="a"> ৪২ তম</label><label><input type="radio" name="q33" value="b"> ৪৪ তম</label><label><input type="radio" name="q33" value="c"> ৭৪ তম</label><label><input type="radio" name="q33" value="d"> ৭৩ তম</label></div></div>
+            <div class="question-block"><div class="question">৩৪. মিউনিসিপ্যালিটি কোন সংশোধনীর মাধ্যমে যুক্ত হয়?</div><div class="options"><label><input type="radio" name="q34" value="a"> ৭৪ তম</label><label><input type="radio" name="q34" value="b"> ৭৩ তম</label><label><input type="radio" name="q34" value="c"> ৮৬ তম</label><label><input type="radio" name="q34" value="d"> ৯২ তম</label></div></div>
+            <div class="question-block"><div class="question">৩৫. ত্রিস্তরীয় পঞ্চায়েত ব্যবস্থার সুপারিশ কোন কমিটি করেছিল?</div><div class="options"><label><input type="radio" name="q35" value="a"> অশোক মেহতা কমিটি</label><label><input type="radio" name="q35" value="b"> বলবন্ত রাই মেহতা কমিটি</label><label><input type="radio" name="q35" value="c"> এল এম সিংভি কমিটি</label><label><input type="radio" name="q35" value="d"> জভিকে রাও কমিটি</label></div></div>
+            <div class="question-block"><div class="question">৩৬. অর্থ কমিশন (Finance Commission) কোন ধারায় গঠিত হয়?</div><div class="options"><label><input type="radio" name="q36" value="a"> ধারা ৩২৪</label><label><input type="radio" name="q36" value="b"> ধারা ৩১৫</label><label><input type="radio" name="q36" value="c"> ধারা ২৮০</label><label><input type="radio" name="q36" value="d"> ধারা ৩১২</label></div></div>
+            <div class="question-block"><div class="question">৩৭. অর্থ কমিশন কে গঠন করেন?</div><div class="options"><label><input type="radio" name="q37" value="a"> সংসদ</label><label><input type="radio" name="q37" value="b"> প্রধানমন্ত্রী</label><label><input type="radio" name="q37" value="c"> অর্থমন্ত্রী</label><label><input type="radio" name="q37" value="d"> রাষ্ট্রপতি</label></div></div>
+            <div class="question-block"><div class="question">৩৮. নির্বাচন কমিশন (Election Commission) কোন ধারায় বলা হয়েছে?</div><div class="options"><label><input type="radio" name="q38" value="a"> ধারা ৩২৪</label><label><input type="radio" name="q38" value="b"> ধারা ৩২৬</label><label><input type="radio" name="q38" value="c"> ধারা ৩১৫</label><label><input type="radio" name="q38" value="d"> ধারা ১৪৮</label></div></div>
+            <div class="question-block"><div class="question">৩৯. ইউপিএসসি (UPSC) এর চেয়ারম্যানকে কে নিয়োগ করেন?</div><div class="options"><label><input type="radio" name="q39" value="a"> প্রধানমন্ত্রী</label><label><input type="radio" name="q39" value="b"> রাষ্ট্রপতি</label><label><input type="radio" name="q39" value="c"> সুপ্রিম কোর্টের প্রধান বিচারপতি</label><label><input type="radio" name="q39" value="d"> স্বরাষ্ট্রমন্ত্রী</label></div></div>
+            <div class="question-block"><div class="question">৪০. ক্যাগ (CAG) কোন ধারায় নিযুক্ত হন?</div><div class="options"><label><input type="radio" name="q40" value="a"> ধারা ৭৬</label><label><input type="radio" name="q40" value="b"> ধারা ১৬৫</label><label><input type="radio" name="q40" value="c"> ধারা ১৪৮</label><label><input type="radio" name="q40" value="d"> ধারা ২৮০</label></div></div>
+
+            <!-- Questions 41 to 50 -->
+            <div class="question-block"><div class="question">৪১. ভারতের অ্যাটর্নি জেনারেল কোন ধারায় নিযুক্ত হন?</div><div class="options"><label><input type="radio" name="q41" value="a"> ধারা ১৬৫</label><label><input type="radio" name="q41" value="b"> ধারা ১৪৮</label><label><input type="radio" name="q41" value="c"> ধারা ২৮০</label><label><input type="radio" name="q41" value="d"> ধারা ৭৬</label></div></div>
+            <div class="question-block"><div class="question">৪২. রাজ্যের অ্যাডভোকেট জেনারেল কে নিয়োগ করেন?</div><div class="options"><label><input type="radio" name="q42" value="a"> রাজ্যপাল</label><label><input type="radio" name="q42" value="b"> রাষ্ট্রপতি</label><label><input type="radio" name="q42" value="c"> মুখ্যমন্ত্রী</label><label><input type="radio" name="q42" value="d"> হাইকোর্টের প্রধান বিচারপতি</label></div></div>
+            <div class="question-block"><div class="question">৪৩. সম্পত্তির অধিকার (Right to Property) বর্তমানে কী ধরনের অধিকার?</div><div class="options"><label><input type="radio" name="q43" value="a"> মৌলিক অধিকার</label><label><input type="radio" name="q43" value="b"> আইনি অধিকার (Legal Right)</label><label><input type="radio" name="q43" value="c"> প্রাকৃতিক অধিকার</label><label><input type="radio" name="q43" value="d"> নির্দেশমূলক নীতি</label></div></div>
+            <div class="question-block"><div class="question">৪৪. কত তম সংশোধনীর মাধ্যমে সম্পত্তির অধিকারকে মৌলিক অধিকার থেকে বাদ দেওয়া হয়?</div><div class="options"><label><input type="radio" name="q44" value="a"> ৪২ তম</label><label><input type="radio" name="q44" value="b"> ৮৬ তম</label><label><input type="radio" name="q44" value="c"> ৪৪ তম</label><label><input type="radio" name="q44" value="d"> ৭৩ তম</label></div></div>
+            <div class="question-block"><div class="question">৪৫. ভোটাধিকারের বয়স ২১ থেকে কমিয়ে ১৮ বছর করা হয় কোন সংশোধনীতে?</div><div class="options"><label><input type="radio" name="q45" value="a"> ৪২ তম</label><label><input type="radio" name="q45" value="b"> ৪৪ তম</label><label><input type="radio" name="q45" value="c"> ৬৯ তম</label><label><input type="radio" name="q45" value="d"> ৬১ তম</label></div></div>
+            <div class="question-block"><div class="question">৪৬. জিএসটি (GST) কোন সংবিধান সংশোধনীর মাধ্যমে ভারতে চালু হয়?</div><div class="options"><label><input type="radio" name="q46" value="a"> ১০১ তম</label><label><input type="radio" name="q46" value="b"> ১০০ তম</label><label><input type="radio" name="q46" value="c"> ১০২ তম</label><label><input type="radio" name="q46" value="d"> ১০৩ তম</label></div></div>
+            <div class="question-block"><div class="question">৪৭. লোকসভার স্পিকার তার পদত্যাগপত্র কাকে জমা দেন?</div><div class="options"><label><input type="radio" name="q47" value="a"> রাষ্ট্রপতিকে</label><label><input type="radio" name="q47" value="b"> ডেপুটি স্পিকারকে</label><label><input type="radio" name="q47" value="c"> প্রধানমন্ত্রীকে</label><label><input type="radio" name="q47" value="d"> সুপ্রিম কোর্টের প্রধান বিচারপতিকে</label></div></div>
+            <div class="question-block"><div class="question">৪৮. দলত্যাগ বিরোধী আইন (Anti-Defection Law) কোন তফসিলে (Schedule) যুক্ত আছে?</div><div class="options"><label><input type="radio" name="q48" value="a"> অষ্টম তফসিল</label><label><input type="radio" name="q48" value="b"> নবম তফসিল</label><label><input type="radio" name="q48" value="c"> দশম তফসিল</label><label><input type="radio" name="q48" value="d"> একাদশ তফসিল</label></div></div>
+            <div class="question-block"><div class="question">৪৯. ভারতের সংবিধানে বর্তমানে কটি তফসিল (Schedules) আছে?</div><div class="options"><label><input type="radio" name="q49" value="a"> ৮টি</label><label><input type="radio" name="q49" value="b"> ৯টি</label><label><input type="radio" name="q49" value="c"> ১০টি</label><label><input type="radio" name="q49" value="d"> ১২টি</label></div></div>
+            <div class="question-block"><div class="question">৫০. সুপ্রিম কোর্টের প্রথম প্রধান বিচারপতি কে ছিলেন?</div><div class="options"><label><input type="radio" name="q50" value="a"> হীরালাল জে. কানিয়া</label><label><input type="radio" name="q50" value="b"> পতঞ্জলি শাস্ত্রী</label><label><input type="radio" name="q50" value="c"> ফজিমা বিবি</label><label><input type="radio" name="q50" value="d"> সুকুমার সেন</label></div></div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons" id="nav-container">
+                <button type="button" class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
+                <button type="button" class="nav-btn" id="next-btn" onclick="nextQuestion()">Next</button>
+                <button type="button" class="nav-btn submit-btn" id="submit-btn" onclick="calculateScore()">Submit Test</button>
+            </div>
         </div>
 
-        <div id="result"></div>
     </div>
 
+    <!-- জাভাস্ক্রিপ্ট লজিক -->
     <script>
+        let currentQuestion = 0;
+        let questions;
+        let timerInterval;
+        let timeLeft = 30 * 60; // 30 মিনিট
+
+        // পেজ লোড হলেই যা যা হবে
+        window.onload = function() {
+            questions = document.querySelectorAll('.question-block');
+            showQuestion(currentQuestion);
+            startTimer();
+        };
+
+        // টাইমার শুরু করার ফাংশন
+        function startTimer() {
+            let timerDisplay = document.getElementById('time-left');
+            timerInterval = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    calculateScore(); // সময় শেষ হলে অটো সাবমিট
+                } else {
+                    timeLeft--;
+                    let m = Math.floor(timeLeft / 60);
+                    let s = timeLeft % 60;
+                    timerDisplay.innerText = m + ":" + (s < 10 ? "0" + s : s);
+                    
+                    // শেষ ৫ মিনিট লাল রঙের অ্যালার্ট
+                    if(timeLeft <= 300) {
+                        document.getElementById('timer-container').style.background = "#e74c3c";
+                        document.getElementById('timer-container').style.color = "#fff";
+                    }
+                }
+            }, 1000);
+        }
+
+        // প্রশ্ন দেখানোর লজিক
+        function showQuestion(index) {
+            questions.forEach((q, i) => {
+                q.style.display = (i === index) ? "block" : "none";
+            });
+            document.getElementById('question-counter').innerText = "প্রশ্ন: " + (index + 1) + " / " + questions.length;
+            
+            // Previous বাটন প্রথম প্রশ্নে হাইড থাকবে
+            document.getElementById('prev-btn').style.display = (index === 0) ? "none" : "inline-block";
+            
+            // শেষ প্রশ্নে Next হাইড হবে এবং Submit আসবে
+            if (index === questions.length - 1) {
+                document.getElementById('next-btn').style.display = "none";
+                document.getElementById('submit-btn').style.display = "inline-block";
+            } else {
+                document.getElementById('next-btn').style.display = "inline-block";
+                document.getElementById('submit-btn').style.display = "none";
+            }
+            
+            // স্ক্রিনের একদম উপরে নিয়ে যাওয়া
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        // রেজাল্ট এবং রিভিউ মোড
         function calculateScore() {
-            let score = 0; const totalQuestions = 3;
-            const correctAnswers = { q1: "b", q2: "a", q3: "b" };
+            clearInterval(timerInterval); // টাইমার বন্ধ
+            document.getElementById('timer-container').style.display = 'none';
+            document.getElementById('nav-container').style.display = 'none';
+            document.getElementById('question-counter').style.display = 'none';
 
-            for (let q in correctAnswers) {
-                let selectedInput = document.querySelector(`input[name="${q}"]:checked`);
-                let correctInput = document.querySelector(`input[name="${q}"][value="${correctAnswers[q]}"]`);
-                let allInputsForQ = document.querySelectorAll(`input[name="${q}"]`);
+            let score = 0;
+            // পলিটির ৫০টি প্রশ্নের সঠিক উত্তর
+            const correctAnswers = { 
+                q1:"a", q2:"b", q3:"c", q4:"b", q5:"a", q6:"b", q7:"c", q8:"d", q9:"a", q10:"c",
+                q11:"b", q12:"a", q13:"d", q14:"a", q15:"b", q16:"c", q17:"d", q18:"a", q19:"b", q20:"c",
+                q21:"d", q22:"a", q23:"b", q24:"c", q25:"d", q26:"a", q27:"b", q28:"c", q29:"d", q30:"a",
+                q31:"b", q32:"c", q33:"d", q34:"a", q35:"b", q36:"c", q37:"d", q38:"a", q39:"b", q40:"c",
+                q41:"d", q42:"a", q43:"b", q44:"c", q45:"d", q46:"a", q47:"b", q48:"c", q49:"d", q50:"a"
+            };
 
-                if (correctInput) correctInput.parentElement.classList.add("correct-ans");
+            // সবগুলো প্রশ্ন একসাথে দেখানো এবং রঙ পরিবর্তন
+            questions.forEach((qBlock, index) => {
+                qBlock.style.display = "block"; // শো অল
+                
+                let qName = "q" + (index + 1);
+                let selectedInput = document.querySelector(`input[name="${qName}"]:checked`);
+                let correctInput = document.querySelector(`input[name="${qName}"][value="${correctAnswers[qName]}"]`);
+                let allInputs = document.querySelectorAll(`input[name="${qName}"]`);
+
+                if (correctInput) {
+                    correctInput.parentElement.classList.add("correct-ans"); // আসল উত্তর সবুজ
+                }
 
                 if (selectedInput) {
-                    if (selectedInput.value !== correctAnswers[q]) {
-                        selectedInput.parentElement.classList.add("wrong-ans");
+                    if (selectedInput.value !== correctAnswers[qName]) {
+                        selectedInput.parentElement.classList.add("wrong-ans"); // ভুল উত্তর লাল
                     } else {
                         score++;
                     }
                 }
-                allInputsForQ.forEach(input => input.disabled = true);
+
+                // ইনপুটগুলো লক করে দেওয়া
+                allInputs.forEach(input => input.disabled = true);
+            });
+
+            // রেজাল্ট মেসেজ
+            let resultDiv = document.getElementById("result");
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = `তোমার প্রাপ্ত নম্বর: ${score} / 50`;
+            
+            if(score === 50) {
+                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
+                resultDiv.innerHTML += "<br>অসাধারণ! তুমি ভারতের সংবিধানে একদম পারফেক্ট!";
+            } else if (score >= 40) {
+                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
+                resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স! তোমার প্রস্তুতি খুব ভালো।";
+            } else if (score >= 25) {
+                resultDiv.style.backgroundColor = "#fff3cd"; resultDiv.style.color = "#856404";
+                resultDiv.innerHTML += "<br>ভালো চেষ্টা! তবে ধারা (Articles) গুলো আরও ভালো করে পড়তে হবে।";
+            } else {
+                resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.color = "#721c24";
+                resultDiv.innerHTML += "<br>নিচে থেকে ভুল উত্তরগুলো মিলিয়ে নাও এবং আরও রিভিশন দাও!";
             }
 
-            let resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = `তোমার প্রাপ্ত নম্বর: ${score} / ${totalQuestions}`;
-            if(score === totalQuestions) { resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724"; resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স!"; } 
-            else if (score > 0) { resultDiv.style.backgroundColor = "#fff3cd"; resultDiv.style.color = "#856404"; resultDiv.innerHTML += "<br>ভালো চেষ্টা, আরও প্রস্তুতি নাও।"; } 
-            else { resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.color = "#721c24"; resultDiv.innerHTML += "<br>আরও অনেক পড়তে হবে!"; }
-
-            let submitBtn = document.getElementById("submit-button");
-            submitBtn.disabled = true; submitBtn.innerText = "Test Submitted";
+            // রেজাল্ট দেখার জন্য স্ক্রিনের একদম উপরে নিয়ে যাওয়া
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 
