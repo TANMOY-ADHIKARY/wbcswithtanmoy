@@ -2,228 +2,210 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mock Test - WBCS with Tanmoy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <title>WBCS Mock Test</title>
     <style>
-        /* আধুনিক UI ডিজাইন */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .quiz-container {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-        }
-        h2 {
-            color: #2f3542;
-            margin-top: 0;
-        }
-        .timer {
-            font-size: 18px;
-            color: #ff4757;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .question {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #2f3542;
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .option-btn {
-            padding: 12px;
-            border: 1px solid #dfe4ea;
-            background: #f1f2f6;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        .option-btn:hover {
-            background: #1e90ff;
-            color: #ffffff;
-            border-color: #1e90ff;
-        }
-        #result {
-            display: none;
-            font-size: 24px;
-            font-weight: bold;
-            color: #2ed573;
-        }
-        .home-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #2f3542;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; padding: 20px; }
+        .quiz-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .option-btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; text-align: left; }
+        .option-btn:hover { background: #f1f1f1; }
+        #subject-selector { margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="quiz-container">
-        <h2>WBCS Mock Test</h2>
-        
-        <div id="quiz-area">
-            <div class="timer" id="time">সময় বাকি: 30s</div>
-            <div class="question" id="question">প্রশ্ন এখানে দেখাবে</div>
-            <div class="options" id="options">
-                </div>
-        </div>
-
-        <div id="result">
-            </div>
-        <a href="index.html" class="home-btn" id="home-btn" style="display: none;">হোমে ফিরে যান</a>
+<div class="quiz-container">
+    <h2>WBCS Mock Test</h2>
+    <div id="subject-selector">
+        <label>বিষয় নির্বাচন করুন: </label>
+        <select id="sub-list" onchange="filterQuestions()">
+            <option value="সব">সব বিষয়</option>
+            <option value="ইতিহাস">ইতিহাস</option>
+            <option value="ভূগোল">ভূগোল</option>
+            <option value="সংবিধান">সংবিধান</option>
+            <option value="বিজ্ঞান">বিজ্ঞান</option>
+        </select>
     </div>
+    <div id="quiz-area">
+        <div id="question" style="font-weight:bold; margin-bottom:15px;"></div>
+        <div id="options"></div>
+    </div>
+    <div id="result" style="display:none; text-align:center;"></div>
+    <a href="index.html" id="home-btn" style="display:none; text-align:center; display:block; margin-top:20px;">হোমে ফিরে যান</a>
+</div>
 
-    <script>
-        const quizData = [
-            // ইতিহাস (History)
-            { question: "১. সিন্ধু সভ্যতার আবিষ্কারক কে?", options: ["দয়ারাম সাহানি", "রাখালদাস বন্দ্যোপাধ্যায়", "আলেকজান্ডার কানিংহাম", "জন মার্শাল"], answer: "দয়ারাম সাহানি" },
-            { question: "২. 'ইন্ডিকা' গ্রন্থটি কে রচনা করেন?", options: ["ফাহিয়েন", "হিউয়েন সাং", "মেগাস্থিনিস", "কৌটিল্য"], answer: "মেগাস্থিনিস" },
-            { question: "৩. গুপ্ত বংশের প্রতিষ্ঠাতা কে ছিলেন?", options: ["প্রথম চন্দ্রগুপ্ত", "সমুদ্রগুপ্ত", "শ্রীগুপ্ত", "স্কন্দগুপ্ত"], answer: "শ্রীগুপ্ত" },
-            { question: "৪. ভারতের নেপোলিয়ন কাকে বলা হয়?", options: ["অশোক", "সমুদ্রগুপ্ত", "দ্বিতীয় চন্দ্রগুপ্ত", "হর্ষবর্ধন"], answer: "সমুদ্রগুপ্ত" },
-            { question: "৫. পানিপথের প্রথম যুদ্ধ কবে হয়েছিল?", options: ["১৫২৬ সালে", "১৫৫৬ সালে", "১৭৬১ সালে", "১৭৫৭ সালে"], answer: "১৫২৬ সালে" },
-            { question: "৬. 'দ্বীন-ই-ইলাহী' কে প্রবর্তন করেন?", options: ["বাবর", "হুমায়ুন", "আকবর", "শাহজাহান"], answer: "আকবর" },
-            { question: "৭. সিপাহী বিদ্রোহ কবে শুরু হয়?", options: ["১৮৫৭ সালে", "১৮৮৫ সালে", "১৯০৫ সালে", "১৯৪২ সালে"], answer: "১৮৫৭ সালে" },
-            { question: "৮. জাতীয় কংগ্রেসের প্রথম সভাপতি কে ছিলেন?", options: ["অ্যালান অক্টাভিয়ান হিউম", "উমেশচন্দ্র বন্দ্যোপাধ্যায়", "দাদাভাই নওরোজি", "সুরেন্দ্রনাথ বন্দ্যোপাধ্যায়"], answer: "উমেশচন্দ্র বন্দ্যোপাধ্যায়" },
-            { question: "৯. 'স্বরাজ আমার জন্মগত অধিকার' - কার উক্তি?", options: ["মহাত্মা গান্ধী", "নেতাজি সুভাষচন্দ্র বসু", "ভগত সিং", "বাল গঙ্গাধর তিলক"], answer: "বাল গঙ্গাধর তিলক" },
-            { question: "১০. জালিয়ানওয়ালাবাগের হত্যাকাণ্ড কবে ঘটে?", options: ["১৯১৯ সালে", "১৯২০ সালে", "১৯২২ সালে", "১৯৩০ সালে"], answer: "১৯১৯ সালে" },
+<script>
+    // তোমার দেওয়া সব প্রশ্ন এখানে আছে
+    const quizData = [
+    // ইতিহাস (২৫টি প্রশ্ন)
+    { subject: "ইতিহাস", question: "১. সিন্ধু সভ্যতার আবিষ্কারক কে?", options: ["দয়ারাম সাহানি", "রাখালদাস বন্দ্যোপাধ্যায়", "আলেকজান্ডার কানিংহাম", "জন মার্শাল"], answer: "দয়ারাম সাহানি" },
+    { subject: "ইতিহাস", question: "২. 'ইন্ডিকা' গ্রন্থটি কে রচনা করেন?", options: ["ফাহিয়েন", "হিউয়েন সাং", "মেগাস্থিনিস", "কৌটিল্য"], answer: "মেগাস্থিনিস" },
+    { subject: "ইতিহাস", question: "৩. গুপ্ত বংশের প্রতিষ্ঠাতা কে?", options: ["প্রথম চন্দ্রগুপ্ত", "সমুদ্রগুপ্ত", "শ্রীগুপ্ত", "স্কন্দগুপ্ত"], answer: "শ্রীগুপ্ত" },
+    { subject: "ইতিহাস", question: "৪. ভারতের নেপোলিয়ন কাকে বলা হয়?", options: ["অশোক", "সমুদ্রগুপ্ত", "দ্বিতীয় চন্দ্রগুপ্ত", "হর্ষবর্ধন"], answer: "সমুদ্রগুপ্ত" },
+    { subject: "ইতিহাস", question: "৫. পানিপথের প্রথম যুদ্ধ কবে হয়েছিল?", options: ["১৫২৬", "১৫৫৬", "১৭৬১", "১৭৫৭"], answer: "১৫২৬" },
+    { subject: "ইতিহাস", question: "৬. 'দ্বীন-ই-ইলাহী' কে প্রবর্তন করেন?", options: ["বাবর", "হুমায়ুন", "আকবর", "শাহজাহান"], answer: "আকবর" },
+    { subject: "ইতিহাস", question: "৭. সিপাহী বিদ্রোহ কবে শুরু হয়?", options: ["১৮৫৭", "১৮৮৫", "১৯০৫", "১৯৪২"], answer: "১৮৫৭" },
+    { subject: "ইতিহাস", question: "৮. জাতীয় কংগ্রেসের প্রথম সভাপতি কে?", options: ["হিউম", "উমেশচন্দ্র", "দাদাভাই", "সুরেন্দ্রনাথ"], answer: "উমেশচন্দ্র" },
+    { subject: "ইতিহাস", question: "৯. 'স্বরাজ আমার জন্মগত অধিকার'—কার উক্তি?", options: ["গান্ধী", "নেতাজি", "ভগত সিং", "তিলক"], answer: "তিলক" },
+    { subject: "ইতিহাস", question: "১০. জালিয়ানওয়ালাবাগের হত্যাকাণ্ড কবে ঘটে?", options: ["১৯১৯", "১৯২০", "১৯২২", "১৯৩০"], answer: "১৯১৯" },
+    { subject: "ইতিহাস", question: "১১. হর্ষবর্ধনের রাজসভার কবি কে ছিলেন?", options: ["কালিদাস", "বাণভট্ট", "হরিষেণ", "চণ্ডীদাস"], answer: "বাণভট্ট" },
+    { subject: "ইতিহাস", question: "১২. কনিষ্ক কোন বংশের রাজা ছিলেন?", options: ["মৌর্য", "গুপ্ত", "কুশান", "পাল"], answer: "কুশান" },
+    { subject: "ইতিহাস", question: "১৩. 'অর্থশাস্ত্র' কার রচনা?", options: ["চাণক্য", "কলহন", "বিশাখা দত্ত", "কালিদাস"], answer: "চাণক্য" },
+    { subject: "ইতিহাস", question: "১৪. পলাশীর যুদ্ধ কবে হয়েছিল?", options: ["১৭৫৭", "১৭৬৪", "১৮৫৭", "১৯৪৭"], answer: "১৭৫৭" },
+    { subject: "ইতিহাস", question: "১৫. ভারতের শেষ গভর্নর জেনারেল কে ছিলেন?", options: ["মাউন্টব্যাটেন", "রাজাগোপালাচারী", "ক্যানিং", "ডালহৌসী"], answer: "রাজাগোপালাচারী" },
+    { subject: "ইতিহাস", question: "১৬. বৌদ্ধ ধর্মের প্রবর্তক কে?", options: ["মহাবীর", "গৌতম বুদ্ধ", "অশোক", "কনিষ্ক"], answer: "গৌতম বুদ্ধ" },
+    { subject: "ইতিহাস", question: "১৭. মেহেরগড় সভ্যতা কে আবিষ্কার করেন?", options: ["দয়ারাম সাহানি", "রাখালদাস", "জঁ ফ্রাঁসোয়া জারিজ", "জন মার্শাল"], answer: "জঁ ফ্রাঁসোয়া জারিজ" },
+    { subject: "ইতিহাস", question: "১৮. শেরশাহের আসল নাম কী ছিল?", options: ["ফরিদ খাঁ", "হুমায়ুন", "আকবর", "বাবর"], answer: "ফরিদ খাঁ" },
+    { subject: "ইতিহাস", question: "১৯. শিবাজীর গুরু কে ছিলেন?", options: ["সমর্থ রামদাস", "একনাথ", "তুকারাম", "নামদেব"], answer: "সমর্থ রামদাস" },
+    { subject: "ইতিহাস", question: "২০. ব্রাহ্মসমাজ কে প্রতিষ্ঠা করেন?", options: ["রামমোহন রায়", "বিদ্যাসাগর", "বিবেকানন্দ", "দেবেন্দ্রনাথ"], answer: "রামমোহন রায়" },
+    { subject: "ইতিহাস", question: "২১. বঙ্গভঙ্গ কবে রদ হয়?", options: ["১৯০৫", "১৯০৯", "১৯১১", "১৯১৫"], answer: "১৯১১" },
+    { subject: "ইতিহাস", question: "২২. আজাদ হিন্দ ফৌজের প্রতিষ্ঠাতা কে?", options: ["সুভাষচন্দ্র বসু", "রাসবিহারী বসু", "মোহন সিং", "ক্যাপ্টেন লক্ষ্মী"], answer: "রাসবিহারী বসু" },
+    { subject: "ইতিহাস", question: "২৩. 'বেঙ্গল গ্যাজেট' কে প্রকাশ করেন?", options: ["হিকি", "বিদ্যাসাগর", "সুরেন্দ্রনাথ", "রাজা রামমোহন"], answer: "হিকি" },
+    { subject: "ইতিহাস", question: "২৪. তরাইনের দ্বিতীয় যুদ্ধ কবে হয়?", options: ["১১৯১", "১১৯২", "১১৯৪", "১২০৬"], answer: "১১৯২" },
+    { subject: "ইতিহাস", question: "২৫. বাবর কবে ভারত আক্রমণ করেন?", options: ["১৫২৬", "১৫৩০", "১৫৫৬", "১৫২৭"], answer: "১৫২৬" },
 
-            // ভূগোল (Geography)
-            { question: "১১. আয়তনে ভারত পৃথিবীর কততম দেশ?", options: ["পঞ্চম", "ষষ্ঠ", "সপ্তম", "অষ্টম"], answer: "সপ্তম" },
-            { question: "১২. ভারতের সর্বোচ্চ শৃঙ্গ কোনটি?", options: ["কাঞ্চনজঙ্ঘা", "মাউন্ট এভারেস্ট", "গডউইন অস্টিন (K2)", "নন্দাদেবী"], answer: "গডউইন অস্টিন (K2)" },
-            { question: "১৩. পশ্চিমবঙ্গের সর্বোচ্চ শৃঙ্গ কোনটি?", options: ["ফালুট", "সান্দাকফু", "টাইগার হিল", "সবরগ্রাম"], answer: "সান্দাকফু" },
-            { question: "১৪. সুন্দরবন কত সালে 'ওয়ার্ল্ড হেরিটেজ সাইট' আখ্যা পায়?", options: ["১৯৮৪", "১৯৮৭", "১৯৮৯", "১৯৯৭"], answer: "১৯৮৭" },
-            { question: "১৫. ভারতের কোন রাজ্যে সবচেয়ে বেশি বনভূমি আছে?", options: ["মহারাষ্ট্র", "অরুণাচল প্রদেশ", "ছত্তিশগড়", "মধ্যপ্রদেশ"], answer: "মধ্যপ্রদেশ" },
-            { question: "১৬. দামোদর নদ কোথা থেকে উৎপন্ন হয়েছে?", options: ["ছোটনাগপুর মালভূমি", "হিমালয় পর্বত", "আরাবল্লী পর্বত", "পূর্বঘাট পর্বতমালা"], answer: "ছোটনাগপুর মালভূমি" },
-            { question: "১৭. ভারতের দীর্ঘতম নদী কোনটি?", options: ["ব্রহ্মপুত্র", "গঙ্গা", "গোদাবরী", "যমুনা"], answer: "গঙ্গা" },
-            { question: "১৮. মাজুলী নদীদ্বীপ কোথায় অবস্থিত?", options: ["পশ্চিমবঙ্গ", "ওড়িশা", "আসাম", "কেরালা"], answer: "আসাম" },
-            { question: "১৯. ভারতের ম্যানচেস্টার কাকে বলা হয়?", options: ["মুম্বাই", "আহমেদাবাদ", "সুরাট", "কানপুর"], answer: "আহমেদাবাদ" },
-            { question: "২০. পশ্চিমবঙ্গের কোন জেলায় সবচেয়ে বেশি বৃষ্টিপাত হয়?", options: ["দার্জিলিং", "জলপাইগুড়ি", "আলিপুরদুয়ার", "কোচবিহার"], answer: "আলিপুরদুয়ার" },
+    // ভূগোল (২৫টি প্রশ্ন)
+    { subject: "ভূগোল", question: "১. আয়তনে ভারত পৃথিবীর কততম দেশ?", options: ["পঞ্চম", "ষষ্ঠ", "সপ্তম", "অষ্টম"], answer: "সপ্তম" },
+    { subject: "ভূগোল", question: "২. ভারতের সর্বোচ্চ শৃঙ্গ কোনটি?", options: ["কাঞ্চনজঙ্ঘা", "এভারেস্ট", "K2", "নন্দাদেবী"], answer: "K2" },
+    { subject: "ভূগোল", question: "৩. পশ্চিমবঙ্গের সর্বোচ্চ শৃঙ্গ কোনটি?", options: ["ফালুট", "সান্দাকফু", "টাইগার হিল", "সবরগ্রাম"], answer: "সান্দাকফু" },
+    { subject: "ভূগোল", question: "৪. সুন্দরবন ইউনেস্কো হেরিটেজ সাইট হয় কবে?", options: ["১৯৮৪", "১৯৮৭", "১৯৮৯", "১৯৯৭"], answer: "১৯৮৭" },
+    { subject: "ভূগোল", question: "৫. ভারতের কোন রাজ্যে বনভূমি বেশি?", options: ["মহারাষ্ট্র", "অরুণাচল", "ছত্তিশগড়", "মধ্যপ্রদেশ"], answer: "মধ্যপ্রদেশ" },
+    { subject: "ভূগোল", question: "৬. দামোদর নদ উৎপন্ন হয়েছে কোথা থেকে?", options: ["ছোটনাগপুর", "হিমালয়", "আরাবল্লী", "পূর্বঘাট"], answer: "ছোটনাগপুর" },
+    { subject: "ভূগোল", question: "৭. ভারতের দীর্ঘতম নদী কোনটি?", options: ["ব্রহ্মপুত্র", "গঙ্গা", "গোদাবরী", "যমুনা"], answer: "গঙ্গা" },
+    { subject: "ভূগোল", question: "৮. মাজুলী নদীদ্বীপ কোথায়?", options: ["পশ্চিমবঙ্গ", "ওড়িশা", "আসাম", "কেরালা"], answer: "আসাম" },
+    { subject: "ভূগোল", question: "৯. ভারতের ম্যানচেস্টার কাকে বলে?", options: ["মুম্বাই", "আহমেদাবাদ", "সুরাট", "কানপুর"], answer: "আহমেদাবাদ" },
+    { subject: "ভূগোল", question: "১০. পশ্চিমবঙ্গের কোন জেলায় বৃষ্টি বেশি?", options: ["দার্জিলিং", "জলপাইগুড়ি", "আলিপুরদুয়ার", "কোচবিহার"], answer: "আলিপুরদুয়ার" },
+    { subject: "ভূগোল", question: "১১. ভারতের বৃহত্তম লবণাক্ত হ্রদ কোনটি?", options: ["চিল্কা", "সম্বর", "পুলিকট", "উলার"], answer: "সম্বর" },
+    { subject: "ভূগোল", question: "১২. গঙ্গা কোথায় সমুদ্রে মিশেছে?", options: ["খাম্বাত", "কচ্ছ", "বঙ্গোপসাগর", "মান্নার"], answer: "বঙ্গোপসাগর" },
+    { subject: "ভূগোল", question: "১৩. 'ডেকান ট্র্যাপ' কীসের জন্য বিখ্যাত?", options: ["কয়লা", "লোহা", "লাভা", "তামা"], answer: "লাভা" },
+    { subject: "ভূগোল", question: "১৪. ভারতের প্রবেশদ্বার কাকে বলে?", options: ["দিল্লি", "কলকাতা", "মুম্বাই", "চেন্নাই"], answer: "মুম্বাই" },
+    { subject: "ভূগোল", question: "১৫. নর্মদা নদী কোথায় পড়েছে?", options: ["আরব সাগর", "বঙ্গোপসাগর", "লবণাক্ত হ্রদ", "গঙ্গা"], answer: "আরব সাগর" },
+    { subject: "ভূগোল", question: "১৬. ভারতের কোন রাজ্যটি চা উৎপাদনে প্রথম?", options: ["পশ্চিমবঙ্গ", "আসাম", "কেরালা", "তামিলনাড়ু"], answer: "আসাম" },
+    { subject: "ভূগোল", question: "১৭. ভারতের উচ্চতম মালভূমি কোনটি?", options: ["ছোটনাগপুর", "লাদাখ", "ডেকান", "মালব"], answer: "লাদাখ" },
+    { subject: "ভূগোল", question: "১৮. ভারতের কোন অঞ্চল 'মরুস্থলী' নামে পরিচিত?", options: ["থর", "কচ্ছ", "লাদাখ", "স্পিতি"], answer: "থর" },
+    { subject: "ভূগোল", question: "১৯. শিলিগুড়ি করিডোরকে কী বলে?", options: ["চিকেনস নেক", "পাস", "গ্যাপ", "ফাঁস"], answer: "চিকেনস নেক" },
+    { subject: "ভূগোল", question: "২০. সুন্দরবনের প্রধান নদী কোনটি?", options: ["গঙ্গা", "মাথাভাঙ্গা", "মাতলা", "রূপনারায়ণ"], answer: "মাতলা" },
+    { subject: "ভূগোল", question: "২১. ভারতের কোন উপকূলকে 'কোঙ্কন' বলে?", options: ["পশ্চিম", "পূর্ব", "তামিল", "উড়িষ্যা"], answer: "পশ্চিম" },
+    { subject: "ভূগোল", question: "২২. আন্দামানের সর্বোচ্চ শৃঙ্গ কোনটি?", options: ["স্যাডল পিক", "মাউন্ট হ্যারিয়েট", "দিগলিপুর", "ব্যারন"], answer: "স্যাডল পিক" },
+    { subject: "ভূগোল", question: "২৩. ভারতের বৃহত্তম কফি উৎপাদক রাজ্য কোনটি?", options: ["আসাম", "কেরালা", "কর্ণাটক", "তামিলনাড়ু"], answer: "কর্ণাটক" },
+    { subject: "ভূগোল", question: "২৪. কোন নদীকে 'বাংলার দুঃখ' বলা হয়?", options: ["গঙ্গা", "দামোদর", "ভাগীরথী", "তিস্তা"], answer: "দামোদর" },
+    { subject: "ভূগোল", question: "২৫. ভারতের জাতীয় অরণ্য গবেষণা কেন্দ্র কোথায়?", options: ["দিল্লি", "কলকাতা", "দেরাদুন", "ভোপাল"], answer: "দেরাদুন" }
 
-            // ভারতীয় সংবিধান (Indian Polity)
-            { question: "২১. ভারতের সংবিধান কবে কার্যকর হয়?", options: ["১৫ আগস্ট ১৯৪৭", "২৬ নভেম্বর ১৯৪৯", "২৬ জানুয়ারি ১৯৫০", "২ অক্টোবর ১৯৫০"], answer: "২৬ জানুয়ারি ১৯৫০" },
-            { question: "২২. গণপরিষদের খসড়া কমিটির চেয়ারম্যান কে ছিলেন?", options: ["জওহরলাল নেহেরু", "ড. রাজেন্দ্র প্রসাদ", "বি. আর. আম্বেদকর", "সর্দার বল্লভভাই প্যাটেল"], answer: "বি. আর. আম্বেদকর" },
-            { question: "২৩. ভারতের রাষ্ট্রপতি হতে গেলে ন্যূনতম বয়স কত হতে হবে?", options: ["২৫ বছর", "৩০ বছর", "৩৫ বছর", "৪০ বছর"], answer: "৩৫ বছর" },
-            { question: "২৪. লোকসভার সর্বোচ্চ সদস্য সংখ্যা কত হতে পারে?", options: ["৫৪৩", "৫৪৫", "৫৫০", "৫৫২"], answer: "৫৫২" },
-            { question: "২৫. পঞ্চায়েত রাজ ব্যবস্থা প্রথম কোন রাজ্যে চালু হয়?", options: ["গুজরাট", "রাজস্থান", "অন্ধ্রপ্রদেশ", "মহারাষ্ট্র"], answer: "রাজস্থান" },
-            { question: "২৬. সুপ্রিম কোর্টের বিচারপতিদের অবসরের বয়স কত?", options: ["৬০ বছর", "৬২ বছর", "৬৫ বছর", "৭০ বছর"], answer: "৬৫ বছর" },
-            { question: "২৭. 'মৌলিক অধিকার' সংবিধানের কোন অংশে আছে?", options: ["দ্বিতীয় অংশ", "তৃতীয় অংশ", "চতুর্থ অংশ", "পঞ্চম অংশ"], answer: "তৃতীয় অংশ" },
-            { question: "২৮. অর্থ বিল কেবল কোথায় উত্থাপন করা যায়?", options: ["রাজ্যসভায়", "লোকসভায়", "বিধানসভায়", "যেকোনো কক্ষে"], answer: "লোকসভায়" },
-            { question: "২৯. ভারতের প্রথম নাগরিক কাকে বলা হয়?", options: ["প্রধানমন্ত্রী", "সুপ্রিম কোর্টের প্রধান বিচারপতি", "রাষ্ট্রপতি", "লোকসভার স্পিকার"], answer: "রাষ্ট্রপতি" },
-            { question: "৩০. নির্বাচন কমিশনের গঠন সম্পর্কে কোন ধারায় বলা হয়েছে?", options: ["২৮০ নম্বর ধারা", "৩১৫ নম্বর ধারা", "৩২৪ নম্বর ধারা", "৩৫২ নম্বর ধারা"], answer: "৩২৪ নম্বর ধারা" },
+    // ভারতীয় সংবিধান (২৫টি প্রশ্ন)
+    { subject: "সংবিধান", question: "১. ভারতের সংবিধান কবে কার্যকর হয়?", options: ["১৫ আগস্ট ১৯৪৭", "২৬ নভেম্বর ১৯৪৯", "২৬ জানুয়ারি ১৯৫০", "২ অক্টোবর ১৯৫০"], answer: "২৬ জানুয়ারি ১৯৫০" },
+    { subject: "সংবিধান", question: "২. গণপরিষদের খসড়া কমিটির চেয়ারম্যান কে ছিলেন?", options: ["নেহেরু", "রাজেন্দ্র প্রসাদ", "আম্বেদকর", "প্যাটেল"], answer: "আম্বেদকর" },
+    { subject: "সংবিধান", question: "৩. রাষ্ট্রপতির নূন্যতম বয়স কত?", options: ["২৫ বছর", "৩০ বছর", "৩৫ বছর", "৪০ বছর"], answer: "৩৫ বছর" },
+    { subject: "সংবিধান", question: "৪. লোকসভার সর্বোচ্চ সদস্য সংখ্যা কত?", options: ["৫৪৩", "৫৪৫", "৫৫০", "৫৫২"], answer: "৫৫২" },
+    { subject: "সংবিধান", question: "৫. পঞ্চায়েত রাজ কোথায় প্রথম চালু হয়?", options: ["গুজরাট", "রাজস্থান", "অন্ধ্রপ্রদেশ", "মহারাষ্ট্র"], answer: "রাজস্থান" },
+    { subject: "সংবিধান", question: "৬. সুপ্রিম কোর্টের বিচারপতির অবসরের বয়স কত?", options: ["৬০ বছর", "৬২ বছর", "৬৫ বছর", "৭০ বছর"], answer: "৬৫ বছর" },
+    { subject: "সংবিধান", question: "৭. মৌলিক অধিকার সংবিধানের কোন অংশে আছে?", options: ["দ্বিতীয়", "তৃতীয়", "চতুর্থ", "পঞ্চম"], answer: "তৃতীয়" },
+    { subject: "সংবিধান", question: "৮. অর্থ বিল কোথায় উত্থাপন করা যায়?", options: ["রাজ্যসভা", "লোকসভা", "বিধানসভা", "উভয় কক্ষ"], answer: "লোকসভা" },
+    { subject: "সংবিধান", question: "৯. ভারতের প্রথম নাগরিক কে?", options: ["প্রধানমন্ত্রী", "বিচারপতি", "রাষ্ট্রপতি", "স্পিকার"], answer: "রাষ্ট্রপতি" },
+    { subject: "সংবিধান", question: "১০. নির্বাচন কমিশনের ধারা কোনটি?", options: ["২৮০", "৩১৫", "৩২৪", "৩৫২"], answer: "৩২৪" },
+    { subject: "সংবিধান", question: "১১. রাজ্যসভার সদস্যের মেয়াদ কত?", options: ["৪ বছর", "৫ বছর", "৬ বছর", "স্থায়ী"], answer: "৬ বছর" },
+    { subject: "সংবিধান", question: "১২. ভারতের সংবিধানের জনক কে?", options: ["নেহেরু", "গান্ধী", "আম্বেদকর", "রাজেন্দ্র প্রসাদ"], answer: "আম্বেদকর" },
+    { subject: "সংবিধান", question: "১৩. কোন ধারা অনুযায়ী জরুরি অবস্থা জারি হয়?", options: ["৩৫২", "৩৫৬", "৩৬০", "সবগুলোই"], answer: "সবগুলোই" },
+    { subject: "সংবিধান", question: "১৪. রাজ্যপালকে কে নিয়োগ করেন?", options: ["প্রধানমন্ত্রী", "রাষ্ট্রপতি", "মুখ্যমন্ত্রী", "স্পিকার"], answer: "রাষ্ট্রপতি" },
+    { subject: "সংবিধান", question: "১৫. ভারতের বিচার ব্যবস্থার শীর্ষে কে?", options: ["হাইকোর্ট", "সুপ্রিম কোর্ট", "সংসদ", "রাষ্ট্রপতি"], answer: "সুপ্রিম কোর্ট" },
+    { subject: "সংবিধান", question: "১৬. কত বছর বয়সে ভোট দেওয়া যায়?", options: ["১৮ বছর", "২১ বছর", "২৫ বছর", "১৬ বছর"], answer: "১৮ বছর" },
+    { subject: "সংবিধান", question: "১৭. রাজ্যসভার স্পিকার কে?", options: ["রাষ্ট্রপতি", "উপরাষ্ট্রপতি", "প্রধানমন্ত্রী", "স্বরাষ্ট্র মন্ত্রী"], answer: "উপরাষ্ট্রপতি" },
+    { subject: "সংবিধান", question: "১৮. সংসদীয় সরকার কোন দেশের অনুকরণে?", options: ["আমেরিকা", "ব্রিটেন", "রাশিয়া", "ফ্রান্স"], answer: "ব্রিটেন" },
+    { subject: "সংবিধান", question: "১৯. বর্তমানে কতগুলি মৌলিক অধিকার আছে?", options: ["৫টি", "৬টি", "৭টি", "৮টি"], answer: "৬টি" },
+    { subject: "সংবিধান", question: "২০. লোকসভার সদস্য হতে গেলে বয়স কত লাগে?", options: ["১৮", "২১", "২৫", "৩০"], answer: "২৫" },
+    { subject: "সংবিধান", question: "২১. সংবিধান সংশোধন কোন ধারায় আছে?", options: ["৩৬৮", "৩৭০", "৩৭১", "৩৮০"], answer: "৩৬৮" },
+    { subject: "সংবিধান", question: "২২. ভারতের জাতীয় প্রতীক কী?", options: ["অশোক স্তম্ভ", "বাঘ", "পদ্ম", "ময়ূর"], answer: "অশোক স্তম্ভ" },
+    { subject: "সংবিধান", question: "২৩. ভারতের সংবিধানের ভাষা কী?", options: ["হিন্দি", "ইংরেজি", "সংস্কৃত", "সবগুলোই"], answer: "হিন্দি" },
+    { subject: "সংবিধান", question: "২৪. মুখ্যমন্ত্রীকে নিয়োগ করেন কে?", options: ["রাষ্ট্রপতি", "রাজ্যপাল", "প্রধানমন্ত্রী", "স্পিকার"], answer: "রাজ্যপাল" },
+    { subject: "সংবিধান", question: "২৫. হাইকোর্টের বিচারপতিকে কে নিয়োগ করেন?", options: ["রাজ্যপাল", "রাষ্ট্রপতি", "প্রধানমন্ত্রী", "মুখ্যমন্ত্রী"], answer: "রাষ্ট্রপতি" },
 
-            // বিজ্ঞান (Science)
-            { question: "৩১. মানবদেহের সবচেয়ে বড় গ্রন্থি কোনটি?", options: ["অগ্ন্যাশয়", "যকৃৎ (Liver)", "থাইরয়েড", "পিটুইটারি"], answer: "যকৃৎ (Liver)" },
-            { question: "৩২. রক্ত জমাট বাঁধতে কোন ভিটামিন সাহায্য করে?", options: ["ভিটামিন A", "ভিটামিন B", "ভিটামিন C", "ভিটামিন K"], answer: "ভিটামিন K" },
-            { question: "৩৩. শব্দের বেগ সবচেয়ে বেশি কোন মাধ্যমে?", options: ["কঠিন মাধ্যমে", "তরল মাধ্যমে", "গ্যাসীয় মাধ্যমে", "শূন্য মাধ্যমে"], answer: "কঠিন মাধ্যমে" },
-            { question: "৩৪. কোষের 'শক্তিঘর' কাকে বলে?", options: ["রাইবোজোম", "লাইসোজোম", "মাইটোকনড্রিয়া", "নিউক্লিয়াস"], answer: "মাইটোকনড্রিয়া" },
-            { question: "৩৫. 'পেনিসিলিন' কে আবিষ্কার করেন?", options: ["লুই পাস্তুর", "আলেকজান্ডার ফ্লেমিং", "রবার্ট হুক", "এডওয়ার্ড জেনার"], answer: "আলেকজান্ডার ফ্লেমিং" },
-            { question: "৩৬. বায়ুমণ্ডলে কোন গ্যাস সবচেয়ে বেশি থাকে?", options: ["অক্সিজেন", "কার্বন ডাই অক্সাইড", "নাইট্রোজেন", "আর্গন"], answer: "নাইট্রোজেন" },
-            { question: "৩৭. বৈদ্যুতিক বাতির ফিলামেন্ট কী দিয়ে তৈরি হয়?", options: ["লোহা", "তামা", "টাংস্টেন", "অ্যালুমিনিয়াম"], answer: "টাংস্টেন" },
-            { question: "৩৮. মানবদেহে ক্রোমোজোমের সংখ্যা কত?", options: ["২২ জোড়া", "২৩ জোড়া", "২৪ জোড়া", "২৫ জোড়া"], answer: "২৩ জোড়া" },
-            { question: "৩৯. লাফিং গ্যাস (Laughing Gas) এর রাসায়নিক নাম কী?", options: ["নাইট্রিক অক্সাইড", "নাইট্রাস অক্সাইড", "কার্বন মনোক্সাইড", "সালফার ডাই অক্সাইড"], answer: "নাইট্রাস অক্সাইড" },
-            { question: "৪০. জলের স্ফুটনাঙ্ক কত?", options: ["০°C", "১০০°C", "২১২°C", "৩৭৩°C"], answer: "১০০°C" },
+    // বিজ্ঞান (২৫টি প্রশ্ন)
+    { subject: "বিজ্ঞান", question: "১. মানবদেহের বৃহত্তম গ্রন্থি কোনটি?", options: ["অগ্ন্যাশয়", "যকৃৎ", "থাইরয়েড", "পিটুইটারি"], answer: "যকৃৎ" },
+    { subject: "বিজ্ঞান", question: "২. রক্ত জমাট বাঁধতে সাহায্য করে কোন ভিটামিন?", options: ["A", "B", "C", "K"], answer: "K" },
+    { subject: "বিজ্ঞান", question: "৩. শব্দের বেগ সবচেয়ে বেশি কোথায়?", options: ["কঠিন", "তরল", "গ্যাস", "শূন্যস্থান"], answer: "কঠিন" },
+    { subject: "বিজ্ঞান", question: "৪. কোষের শক্তিঘর কাকে বলে?", options: ["রাইবোজোম", "লাইসোজোম", "মাইটোকনড্রিয়া", "নিউক্লিয়াস"], answer: "মাইটোকনড্রিয়া" },
+    { subject: "বিজ্ঞান", question: "৫. পেনিসিলিন কে আবিষ্কার করেন?", options: ["পাস্তুর", "ফ্লেমিং", "হুক", "জেনার"], answer: "ফ্লেমিং" },
+    { subject: "বিজ্ঞান", question: "৬. বায়ুমণ্ডলে কোন গ্যাস বেশি?", options: ["অক্সিজেন", "কার্বন ডাই অক্সাইড", "নাইট্রোজেন", "আর্গন"], answer: "নাইট্রোজেন" },
+    { subject: "বিজ্ঞান", question: "৭. বৈদ্যুতিক বাল্বের ফিলামেন্ট কী দিয়ে তৈরি?", options: ["লোহা", "তামা", "টাংস্টেন", "অ্যালুমিনিয়াম"], answer: "টাংস্টেন" },
+    { subject: "বিজ্ঞান", question: "৮. মানুষের ক্রোমোজোম সংখ্যা কত?", options: ["২২ জোড়া", "২৩ জোড়া", "২৪ জোড়া", "২৫ জোড়া"], answer: "২৩ জোড়া" },
+    { subject: "বিজ্ঞান", question: "৯. লাফিং গ্যাসের নাম কী?", options: ["নাইট্রিক অক্সাইড", "নাইট্রাস অক্সাইড", "কার্বন মনোক্সাইড", "সালফার ডাই অক্সাইড"], answer: "নাইট্রাস অক্সাইড" },
+    { subject: "বিজ্ঞান", question: "১০. জলের স্ফুটনাঙ্ক কত?", options: ["০ ডিগ্রি", "৫০ ডিগ্রি", "১০০ ডিগ্রি", "২১০ ডিগ্রি"], answer: "১০০ ডিগ্রি" },
+    { subject: "বিজ্ঞান", question: "১১. উদ্ভিদের বৃদ্ধির সহায়ক হরমোন কোনটি?", options: ["অক্সিন", "জিবেরেলিন", "সাইটোকাইনিন", "সবগুলোই"], answer: "সবগুলোই" },
+    { subject: "বিজ্ঞান", question: "১২. আলোকের গতিবেগ প্রতি সেকেন্ডে কত?", options: ["৩ লক্ষ কিমি", "৩ হাজার কিমি", "১ লক্ষ কিমি", "৫ লক্ষ কিমি"], answer: "৩ লক্ষ কিমি" },
+    { subject: "বিজ্ঞান", question: "১৩. কোন ভিটামিনের অভাবে রাতকানা হয়?", options: ["A", "B", "C", "D"], answer: "A" },
+    { subject: "বিজ্ঞান", question: "১৪. তেজস্ক্রিয়তা কে আবিষ্কার করেন?", options: ["আইনস্টাইন", "মাদাম কুরি", "বেকেরেল", "রাদারফোর্ড"], answer: "বেকেরেল" },
+    { subject: "বিজ্ঞান", question: "১৫. কার্বন পরমাণুর সংখ্যা কত?", options: ["৫", "৬", "৭", "৮"], answer: "৬" },
+    { subject: "বিজ্ঞান", question: "১৬. লাফিং গ্যাসের রাসায়নিক সংকেত কী?", options: ["NO", "N2O", "NO2", "N2O5"], answer: "N2O" },
+    { subject: "বিজ্ঞান", question: "১৭. মানবদেহে হাড়ের সংখ্যা কত?", options: ["২০৬", "২০৫", "২১০", "২০০"], answer: "২০৬" },
+    { subject: "বিজ্ঞান", question: "১৮. কিসের অভাবে রক্তাল্পতা হয়?", options: ["ক্যালসিয়াম", "আয়রন", "সোডিয়াম", "পটাশিয়াম"], answer: "আয়রন" },
+    { subject: "বিজ্ঞান", question: "১৯. এসিড বৃষ্টির জন্য দায়ী কোন গ্যাস?", options: ["O2", "SO2", "N2", "CO"], answer: "SO2" },
+    { subject: "বিজ্ঞান", question: "২০. সর্বজনীন দাতা রক্ত গ্রুপ কোনটি?", options: ["A", "B", "AB", "O"], answer: "O" },
+    { subject: "বিজ্ঞান", question: "২১. কোন ধাতুকে 'কুইক সিলভার' বলে?", options: ["পারদ", "সীসা", "তামা", "সোনা"], answer: "পারদ" },
+    { subject: "বিজ্ঞান", question: "২২. সূর্যের প্রধান উপাদান কী?", options: ["অক্সিজেন", "নাইট্রোজেন", "হাইড্রোজেন", "হিলিয়াম"], answer: "হাইড্রোজেন" },
+    { subject: "বিজ্ঞান", question: "২৩. কোন ভিটামিন জলে দ্রবণীয়?", options: ["A", "D", "E", "C"], answer: "C" },
+    { subject: "বিজ্ঞান", question: "২৪. মরীচিকা কীসের উদাহরণ?", options: ["প্রতিসরণ", "প্রতিফলন", "বিচ্ছুরণ", "পূর্ণ অভ্যন্তরীণ প্রতিফলন"], answer: "পূর্ণ অভ্যন্তরীণ প্রতিফলন" },
+    { subject: "বিজ্ঞান", question: "২৫. ডিএনএ (DNA) এর পুরো নাম কী?", options: ["Deoxyribo Nucleic Acid", "Dioxy Nucleic Acid", "Dioxo Nucleic Acid", "কোনটিই নয়"], answer: "Deoxyribo Nucleic Acid" }
+];
 
-            // সাধারণ জ্ঞান ও অর্থনীতি (Static GK & Economy)
-            { question: "৪১. রিজার্ভ ব্যাংক অফ ইন্ডিয়া (RBI) কবে প্রতিষ্ঠিত হয়?", options: ["১৯৩৫ সালে", "১৯৪৯ সালে", "১৯৫০ সালে", "১৯৫১ সালে"], answer: "১৯৩৫ সালে" },
-            { question: "৪২. ভারতের প্রথম পঞ্চবার্ষিকী পরিকল্পনা কবে শুরু হয়?", options: ["১৯৪৭ সালে", "১৯৫০ সালে", "১৯৫১ সালে", "১৯৫৫ সালে"], answer: "১৯৫১ সালে" },
-            { question: "৪৩. নোবেল পুরস্কার কয়টি বিষয়ে দেওয়া হয়?", options: ["৪টি", "৫টি", "৬টি", "৭টি"], answer: "৬টি" },
-            { question: "৪৪. 'গীতাঞ্জলি' কাব্যগ্রন্থের জন্য রবীন্দ্রনাথ ঠাকুর কবে নোবেল পান?", options: ["১৯১১ সালে", "১৯১৩ সালে", "১৯১৫ সালে", "১৯১৯ সালে"], answer: "১৯১৩ সালে" },
-            { question: "৪৫. বিশ্ব পরিবেশ দিবস কবে পালিত হয়?", options: ["৫ মে", "৫ জুন", "৫ জুলাই", "৫ আগস্ট"], answer: "৫ জুন" },
-            { question: "৪৬. ভারতের প্রথম মহিলা প্রধানমন্ত্রী কে ছিলেন?", options: ["সরোজিনী নাইডু", "ইন্দিরা গান্ধী", "প্রতিভা পাতিল", "সুচেতা কৃপালনি"], answer: "ইন্দিরা গান্ধী" },
-            { question: "৪৭. অলিম্পিকে ব্যক্তিগত ইভেন্টে প্রথম সোনা জয়ী ভারতীয় কে?", options: ["নীরজ চোপড়া", "অভিনব বিন্দ্রা", "সুশীল কুমার", "পি. ভি. সিন্ধু"], answer: "অভিনব বিন্দ্রা" },
-            { question: "৪৮. 'ডিসকভারি অফ ইন্ডিয়া' বইটি কার লেখা?", options: ["মহাত্মা গান্ধী", "জওহরলাল নেহেরু", "ড. রাজেন্দ্র প্রসাদ", "অরুণাচল প্রদেশ"], answer: "জওহরলাল নেহেরু" },
-            { question: "৪৯. আন্তর্জাতিক নারী দিবস কবে পালিত হয়?", options: ["৮ মার্চ", "১০ মার্চ", "১২ মে", "১৪ নভেম্বর"], answer: "৮ মার্চ" },
-            { question: "৫০. ইসরো (ISRO) এর সদর দপ্তর কোথায় অবস্থিত?", options: ["দিল্লি", "মুম্বাই", "হায়দ্রাবাদ", "বেঙ্গালুরু"], answer: "বেঙ্গালুরু" }
-        ];
+    let filteredQuiz = quizData;
+    let currentQuiz = 0;
+    let score = 0;
+    let subjectScores = { "ইতিহাস": 0, "ভূগোল": 0, "সংবিধান": 0, "বিজ্ঞান": 0 };
 
-        let currentQuiz = 0;
-        let score = 0;
-        let timeLeft = 30;
-        let timer;
-
-        const questionEl = document.getElementById('question');
-        const optionsEl = document.getElementById('options');
-        const timeEl = document.getElementById('time');
-        const quizArea = document.getElementById('quiz-area');
-        const resultEl = document.getElementById('result');
-        const homeBtn = document.getElementById('home-btn');
-
-        function loadQuiz() {
-            clearInterval(timer);
-            timeLeft = 30; 
-            timeEl.innerText = `সময় বাকি: ${timeLeft}s`;
-            
-            optionsEl.innerHTML = '';
-            const currentQuizData = quizData[currentQuiz];
-            questionEl.innerText = currentQuizData.question;
-
-            currentQuizData.options.forEach(option => {
-                const button = document.createElement('button');
-                button.innerText = option;
-                button.classList.add('option-btn');
-                button.onclick = () => selectOption(option);
-                optionsEl.appendChild(button);
-            });
-
-            timer = setInterval(updateTime, 1000);
-        }
-
-        function updateTime() {
-            timeLeft--;
-            timeEl.innerText = `সময় বাকি: ${timeLeft}s`;
-            if(timeLeft === 0) {
-                clearInterval(timer);
-                nextQuestion(); 
-            }
-        }
-
-        function selectOption(selectedOption) {
-            clearInterval(timer);
-            if(selectedOption === quizData[currentQuiz].answer) {
-                score++; 
-            }
-            nextQuestion();
-        }
-
-        function nextQuestion() {
-            currentQuiz++;
-            if(currentQuiz < quizData.length) {
-                loadQuiz();
-            } else {
-                showResult(); 
-            }
-        }
-
-        function showResult() {
-            quizArea.style.display = 'none';
-            resultEl.style.display = 'block';
-            homeBtn.style.display = 'inline-block';
-            resultEl.innerText = `মক টেস্ট শেষ! \nআপনার স্কোর: ${score} / ${quizData.length}`;
-        }
-
+    function filterQuestions() {
+        const sub = document.getElementById('sub-list').value;
+        filteredQuiz = (sub === "সব") ? quizData : quizData.filter(q => q.subject === sub);
+        currentQuiz = 0; score = 0;
+        document.getElementById('quiz-area').style.display = 'block';
+        document.getElementById('result').style.display = 'none';
         loadQuiz();
-    </script>
+    }
+
+    function loadQuiz() {
+        if(filteredQuiz.length === 0) {
+            document.getElementById('question').innerText = "এই বিষয়ে কোনো প্রশ্ন নেই।";
+            document.getElementById('options').innerHTML = "";
+            return;
+        }
+        const q = filteredQuiz[currentQuiz];
+        document.getElementById('question').innerText = q.question;
+        const optionsEl = document.getElementById('options');
+        optionsEl.innerHTML = '';
+        q.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.innerText = opt;
+            btn.classList.add('option-btn');
+            btn.onclick = () => selectOption(btn, opt);
+            optionsEl.appendChild(btn);
+        });
+    }
+
+    function selectOption(btn, choice) {
+        const correct = filteredQuiz[currentQuiz].answer;
+        const btns = document.querySelectorAll('.option-btn');
+        btns.forEach(b => b.disabled = true);
+        if(choice === correct) {
+            btn.style.backgroundColor = "#2ed573";
+            score++;
+            subjectScores[filteredQuiz[currentQuiz].subject]++;
+        } else {
+            btn.style.backgroundColor = "#ff4757";
+            btns.forEach(b => { if(b.innerText === correct) b.style.backgroundColor = "#2ed573"; });
+        }
+        setTimeout(() => {
+            currentQuiz++;
+            if(currentQuiz < filteredQuiz.length) loadQuiz();
+            else showResult();
+        }, 1000);
+    }
+
+    function showResult() {
+        document.getElementById('quiz-area').style.display = 'none';
+        const res = document.getElementById('result');
+        res.style.display = 'block';
+        res.innerHTML = `মক টেস্ট শেষ!<br>মোট স্কোর: ${score}<br>বিষয়ভিত্তিক: ${JSON.stringify(subjectScores)}`;
+        document.getElementById('home-btn').style.display = 'block';
+    }
+
+    loadQuiz();
+</script>
 </body>
 </html>
