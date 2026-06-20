@@ -6,27 +6,26 @@
     <title>Indian Polity Mock Test - App View</title>
     <style>
         /* =========================================
-           Compact App-Like Design (No Scrolling)
+           Perfect Mobile App Layout (Deep Colors)
         ========================================= */
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
 
-        body { 
+        body, html { 
             background: #e8ebf2; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; /* পুরো স্ক্রিন জুড়বে, স্ক্রল হবে না */
-            overflow: hidden; 
+            height: 100%; /* মোবাইলে ফিট করার জন্য */
+            overflow: hidden; /* বডিতে কোনো স্ক্রল হবে না */
         }
 
         .app-container { 
             width: 100%; 
-            max-width: 450px; 
+            max-width: 480px; 
             background: #ffffff; 
-            height: 100vh;
+            height: 100%; /* Fallback */
+            height: 100dvh; /* Modern Mobile Viewport Fix */
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
         }
 
         /* Top Bar (Timer, Counter, Score) */
@@ -36,60 +35,60 @@
             align-items: center;
             padding: 15px 20px;
             background: #f8f9fa;
-            border-bottom: 2px solid #e1e8ed;
+            border-bottom: 2px solid #dcdde1;
+            flex-shrink: 0; /* এটা ছোট হবে না */
         }
 
         .timer { font-weight: bold; color: #d35400; font-size: 16px; }
-        .score-board { font-weight: bold; color: #27ae60; font-size: 16px; }
+        .score-board { font-weight: bold; color: #009432; font-size: 16px; }
         
         .q-counter {
             background: #ffffff;
-            border: 2px solid #e74c3c;
-            color: #e74c3c;
+            border: 2px solid #d63031;
+            color: #d63031;
             font-weight: 900;
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 14px;
         }
 
-        /* Quiz Content Area */
+        /* Quiz Content Area (শুধুমাত্র এই অংশটা স্ক্রল হবে যদি স্ক্রিন ছোট হয়) */
         .quiz-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            padding: 25px 20px;
+            flex-grow: 1; /* বাকি পুরো জায়গাটা নেবে */
+            overflow-y: auto; /* কন্টেন্ট বড় হলে স্ক্রল হবে, কিন্তু বাটন কাটবে না */
         }
 
         /* Question Box */
         .question-box {
-            background: #fdfbfb;
-            border: 2px solid #3498db;
+            background: #ffffff;
+            border: 2px solid #0984e3;
             border-radius: 12px;
             padding: 20px 15px;
             text-align: center;
             font-size: 18px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.1);
+            font-weight: 900;
+            color: #2d3436;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(9, 132, 227, 0.15);
         }
 
         /* Options */
         .options-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         .option-btn {
             width: 100%;
-            background: #e1f5fe;
-            border: 2px solid transparent;
-            padding: 14px;
+            background: #f1f2f6; /* অপশন ক্লিক করার আগের রং */
+            border: 2px solid #ced6e0;
+            padding: 16px;
             border-radius: 10px;
             font-size: 16px;
             font-weight: bold;
-            color: #0277bd;
+            color: #2f3542;
             cursor: pointer;
             transition: 0.2s;
             text-align: center;
@@ -97,46 +96,64 @@
 
         .option-btn:active { transform: scale(0.98); }
 
-        /* Correct / Wrong Colors */
-        .correct { background: #2ecc71 !important; color: #fff !important; border-color: #27ae60 !important; }
-        .wrong { background: #e74c3c !important; color: #fff !important; border-color: #c0392b !important; }
-        .disabled { pointer-events: none; opacity: 0.9; }
+        /* গাঢ় (Deep) Correct / Wrong Colors */
+        .correct { 
+            background: #009432 !important; /* কড়া সবুজ */
+            color: #ffffff !important; 
+            border-color: #009432 !important; 
+            box-shadow: 0 4px 10px rgba(0, 148, 50, 0.3);
+        }
+        
+        .wrong { 
+            background: #d63031 !important; /* কড়া লাল */
+            color: #ffffff !important; 
+            border-color: #d63031 !important; 
+            box-shadow: 0 4px 10px rgba(214, 48, 49, 0.3);
+        }
+        
+        .disabled { pointer-events: none; opacity: 1; }
 
-        /* Next Button Area */
+        /* Next Button Area (সবসময় নিচে ফিক্সড থাকবে) */
         .bottom-area {
-            padding: 15px 20px 25px 20px;
+            padding: 15px 20px 30px 20px; /* মোবাইলের নিচের বারের জন্য এক্সট্রা প্যাডিং */
+            background: #ffffff;
+            border-top: 1px solid #f1f2f6;
+            flex-shrink: 0;
         }
 
         .next-btn {
             width: 100%;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            background: #c0392b; /* কড়া লাল রংয়ের বাটন */
             color: white;
             border: none;
-            padding: 15px;
+            padding: 16px;
             border-radius: 12px;
             font-size: 18px;
-            font-weight: bold;
+            font-weight: 900;
             cursor: pointer;
             visibility: hidden; /* প্রথমে লুকানো থাকবে */
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
+            text-transform: uppercase;
         }
 
         /* Result Screen */
         .result-screen {
             display: none;
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
+            height: 100%;
         }
-        .result-screen h2 { color: #2c3e50; margin-bottom: 20px; font-size: 28px; }
-        .result-screen .final-score { font-size: 40px; color: #27ae60; font-weight: 900; margin-bottom: 30px; }
+        .result-screen h2 { color: #2d3436; margin-bottom: 20px; font-size: 28px; font-weight: 900; }
+        .result-screen .final-score { font-size: 45px; color: #009432; font-weight: 900; margin-bottom: 40px; }
         .home-btn {
             text-decoration: none;
-            background: #3498db;
+            background: #0984e3;
             color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 15px 35px;
+            border-radius: 30px;
             font-weight: bold;
             font-size: 18px;
+            box-shadow: 0 4px 10px rgba(9, 132, 227, 0.3);
         }
     </style>
 </head>
@@ -150,6 +167,7 @@
         </div>
 
         <div id="quiz-screen" style="display: flex; flex-direction: column; height: 100%;">
+            
             <div class="top-bar">
                 <div class="timer">⏱ <span id="timer-txt">30</span>s</div>
                 <div class="q-counter" id="q-counter-txt">১ / ৩</div>
@@ -167,26 +185,27 @@
             <div class="bottom-area">
                 <button class="next-btn" id="next-btn" onclick="goNext()">Next Question ➔</button>
             </div>
+            
         </div>
     </div>
 
     <script>
-        // JS Array: এখানেই সব প্রশ্ন আর অপশন থাকবে। HTML-এ আর হাত দিতে হবে না!
+        // JS Array: প্রশ্ন ও অপশন
         const quizData = [
             {
                 question: "১. গণপরিষদের প্রথম অস্থায়ী সভাপতি কে ছিলেন?",
                 options: ["ডঃ সচ্চিদানন্দ সিনহা", "ডঃ রাজেন্দ্র প্রসাদ", "ডঃ বি. আর. আম্বেদকর", "জওহরলাল নেহেরু"],
-                answer: 0 // 0 মানে প্রথম অপশনটা সঠিক
+                answer: 0 
             },
             {
                 question: "২. ভারতের সংবিধান কবে গৃহীত হয়?",
                 options: ["২৬ শে জানুয়ারি, ১৯৫০", "২৬ শে নভেম্বর, ১৯৪৯", "১৫ ই আগস্ট, ১৯৪৭", "২৪ শে জানুয়ারি, ১৯৫০"],
-                answer: 1 // 1 মানে দ্বিতীয় অপশনটা সঠিক
+                answer: 1 
             },
             {
                 question: "৩. ভারতীয় সংবিধানের খসড়া কমিটির চেয়ারম্যান কে ছিলেন?",
                 options: ["মহাত্মা গান্ধী", "সর্দার বল্লভভাই প্যাটেল", "ডঃ বি. আর. আম্বেদকর", "ডঃ রাজেন্দ্র প্রসাদ"],
-                answer: 2 // 2 মানে তৃতীয় অপশনটা সঠিক
+                answer: 2 
             }
         ];
 
@@ -203,19 +222,17 @@
         const scoreTxt = document.getElementById("score-txt");
 
         function loadQuestion() {
+            // Reset everything for new question
             clearInterval(timerInterval);
             timeLeft = 30;
             timerTxt.innerText = timeLeft;
-            nextBtn.style.visibility = "hidden"; // অপশন ক্লিক করার আগে Next বাটন লুকানো থাকবে
+            nextBtn.style.visibility = "hidden"; 
 
             let currentQ = quizData[currentQIndex];
             
-            // প্রশ্ন এবং কাউন্টার সেট করা
             questionEl.innerText = currentQ.question;
-            // বাংলা সংখ্যা দেখানোর জন্য ছোট্ট ট্রিক
             qCounterTxt.innerText = `${currentQIndex + 1} / ${quizData.length}`;
 
-            // অপশনগুলো জেনারেট করা
             optionsContainer.innerHTML = "";
             currentQ.options.forEach((opt, index) => {
                 const btn = document.createElement("button");
@@ -225,35 +242,31 @@
                 optionsContainer.appendChild(btn);
             });
 
-            startTimer();
-        }
-
-        function startTimer() {
+            // Start Timer safely
             timerInterval = setInterval(() => {
                 timeLeft--;
                 timerTxt.innerText = timeLeft;
                 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
-                    autoShowAnswer(); // সময় শেষ হলে সঠিক উত্তর দেখিয়ে দেবে
+                    autoShowAnswer(); 
                 }
             }, 1000);
         }
 
         function checkAnswer(selectedIndex, btnElement) {
-            clearInterval(timerInterval); // ক্লিক করলেই টাইমার থেমে যাবে
+            clearInterval(timerInterval); // অপশনে ক্লিক করলেই টাইমার থেমে যাবে!
+            
             let correctIndex = quizData[currentQIndex].answer;
             let allBtns = optionsContainer.children;
 
-            // অপশনগুলো লক করা
             for (let i = 0; i < allBtns.length; i++) {
                 allBtns[i].classList.add("disabled");
                 if (i === correctIndex) {
-                    allBtns[i].classList.add("correct"); // সঠিক উত্তরকে সবুজ করা
+                    allBtns[i].classList.add("correct"); 
                 }
             }
 
-            // যদি ক্লিক করা অপশনটা ভুল হয়, তবে সেটাকে লাল করা
             if (selectedIndex === correctIndex) {
                 score++;
                 scoreTxt.innerText = score;
@@ -261,7 +274,7 @@
                 btnElement.classList.add("wrong");
             }
 
-            nextBtn.style.visibility = "visible"; // Next বাটন দেখানো
+            nextBtn.style.visibility = "visible";
         }
 
         function autoShowAnswer() {
@@ -271,7 +284,7 @@
             for (let i = 0; i < allBtns.length; i++) {
                 allBtns[i].classList.add("disabled");
                 if (i === correctIndex) {
-                    allBtns[i].classList.add("correct"); // সময় শেষ হলে শুধু সঠিকটা সবুজ হবে
+                    allBtns[i].classList.add("correct"); 
                 }
             }
             nextBtn.style.visibility = "visible";
@@ -292,7 +305,6 @@
             document.getElementById("final-score-text").innerText = `${score} / ${quizData.length}`;
         }
 
-        // প্রথম প্রশ্ন লোড করা
         window.onload = loadQuestion;
     </script>
 </body>
