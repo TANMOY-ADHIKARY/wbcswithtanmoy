@@ -11,22 +11,24 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f8f9fa;
+    overflow-x: hidden; /* পুরো পেজটাকে ডানদিকে সরতে বাধা দেওয়ার জন্য */
+    width: 100%;
+    padding-bottom: 50px; /* Ticker-এর জন্য নিচে জায়গা রাখা হলো */
 }
 
 /* ---------------------------------
-   Top Header & Navigation
+   Top Header (Logo & Title)
 ------------------------------------ */
 .top-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 30px;
+    justify-content: center;
+    padding: 20px 0 10px 0;
     background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    position: relative;
-    height: 70px;
+    width: 100%;
 }
 
 .top-logo {
@@ -36,10 +38,7 @@ body {
 
 /* কালারফুল হেডিং */
 .main-title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
+    margin-top: 10px;
     font-size: 32px;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
@@ -48,49 +47,68 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-/* পুরো পেজটাকে ডানদিকে সরতে বাধা দেওয়ার জন্য */
-body {
-    overflow-x: hidden;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+/* ---------------------------------
+   Website Info Bar (Estd & Location)
+------------------------------------ */
+.site-info-bar {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 8px 0 15px 0;
+    font-size: 14px;
+    color: #7f8c8d;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
-.top-header {
-    width: 100%;
-    box-sizing: border-box;
+.site-info-bar .separator {
+    margin: 0 10px;
+    color: #bdc3c7;
 }
 
-/* মেনুগুলো যাতে এক লাইনে থাকে এবং সাদা বাক্সের ভেতরে থাকে */
+/* ---------------------------------
+   Top Navigation (Dark Blue Menu)
+------------------------------------ */
 .top-nav {
     display: flex;
-    justify-content: flex-start; 
+    justify-content: center;
     flex-wrap: nowrap;
-    gap: 15px;
-    overflow-x: auto; 
-    white-space: nowrap;
-    width: 100%; 
-    box-sizing: border-box;
-    padding: 10px 15px;
+    gap: 30px; /* মেনুর মাঝের ফাঁকা জায়গা */
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 2px solid #ddd;
+    width: 100%;
+    overflow-x: auto;
 }
 
-/* মোবাইলের বাজে স্ক্রলবার লুকানোর জন্য */
+.top-nav a {
+    font-size: 18px; /* বড় ফন্ট */
+    font-weight: 800; /* বোল্ড লেখা */
+    color: #00008B; /* ডার্ক ব্লু কালার */
+    text-decoration: none;
+    text-transform: uppercase; /* সব বড় হাতের অক্ষর */
+    white-space: nowrap; /* লেখা নিচে নামবে না */
+    transition: color 0.3s ease;
+}
+
+.top-nav a:hover {
+    color: #e74c3c; /* মাউস নিলে লাল হবে */
+}
+
+/* স্ক্রলবার লুকানোর জন্য */
 .top-nav::-webkit-scrollbar {
     display: none;
 }
-/* স্ক্রলবারটা দেখতে খারাপ লাগে, তাই ওটা লুকিয়ে দেওয়ার জন্য এই কোড */
-.top-nav::-webkit-scrollbar {
-    display: none;
-}
+
 /* ---------------------------------
    Layout Container (Sidebar & Main)
 ------------------------------------ */
 .container {
     display: flex;
     flex: 1;
-    overflow: hidden;
     flex-direction: row;
 }
 
@@ -156,7 +174,7 @@ main {
 }
 
 /* ---------------------------------
-   Responsive Design (Mobile)
+   Responsive Design (Mobile Fixes)
 ------------------------------------ */
 @media screen and (max-width: 768px) {
     .container {
@@ -165,42 +183,39 @@ main {
     
     aside {
         width: 100%;
-        margin-bottom: 20px;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
     }
 
-    .top-header {
-        flex-direction: column;
-        height: auto;
-        padding: 15px;
+    main {
+        padding: 20px;
     }
 
     .main-title {
-        position: static;
-        transform: none;
-        font-size: 24px;
-        margin: 15px 0;
-        text-align: center;
+        font-size: 26px;
     }
-
+    
+    /* মোবাইলের জন্য মেনু সেটিং */
     .top-nav {
-        margin-top: 10px;
+        justify-content: flex-start !important; 
+        gap: 15px !important;
+        padding: 12px 15px !important;
     }
 
     .top-nav a {
-        display: inline-block;
-        margin: 0 10px;
+        font-size: 15px !important; /* ফোনে ফন্ট একটু ছোট হবে */
     }
 }
 
-/* =========================================
-   Scrolling Notification Ticker Styling
-========================================== */
+/* ---------------------------------
+   Scrolling Notification Ticker
+------------------------------------ */
 .scrolling-ticker {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%); /* সুন্দর নীল গ্রেডিয়েন্ট */
+    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
     color: #fff;
     padding: 10px 0;
     overflow: hidden;
@@ -214,10 +229,9 @@ main {
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 1px;
-    animation: scrollText 25s linear infinite; /* ২৫ সেকেন্ডে একবার ঘুরবে */
+    animation: scrollText 25s linear infinite;
 }
 
-/* NEW লেখাটার জন্য লাল রঙের ব্লিঙ্কিং ব্যাজ */
 .new-badge {
     background-color: #ff4757;
     color: white;
@@ -229,39 +243,19 @@ main {
     animation: blink 1s infinite alternate; 
 }
 
-/* লেখাটা ডানদিক থেকে বাঁদিকে যাওয়ার অ্যানিমেশন */
 @keyframes scrollText {
     0% { transform: translateX(100vw); }
     100% { transform: translateX(-100%); }
 }
 
-/* NEW ব্যাজটার ব্লিঙ্ক করার অ্যানিমেশন */
 @keyframes blink {
     0% { opacity: 1; box-shadow: 0 0 8px #ff4757; }
     100% { opacity: 0.6; box-shadow: none; }
 }
 
-/* ওয়েবসাইটের মূল কন্টেন্ট যাতে এর নিচে ঢাকা না পড়ে যায় */
-body {
-    padding-bottom: 50px; 
-}
-/* Website Info Bar Styling */
-.site-info-bar {
-    background-color: #f8f9fa;
-    text-align: center;
-    padding: 8px 0;
-    font-size: 14px;
-    color: #7f8c8d;
-    font-weight: bold;
-    border-bottom: 1px solid #e2e8f0;
-    letter-spacing: 0.5px;
-}
-
-.site-info-bar .separator {
-    margin: 0 10px;
-    color: #bdc3c7;
-}
-/* Footer Styling */
+/* ---------------------------------
+   Footer Styling
+------------------------------------ */
 .site-footer {
     background-color: #e9ecef;
     color: #333;
@@ -287,18 +281,4 @@ body {
 .social-links a:hover {
     color: #2980b9;
     text-decoration: underline;
-}
-
-/* মোবাইলের জন্য জোর করে এক লাইনে রাখার কোড */
-@media (max-width: 600px) {
-    .top-nav {
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        justify-content: flex-start !important; 
-        gap: 8px !important;
-    }
-    .top-nav a {
-        font-size: 14px !important; 
-        white-space: nowrap !important;
-    }
 }
