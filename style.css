@@ -176,9 +176,13 @@ body {
 /* ---------------------------------
    Main Content Area (ডানদিকের চ্যাপ্টার)
 ------------------------------------ */
+/* ---------------------------------
+   Main Content Area (ডানদিকের চ্যাপ্টার)
+------------------------------------ */
 .content-area {
-    flex: 1 1 0; /* Takes up the remaining available space */
+    flex: 1 1 0; 
     min-width: 0; 
+    padding-left: 30px; /* Sidebar theke ektu dure soralam */
 }
 
 .subject-heading {
@@ -187,6 +191,7 @@ body {
     margin-top: 0;
     margin-bottom: 30px;
     font-weight: 800;
+    text-align: center; /* Heading-take majhkhan-e anar jonno */
 }
 
 /* Colorful Chapter Card */
@@ -197,7 +202,10 @@ body {
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(231, 76, 60, 0.1);
     transition: transform 0.3s ease;
-    margin-bottom: 25px;
+    
+    /* Box-take majhkhan-e anar jonno nicher code gulo add kora holo */
+    max-width: 850px; /* Box-ta jate osavabik boro na hoye jay */
+    margin: 0 auto 25px auto; /* Box-take dan-diker jaygar majhaborabor set korbe */
 }
 
 .chapter-card:hover {
@@ -210,7 +218,6 @@ body {
     font-size: 24px;
     color: #c0392b;
 }
-
 /* Coming Soon Badge */
 .coming-soon {
     background: linear-gradient(135deg, #fad961 0%, #f76b1c 100%);
