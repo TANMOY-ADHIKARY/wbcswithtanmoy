@@ -3,34 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Indian Polity Mock Test - Premium App</title>
+    <title>Indian Polity Mock Test - WBCS With Tanmoy</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
     <style>
         /* =========================================
-           Premium Colorful App Layout (Scrollable Fix)
+           Premium Mock Test App Layout
         ========================================= */
-        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        /* বডির কালারফুল ব্যাকগ্রাউন্ড এবং স্ক্রল চালু করা হলো */
-        body, html { 
+        /* মক টেস্ট এরিয়ার ব্যাকগ্রাউন্ড */
+        .mock-test-wrapper {
             background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-            min-height: 100vh; 
+            padding: 40px 15px;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
+        /* মূল অ্যাপ কন্টেইনার */
         .app-container { 
             width: 100%; 
-            max-width: 480px; 
+            max-width: 500px; 
             background: #ffffff; 
-            min-height: 100vh; /* height এর বদলে min-height দিলাম যাতে কনটেন্ট বাড়লে বড় হয় */
-            margin: 0 auto;
+            border-radius: 20px; 
             display: flex;
             flex-direction: column;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            border-left: 2px solid #e1e8ed;
-            border-right: 2px solid #e1e8ed;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 2px solid #ffffff;
+            overflow: hidden; /* বর্ডার রেডিয়াস ঠিক রাখার জন্য */
+            min-height: 600px;
         }
 
-        /* Top Bar (Sticky - স্ক্রল করলেও ওপরে আটকে থাকবে) */
-        .top-bar {
+        /* Top Bar (Sticky) */
+        .quiz-top-bar {
             position: sticky;
             top: 0;
             z-index: 100;
@@ -43,7 +51,6 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        /* রঙিন বর্ডার যুক্ত টাইমার, কাউন্টার ও স্কোর */
         .timer { 
             font-weight: bold; 
             color: #d35400; 
@@ -81,7 +88,6 @@
             background: #fafbfc; 
         }
 
-        /* Question Box */
         .question-box {
             background: #ebf5fb;
             border: 3px solid #2980b9;
@@ -95,12 +101,7 @@
             box-shadow: 0 4px 10px rgba(41, 128, 185, 0.15);
         }
 
-        /* Options */
-        .options-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .options-container { display: flex; flex-direction: column; gap: 15px; }
 
         .option-btn {
             width: 100%;
@@ -119,7 +120,6 @@
 
         .option-btn:active { transform: scale(0.98); }
 
-        /* গাঢ় Correct / Wrong Colors */
         .correct { 
             background: #27ae60 !important; 
             color: #ffffff !important; 
@@ -136,7 +136,6 @@
         
         .disabled { pointer-events: none; opacity: 1; }
 
-        /* Next Button */
         .next-btn {
             width: 100%;
             background: #c0392b; 
@@ -162,9 +161,9 @@
         .result-screen {
             display: none;
             text-align: center;
-            padding: 50px 20px;
-            min-height: 100vh;
+            padding: 60px 20px;
             background: #ffffff;
+            height: 100%;
         }
         .result-screen h2 { color: #2d3436; margin-bottom: 20px; font-size: 28px; font-weight: 900; }
         .result-screen .final-score { font-size: 45px; color: #009432; font-weight: 900; margin-bottom: 40px; }
@@ -178,34 +177,63 @@
             font-size: 18px;
             border: 2px solid #1f618d;
             box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3);
+            display: inline-block;
+        }
+
+        /* Mobile View Adjustment */
+        @media screen and (max-width: 600px) {
+            .mock-test-wrapper { padding: 20px 10px; }
+            .app-container { border-radius: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
-        <div class="result-screen" id="result-screen">
-            <h2>টেস্ট শেষ হয়েছে! 🎉</h2>
-            <div class="final-score" id="final-score-text">0 / 0</div>
-            <a href="mocktest.html" class="home-btn">মেইন মেনুতে ফিরুন</a>
-        </div>
+    <header class="top-header">
+        <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo" onerror="this.style.display='none'">
+        <h1 class="main-title">WBCS WITH TANMOY</h1>
+    </header>
 
-        <div id="quiz-screen" style="display: flex; flex-direction: column; min-height: 100vh;">
+    <div class="site-info-bar">
+        <span>📅 Estd: 19.06.2026</span>
+        <span class="separator">|</span>
+        <span>📍 Alipurduar</span>
+    </div>
+
+    <nav class="top-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html">Notes</a>
+        <a href="https://drive.google.com/drive/folders/1xMzQB4SyceBRpZ4D2lC6p97Y64Jwjamy?usp=drive_link" target="_blank">Syllabus</a>
+        <a href="https://drive.google.com/drive/folders/1nXT_2jDf4UpzG0d_zwPrDGf4nYcMUpVm?usp=sharing" target="_blank">Pyq</a>
+        <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
+        <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
+    </nav>
+
+
+    <div class="mock-test-wrapper">
+        <div class="app-container">
             
-            <div class="top-bar">
-                <div class="timer">⏱ <span id="timer-txt">30</span>s</div>
-                <div class="q-counter" id="q-counter-txt">১ / ৩</div>
-                <div class="score-board">Score: <span id="score-txt">0</span></div>
+            <div class="result-screen" id="result-screen">
+                <h2>টেস্ট শেষ হয়েছে! 🎉</h2>
+                <div class="final-score" id="final-score-text">0 / 0</div>
+                <a href="mocktest.html" class="home-btn">মেইন মেনুতে ফিরুন</a>
             </div>
 
-            <div class="quiz-content">
-                <div class="question-box" id="question-text"></div>
+            <div id="quiz-screen" style="display: flex; flex-direction: column; height: 100%;">
                 
-                <div class="options-container" id="options-container"></div>
+                <div class="quiz-top-bar">
+                    <div class="timer">⏱ <span id="timer-txt">30</span>s</div>
+                    <div class="q-counter" id="q-counter-txt">১ / ৩</div>
+                    <div class="score-board">Score: <span id="score-txt">0</span></div>
+                </div>
 
-                <button class="next-btn" id="next-btn" onclick="goNext()">Next Question ➔</button>
+                <div class="quiz-content">
+                    <div class="question-box" id="question-text"></div>
+                    <div class="options-container" id="options-container"></div>
+                    <button class="next-btn" id="next-btn" onclick="goNext()">Next Question ➔</button>
+                </div>
+                
             </div>
-            
         </div>
     </div>
 
@@ -260,9 +288,6 @@
                 btn.onclick = () => checkAnswer(index, btn);
                 optionsContainer.appendChild(btn);
             });
-
-            // স্ক্রিনের শুরুতে নিয়ে যাওয়ার জন্য
-            window.scrollTo({ top: 0, behavior: 'smooth' });
 
             timerInterval = setInterval(() => {
                 timeLeft--;
@@ -321,6 +346,8 @@
             currentQIndex++;
             if (currentQIndex < quizData.length) {
                 loadQuestion();
+                // নতুন প্রশ্ন এলে পেজ স্ক্রল করে অ্যাপের উপরে যাবে, হেডারে নয়
+                document.querySelector('.app-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
                 showResult();
             }
@@ -330,7 +357,7 @@
             document.getElementById("quiz-screen").style.display = "none";
             document.getElementById("result-screen").style.display = "block";
             document.getElementById("final-score-text").innerText = `${score} / ${quizData.length}`;
-            window.scrollTo({ top: 0 });
+            document.querySelector('.app-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         window.onload = loadQuestion;
