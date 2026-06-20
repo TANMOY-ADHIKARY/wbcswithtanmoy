@@ -13,9 +13,9 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #f8f9fa;
-    overflow-x: hidden; /* পুরো পেজটাকে ডানদিকে সরতে বাধা দেওয়ার জন্য */
+    overflow-x: hidden;
     width: 100%;
-    padding-bottom: 50px; /* Ticker-এর জন্য নিচে জায়গা রাখা হলো */
+    padding-bottom: 50px;
 }
 
 /* ---------------------------------
@@ -36,7 +36,6 @@ body {
     height: auto;
 }
 
-/* কালারফুল হেডিং */
 .main-title {
     margin-top: 10px;
     font-size: 32px;
@@ -75,7 +74,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
-    gap: 30px; /* মেনুর মাঝের ফাঁকা জায়গা */
+    gap: 30px;
     padding: 15px 20px;
     background-color: #f8f9fa;
     border-top: 1px solid #eaeaea;
@@ -85,39 +84,46 @@ body {
 }
 
 .top-nav a {
-    font-size: 18px; /* বড় ফন্ট */
-    font-weight: 800; /* বোল্ড লেখা */
-    color: #00008B; /* ডার্ক ব্লু কালার */
+    font-size: 18px;
+    font-weight: 800;
+    color: #00008B;
     text-decoration: none;
-    text-transform: uppercase; /* সব বড় হাতের অক্ষর */
-    white-space: nowrap; /* লেখা নিচে নামবে না */
+    text-transform: uppercase;
+    white-space: nowrap;
     transition: color 0.3s ease;
 }
 
 .top-nav a:hover {
-    color: #e74c3c; /* মাউস নিলে লাল হবে */
+    color: #e74c3c;
 }
 
-/* স্ক্রলবার লুকানোর জন্য */
 .top-nav::-webkit-scrollbar {
     display: none;
 }
 
 /* ---------------------------------
-   Layout Container (Sidebar & Main)
+   Layout Container (ল্যাপটপে পাশাপাশি রাখার ডিজাইন)
 ------------------------------------ */
 .container {
     display: flex;
-    flex: 1;
-    flex-direction: row;
+    flex-direction: row; /* ল্যাপটপে বক্সগুলো পাশাপাশি থাকবে */
+    width: 100%;
+    max-width: 1200px; /* পেজটাকে স্ক্রিনের ঠিক মাঝখানে রাখবে */
+    margin: 30px auto; /* ওপর থেকে একটু ফাঁকা দিয়ে মাঝখানে আনবে */
+    align-items: flex-start;
+    padding: 0 15px;
 }
 
+/* বাঁ-দিকের সাবজেক্ট লিস্ট */
 aside {
-    width: 260px;
+    width: 280px; 
+    min-width: 280px;
     background-color: #ffffff;
-    border-right: 1px solid #e0e0e0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px; /* একটু গোল বর্ডার */
     padding: 20px 0;
-    overflow-y: auto;
+    margin-right: 30px; /* ডানদিকের চ্যাপ্টার বক্সের সাথে সুন্দর ফাঁকা জায়গা */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* হালকা শ্যাডো */
 }
 
 aside h3 {
@@ -146,19 +152,21 @@ aside ul li:hover, aside ul li.active {
 }
 
 /* ---------------------------------
-   Main Content Area
+   Main Content Area (ডানদিকের চ্যাপ্টার বক্স)
 ------------------------------------ */
 main {
-    flex: 1;
+    flex: 1; /* ডানদিকের বাকি পুরো ফাঁকা জায়গাটা নিয়ে নেবে */
+    background: #ffffff;
     padding: 40px;
-    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
 .note-box {
-    background: #ffffff;
+    background: #f8f9fa;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     border: 1px solid #eee;
 }
 
@@ -174,17 +182,20 @@ main {
 }
 
 /* ---------------------------------
-   Responsive Design (Mobile Fixes)
+   Responsive Design (মোবাইলের জন্য সেটিং)
 ------------------------------------ */
 @media screen and (max-width: 768px) {
     .container {
-        flex-direction: column;
+        flex-direction: column; /* মোবাইলে নিচে নিচে আসবে */
+        margin: 15px auto;
+        padding: 10px;
     }
     
     aside {
         width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #e0e0e0;
+        min-width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 
     main {
@@ -195,7 +206,6 @@ main {
         font-size: 26px;
     }
     
-    /* মোবাইলের জন্য মেনু সেটিং */
     .top-nav {
         justify-content: flex-start !important; 
         gap: 15px !important;
@@ -203,7 +213,7 @@ main {
     }
 
     .top-nav a {
-        font-size: 15px !important; /* ফোনে ফন্ট একটু ছোট হবে */
+        font-size: 15px !important;
     }
 }
 
