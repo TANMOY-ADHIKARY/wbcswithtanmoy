@@ -9,11 +9,10 @@
     
     <style>
         /* =========================================
-           Compact & Premium Mock Test App Layout
+           Stable & Premium Mock Test App Layout
         ========================================= */
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        /* মক টেস্ট এরিয়ার ব্যাকগ্রাউন্ড */
         .mock-test-wrapper {
             background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
             padding: 30px 15px;
@@ -23,7 +22,6 @@
             align-items: flex-start;
         }
 
-        /* মূল অ্যাপ কন্টেইনার (উচ্চতা অটোমেটিক অ্যাডজাস্ট হবে) */
         .app-container { 
             width: 100%; 
             max-width: 480px; 
@@ -34,10 +32,9 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             border: 2px solid #ffffff;
             overflow: hidden; 
-            height: auto; /* আগে 600px ছিল, তাই লম্বা লাগতো। এখন ঠিকমতো ফিট হবে। */
+            height: auto; 
         }
 
-        /* Top Bar */
         .quiz-top-bar {
             position: sticky;
             top: 0;
@@ -80,14 +77,12 @@
             border-radius: 15px;
         }
 
-        /* Quiz Content Area (Padding কমানো হয়েছে) */
         .quiz-content {
             padding: 20px 15px;
             background: #fafbfc; 
             height: auto;
         }
 
-        /* Question Box (আরও ছোট ও সুন্দর) */
         .question-box {
             background: #ebf5fb;
             border: 2px solid #2980b9;
@@ -101,7 +96,6 @@
             box-shadow: 0 3px 8px rgba(41, 128, 185, 0.1);
         }
 
-        /* Options (Gap ও Padding কমানো হয়েছে) */
         .options-container { display: flex; flex-direction: column; gap: 10px; }
 
         .option-btn {
@@ -137,7 +131,6 @@
         
         .disabled { pointer-events: none; opacity: 1; }
 
-        /* Next Button (ঠিক অপশনের নিচে) */
         .next-btn {
             width: 100%;
             background: #c0392b; 
@@ -148,8 +141,9 @@
             font-size: 16px;
             font-weight: 900;
             cursor: pointer;
-            display: none; 
-            margin-top: 20px; /* অপশনের ঠিক হালকা নিচে */
+            display: block; 
+            visibility: hidden; /* পেজ লাফানো বন্ধ করতে এই ট্রিকটি ব্যবহার করা হলো */
+            margin-top: 20px; 
             margin-bottom: 10px;
             box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
             text-transform: uppercase;
@@ -159,7 +153,6 @@
 
         .next-btn:active { transform: scale(0.95); }
 
-        /* Result Screen */
         .result-screen {
             display: none;
             text-align: center;
@@ -209,7 +202,6 @@
         <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
         <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
     </nav>
-
 
     <div class="mock-test-wrapper">
         <div class="app-container">
@@ -274,7 +266,7 @@
             clearInterval(timerInterval);
             timeLeft = 30;
             timerTxt.innerText = timeLeft;
-            nextBtn.style.display = "none"; 
+            nextBtn.style.visibility = "hidden"; // জায়গা ধরে রাখবে, শুধু অদৃশ্য থাকবে
 
             let currentQ = quizData[currentQIndex];
             
@@ -321,10 +313,7 @@
                 btnElement.classList.add("wrong");
             }
 
-            nextBtn.style.display = "block"; 
-            setTimeout(() => {
-                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
+            nextBtn.style.visibility = "visible"; // বাটনটা দৃশ্যমান হবে, কিন্তু পেজ লাফাবে না
         }
 
         function autoShowAnswer() {
@@ -337,17 +326,14 @@
                     allBtns[i].classList.add("correct"); 
                 }
             }
-            nextBtn.style.display = "block";
-            setTimeout(() => {
-                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
+            nextBtn.style.visibility = "visible";
         }
 
         function goNext() {
             currentQIndex++;
             if (currentQIndex < quizData.length) {
                 loadQuestion();
-                document.querySelector('.app-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // পরের প্রশ্নে গেলে পেজ স্মুথলি ওপরে যাবে
             } else {
                 showResult();
             }
@@ -357,7 +343,7 @@
             document.getElementById("quiz-screen").style.display = "none";
             document.getElementById("result-screen").style.display = "block";
             document.getElementById("final-score-text").innerText = `${score} / ${quizData.length}`;
-            document.querySelector('.app-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         window.onload = loadQuestion;
