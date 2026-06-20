@@ -165,4 +165,188 @@
         .home-btn {
             text-decoration: none;
             background: #2980b9;
-            color
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 16px;
+            border: 2px solid #1f618d;
+            box-shadow: 0 4px 8px rgba(41, 128, 185, 0.3);
+            display: inline-block;
+        }
+
+        @media screen and (max-width: 600px) {
+            .mock-test-wrapper { padding: 20px 10px; }
+            .app-container { border-radius: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo" onerror="this.style.display='none'">
+        <h1 class="main-title">WBCS WITH TANMOY</h1>
+    </header>
+
+    <div class="site-info-bar">
+        <span>📅 Estd: 19.06.2026</span>
+        <span class="separator">|</span>
+        <span>📍 Alipurduar</span>
+    </div>
+
+    <nav class="top-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html">Notes</a>
+        <a href="https://drive.google.com/drive/folders/1xMzQB4SyceBRpZ4D2lC6p97Y64Jwjamy?usp=drive_link" target="_blank">Syllabus</a>
+        <a href="https://drive.google.com/drive/folders/1nXT_2jDf4UpzG0d_zwPrDGf4nYcMUpVm?usp=sharing" target="_blank">Pyq</a>
+        <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
+        <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
+    </nav>
+
+    <div class="mock-test-wrapper">
+        <div class="app-container">
+            
+            <div class="result-screen" id="result-screen">
+                <h2>টেস্ট শেষ হয়েছে! 🎉</h2>
+                <div class="final-score" id="final-score-text">0 / 0</div>
+                <a href="mocktest.html" class="home-btn">মেইন মেনুতে ফিরুন</a>
+            </div>
+
+            <div id="quiz-screen" style="display: flex; flex-direction: column; height: auto;">
+                
+                <div class="quiz-top-bar">
+                    <div class="timer">⏱ <span id="timer-txt">30</span>s</div>
+                    <div class="q-counter" id="q-counter-txt">১ / ৩</div>
+                    <div class="score-board">Score: <span id="score-txt">0</span></div>
+                </div>
+
+                <div class="quiz-content">
+                    <div class="question-box" id="question-text"></div>
+                    <div class="options-container" id="options-container"></div>
+                    
+                    <button class="next-btn" id="next-btn" onclick="goNext()">Next Question ➔</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "১. গণপরিষদের প্রথম অস্থায়ী সভাপতি কে ছিলেন?",
+                options: ["ডঃ সচ্চিদানন্দ সিনহা", "ডঃ রাজেন্দ্র প্রসাদ", "ডঃ বি. আর. আম্বেদকর", "জওহরলাল নেহেরু"],
+                answer: 0 
+            },
+            {
+                question: "২. ভারতের সংবিধান কবে গৃহীত হয়?",
+                options: ["২৬ শে জানুয়ারি, ১৯৫০", "২৬ শে নভেম্বর, ১৯৪৯", "১৫ ই আগস্ট, ১৯৪৭", "২৪ শে জানুয়ারি, ১৯৫০"],
+                answer: 1 
+            },
+            {
+                question: "৩. ভারতীয় সংবিধানের খসড়া কমিটির চেয়ারম্যান কে ছিলেন?",
+                options: ["মহাত্মা গান্ধী", "সর্দার বল্লভভাই প্যাটেল", "ডঃ বি. আর. আম্বেদকর", "ডঃ রাজেন্দ্র প্রসাদ"],
+                answer: 2 
+            }
+        ];
+
+        let currentQIndex = 0;
+        let score = 0;
+        let timeLeft = 30;
+        let timerInterval;
+
+        const questionEl = document.getElementById("question-text");
+        const optionsContainer = document.getElementById("options-container");
+        const nextBtn = document.getElementById("next-btn");
+        const timerTxt = document.getElementById("timer-txt");
+        const qCounterTxt = document.getElementById("q-counter-txt");
+        const scoreTxt = document.getElementById("score-txt");
+
+        function loadQuestion() {
+            clearInterval(timerInterval);
+            timeLeft = 30;
+            timerTxt.innerText = timeLeft;
+            nextBtn.style.visibility = "hidden"; // নতুন প্রশ্ন এলেই শুধু অদৃশ্য হবে, জায়গা ধরে রাখবে
+
+            let currentQ = quizData[currentQIndex];
+            
+            questionEl.innerText = currentQ.question;
+            qCounterTxt.innerText = `${currentQIndex + 1} / ${quizData.length}`;
+
+            optionsContainer.innerHTML = "";
+            currentQ.options.forEach((opt, index) => {
+                const btn = document.createElement("button");
+                btn.classList.add("option-btn");
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerTxt.innerText = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    autoShowAnswer(); 
+                }
+            }, 1000);
+        }
+
+        function checkAnswer(selectedIndex, btnElement) {
+            clearInterval(timerInterval); 
+            
+            let correctIndex = quizData[currentQIndex].answer;
+            let allBtns = optionsContainer.children;
+
+            for (let i = 0; i < allBtns.length; i++) {
+                allBtns[i].classList.add("disabled");
+                if (i === correctIndex) {
+                    allBtns[i].classList.add("correct"); 
+                }
+            }
+
+            if (selectedIndex === correctIndex) {
+                score++;
+                scoreTxt.innerText = score;
+            } else {
+                btnElement.classList.add("wrong");
+            }
+
+            nextBtn.style.visibility = "visible"; // বাটনটা দৃশ্যমান হবে, এবং গায়েব হবে না
+        }
+
+        function autoShowAnswer() {
+            let correctIndex = quizData[currentQIndex].answer;
+            let allBtns = optionsContainer.children;
+
+            for (let i = 0; i < allBtns.length; i++) {
+                allBtns[i].classList.add("disabled");
+                if (i === correctIndex) {
+                    allBtns[i].classList.add("correct"); 
+                }
+            }
+            nextBtn.style.visibility = "visible"; // সময় শেষ হলেও বাটনটা দৃশ্যমান হবে
+        }
+
+        function goNext() {
+            currentQIndex++;
+            if (currentQIndex < quizData.length) {
+                loadQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quiz-screen").style.display = "none";
+            document.getElementById("result-screen").style.display = "block";
+            document.getElementById("final-score-text").innerText = `${score} / ${quizData.length}`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>
