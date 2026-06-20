@@ -179,6 +179,18 @@
             .mock-test-wrapper { padding: 20px 10px; }
             .app-container { border-radius: 12px; }
         }
+        /* ল্যাপটপের জন্য অ্যাডজাস্টমেন্ট */
+    @media screen and (min-width: 769px) {
+        .app-container {
+            max-width: 500px !important; /* ল্যাপটপে বক্সটা ছোট থাকবে */
+            margin: 20px auto !important; /* মাঝখানে রাখার জন্য */
+            min-height: auto !important;
+        }
+        .mock-test-wrapper {
+            min-height: auto !important;
+            padding-top: 20px !important;
+        }
+    }
     </style>
 </head>
 <body>
