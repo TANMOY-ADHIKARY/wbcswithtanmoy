@@ -1,320 +1,59 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mock Test - WBCS With Tanmoy</title>
-    <!-- তোমার ওয়েবসাইটের মূল ডিজাইন লিংক করা থাকলো -->
+    <title>Mock Test Portal - WBCS With Tanmoy</title>
     <link rel="stylesheet" href="style.css">
-    
-    <style>
-        /* Mock Test পেজের স্পেশাল ডিজাইন */
-        .mocktest-wrapper {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 15px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        /* ওপরের ইনফো টেবিল */
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            background: white;
-        }
-        .info-table th, .info-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* মেইন কুইজ কার্ড (লাল ড্যাশড বর্ডার) */
-        .quiz-card {
-            background-color: #e8eef9;
-            border: 1px dashed #d32f2f;
-            border-radius: 12px;
-            padding: 20px;
-            position: relative;
-        }
-
-        /* টাইমার এবং স্কোর */
-        .quiz-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-        .timer {
-            color: #0a7e0a;
-        }
-        .score {
-            color: #333;
-        }
-
-        /* প্রশ্ন এবং ব্যাজ */
-        .question-container {
-            position: relative;
-            background: white;
-            border: 2px solid #2196F3;
-            border-radius: 10px;
-            padding: 35px 20px 20px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .question-badge {
-            position: absolute;
-            top: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            border: 2px solid red;
-            border-radius: 50px;
-            padding: 8px 15px;
-            font-size: 16px;
-            color: #00008B;
-            font-weight: bold;
-        }
-
-        /* অপশন বাটনগুলো */
-        .options-box {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
-        
-        .option-btn {
-            background-color: #b3e5fc;
-            border: 1px solid #0288d1;
-            border-radius: 25px; /* পিল শেপ */
-            padding: 12px 20px;
-            font-size: 16px;
-            color: #333;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-        
-        .option-btn:hover {
-            background-color: #81d4fa;
-        }
-
-        /* সঠিক ও ভুল উত্তরের কালার */
-        .option-btn.correct {
-            background-color: #008000 !important;
-            color: white !important;
-            border-color: #008000 !important;
-        }
-        
-        .option-btn.wrong {
-            background-color: #ff0000 !important;
-            color: white !important;
-            border-color: #ff0000 !important;
-        }
-
-        /* Next Question বাটন */
-        .next-btn-box {
-            text-align: center;
-            margin-top: 25px;
-        }
-        
-        .next-btn {
-            background-color: #b70000;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 25px;
-            font-size: 16px;
-            cursor: pointer;
-            display: none; /* প্রথমে লুকিয়ে থাকবে */
-            font-weight: bold;
-        }
-        .next-btn:hover {
-            background-color: #8b0000;
-        }
-    </style>
 </head>
 <body>
 
-    <!-- তোমার ওয়েবসাইটের টপ মেনু (যাতে আগের পেজে ফেরা যায়) -->
     <header class="top-header">
-        <h1 class="main-title" style="margin-top: 20px;">WBCS WITH TANMOY</h1>
+        <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo">
+        <h1 class="main-title">WBCS WITH TANMOY</h1>
     </header>
+
+    <div class="site-info-bar">
+        <span>📅 Estd: 19.06.2026</span>
+        <span class="separator">|</span>
+        <span>📍 Alipurduar</span>
+    </div>
+
     <nav class="top-nav">
         <a href="index.html">Home</a>
         <a href="index.html">Notes</a>
+        <a href="https://drive.google.com/drive/folders/1xMzQB4SyceBRpZ4D2lC6p97Y64Jwjamy?usp=drive_link" target="_blank">Syllabus</a>
+        <a href="https://drive.google.com/drive/folders/1nXT_2jDf4UpzG0d_zwPrDGf4nYcMUpVm?usp=sharing" target="_blank">Pyq</a>
+        <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
         <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
     </nav>
 
-    <!-- Mock Test Area -->
-    <div class="mocktest-wrapper">
+    <div class="container">
+        <!-- বাঁ-দিকের মেনু, যেখান থেকে তোমার আলাদা ফাইলগুলো খুলবে -->
+        <aside>
+            <h3>Mock Test Subjects</h3>
+            <ul id="menu-list">
+                <li onclick="window.location.href='polity.html'">Indian Polity</li>
+                <li onclick="window.location.href='history.html'">History of India</li>
+                <li onclick="window.location.href='geography.html'">Indian Geography</li>
+                <li onclick="window.location.href='science.html'">General Science</li>
+            </ul>
+        </aside>
         
-        <!-- Info Table -->
-        <table class="info-table">
-            <tr>
-                <td>মোট প্রশ্ন</td>
-                <td id="total-q">২৫টি</td>
-            </tr>
-            <tr>
-                <td>সময়</td>
-                <td>৩০ সেকেন্ড/ প্রশ্ন</td>
-            </tr>
-        </table>
-
-        <!-- Quiz Card -->
-        <div class="quiz-card">
-            <div class="quiz-header">
-                <div class="timer" id="timer">0:30</div>
-                <div class="score">score: <span id="score">0</span></div>
+        <!-- ডানদিকের ওয়েলকাম মেসেজ -->
+        <main>
+            <div style="text-align: center; padding: 60px 20px; border: 2px dashed #1976d2; border-radius: 10px; background: white;">
+                <h2 style="color: #d32f2f; font-size: 28px;">🎯 Welcome to Mock Test Portal</h2>
+                <p style="font-size: 18px; margin-top: 15px; color: #555; font-weight: bold;">
+                    বাঁ-দিকের মেনু থেকে তোমার পছন্দের সাবজেক্ট বেছে নাও এবং মক টেস্ট শুরু করো!
+                </p>
             </div>
-
-            <div class="question-container">
-                <div class="question-badge" id="question-badge">1 / 25</div>
-                <div id="question-text">গদর পার্টি কোথায় প্রতিষ্ঠিত হয়?</div>
-            </div>
-
-            <div class="options-box" id="options-box">
-                <!-- অপশনগুলো জাভাস্ক্রিপ্ট থেকে আসবে -->
-            </div>
-
-            <div class="next-btn-box">
-                <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next question</button>
-            </div>
-        </div>
-
+        </main>
     </div>
 
-    <!-- লজিক এবং ইন্টারঅ্যাকশন (JavaScript) -->
-    <script>
-        // তোমার প্রশ্ন এবং উত্তরগুলো এখানে পরপর সাজাবে
-        const quizData = [
-            {
-                question: "গদর পার্টি কোথায় প্রতিষ্ঠিত হয়?",
-                options: ["সানফ্রান্সিসকো", "ওয়াশিংটন", "নিউইয়র্ক", "লন্ডন"],
-                correctAnswerIndex: 0 // '0' মানে প্রথমটা সঠিক
-            },
-            {
-                question: "মানুষের আবিষ্কৃত প্রথম ধাতু কোনটি?",
-                options: ["অ্যালুমিনিয়াম", "তামা", "লোহা", "রুপো"],
-                correctAnswerIndex: 1 // '1' মানে দ্বিতীয়টা সঠিক
-            },
-            {
-                question: "ভারতের সংবিধান কবে গৃহীত হয়?",
-                options: ["১৯৪৭", "১৯৪৮", "১৯৪৯", "১৯৫০"],
-                correctAnswerIndex: 2
-            }
-        ];
+    <footer class="site-footer">
+        <p>© 2026 WBCS With Tanmoy - All Rights Reserved.</p>
+    </footer>
 
-        let currentQuestion = 0;
-        let score = 0;
-        let timeLeft = 30;
-        let timerInterval;
-
-        const timerEl = document.getElementById('timer');
-        const scoreEl = document.getElementById('score');
-        const badgeEl = document.getElementById('question-badge');
-        const questionTextEl = document.getElementById('question-text');
-        const optionsBox = document.getElementById('options-box');
-        const nextBtn = document.getElementById('next-btn');
-
-        // প্রশ্ন লোড করার ফাংশন
-        function loadQuestion() {
-            clearInterval(timerInterval);
-            timeLeft = 30;
-            timerEl.innerText = `0:${timeLeft}`;
-            timerEl.style.color = "#0a7e0a"; 
-            startTimer();
-
-            const currentQuiz = quizData[currentQuestion];
-            
-            // ব্যাজ এবং প্রশ্ন আপডেট
-            badgeEl.innerText = `${currentQuestion + 1} / ${quizData.length}`;
-            questionTextEl.innerText = currentQuiz.question;
-            
-            // অপশনগুলো ক্লিয়ার করে নতুন করে বসানো
-            optionsBox.innerHTML = '';
-            currentQuiz.options.forEach((opt, index) => {
-                const button = document.createElement('button');
-                button.classList.add('option-btn');
-                button.innerText = opt;
-                button.onclick = () => selectAnswer(index, button);
-                optionsBox.appendChild(button);
-            });
-
-            nextBtn.style.display = 'none'; // নেক্সট বাটন লুকানো
-        }
-
-        // উত্তর সিলেক্ট করার ফাংশন
-        function selectAnswer(selectedIndex, selectedBtn) {
-            clearInterval(timerInterval); // টাইমার বন্ধ হবে
-            
-            const currentQuiz = quizData[currentQuestion];
-            const allButtons = optionsBox.querySelectorAll('.option-btn');
-            
-            // সমস্ত বাটন নিষ্ক্রিয় (disable) করা
-            allButtons.forEach(btn => btn.disabled = true);
-
-            // সঠিক না ভুল চেক করা
-            if (selectedIndex === currentQuiz.correctAnswerIndex) {
-                selectedBtn.classList.add('correct');
-                score++;
-                scoreEl.innerText = score;
-            } else {
-                selectedBtn.classList.add('wrong');
-                // ভুল দিলে সঠিক উত্তরটা সবুজ করে দেখিয়ে দেওয়া হবে
-                allButtons[currentQuiz.correctAnswerIndex].classList.add('correct');
-            }
-
-            nextBtn.style.display = 'inline-block'; // নেক্সট বাটন দেখানো
-        }
-
-        // নেক্সট বাটন ক্লিক করলে যা হবে
-        function nextQuestion() {
-            currentQuestion++;
-            if (currentQuestion < quizData.length) {
-                loadQuestion();
-            } else {
-                // কুইজ শেষ
-                questionTextEl.innerText = `Mock Test Completed! Your Final Score: ${score}/${quizData.length}`;
-                optionsBox.innerHTML = '';
-                badgeEl.innerText = "Done";
-                nextBtn.style.display = 'none';
-                timerEl.style.display = 'none';
-            }
-        }
-
-        // টাইমার চালানোর ফাংশন
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                let displayTime = timeLeft < 10 ? `0:0${timeLeft}` : `0:${timeLeft}`;
-                timerEl.innerText = displayTime;
-
-                if (timeLeft <= 5) {
-                    timerEl.style.color = "red"; // ৫ সেকেন্ড বাকি থাকলে লাল হয়ে যাবে
-                }
-
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    selectAnswer(-1, document.createElement('button')); // টাইম শেষ মানে উত্তর দেওয়া হয়নি
-                }
-            }, 1000);
-        }
-
-        // পেজ লোড হলেই কুইজ শুরু হবে
-        loadQuestion();
-        document.getElementById('total-q').innerText = `${quizData.length}টি`;
-    </script>
 </body>
 </html>
