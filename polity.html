@@ -6,23 +6,21 @@
     <title>Indian Polity Mock Test - Premium App</title>
     <style>
         /* =========================================
-           Premium Colorful App Layout
+           Premium Colorful App Layout (Scrollable Fix)
         ========================================= */
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
 
-        /* বডির কালারফুল ব্যাকগ্রাউন্ড */
+        /* বডির কালারফুল ব্যাকগ্রাউন্ড এবং স্ক্রল চালু করা হলো */
         body, html { 
             background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-            height: 100%; 
-            overflow: hidden; 
+            min-height: 100vh; 
         }
 
         .app-container { 
             width: 100%; 
             max-width: 480px; 
             background: #ffffff; 
-            height: 100%; 
-            height: 100dvh; 
+            min-height: 100vh; /* height এর বদলে min-height দিলাম যাতে কনটেন্ট বাড়লে বড় হয় */
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -31,15 +29,18 @@
             border-right: 2px solid #e1e8ed;
         }
 
-        /* Top Bar */
+        /* Top Bar (Sticky - স্ক্রল করলেও ওপরে আটকে থাকবে) */
         .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
             background: #f8fcfd;
             border-bottom: 3px solid #dcdde1;
-            flex-shrink: 0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         /* রঙিন বর্ডার যুক্ত টাইমার, কাউন্টার ও স্কোর */
@@ -77,11 +78,10 @@
         .quiz-content {
             padding: 25px 20px;
             flex-grow: 1; 
-            overflow-y: auto; 
-            background: #fafbfc; /* হালকা ব্যাকগ্রাউন্ড */
+            background: #fafbfc; 
         }
 
-        /* Question Box (রঙিন বর্ডার ও ব্যাকগ্রাউন্ড) */
+        /* Question Box */
         .question-box {
             background: #ebf5fb;
             border: 3px solid #2980b9;
@@ -105,7 +105,7 @@
         .option-btn {
             width: 100%;
             background: #fdfefe; 
-            border: 2px solid #aeb6bf; /* বর্ডার দেওয়া হলো */
+            border: 2px solid #aeb6bf; 
             padding: 16px;
             border-radius: 12px;
             font-size: 16px;
@@ -119,7 +119,7 @@
 
         .option-btn:active { transform: scale(0.98); }
 
-        /* গাঢ় (Deep) Correct / Wrong Colors */
+        /* গাঢ় Correct / Wrong Colors */
         .correct { 
             background: #27ae60 !important; 
             color: #ffffff !important; 
@@ -136,19 +136,19 @@
         
         .disabled { pointer-events: none; opacity: 1; }
 
-        /* Next Button (অপশনের ঠিক নিচেই থাকবে) */
+        /* Next Button */
         .next-btn {
             width: 100%;
             background: #c0392b; 
             color: white;
             border: 2px solid #900c3f;
             padding: 16px;
-            border-radius: 30px; /* গোল শেপ */
+            border-radius: 30px; 
             font-size: 18px;
             font-weight: 900;
             cursor: pointer;
-            display: none; /* প্রথমে জায়গা নেবে না, লুকানো থাকবে */
-            margin-top: 35px; /* অপশন থেকে একটু নিচে */
+            display: none; 
+            margin-top: 35px; 
             margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(192, 57, 43, 0.4);
             text-transform: uppercase;
@@ -163,7 +163,7 @@
             display: none;
             text-align: center;
             padding: 50px 20px;
-            height: 100%;
+            min-height: 100vh;
             background: #ffffff;
         }
         .result-screen h2 { color: #2d3436; margin-bottom: 20px; font-size: 28px; font-weight: 900; }
@@ -190,7 +190,7 @@
             <a href="mocktest.html" class="home-btn">মেইন মেনুতে ফিরুন</a>
         </div>
 
-        <div id="quiz-screen" style="display: flex; flex-direction: column; height: 100%;">
+        <div id="quiz-screen" style="display: flex; flex-direction: column; min-height: 100vh;">
             
             <div class="top-bar">
                 <div class="timer">⏱ <span id="timer-txt">30</span>s</div>
@@ -199,11 +199,9 @@
             </div>
 
             <div class="quiz-content">
-                <div class="question-box" id="question-text">
-                    </div>
+                <div class="question-box" id="question-text"></div>
                 
-                <div class="options-container" id="options-container">
-                    </div>
+                <div class="options-container" id="options-container"></div>
 
                 <button class="next-btn" id="next-btn" onclick="goNext()">Next Question ➔</button>
             </div>
@@ -247,7 +245,7 @@
             clearInterval(timerInterval);
             timeLeft = 30;
             timerTxt.innerText = timeLeft;
-            nextBtn.style.display = "none"; // নতুন প্রশ্নে বাটন লুকিয়ে যাবে
+            nextBtn.style.display = "none"; 
 
             let currentQ = quizData[currentQIndex];
             
@@ -262,6 +260,9 @@
                 btn.onclick = () => checkAnswer(index, btn);
                 optionsContainer.appendChild(btn);
             });
+
+            // স্ক্রিনের শুরুতে নিয়ে যাওয়ার জন্য
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
             timerInterval = setInterval(() => {
                 timeLeft--;
@@ -294,10 +295,9 @@
                 btnElement.classList.add("wrong");
             }
 
-            nextBtn.style.display = "block"; // উত্তর দিলেই বাটনটা অপশনের ঠিক নিচে চলে আসবে
-            // স্ক্রল করে বাটনটা ভিউতে আনার জন্য
+            nextBtn.style.display = "block"; 
             setTimeout(() => {
-                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'end' });
             }, 100);
         }
 
@@ -313,7 +313,7 @@
             }
             nextBtn.style.display = "block";
             setTimeout(() => {
-                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'end' });
             }, 100);
         }
 
@@ -330,6 +330,7 @@
             document.getElementById("quiz-screen").style.display = "none";
             document.getElementById("result-screen").style.display = "block";
             document.getElementById("final-score-text").innerText = `${score} / ${quizData.length}`;
+            window.scrollTo({ top: 0 });
         }
 
         window.onload = loadQuestion;
