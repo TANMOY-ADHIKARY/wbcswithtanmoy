@@ -104,18 +104,20 @@ body {
 /* ---------------------------------
    Layout Container (Updated for Wide Screen)
 ------------------------------------ */
+/* ---------------------------------
+   Layout Container (Updated for Full Screen Width)
+------------------------------------ */
 .notes-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap; 
-    width: 96%; /* Updated: Uses 96% of the screen width */
-    max-width: 1600px; /* Updated: Increased max-width to let it expand */
-    margin: 40px auto;
+    width: 100%; 
+    max-width: 100%; /* লিমিট তুলে দিলাম, এবার পুরো স্ক্রিন নেবে */
+    margin: 40px 0; /* auto সরিয়ে দিলাম, যাতে মাঝখানে না থাকে */
+    padding: 0 40px; /* স্ক্রিনের একদম ধার ঘেঁষে না গিয়ে একটু (40px) ফাঁকা থাকবে */
     align-items: flex-start;
-    padding: 0;
-    gap: 40px; /* Updated: More gap between sidebar and content */
+    gap: 40px; 
 }
-
 /* ---------------------------------
    Sidebar Styling (বাঁ-দিকের মেনু)
 ------------------------------------ */
