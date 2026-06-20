@@ -2,395 +2,298 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian Polity Mock Test - PRO Premium</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Indian Polity Mock Test - App View</title>
     <style>
         /* =========================================
-           Ultra Premium Colorful Design
+           Compact App-Like Design (No Scrolling)
         ========================================= */
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
 
         body { 
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); 
-            color: #333; 
-            margin: 0; 
-            padding: 30px 15px; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .quiz-container { 
-            width: 100%;
-            max-width: 800px; 
-            background: #ffffff; 
-            padding: 40px; 
-            border-radius: 25px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
-            position: relative; 
-            border-top: 10px solid #6c5ce7;
-        }
-
-        /* Header & Timer */
-        .header-section { 
+            background: #e8ebf2; 
             display: flex; 
-            justify-content: space-between; 
+            justify-content: center; 
             align-items: center; 
-            border-bottom: 2px solid #f1f2f6; 
-            padding-bottom: 20px; 
-            margin-bottom: 30px; 
+            height: 100vh; /* পুরো স্ক্রিন জুড়বে, স্ক্রল হবে না */
+            overflow: hidden; 
         }
 
-        .back-btn { 
-            text-decoration: none; 
-            color: #fff; 
-            font-weight: bold; 
-            font-size: 16px;
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            padding: 10px 20px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
-            transition: all 0.3s;
-        }
-        .back-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4); }
-        
-        /* 30 Sec Timer Badge */
-        #timer-container { 
-            font-size: 18px; 
-            font-weight: 900; 
-            color: #fff; 
-            background: linear-gradient(45deg, #ff416c, #ff4b2b); 
-            padding: 10px 25px; 
-            border-radius: 30px; 
-            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            letter-spacing: 1px;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); box-shadow: 0 0 20px rgba(255, 65, 108, 0.8); }
-            100% { transform: scale(1); }
-        }
-        .time-warning { animation: pulse 1s infinite; }
-
-        .mock-title {
-            text-align: center; 
-            color: #2d3436; 
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Beautiful Question Counter */
-        .counter-wrapper { text-align: center; margin-bottom: 35px; }
-        #question-counter { 
-            font-size: 18px; 
-            font-weight: bold; 
-            color: #fff; 
-            background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
-            padding: 8px 25px; 
-            border-radius: 25px; 
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3);
-            letter-spacing: 1px;
-        }
-
-        /* Question & Options */
-        .question-block { 
-            display: none; 
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .question { 
-            font-size: 24px; 
-            font-weight: 800; 
-            margin-bottom: 25px; 
-            color: #2c3e50; 
-            line-height: 1.5;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 6px solid #fdcb6e;
-        }
-
-        /* Options Styling */
-        .options label { 
-            display: flex; 
-            align-items: center;
+        .app-container { 
+            width: 100%; 
+            max-width: 450px; 
             background: #ffffff; 
-            padding: 18px 20px; 
-            margin-bottom: 15px; 
-            border-radius: 15px; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            border: 2px solid #dfe6e9; 
-            font-size: 18px; 
-            color: #2d3436;
-            font-weight: 600;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        .options label:hover { 
-            background: #f1f2f6; 
-            border-color: #74b9ff;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        /* Top Bar (Timer, Counter, Score) */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e1e8ed;
         }
 
-        .options input[type="radio"] { 
-            margin-right: 15px; 
-            transform: scale(1.5); 
-            accent-color: #0984e3;
+        .timer { font-weight: bold; color: #d35400; font-size: 16px; }
+        .score-board { font-weight: bold; color: #27ae60; font-size: 16px; }
+        
+        .q-counter {
+            background: #ffffff;
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+            font-weight: 900;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* Quiz Content Area */
+        .quiz-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Question Box */
+        .question-box {
+            background: #fdfbfb;
+            border: 2px solid #3498db;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.1);
+        }
+
+        /* Options */
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            width: 100%;
+            background: #e1f5fe;
+            border: 2px solid transparent;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #0277bd;
             cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
         }
 
-        /* Active Selected Option */
-        .options label:has(input[type="radio"]:checked) {
-            background: #e3f2fd;
-            border-color: #0984e3;
-            color: #0984e3;
-            box-shadow: 0 4px 10px rgba(9, 132, 227, 0.2);
+        .option-btn:active { transform: scale(0.98); }
+
+        /* Correct / Wrong Colors */
+        .correct { background: #2ecc71 !important; color: #fff !important; border-color: #27ae60 !important; }
+        .wrong { background: #e74c3c !important; color: #fff !important; border-color: #c0392b !important; }
+        .disabled { pointer-events: none; opacity: 0.9; }
+
+        /* Next Button Area */
+        .bottom-area {
+            padding: 15px 20px 25px 20px;
         }
 
-        /* =========================================
-           Correct & Wrong Premium Colors
-        ========================================= */
-        /* Answer thik hole (সবুজ) */
-        .correct-ans { 
-            background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%) !important; 
-            color: #ffffff !important; 
-            border: none !important; 
-            box-shadow: 0 8px 20px rgba(11, 163, 96, 0.4) !important;
-            transform: scale(1.02);
+        .next-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            visibility: hidden; /* প্রথমে লুকানো থাকবে */
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
         }
 
-        /* Answer vul hole (লাল) */
-        .wrong-ans { 
-            background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%) !important; 
-            color: #ffffff !important; 
-            border: none !important; 
-            box-shadow: 0 8px 20px rgba(255, 8, 68, 0.4) !important;
-            text-decoration: line-through;
-            opacity: 0.9;
+        /* Result Screen */
+        .result-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
         }
-        
-        /* Navigation Buttons */
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 40px; }
-        .nav-btn { 
-            padding: 14px 35px; 
-            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%); 
-            color: white; 
-            border: none; 
-            border-radius: 30px; 
-            font-size: 18px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            box-shadow: 0 6px 15px rgba(45, 52, 54, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .nav-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(45, 52, 54, 0.5); }
-        .nav-btn:disabled { background: #b2bec3; box-shadow: none; cursor: not-allowed; transform: none; }
-        
-        .submit-btn { background: linear-gradient(135deg, #00b09b, #96c93d); display: none; box-shadow: 0 6px 15px rgba(0, 176, 155, 0.4); }
-        .submit-btn:hover { box-shadow: 0 8px 20px rgba(0, 176, 155, 0.6); }
-        
-        /* Result Box */
-        #result { 
-            margin-bottom: 30px; 
-            font-size: 26px; 
-            font-weight: 900; 
-            text-align: center; 
-            padding: 25px; 
-            border-radius: 15px; 
-            display: none; 
-            animation: fadeIn 0.5s;
+        .result-screen h2 { color: #2c3e50; margin-bottom: 20px; font-size: 28px; }
+        .result-screen .final-score { font-size: 40px; color: #27ae60; font-weight: 900; margin-bottom: 30px; }
+        .home-btn {
+            text-decoration: none;
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
 
-    <div class="quiz-container">
-        <div class="header-section">
-            <a href="mocktest.html" class="back-btn">← মেইন মেনু</a>
-            <div id="timer-container">⏱ <span id="time-left">30 সেকেন্ড</span></div>
+    <div class="app-container">
+        <div class="result-screen" id="result-screen">
+            <h2>টেস্ট শেষ হয়েছে! 🎉</h2>
+            <div class="final-score" id="final-score-text">0 / 0</div>
+            <a href="mocktest.html" class="home-btn">মেইন মেনুতে ফিরুন</a>
         </div>
-        
-        <h2 class="mock-title">Indian Polity Mock Test</h2>
-        
-        <div class="counter-wrapper">
-            <div id="question-counter">প্রশ্ন: ১ / ৩</div>
-        </div>
-        
-        <div id="result"></div>
-        
-        <div id="quiz-form">
-            <div class="question-block">
-                <div class="question">১. গণপরিষদের প্রথম অস্থায়ী সভাপতি কে ছিলেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="a"> ডঃ সচ্চিদানন্দ সিনহা</label>
-                    <label><input type="radio" name="q1" value="b"> ডঃ রাজেন্দ্র প্রসাদ</label>
-                    <label><input type="radio" name="q1" value="c"> ডঃ বি. আর. আম্বেদকর</label>
-                    <label><input type="radio" name="q1" value="d"> জওহরলাল নেহেরু</label>
-                </div>
+
+        <div id="quiz-screen" style="display: flex; flex-direction: column; height: 100%;">
+            <div class="top-bar">
+                <div class="timer">⏱ <span id="timer-txt">30</span>s</div>
+                <div class="q-counter" id="q-counter-txt">১ / ৩</div>
+                <div class="score-board">Score: <span id="score-txt">0</span></div>
             </div>
 
-            <div class="question-block">
-                <div class="question">২. ভারতের সংবিধান কবে গৃহীত হয়?</div>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="a"> ২৬ শে জানুয়ারি, ১৯৫০</label>
-                    <label><input type="radio" name="q2" value="b"> ২৬ শে নভেম্বর, ১৯৪৯</label>
-                    <label><input type="radio" name="q2" value="c"> ১৫ ই আগস্ট, ১৯৪৭</label>
-                    <label><input type="radio" name="q2" value="d"> ২৪ শে জানুয়ারি, ১৯৫০</label>
-                </div>
+            <div class="quiz-content">
+                <div class="question-box" id="question-text">
+                    </div>
+                
+                <div class="options-container" id="options-container">
+                    </div>
             </div>
 
-            <div class="question-block">
-                <div class="question">৩. ভারতীয় সংবিধানের খসড়া কমিটির চেয়ারম্যান কে ছিলেন?</div>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="a"> মহাত্মা গান্ধী</label>
-                    <label><input type="radio" name="q3" value="b"> সর্দার বল্লভভাই প্যাটেল</label>
-                    <label><input type="radio" name="q3" value="c"> ডঃ বি. আর. আম্বেদকর</label>
-                    <label><input type="radio" name="q3" value="d"> ডঃ রাজেন্দ্র প্রসাদ</label>
-                </div>
-            </div>
-
-            <div class="nav-buttons" id="nav-container">
-                <button type="button" class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
-                <button type="button" class="nav-btn" id="next-btn" onclick="nextQuestion()">Next</button>
-                <button type="button" class="nav-btn submit-btn" id="submit-btn" onclick="calculateScore()">Submit Test</button>
+            <div class="bottom-area">
+                <button class="next-btn" id="next-btn" onclick="goNext()">Next Question ➔</button>
             </div>
         </div>
     </div>
 
     <script>
-        let currentQuestion = 0;
-        let questions;
-        let timerInterval;
-        const TIME_PER_QUESTION = 30; // 30 seconds timer
-        let timeLeft = TIME_PER_QUESTION;
+        // JS Array: এখানেই সব প্রশ্ন আর অপশন থাকবে। HTML-এ আর হাত দিতে হবে না!
+        const quizData = [
+            {
+                question: "১. গণপরিষদের প্রথম অস্থায়ী সভাপতি কে ছিলেন?",
+                options: ["ডঃ সচ্চিদানন্দ সিনহা", "ডঃ রাজেন্দ্র প্রসাদ", "ডঃ বি. আর. আম্বেদকর", "জওহরলাল নেহেরু"],
+                answer: 0 // 0 মানে প্রথম অপশনটা সঠিক
+            },
+            {
+                question: "২. ভারতের সংবিধান কবে গৃহীত হয়?",
+                options: ["২৬ শে জানুয়ারি, ১৯৫০", "২৬ শে নভেম্বর, ১৯৪৯", "১৫ ই আগস্ট, ১৯৪৭", "২৪ শে জানুয়ারি, ১৯৫০"],
+                answer: 1 // 1 মানে দ্বিতীয় অপশনটা সঠিক
+            },
+            {
+                question: "৩. ভারতীয় সংবিধানের খসড়া কমিটির চেয়ারম্যান কে ছিলেন?",
+                options: ["মহাত্মা গান্ধী", "সর্দার বল্লভভাই প্যাটেল", "ডঃ বি. আর. আম্বেদকর", "ডঃ রাজেন্দ্র প্রসাদ"],
+                answer: 2 // 2 মানে তৃতীয় অপশনটা সঠিক
+            }
+        ];
 
-        window.onload = function() {
-            questions = document.querySelectorAll('.question-block');
-            showQuestion(currentQuestion);
-        };
+        let currentQIndex = 0;
+        let score = 0;
+        let timeLeft = 30;
+        let timerInterval;
+
+        const questionEl = document.getElementById("question-text");
+        const optionsContainer = document.getElementById("options-container");
+        const nextBtn = document.getElementById("next-btn");
+        const timerTxt = document.getElementById("timer-txt");
+        const qCounterTxt = document.getElementById("q-counter-txt");
+        const scoreTxt = document.getElementById("score-txt");
+
+        function loadQuestion() {
+            clearInterval(timerInterval);
+            timeLeft = 30;
+            timerTxt.innerText = timeLeft;
+            nextBtn.style.visibility = "hidden"; // অপশন ক্লিক করার আগে Next বাটন লুকানো থাকবে
+
+            let currentQ = quizData[currentQIndex];
+            
+            // প্রশ্ন এবং কাউন্টার সেট করা
+            questionEl.innerText = currentQ.question;
+            // বাংলা সংখ্যা দেখানোর জন্য ছোট্ট ট্রিক
+            qCounterTxt.innerText = `${currentQIndex + 1} / ${quizData.length}`;
+
+            // অপশনগুলো জেনারেট করা
+            optionsContainer.innerHTML = "";
+            currentQ.options.forEach((opt, index) => {
+                const btn = document.createElement("button");
+                btn.classList.add("option-btn");
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            startTimer();
+        }
 
         function startTimer() {
-            clearInterval(timerInterval);
-            timeLeft = TIME_PER_QUESTION;
-            updateTimerUI();
-            
-            timerInterval = setInterval(function() {
+            timerInterval = setInterval(() => {
                 timeLeft--;
-                updateTimerUI();
+                timerTxt.innerText = timeLeft;
                 
-                let timerBox = document.getElementById('timer-container');
-                if(timeLeft <= 5) {
-                    timerBox.classList.add("time-warning");
-                } else {
-                    timerBox.classList.remove("time-warning");
-                }
-
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
-                    timerBox.classList.remove("time-warning");
-                    if (currentQuestion < questions.length - 1) {
-                        nextQuestion();
-                    } else {
-                        calculateScore(); 
-                    }
+                    autoShowAnswer(); // সময় শেষ হলে সঠিক উত্তর দেখিয়ে দেবে
                 }
             }, 1000);
         }
 
-        function updateTimerUI() {
-            document.getElementById('time-left').innerText = timeLeft + " সেকেন্ড";
-        }
+        function checkAnswer(selectedIndex, btnElement) {
+            clearInterval(timerInterval); // ক্লিক করলেই টাইমার থেমে যাবে
+            let correctIndex = quizData[currentQIndex].answer;
+            let allBtns = optionsContainer.children;
 
-        function showQuestion(index) {
-            questions.forEach((q, i) => { q.style.display = (i === index) ? "block" : "none"; });
-            document.getElementById('question-counter').innerText = "প্রশ্ন: " + (index + 1) + " / " + questions.length;
-            
-            document.getElementById('prev-btn').style.display = (index === 0) ? "none" : "inline-block";
-            
-            if (index === questions.length - 1) {
-                document.getElementById('next-btn').style.display = "none";
-                document.getElementById('submit-btn').style.display = "inline-block";
-            } else {
-                document.getElementById('next-btn').style.display = "inline-block";
-                document.getElementById('submit-btn').style.display = "none";
-            }
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            startTimer(); 
-        }
-
-        function nextQuestion() { if (currentQuestion < questions.length - 1) { currentQuestion++; showQuestion(currentQuestion); } }
-        function prevQuestion() { if (currentQuestion > 0) { currentQuestion--; showQuestion(currentQuestion); } }
-
-        function calculateScore() {
-            clearInterval(timerInterval);
-            document.getElementById('timer-container').style.display = 'none';
-            document.getElementById('nav-container').style.display = 'none';
-            document.getElementById('question-counter').style.display = 'none';
-
-            let score = 0;
-            // Answer Key
-            const correctAnswers = { q1:"a", q2:"b", q3:"c" };
-
-            questions.forEach((qBlock, index) => {
-                qBlock.style.display = "block"; 
-                let qName = "q" + (index + 1);
-                let selectedInput = document.querySelector(`input[name="${qName}"]:checked`);
-                let correctInput = document.querySelector(`input[name="${qName}"][value="${correctAnswers[qName]}"]`);
-                let allInputs = document.querySelectorAll(`input[name="${qName}"]`);
-
-                // সঠিক উত্তরে সবুজ হাইলাইট এবং আইকন
-                if (correctInput) { 
-                    correctInput.parentElement.classList.add("correct-ans"); 
-                    correctInput.parentElement.innerHTML += " ✅";
+            // অপশনগুলো লক করা
+            for (let i = 0; i < allBtns.length; i++) {
+                allBtns[i].classList.add("disabled");
+                if (i === correctIndex) {
+                    allBtns[i].classList.add("correct"); // সঠিক উত্তরকে সবুজ করা
                 }
-
-                // ভুল উত্তর দিলে লাল হাইলাইট এবং আইকন
-                if (selectedInput) {
-                    if (selectedInput.value !== correctAnswers[qName]) {
-                        selectedInput.parentElement.classList.add("wrong-ans"); 
-                        selectedInput.parentElement.innerHTML += " ❌";
-                    } else { 
-                        score++; 
-                    }
-                }
-
-                allInputs.forEach(input => input.disabled = true);
-            });
-
-            let resultDiv = document.getElementById("result");
-            resultDiv.style.display = "block";
-            resultDiv.innerHTML = `আপনার স্কোর: ${score} / ${questions.length}`;
-            
-            if(score >= (questions.length * 0.8)) {
-                resultDiv.style.background = "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)"; resultDiv.style.color = "#fff";
-                resultDiv.innerHTML += "<br>অসাধারণ পারফরম্যান্স! 🌟";
-            } else {
-                resultDiv.style.background = "linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%)"; resultDiv.style.color = "#fff";
-                resultDiv.innerHTML += "<br>সঠিক উত্তরগুলো মিলিয়ে নিন! 📖";
             }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // যদি ক্লিক করা অপশনটা ভুল হয়, তবে সেটাকে লাল করা
+            if (selectedIndex === correctIndex) {
+                score++;
+                scoreTxt.innerText = score;
+            } else {
+                btnElement.classList.add("wrong");
+            }
+
+            nextBtn.style.visibility = "visible"; // Next বাটন দেখানো
         }
+
+        function autoShowAnswer() {
+            let correctIndex = quizData[currentQIndex].answer;
+            let allBtns = optionsContainer.children;
+
+            for (let i = 0; i < allBtns.length; i++) {
+                allBtns[i].classList.add("disabled");
+                if (i === correctIndex) {
+                    allBtns[i].classList.add("correct"); // সময় শেষ হলে শুধু সঠিকটা সবুজ হবে
+                }
+            }
+            nextBtn.style.visibility = "visible";
+        }
+
+        function goNext() {
+            currentQIndex++;
+            if (currentQIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quiz-screen").style.display = "none";
+            document.getElementById("result-screen").style.display = "block";
+            document.getElementById("final-score-text").innerText = `${score} / ${quizData.length}`;
+        }
+
+        // প্রথম প্রশ্ন লোড করা
+        window.onload = loadQuestion;
     </script>
 </body>
 </html>
