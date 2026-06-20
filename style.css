@@ -102,28 +102,29 @@ body {
 }
 
 /* ---------------------------------
-   Layout Container (ল্যাপটপে পাশাপাশি রাখার ডিজাইন)
+   Layout Container (লক করা পাশাপাশি ডিজাইন)
 ------------------------------------ */
 .container {
     display: flex;
-    flex-direction: row; /* ল্যাপটপে বক্সগুলো পাশাপাশি থাকবে */
+    flex-direction: row;
+    flex-wrap: nowrap; /* কোনোভাবেই নিচে নামতে দেবে না */
     width: 100%;
-    max-width: 1200px; /* পেজটাকে স্ক্রিনের ঠিক মাঝখানে রাখবে */
-    margin: 30px auto; /* ওপর থেকে একটু ফাঁকা দিয়ে মাঝখানে আনবে */
+    max-width: 1200px;
+    margin: 30px auto;
     align-items: flex-start;
     padding: 0 15px;
+    gap: 30px; /* সাবজেক্ট আর চ্যাপ্টারের মাঝে ফাঁকা জায়গা */
 }
 
 /* বাঁ-দিকের সাবজেক্ট লিস্ট */
 aside {
-    width: 280px; 
-    min-width: 280px;
+    flex: 0 0 280px; /* সাইডবারকে ঠিক ২৮০ পিক্সেলই রাখবে */
+    width: 280px;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
-    border-radius: 8px; /* একটু গোল বর্ডার */
+    border-radius: 8px;
     padding: 20px 0;
-    margin-right: 30px; /* ডানদিকের চ্যাপ্টার বক্সের সাথে সুন্দর ফাঁকা জায়গা */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* হালকা শ্যাডো */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
 aside h3 {
@@ -155,7 +156,8 @@ aside ul li:hover, aside ul li.active {
    Main Content Area (ডানদিকের চ্যাপ্টার বক্স)
 ------------------------------------ */
 main {
-    flex: 1; /* ডানদিকের বাকি পুরো ফাঁকা জায়গাটা নিয়ে নেবে */
+    flex: 1 1 0; /* ডানদিকের পুরো ফাঁকা জায়গা দখল করবে */
+    min-width: 0; /* লেখা বেশি হলেও বক্স ফাটবে না */
     background: #ffffff;
     padding: 40px;
     border-radius: 8px;
@@ -182,24 +184,19 @@ main {
 }
 
 /* ---------------------------------
-   Responsive Design (মোবাইলের জন্য সেটিং)
+   Responsive Design (মোবাইলের জন্য)
 ------------------------------------ */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
     .container {
         flex-direction: column; /* মোবাইলে নিচে নিচে আসবে */
         margin: 15px auto;
-        padding: 10px;
+        padding: 15px;
+        gap: 20px;
     }
     
-    aside {
+    aside, main {
+        flex: auto;
         width: 100%;
-        min-width: 100%;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    main {
-        padding: 20px;
     }
 
     .main-title {

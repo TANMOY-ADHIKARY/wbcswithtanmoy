@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wbcs With Tanmoy</title>
     <link rel="stylesheet" href="style.css">
-<header class="top-header">
+</head>
+<body>
+    <header class="top-header">
         <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo">
         <h1 class="main-title">WBCS WITH TANMOY</h1>
     </header>
+
     <div class="site-info-bar">
         <span>📅 Estd: 19.06.2026</span>
         <span class="separator">|</span>
         <span>📍 Alipurduar</span>
     </div>
+
+    <!-- মেনুবার -->
     <nav class="top-nav">
         <a href="index.html">Home</a>
         <a href="#">Notes</a>
@@ -22,8 +27,10 @@
         <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
         <a href="mocktest.html">Mock Test</a>
     </nav>
-   
-        <!-- Left Sidebar (Syllabus) -->
+
+    <!-- সাবজেক্ট এবং চ্যাপ্টারের মূল কন্টেইনার (লক করা লেআউট) -->
+    <div class="container">
+        <!-- বাঁ-দিকের সাবজেক্ট লিস্ট -->
         <aside>
             <h3>Wbcs Subjects</h3>
             <ul id="menu-list">
@@ -31,12 +38,11 @@
                 <li onclick="changeSubject('History', this)">History of India</li>
                 <li onclick="changeSubject('Geography', this)">Indian Geography</li>
                 <li onclick="changeSubject('Science', this)">General Science</li>
-                <!-- English-এর বাটন ঠিক করা হলো -->
                 <li onclick="changeSubject('English', this)">General English</li>
             </ul>
         </aside>
         
-        <!-- Main Content Area -->
+        <!-- ডানদিকের চ্যাপ্টার এরিয়া -->
         <main id="content-area">
             <h1>Indian Polity Notes</h1>
             <div class="note-box">
@@ -46,20 +52,32 @@
         </main>
     </div>
 
-    <!-- JavaScript code (Sidebar ke active korar jonno) -->
+    <!-- Scrolling Notification -->
+    <div class="scrolling-ticker">
+        <div class="ticker-text">
+            <span class="new-badge">NEW</span> Welcome to Wbcs With Tanmoy! 🚀 This website is currently a work in progress. Stay tuned for exciting updates, Mocktests and premium study materials! 📚
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>© 2026 WBCS With Tanmoy - All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="" target="_blank">Telegram</a> | 
+            <a href="https://www.facebook.com/share/17syKJqaSb/" target="_blank">Facebook</a> | 
+            <a href="https://whatsapp.com/channel/0029Vb7Spta7T8bTyQs9Mt3F" target="_blank">WhatsApp</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
     <script>
         function changeSubject(subjectName, clickedElement) {
-            // 1. Sob gulo menu theke blue color (active) soriye nibe
             let allItems = document.querySelectorAll('#menu-list li');
             allItems.forEach(item => item.classList.remove('active'));
-
-            // 2. Jei menu te click korecho, setate blue color (active) add korbe
             clickedElement.classList.add('active');
 
-            // 3. Main content area ke dhorbe
             let contentArea = document.getElementById('content-area');
 
-            // 4. Click kora subject onujayi pora change korbe
             if (subjectName === 'Polity') {
                 contentArea.innerHTML = `
                     <h1>Indian Polity Notes</h1>
@@ -93,7 +111,6 @@
                     </div>
                 `;
             } else if (subjectName === 'English') {
-                // English-এর লজিক ঠিক করা হলো
                 contentArea.innerHTML = `
                     <h1>General English</h1>
                     <div class="note-box">
@@ -104,22 +121,5 @@
             }
         }
     </script>
-    <!-- Scrolling Notification Ticker -->
-    <div class="scrolling-ticker">
-        <div class="ticker-text">
-            <span class="new-badge">NEW</span> Welcome to Wbcs With Tanmoy! 🚀 This website is currently a work in progress. Stay tuned for exciting updates,Mocktests
-             and premium study materials! 📚
-        </div>
-    </div>
-    <footer class="site-footer">
-        <p>© 2026 WBCS With Tanmoy - All Rights Reserved.</p>
-        <div class="social-links">
-            <a href="" target="_blank">Telegram</a> | 
-            
-            <a href="https://www.facebook.com/share/17syKJqaSb/" target="_blank">Facebook</a> | 
-            
-            <a href="https://whatsapp.com/channel/0029Vb7Spta7T8bTyQs9Mt3F" target="_blank">WhatsApp</a>
-        </div>
-    </footer>
 </body>
 </html>
