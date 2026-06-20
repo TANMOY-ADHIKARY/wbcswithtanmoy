@@ -274,3 +274,17 @@ body {
     color: #2980b9;
     text-decoration: underline;
 }
+
+/* মোবাইলের জন্য জোর করে এক লাইনে রাখার কোড */
+@media (max-width: 600px) {
+    .top-nav {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important; 
+        gap: 8px !important;
+    }
+    .top-nav a {
+        font-size: 14px !important; 
+        white-space: nowrap !important;
+    }
+}
