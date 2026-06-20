@@ -102,19 +102,16 @@ body {
 }
 
 /* ---------------------------------
-   Layout Container (Updated for Wide Screen)
------------------------------------- */
-/* ---------------------------------
-   Layout Container (Updated for Full Screen Width)
+   Layout Container (Force to Extreme Left)
 ------------------------------------ */
 .notes-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap; 
-    width: 100%; 
-    max-width: 100%; /* লিমিট তুলে দিলাম, এবার পুরো স্ক্রিন নেবে */
-    margin: 40px 0; /* auto সরিয়ে দিলাম, যাতে মাঝখানে না থাকে */
-    padding: 0 20px 0 10px; /* স্ক্রিনের একদম ধার ঘেঁষে না গিয়ে একটু (40px) ফাঁকা থাকবে */
+    width: 100% !important; 
+    max-width: 100% !important; 
+    margin: 40px 0 40px 0 !important; /* ডান-বাঁয়ের মার্জিন পুরোপুরি ০ করে দিলাম */
+    padding: 0 40px 0 10px !important; /* বাঁ-দিকে মাত্র ১০ পিক্সেল রাখলাম যাতে বক্সের শ্যাডোটা না কেটে যায় */
     align-items: flex-start;
     gap: 40px; 
 }
