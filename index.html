@@ -5,6 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wbcs With Tanmoy</title>
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* =========================================
+           New Colorful Layout CSS
+        ========================================= */
+        .notes-container {
+            display: flex;
+            max-width: 1100px;
+            margin: 40px auto;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        /* Sidebar Styling (বাঁ-দিকের মেনু) */
+        .sidebar {
+            width: 30%;
+            background: #ffffff;
+            padding: 25px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            border-top: 5px solid #9b59b6;
+        }
+
+        .sidebar-title {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed #bdc3c7;
+            padding-bottom: 10px;
+        }
+
+        .subject-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .subject-list li {
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #34495e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        /* Hover Effect */
+        .subject-list li:hover {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            color: #1e3c72;
+            transform: translateX(8px);
+            border-left: 4px solid #9b59b6;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Active Subject */
+        .subject-list li.active {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-left: 4px solid #ff7e67;
+            box-shadow: 0 6px 15px rgba(30, 60, 114, 0.3);
+        }
+
+        /* Content Area Styling (ডানদিকের চ্যাপ্টার) */
+        .content-area {
+            width: 70%;
+        }
+
+        .subject-heading {
+            font-size: 34px;
+            color: #1e3c72;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        /* Colorful Chapter Card */
+        .chapter-card {
+            background: linear-gradient(to right, #ffffff, #fff5f5);
+            border-left: 6px solid #e74c3c;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.2);
+        }
+
+        .chapter-title {
+            margin: 0 0 15px 0;
+            font-size: 24px;
+            color: #c0392b;
+        }
+
+        /* Coming Soon Badge */
+        .coming-soon {
+            background: linear-gradient(135deg, #fad961 0%, #f76b1c 100%);
+            color: white;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 0;
+            box-shadow: 0 3px 8px rgba(247, 107, 28, 0.3);
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .notes-container { flex-direction: column; }
+            .sidebar, .content-area { width: 100%; box-sizing: border-box; }
+        }
+    </style>
 </head>
 <body>
     <header class="top-header">
@@ -18,22 +140,19 @@
         <span>📍 Alipurduar</span>
     </div>
 
-    <!-- মেনুবার -->
     <nav class="top-nav">
-        <a href="index.html">Home</a>
-        <a href="#">Notes</a>
+        <a href="index.html" style="color: #e74c3c;">Home</a>
+        <a href="index.html">Notes</a>
         <a href="https://drive.google.com/drive/folders/1xMzQB4SyceBRpZ4D2lC6p97Y64Jwjamy?usp=drive_link" target="_blank">Syllabus</a>
         <a href="https://drive.google.com/drive/folders/1nXT_2jDf4UpzG0d_zwPrDGf4nYcMUpVm?usp=sharing" target="_blank">Pyq</a>
         <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
         <a href="mocktest.html">Mock Test</a>
     </nav>
 
-    <!-- সাবজেক্ট এবং চ্যাপ্টারের মূল কন্টেইনার (লক করা লেআউট) -->
-    <div class="container">
-        <!-- বাঁ-দিকের সাবজেক্ট লিস্ট -->
-        <aside>
-            <h3>Wbcs Subjects</h3>
-            <ul id="menu-list">
+    <div class="notes-container">
+        <aside class="sidebar">
+            <h3 class="sidebar-title">📚 WBCS Subjects</h3>
+            <ul class="subject-list" id="menu-list">
                 <li class="active" onclick="changeSubject('Polity', this)">Indian Polity</li>
                 <li onclick="changeSubject('History', this)">History of India</li>
                 <li onclick="changeSubject('Geography', this)">Indian Geography</li>
@@ -42,24 +161,21 @@
             </ul>
         </aside>
         
-        <!-- ডানদিকের চ্যাপ্টার এরিয়া -->
-        <main id="content-area">
-            <h1>Indian Polity Notes</h1>
-            <div class="note-box">
-                <h2>Chapter 1: Making of the Constitution</h2>
-                <p>Coming Soon...</p>
+        <main class="content-area" id="content-area">
+            <h2 class="subject-heading">Indian Polity Notes</h2>
+            <div class="chapter-card">
+                <h3 class="chapter-title">🏛️ Chapter 1: Making of the Constitution</h3>
+                <p class="coming-soon">⏳ Coming Soon...</p>
             </div>
         </main>
     </div>
 
-    <!-- Scrolling Notification -->
     <div class="scrolling-ticker">
         <div class="ticker-text">
             <span class="new-badge">NEW</span> Welcome to Wbcs With Tanmoy! 🚀 This website is currently a work in progress. Stay tuned for exciting updates, Mocktests and premium study materials! 📚
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <p>© 2026 WBCS With Tanmoy - All Rights Reserved.</p>
         <div class="social-links">
@@ -69,53 +185,56 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         function changeSubject(subjectName, clickedElement) {
+            // সমস্ত li থেকে active ক্লাস মুছে ফেলা
             let allItems = document.querySelectorAll('#menu-list li');
             allItems.forEach(item => item.classList.remove('active'));
+            
+            // যেটাতে ক্লিক করা হয়েছে, সেটায় active ক্লাস যোগ করা
             clickedElement.classList.add('active');
 
             let contentArea = document.getElementById('content-area');
 
+            // সাবজেক্ট অনুযায়ী ডানদিকের কনটেন্ট পাল্টানো
             if (subjectName === 'Polity') {
                 contentArea.innerHTML = `
-                    <h1>Indian Polity Notes</h1>
-                    <div class="note-box">
-                        <h2>Chapter 1: Making of the Constitution</h2>
-                        <p>Coming Soon...</p>
+                    <h2 class="subject-heading">Indian Polity Notes</h2>
+                    <div class="chapter-card">
+                        <h3 class="chapter-title">🏛️ Chapter 1: Making of the Constitution</h3>
+                        <p class="coming-soon">⏳ Coming Soon...</p>
                     </div>
                 `;
             } else if (subjectName === 'History') {
                 contentArea.innerHTML = `
-                    <h1>History of India</h1>
-                    <div class="note-box">
-                        <h2>Chapter 1: Indus Valley Civilization</h2>
-                        <p>Coming Soon...</p>
+                    <h2 class="subject-heading">History of India</h2>
+                    <div class="chapter-card">
+                        <h3 class="chapter-title">📜 Chapter 1: Indus Valley Civilization</h3>
+                        <p class="coming-soon">⏳ Coming Soon...</p>
                     </div>
                 `;
             } else if (subjectName === 'Geography') {
                 contentArea.innerHTML = `
-                    <h1>Indian Geography</h1>
-                    <div class="note-box">
-                        <h2>Chapter 1: Physical Features of India</h2>
-                        <p>Coming Soon...</p>
+                    <h2 class="subject-heading">Indian Geography</h2>
+                    <div class="chapter-card">
+                        <h3 class="chapter-title">🌍 Chapter 1: Physical Features of India</h3>
+                        <p class="coming-soon">⏳ Coming Soon...</p>
                     </div>
                 `;
             } else if (subjectName === 'Science') {
                 contentArea.innerHTML = `
-                    <h1>General Science</h1>
-                    <div class="note-box">
-                        <h2>Chapter 1: Physics & Chemistry basics</h2>
-                        <p>Coming Soon...</p>
+                    <h2 class="subject-heading">General Science</h2>
+                    <div class="chapter-card">
+                        <h3 class="chapter-title">🔬 Chapter 1: Physics & Chemistry Basics</h3>
+                        <p class="coming-soon">⏳ Coming Soon...</p>
                     </div>
                 `;
             } else if (subjectName === 'English') {
                 contentArea.innerHTML = `
-                    <h1>General English</h1>
-                    <div class="note-box">
-                        <h2>Chapter 1: Sentences and alphabets</h2>
-                        <p>Coming Soon...</p>
+                    <h2 class="subject-heading">General English</h2>
+                    <div class="chapter-card">
+                        <h3 class="chapter-title">📝 Chapter 1: Sentences and Alphabets</h3>
+                        <p class="coming-soon">⏳ Coming Soon...</p>
                     </div>
                 `;
             }

@@ -102,99 +102,141 @@ body {
 }
 
 /* ---------------------------------
-   Layout Container (লক করা পাশাপাশি ডিজাইন)
+   Layout Container (নতুন রঙিন ডিজাইন)
 ------------------------------------ */
-.container {
+.notes-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap; /* কোনোভাবেই নিচে নামতে দেবে না */
     width: 100%;
     max-width: 1200px;
-    margin: 30px auto;
+    margin: 40px auto;
     align-items: flex-start;
-    padding: 0 15px;
+    padding: 0 20px;
     gap: 30px; /* সাবজেক্ট আর চ্যাপ্টারের মাঝে ফাঁকা জায়গা */
 }
 
-/* বাঁ-দিকের সাবজেক্ট লিস্ট */
-aside {
-    flex: 0 0 280px; /* সাইডবারকে ঠিক ২৮০ পিক্সেলই রাখবে */
-    width: 280px;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+/* ---------------------------------
+   Sidebar Styling (বাঁ-দিকের মেনু)
+------------------------------------ */
+.sidebar {
+    flex: 0 0 300px; /* সাইডবারকে ঠিক ৩০০ পিক্সেলই রাখবে */
+    width: 300px;
+    background: #ffffff;
+    padding: 25px 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    border-top: 5px solid #9b59b6;
 }
 
-aside h3 {
-    padding: 0 20px 10px 20px;
-    color: #555;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
+.sidebar-title {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed #bdc3c7;
+    padding-bottom: 10px;
 }
 
-aside ul {
+.subject-list {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-aside ul li {
-    padding: 12px 20px;
-    cursor: pointer;
-    color: #444;
-    transition: 0.3s;
-}
-
-aside ul li:hover, aside ul li.active {
-    background-color: #e3f2fd;
-    color: #1976d2;
-    border-left: 4px solid #1976d2;
+.subject-list li {
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    font-size: 16px;
     font-weight: bold;
+    color: #34495e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+/* Hover Effect */
+.subject-list li:hover {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    color: #1e3c72;
+    transform: translateX(8px);
+    border-left: 4px solid #9b59b6;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Active Subject */
+.subject-list li.active {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    border-left: 4px solid #ff7e67;
+    box-shadow: 0 6px 15px rgba(30, 60, 114, 0.3);
 }
 
 /* ---------------------------------
-   Main Content Area (ডানদিকের চ্যাপ্টার বক্স)
+   Main Content Area (ডানদিকের চ্যাপ্টার)
 ------------------------------------ */
-main {
+.content-area {
     flex: 1 1 0; /* ডানদিকের পুরো ফাঁকা জায়গা দখল করবে */
     min-width: 0; /* লেখা বেশি হলেও বক্স ফাটবে না */
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
-.note-box {
-    background: #f8f9fa;
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid #eee;
+.subject-heading {
+    font-size: 34px;
+    color: #1e3c72;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: 800;
 }
 
-.note-box h2 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 20px;
+/* Colorful Chapter Card */
+.chapter-card {
+    background: linear-gradient(to right, #ffffff, #fff5f5);
+    border-left: 6px solid #e74c3c;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 25px;
 }
 
-.note-box p {
-    color: #555;
-    line-height: 1.6;
+.chapter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.2);
+}
+
+.chapter-title {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+    color: #c0392b;
+}
+
+/* Coming Soon Badge */
+.coming-soon {
+    background: linear-gradient(135deg, #fad961 0%, #f76b1c 100%);
+    color: white;
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    box-shadow: 0 3px 8px rgba(247, 107, 28, 0.3);
 }
 
 /* ---------------------------------
    Responsive Design (মোবাইলের জন্য)
 ------------------------------------ */
 @media screen and (max-width: 850px) {
-    .container {
+    .notes-container {
         flex-direction: column; /* মোবাইলে নিচে নিচে আসবে */
         margin: 15px auto;
         padding: 15px;
         gap: 20px;
     }
     
-    aside, main {
+    .sidebar, .content-area {
         flex: auto;
         width: 100%;
     }
