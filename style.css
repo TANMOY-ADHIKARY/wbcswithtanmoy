@@ -102,26 +102,26 @@ body {
 }
 
 /* ---------------------------------
-   Layout Container (নতুন রঙিন ডিজাইন)
+   Layout Container (Updated for Wide Screen)
 ------------------------------------ */
 .notes-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap; /* কোনোভাবেই নিচে নামতে দেবে না */
-    width: 100%;
-    max-width: 1200px;
+    flex-wrap: nowrap; 
+    width: 96%; /* Updated: Uses 96% of the screen width */
+    max-width: 1600px; /* Updated: Increased max-width to let it expand */
     margin: 40px auto;
     align-items: flex-start;
-    padding: 0 20px;
-    gap: 30px; /* সাবজেক্ট আর চ্যাপ্টারের মাঝে ফাঁকা জায়গা */
+    padding: 0;
+    gap: 40px; /* Updated: More gap between sidebar and content */
 }
 
 /* ---------------------------------
    Sidebar Styling (বাঁ-দিকের মেনু)
 ------------------------------------ */
 .sidebar {
-    flex: 0 0 300px; /* সাইডবারকে ঠিক ৩০০ পিক্সেলই রাখবে */
-    width: 300px;
+    flex: 0 0 280px; /* Updated: Sidebar width fixed at 280px */
+    width: 280px;
     background: #ffffff;
     padding: 25px 20px;
     border-radius: 15px;
@@ -178,8 +178,8 @@ body {
    Main Content Area (ডানদিকের চ্যাপ্টার)
 ------------------------------------ */
 .content-area {
-    flex: 1 1 0; /* ডানদিকের পুরো ফাঁকা জায়গা দখল করবে */
-    min-width: 0; /* লেখা বেশি হলেও বক্স ফাটবে না */
+    flex: 1 1 0; /* Takes up the remaining available space */
+    min-width: 0; 
 }
 
 .subject-heading {
@@ -230,7 +230,8 @@ body {
 ------------------------------------ */
 @media screen and (max-width: 850px) {
     .notes-container {
-        flex-direction: column; /* মোবাইলে নিচে নিচে আসবে */
+        flex-direction: column; 
+        width: 100%;
         margin: 15px auto;
         padding: 15px;
         gap: 20px;
