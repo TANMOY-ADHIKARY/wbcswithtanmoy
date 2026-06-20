@@ -111,7 +111,7 @@ body {
     width: 100% !important; 
     max-width: 100% !important; 
     margin: 40px 0 40px 0 !important; /* ডান-বাঁয়ের মার্জিন পুরোপুরি ০ করে দিলাম */
-    padding: 0 40px 0 10px !important; /* বাঁ-দিকে মাত্র ১০ পিক্সেল রাখলাম যাতে বক্সের শ্যাডোটা না কেটে যায় */
+    padding: 0 40px 0 13px !important; /* বাঁ-দিকে মাত্র ১০ পিক্সেল রাখলাম যাতে বক্সের শ্যডোটা না কেটে যায় */
     align-items: flex-start;
     gap: 40px; 
 }
