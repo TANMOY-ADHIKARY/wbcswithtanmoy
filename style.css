@@ -50,19 +50,26 @@ body {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
+.top-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* সব মেনুকে এক লাইনে আটকে রাখবে */
+    gap: 10px; /* মেনুগুলোর মাঝের ফাঁকা জায়গা একটু কমানো হলো */
+    overflow-x: auto; /* মোবাইলের স্ক্রিনে জায়গা না হলে ডানদিকে সোয়াইপ (scroll) করা যাবে */
+    white-space: nowrap; /* লেখাগুলোকে নিচে নামতে দেবে না */
+    padding-bottom: 5px;
+}
+
 .top-nav a {
-    margin-left: 20px;
+    font-size: 15px; /* সাইজ একটু ছোট করা হলো যাতে সব এক লাইনে ধরে যায় */
+    padding: 5px 8px;
     text-decoration: none;
-    color: #2f3542;
-    font-size: 18px;
-    font-weight: bold;
-    transition: 0.3s;
 }
 
-.top-nav a:hover {
-    color: #1e90ff;
+/* স্ক্রলবারটা দেখতে খারাপ লাগে, তাই ওটা লুকিয়ে দেওয়ার জন্য এই কোড */
+.top-nav::-webkit-scrollbar {
+    display: none;
 }
-
 /* ---------------------------------
    Layout Container (Sidebar & Main)
 ------------------------------------ */
