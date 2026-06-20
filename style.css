@@ -233,18 +233,30 @@ body {
 /* ---------------------------------
    Responsive Design (মোবাইলের জন্য)
 ------------------------------------ */
+/* ---------------------------------
+   Responsive Design (মোবাইলের জন্য)
+------------------------------------ */
 @media screen and (max-width: 850px) {
     .notes-container {
-        flex-direction: column; 
-        width: 100%;
-        margin: 15px auto;
-        padding: 15px;
-        gap: 20px;
+        flex-direction: column !important; 
+        width: 100% !important;
+        margin: 15px auto !important;
+        padding: 0 20px !important; /* মোবাইলে দু'দিকে একদম সমান 20px জায়গা থাকবে */
+        gap: 20px !important;
+        box-sizing: border-box !important;
     }
     
-    .sidebar, .content-area {
-        flex: auto;
-        width: 100%;
+    .sidebar {
+        width: 100% !important;
+        flex: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .content-area {
+        flex: auto !important;
+        width: 100% !important;
+        padding-left: 0 !important; /* ল্যাপটপের বাঁ-দিকের এক্সট্রা গ্যাপ মোবাইলে সরিয়ে দিলাম */
+        box-sizing: border-box !important;
     }
 
     .main-title {
