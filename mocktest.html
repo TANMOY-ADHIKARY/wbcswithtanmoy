@@ -5,6 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mock Test Portal - WBCS With Tanmoy</title>
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* New Mock Test Card Layout CSS */
+        .mocktest-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .page-title {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* Grid Layout for Boxes */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            justify-content: center;
+        }
+
+        /* Individual Blue Box Styling */
+        .subject-box {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border: 2px solid transparent;
+        }
+
+        /* Hover Effect */
+        .subject-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid #74b9ff;
+        }
+
+        .subject-box .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .subject-box h3 {
+            margin: 0 0 20px 0;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .subject-box .start-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .subject-box:hover .start-btn {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
 </head>
 <body>
 
@@ -28,27 +100,40 @@
         <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
     </nav>
 
-    <div class="container">
-        <!-- বাঁ-দিকের মেনু, যেখান থেকে তোমার আলাদা ফাইলগুলো খুলবে -->
-        <aside>
-            <h3>Mock Test Subjects</h3>
-            <ul id="menu-list">
-                <li onclick="window.location.href='polity.html'">Indian Polity</li>
-                <li onclick="window.location.href='history.html'">History of India</li>
-                <li onclick="window.location.href='geography.html'">Indian Geography</li>
-                <li onclick="window.location.href='science.html'">General Science</li>
-            </ul>
-        </aside>
+    <div class="mocktest-container">
+        <h2 class="page-title">Choose Subject to Start Mock Test</h2>
         
-        <!-- ডানদিকের ওয়েলকাম মেসেজ -->
-        <main>
-            <div style="text-align: center; padding: 60px 20px; border: 2px dashed #1976d2; border-radius: 10px; background: white;">
-                <h2 style="color: #d32f2f; font-size: 28px;">🎯 Welcome to Mock Test Portal</h2>
-                <p style="font-size: 18px; margin-top: 15px; color: #555; font-weight: bold;">
-                     Choose Subject from the upper side menu to start your mock test.
-                </p>
-            </div>
-        </main>
+        <div class="subject-grid">
+            <a href="polity.html" class="subject-box">
+                <div class="icon">🏛️</div>
+                <h3>Indian Polity</h3>
+                <div class="start-btn">Start Test ➔</div>
+            </a>
+            
+            <a href="history.html" class="subject-box">
+                <div class="icon">📜</div>
+                <h3>History of India</h3>
+                <div class="start-btn">Start Test ➔</div>
+            </a>
+
+            <a href="geography.html" class="subject-box">
+                <div class="icon">🌍</div>
+                <h3>Indian Geography</h3>
+                <div class="start-btn">Start Test ➔</div>
+            </a>
+
+            <a href="science.html" class="subject-box">
+                <div class="icon">🔬</div>
+                <h3>General Science</h3>
+                <div class="start-btn">Start Test ➔</div>
+            </a>
+
+            <a href="english.html" class="subject-box">
+                <div class="icon">📝</div>
+                <h3>General English</h3>
+                <div class="start-btn">Start Test ➔</div>
+            </a>
+        </div>
     </div>
 
     <footer class="site-footer">
