@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Science Mock Test - WBCS PRO</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .quiz-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: relative; }
+        .header-section { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1e3c72; padding-bottom: 10px; margin-bottom: 20px; }
+        .back-btn { text-decoration: none; color: #1e3c72; font-weight: bold; }
+        
+        #timer-container { font-size: 18px; font-weight: bold; color: #e74c3c; background: #fadbd8; padding: 5px 15px; border-radius: 5px; }
+        #question-counter { font-size: 18px; font-weight: bold; color: #2c3e50; background: #e9ecef; padding: 5px 15px; border-radius: 5px; text-align: center; margin-bottom: 20px; }
+        
+        .question-block { display: none; margin-bottom: 25px; padding-bottom: 15px; }
+        .question { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #2c3e50; }
+        .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; font-size: 16px; }
+        .options label:hover { background: #dcdde1; }
+        .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        
+        .correct-ans { background-color: #d4edda !important; color: #155724; border: 1px solid #c3e6cb !important; font-weight: bold; }
+        .wrong-ans { background-color: #f8d7da !important; color: #721c24; border: 1px solid #f5c6cb !important; text-decoration: line-through; }
+        
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+        .nav-btn { padding: 12px 25px; background-color: #1e3c72; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .nav-btn:hover { background-color: #2a5298; }
+        .nav-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
+        .submit-btn { background-color: #27ae60; display: none; }
+        .submit-btn:hover { background-color: #2ecc71; }
+        
+        #result { margin-bottom: 25px; font-size: 22px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <div class="header-section">
+            <a href="mocktest.html" class="back-btn">← Main Menu</a>
+            <div id="timer-container">⏱ <span id="time-left">10:00</span></div>
+        </div>
+        
+        <h2 style="text-align: center; color: #2c3e50; margin-top: 0;">General Science Mock Test</h2>
+        
+        <div id="result"></div>
+        <div id="question-counter">Question: 1 / 10</div>
+        
+        <div id="quiz-form">
+            <div class="question-block"><div class="question">1. Which of the following is known as the 'Powerhouse of the Cell'?</div><div class="options"><label><input type="radio" name="q1" value="a"> Mitochondria</label><label><input type="radio" name="q1" value="b"> Ribosome</label><label><input type="radio" name="q1" value="c"> Nucleus</label><label><input type="radio" name="q1" value="d"> Golgi body</label></div></div>
+            
+            <div class="question-block"><div class="question">2. What is the lightest gas?</div><div class="options"><label><input type="radio" name="q2" value="a"> Oxygen</label><label><input type="radio" name="q2" value="b"> Hydrogen</label><label><input type="radio" name="q2" value="c"> Nitrogen</label><label><input type="radio" name="q2" value="d"> Helium</label></div></div>
+            
+            <div class="question-block"><div class="question">3. The chemical name of Vitamin C is:</div><div class="options"><label><input type="radio" name="q3" value="a"> Citric Acid</label><label><input type="radio" name="q3" value="b"> Lactic Acid</label><label><input type="radio" name="q3" value="c"> Ascorbic Acid</label><label><input type="radio" name="q3" value="d"> Folic Acid</label></div></div>
+            
+            <div class="question-block"><div class="question">4. The SI unit of Work is:</div><div class="options"><label><input type="radio" name="q4" value="a"> Newton</label><label><input type="radio" name="q4" value="b"> Watt</label><label><input type="radio" name="q4" value="c"> Pascal</label><label><input type="radio" name="q4" value="d"> Joule</label></div></div>
+            
+            <div class="question-block"><div class="question">5. The study of the Universe is known as:</div><div class="options"><label><input type="radio" name="q5" value="a"> Cosmology</label><label><input type="radio" name="q5" value="b"> Astrology</label><label><input type="radio" name="q5" value="c"> Seismology</label><label><input type="radio" name="q5" value="d"> Limnology</label></div></div>
+
+            <div class="question-block"><div class="question">6. Which blood group is called the 'Universal Donor'?</div><div class="options"><label><input type="radio" name="q6" value="a"> A</label><label><input type="radio" name="q6" value="b"> O</label><label><input type="radio" name="q6" value="c"> B</label><label><input type="radio" name="q6" value="d"> AB</label></div></div>
+
+            <div class="question-block"><div class="question">7. Which gas is mainly responsible for Global Warming?</div><div class="options"><label><input type="radio" name="q7" value="a"> Oxygen</label><label><input type="radio" name="q7" value="b"> Nitrogen</label><label><input type="radio" name="q7" value="c"> Carbon Dioxide</label><label><input type="radio" name="q7" value="d"> Argon</label></div></div>
+
+            <div class="question-block"><div class="question">8. The instrument used to measure atmospheric pressure is:</div><div class="options"><label><input type="radio" name="q8" value="a"> Thermometer</label><label><input type="radio" name="q8" value="b"> Lactometer</label><label><input type="radio" name="q8" value="c"> Hygrometer</label><label><input type="radio" name="q8" value="d"> Barometer</label></div></div>
+
+            <div class="question-block"><div class="question">9. Which of the following is a non-metal that remains liquid at room temperature?</div><div class="options"><label><input type="radio" name="q9" value="a"> Bromine</label><label><input type="radio" name="q9" value="b"> Mercury</label><label><input type="radio" name="q9" value="c"> Chlorine</label><label><input type="radio" name="q9" value="d"> Helium</label></div></div>
+
+            <div class="question-block"><div class="question">10. The planet nearest to the Sun is:</div><div class="options"><label><input type="radio" name="q10" value="a"> Venus</label><label><input type="radio" name="q10" value="b"> Mercury</label><label><input type="radio" name="q10" value="c"> Mars</label><label><input type="radio" name="q10" value="d"> Earth</label></div></div>
+
+            <div class="nav-buttons" id="nav-container">
+                <button type="button" class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
+                <button type="button" class="nav-btn" id="next-btn" onclick="nextQuestion()">Next</button>
+                <button type="button" class="nav-btn submit-btn" id="submit-btn" onclick="calculateScore()">Submit Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        let questions;
+        let timerInterval;
+        let timeLeft = 10 * 60; // 10 Minutes Timer for 10 questions
+
+        window.onload = function() {
+            questions = document.querySelectorAll('.question-block');
+            showQuestion(currentQuestion);
+            startTimer();
+        };
+
+        function startTimer() {
+            let timerDisplay = document.getElementById('time-left');
+            timerInterval = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    calculateScore(); 
+                } else {
+                    timeLeft--;
+                    let m = Math.floor(timeLeft / 60);
+                    let s = timeLeft % 60;
+                    timerDisplay.innerText = m + ":" + (s < 10 ? "0" + s : s);
+                    
+                    if(timeLeft <= 60) { // Red color for last 1 minute
+                        document.getElementById('timer-container').style.background = "#e74c3c";
+                        document.getElementById('timer-container').style.color = "#fff";
+                    }
+                }
+            }, 1000);
+        }
+
+        function showQuestion(index) {
+            questions.forEach((q, i) => { q.style.display = (i === index) ? "block" : "none"; });
+            document.getElementById('question-counter').innerText = "Question: " + (index + 1) + " / " + questions.length;
+            
+            document.getElementById('prev-btn').style.display = (index === 0) ? "none" : "inline-block";
+            
+            if (index === questions.length - 1) {
+                document.getElementById('next-btn').style.display = "none";
+                document.getElementById('submit-btn').style.display = "inline-block";
+            } else {
+                document.getElementById('next-btn').style.display = "inline-block";
+                document.getElementById('submit-btn').style.display = "none";
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextQuestion() { if (currentQuestion < questions.length - 1) { currentQuestion++; showQuestion(currentQuestion); } }
+        function prevQuestion() { if (currentQuestion > 0) { currentQuestion--; showQuestion(currentQuestion); } }
+
+        function calculateScore() {
+            clearInterval(timerInterval);
+            document.getElementById('timer-container').style.display = 'none';
+            document.getElementById('nav-container').style.display = 'none';
+            document.getElementById('question-counter').style.display = 'none';
+
+            let score = 0;
+            // General Science Answer Key (1-10)
+            const correctAnswers = { 
+                q1:"a", q2:"b", q3:"c", q4:"d", q5:"a", q6:"b", q7:"c", q8:"d", q9:"a", q10:"b"
+            };
+
+            questions.forEach((qBlock, index) => {
+                qBlock.style.display = "block"; 
+                let qName = "q" + (index + 1);
+                let selectedInput = document.querySelector(`input[name="${qName}"]:checked`);
+                let correctInput = document.querySelector(`input[name="${qName}"][value="${correctAnswers[qName]}"]`);
+                let allInputs = document.querySelectorAll(`input[name="${qName}"]`);
+
+                if (correctInput) { correctInput.parentElement.classList.add("correct-ans"); }
+
+                if (selectedInput) {
+                    if (selectedInput.value !== correctAnswers[qName]) {
+                        selectedInput.parentElement.classList.add("wrong-ans"); 
+                    } else { score++; }
+                }
+
+                allInputs.forEach(input => input.disabled = true);
+            });
+
+            let resultDiv = document.getElementById("result");
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = `Your Score: ${score} / 10`;
+            
+            if(score >= 8) {
+                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
+                resultDiv.innerHTML += "<br>Excellent performance! Your Science preparation is great.";
+            } else if (score >= 5) {
+                resultDiv.style.backgroundColor = "#fff3cd"; resultDiv.style.color = "#856404";
+                resultDiv.innerHTML += "<br>Good try! But you need more revision on basic science.";
+            } else {
+                resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.color = "#721c24";
+                resultDiv.innerHTML += "<br>Please read the text books thoroughly and revise properly.";
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
