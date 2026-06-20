@@ -224,3 +224,19 @@ main {
 body {
     padding-bottom: 50px; 
 }
+/* Website Info Bar Styling */
+.site-info-bar {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #7f8c8d;
+    font-weight: bold;
+    border-bottom: 1px solid #e2e8f0;
+    letter-spacing: 0.5px;
+}
+
+.site-info-bar .separator {
+    margin: 0 10px;
+    color: #bdc3c7;
+}
