@@ -182,7 +182,7 @@ body {
 .content-area {
     flex: 1 1 0; 
     min-width: 0; 
-    padding-left: 30px; /* Sidebar theke ektu dure soralam */
+    padding-left: 40px; /* Sobuj dag er faka jayga tuku er jonno */
 }
 
 .subject-heading {
@@ -191,7 +191,7 @@ body {
     margin-top: 0;
     margin-bottom: 30px;
     font-weight: 800;
-    text-align: center; /* Heading-take majhkhan-e anar jonno */
+    text-align: left; /* Majhkhan theke soriye bam dike (left) kora holo */
 }
 
 /* Colorful Chapter Card */
@@ -203,9 +203,8 @@ body {
     box-shadow: 0 5px 15px rgba(231, 76, 60, 0.1);
     transition: transform 0.3s ease;
     
-    /* Box-take majhkhan-e anar jonno nicher code gulo add kora holo */
-    max-width: 850px; /* Box-ta jate osavabik boro na hoye jay */
-    margin: 0 auto 25px auto; /* Box-take dan-diker jaygar majhaborabor set korbe */
+    max-width: 850px; /* Box-ta khub boro hobe na */
+    margin: 0 0 25px 0; /* Auto margin soriye deoya holo jate bam dikei thake */
 }
 
 .chapter-card:hover {
