@@ -142,7 +142,7 @@
             font-weight: 900;
             cursor: pointer;
             display: block; 
-            visibility: hidden; /* পেজ লাফানো বন্ধ করতে এই ট্রিকটি ব্যবহার করা হলো */
+            /* visibility: hidden;  <-- এই লাইনটা পুরোপুরি মুছে দেওয়া হলো, যাতে বাটন সব সময় থাকে */
             margin-top: 20px; 
             margin-bottom: 10px;
             box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
@@ -266,7 +266,8 @@
             clearInterval(timerInterval);
             timeLeft = 30;
             timerTxt.innerText = timeLeft;
-            nextBtn.style.visibility = "hidden"; // নতুন প্রশ্ন এলেই শুধু অদৃশ্য হবে, জায়গা ধরে রাখবে
+            
+            // বাটন লুকানোর কোড মুছে দেওয়া হয়েছে, বাটন সবসময় থাকবে
 
             let currentQ = quizData[currentQIndex];
             
@@ -312,8 +313,6 @@
             } else {
                 btnElement.classList.add("wrong");
             }
-
-            nextBtn.style.visibility = "visible"; // বাটনটা দৃশ্যমান হবে, এবং গায়েব হবে না
         }
 
         function autoShowAnswer() {
@@ -326,7 +325,6 @@
                     allBtns[i].classList.add("correct"); 
                 }
             }
-            nextBtn.style.visibility = "visible"; // সময় শেষ হলেও বাটনটা দৃশ্যমান হবে
         }
 
         function goNext() {
