@@ -8,7 +8,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ১. বডির ওয়ার্ম ক্রিম-গেরুয়া মর্নিং গ্লস ব্যাকগ্রাউন্ড */
+/* ১. বডির ওয়ার্ম ক্রিম-গেরুয়া মর্নিং গ্লস ব্যাকগ্রাউন্ড */
 body {
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ body {
     height: auto;
 }
 
-/* ১. মেইন টাইটেল (WBCS WITH TANMOY) - রাজকীয় পোড়ামাটির গাঢ় গেরুয়া */
+/* ১. মেইন টাইটেল (WBCS WITH TANMOY) - রাজকীয় পোড়ামাটির গাঢ় গেরুয়া */
 .main-title {
     margin-top: 10px;
     font-size: 32px;
@@ -95,7 +95,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* মেনুর যে পেজে আছো সেটা সলিড গাঢ় গেরুয়া হয়ে জ্বলবে */
+/* মেনুর যে পেজে আছো সেটা সলিড গাঢ় গেরুয়া হয়ে জ্বলবে */
 .top-nav a:hover, .top-nav a[style*="e74c3c"] {
     color: #d35400 !important;
     text-shadow: 0 0 8px rgba(211, 84, 0, 0.4);
@@ -211,14 +211,14 @@ body {
 /* ---------------------------------
    MOCK TEST PORTAL "ROYAL GERUIA" OVERRIDE
 ------------------------------------ */
-/* ২. মূল কন্টেইনারের বর্ডার (গাঢ় সলিড ব্রোঞ্জ গেরুয়া) */
+/* ২. মূল কন্টেইনারের বর্ডার (গাঢ় সলিড ব্রোঞ্জ গেরুয়া) */
 .quiz-super-container {
     border: 4px solid #b9770e !important;
     box-shadow: 0 15px 35px rgba(185, 119, 14, 0.3) !important;
     background: #fffcf9 !important;
 }
 
-/* ৩. Top Header Bar - গাঢ় পোড়ামাটির খয়েরি-গেরুয়া */
+/* ৩. Top Header Bar - গাঢ় পোড়ামাটির খয়েরি-গেরুয়া */
 .quiz-header-bar {
     background: #78281f !important; 
     border-bottom: 4px solid #d35400 !important;
@@ -229,16 +229,16 @@ body {
 .question-tracker { background: #b9770e !important; color: white !important; border-color: #fff !important; }
 .score-badge { background: #1e8449 !important; color: white !important; border-color: #fff !important; }
 
-/* ৫. প্রশ্ন কার্ড - সলিড ডিপ অরেঞ্জ থেকে খয়েরি গ্রেডিয়েন্ট */
+/* ৫. প্রশ্ন কার্ড - রয়্যাল ডিপ ব্লু থেকে নেভি ব্লু গ্রেডিয়েন্ট */
 .question-display-card {
-    background: linear-gradient(135deg, #ba4a00 0%, #78281f 100%) !important;
+    background: linear-gradient(135deg, #1e3799 0%, #0c2461 100%) !important;
     border: 3px solid #f39c12 !important;
     color: #ffffff !important;
-    box-shadow: 0 10px 25px rgba(120, 40, 31, 0.4) !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px rgba(12, 36, 97, 0.4) !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-/* ৬. সাধারণ অপশন বোতাম (সাদা বডির ওপর গাঢ় গেরুয়া বর্ডার) */
+/* ৬. সাধারণ অপশন বোতাম (সাদা বডির ওপর গাঢ় গেরুয়া বর্ডার) */
 .option-item {
     background: #ffffff !important;
     border: 3px solid #d35400 !important;
@@ -247,13 +247,13 @@ body {
     font-weight: 800 !important;
 }
 
-/* ম্যাজিক ১: বোতাম লক না থাকা অবস্থায় হোভার করলে ডিপ ক্রিম হবে */
+/* ম্যাজিক ১: বোতাম লক না থাকা অবস্থায় হোভার করলে ডিপ ক্রিম হবে */
 .option-item:not(.disabled-opt):hover {
     background: #fae5d3 !important;
     border-color: #9b2226 !important;
 }
 
-/* ম্যাজিক ২: সঠিক উত্তর (১০০% সলিড কড়া সবুজ, হোভার একে সরাতে পারবে না) */
+/* ম্যাজিক ২: সঠিক উত্তর (১০০% সলিড কড়া সবুজ, হোভার একে সরাতে পারবেবিধা নেই) */
 div.option-item.opt-correct,
 div.option-item.opt-correct:hover,
 div.option-item.opt-correct:active {
@@ -264,7 +264,7 @@ div.option-item.opt-correct:active {
     box-shadow: 0 6px 15px rgba(0, 148, 50, 0.5) !important;
 }
 
-/* ম্যাজিক ৩: ভুল উত্তর (১০০% সলিড কড়া লাল, হোভার একে সরাতে পারবে না) */
+/* ম্যাজিক ৩: ভুল উত্তর (১০০% সলিড কড়া লাল, হোভার একে সরাতে পারবে না) */
 div.option-item.opt-wrong,
 div.option-item.opt-wrong:hover,
 div.option-item.opt-wrong:active {
@@ -275,10 +275,10 @@ div.option-item.opt-wrong:active {
     box-shadow: 0 6px 15px rgba(192, 57, 43, 0.5) !important;
 }
 
-/* উত্তর দেওয়ার পর সব অপশনকে লক করে দেওয়া */
+/* উত্তর দেওয়ার পর সব অপশনকে লক করে দেওয়া */
 .disabled-opt { pointer-events: none !important; }
 
-/* ৭. স্থায়ী Next বাটন - গাঢ় গেরুয়া আগুন */
+/* ৭. স্থায়ী Next বাটন - গাঢ় গেরুয়া আগুন */
 .next-action-btn {
     background: #ba4a00 !important;
     border-bottom: 5px solid #78281f !important;
@@ -354,7 +354,7 @@ div.option-item.opt-wrong:active {
    ULTIMATE "NEXT BUTTON" (১০০% স্থির + অপশনের ঠিক নিচে)
 =================================================== */
 
-/* ১. অপশন শেষ হওয়ার ঠিক ২২ পিক্সেল নিচেই বাটনটাকে টেনে তোলা হলো */
+/* ১. অপশন শেষ হওয়ার ঠিক ২২ পিক্সেল নিচেই বাটনটাকে টেনে তোলা হলো */
 .quiz-body .quiz-footer {
     margin-top: 22px !important; 
     padding-top: 0 !important;
