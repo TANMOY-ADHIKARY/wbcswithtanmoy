@@ -349,3 +349,129 @@ body {
     color: #2980b9;
     text-decoration: underline;
 }
+
+/* ===================================================
+   "ROYAL GERUIA" (গেরুয়া সানসেট) MASTER THEME OVERRIDE
+=================================================== */
+
+/* ১. বডির ওয়ার্ম ক্রিম-গেরুয়া মর্নিং গ্লস ব্যাকগ্রাউন্ড */
+body {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%) !important;
+    min-height: 100vh;
+}
+
+/* ২. মূল কন্টেইনারের বর্ডার (সফট গোল্ডেন গেরুয়া) */
+.quiz-super-container {
+    border: 4px solid #e67e22 !important;
+    box-shadow: 0 15px 35px rgba(230, 126, 34, 0.22) !important;
+    background: #fffcf9 !important;
+}
+
+/* ৩. Top Header Bar - গাঢ় পোড়ামাটির গেরুয়া (Deep Royal Terracotta) */
+.quiz-header-bar {
+    background: #9b2226 !important; 
+    border-bottom: 4px solid #f39c12 !important;
+}
+
+/* ৪. ওপরের চকচকে ব্যাজগুলো */
+.timer-badge { background: #d35400 !important; color: white !important; border-color: #fff !important; }
+.question-tracker { background: #e67e22 !important; color: white !important; border-color: #fff !important; }
+.score-badge { background: #27ae60 !important; color: white !important; border-color: #fff !important; }
+
+/* ৫. প্রশ্ন কার্ড - সলিড গেরুয়া থেকে ওয়ার্ম গোল্ড গ্রেডিয়েন্ট (The Masterpiece) */
+.question-display-card {
+    background: linear-gradient(135deg, #d35400 0%, #f39c12 100%) !important;
+    border: 3px solid #f1c40f !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 25px rgba(211, 84, 0, 0.35) !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ৬. সাধারণ অপশন বোতাম (সাদা বডির ওপর গেরুয়া বর্ডার) */
+.option-item {
+    background: #ffffff !important;
+    border: 3px solid #f8c291 !important;
+    border-left: 8px solid #e67e22 !important; /* গেরুয়া রঙের সাইড ল্যাম্প */
+    color: #2c3e50 !important;
+}
+
+.option-item:hover {
+    background: #fff5eb !important;
+    border-color: #d35400 !important;
+}
+
+/* ৭. সঠিক উত্তর (ডিপ এমারেল্ড গ্রিন) ও ভুল উত্তর (ডিপ রুবি রেড) */
+.opt-correct {
+    background: #009432 !important;
+    border-color: #004015 !important;
+    border-left-color: #00260c !important;
+    color: white !important;
+}
+
+.opt-wrong {
+    background: #c0392b !important;
+    border-color: #801d1d !important;
+    border-left-color: #4d1111 !important;
+    color: white !important;
+}
+
+/* ৮. স্থায়ী Next বাটন - জ্বলন্ত গেরুয়া আগুন */
+.next-action-btn {
+    background: #d35400 !important;
+    border-bottom: 5px solid #873600 !important;
+    color: white !important;
+    box-shadow: 0 8px 20px rgba(211, 84, 0, 0.4) !important;
+}
+
+.next-action-btn:hover { background: #e67e22 !important; }
+
+/* ৯. রেজাল্ট স্ক্রিনের টেক্সট */
+.result-container h2 { color: #d35400 !important; }
+
+/* ===================================================
+   HOME PAGE & NAVIGATION "ROYAL GERUIA" TOUCH
+=================================================== */
+
+/* ১. মেইন টাইটেল (WBCS WITH TANMOY) - রাজকীয় পোড়ামাটির গেরুয়া */
+.main-title {
+    color: #b33939 !important;
+    text-shadow: 2px 2px 4px rgba(179, 57, 57, 0.2);
+}
+
+/* ২. নেভিগেশন মেনুবার (Home, Notes, Syllabus...) */
+.top-nav {
+    background: #ffffff !important;
+    border-bottom: 3px solid #e67e22 !important;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.15) !important;
+}
+
+.top-nav a {
+    color: #4b6584 !important;
+    font-weight: 700 !important;
+}
+
+/* মেনুর যে পেজে আছো সেটা গেরুয়া হয়ে জ্বলবে */
+.top-nav a:hover, .top-nav a[style*="e74c3c"] {
+    color: #d35400 !important; 
+    text-shadow: 0 0 8px rgba(211, 84, 0, 0.3);
+}
+
+/* ৩. সাব-টাইটেল বা ইনফো বার (Alipurduar...) */
+.site-info-bar {
+    background: #fff5eb !important;
+    color: #d35400 !important;
+    border-top: 1px solid #fdebd0 !important;
+    border-bottom: 1px solid #fdebd0 !important;
+}
+
+/* ৪. হোমপেজের যেকোনো কার্ড বা বোতাম (যদি থাকে) */
+.menu-card, .subject-btn, .home-card {
+    border: 2px solid #f8c291 !important;
+    background: #ffffff !important;
+}
+
+.menu-card:hover, .subject-btn:hover, .home-card:hover {
+    border-color: #d35400 !important;
+    box-shadow: 0 10px 25px rgba(211, 84, 0, 0.3) !important;
+    transform: translateY(-3px);
+}
