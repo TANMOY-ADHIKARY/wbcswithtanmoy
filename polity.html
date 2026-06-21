@@ -9,7 +9,7 @@
     
     <style>
         /* ===================================================
-           DEEP VIBRANT PORTAL (100% FIXED - NO SCROLL JUMPS)
+           DEEP VIBRANT PORTAL (100% FIXED - 25 QUESTIONS READY)
         =================================================== */
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
 
@@ -39,7 +39,6 @@
             border-bottom: 4px solid #d63031;
         }
 
-        /* সলিড কড়া রঙের ব্যাজ */
         .timer-badge {
             background: #ff4757;
             color: white;
@@ -72,7 +71,6 @@
 
         .quiz-body { padding: 35px 40px; }
 
-        /* কড়া ডিপ স্যাফায়ার নেভি ব্লু প্রশ্ন বক্স */
         .question-display-card {
             background: #0c2461;
             color: #ffffff;
@@ -86,14 +84,12 @@
             box-shadow: 0 8px 20px rgba(12, 36, 97, 0.4);
         }
 
-        /* অপশন গ্রিড */
         .options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr; 
             gap: 20px;
         }
 
-        /* সাধারণ অপশন বক্স */
         .option-item {
             background: #ffffff;
             border: 3px solid #70a1ff;
@@ -110,7 +106,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* কড়া সবুজ (Correct) */
         .opt-correct {
             background: #009432 !important;
             color: white !important;
@@ -119,7 +114,6 @@
             box-shadow: 0 6px 15px rgba(0, 148, 50, 0.4) !important;
         }
 
-        /* কড়া লাল (Wrong) */
         .opt-wrong {
             background: #d63031 !important;
             color: white !important;
@@ -132,7 +126,6 @@
 
         .quiz-footer { margin-top: 40px; padding-top: 20px; }
 
-        /* স্থায়ী কড়া লাল Next বাটন */
         .next-action-btn {
             width: 100%;
             background: #d63031;
@@ -160,9 +153,6 @@
         .result-container h2 { font-size: 35px; color: #0c2461; font-weight:900; margin-bottom: 20px; }
         .result-score-txt { font-size: 65px; font-weight: 900; color: #009432; margin-bottom: 35px; }
 
-        /* ===================================================
-           MOBILE VIEW (< 768px)
-        =================================================== */
         @media screen and (max-width: 768px) {
             .quiz-super-container { width: 100%; margin: 0 auto; border-radius: 0; border: none; }
             .quiz-header-bar { padding: 14px 15px; }
@@ -205,7 +195,7 @@
         <div id="active-quiz-portal">
             <div class="quiz-header-bar">
                 <div class="timer-badge">⏱ <span id="time-txt">30</span>s</div>
-                <div class="question-tracker" id="tracker-txt">প্রশ্ন: ১ / ৩</div>
+                <div class="question-tracker" id="tracker-txt">প্রশ্ন: ১ / ২৫</div>
                 <div class="score-badge">Score: <span id="score-txt">0</span></div>
             </div>
 
@@ -229,7 +219,7 @@
     </div>
 
     <script>
-        const questionsList = // ২৫টি স্ট্যান্ডার্ড WBCS Indian Polity প্রশ্নমালা
+        // ২৫টি নিঁখুত WBCS Indian Polity প্রশ্নমালা
         const questionsList = [
             {
                 question: "১. গণপরিষদের প্রথম অস্থায়ী সভাপতি কে ছিলেন?",
@@ -247,7 +237,7 @@
                 correct: 2
             },
             {
-                question: "৪. 'সমাজতান্ত্রিক' (Socialist) এবং 'ধর্মনিরপেক্ষ' (Secular) শব্দদুটি কততম সংবিধান সংশোধনের মাধ্যমে প্রস্তাবনায় যুক্ত হয়?",
+                question: "৪. 'সমাজতান্ত্রিক' এবং 'ধর্মনিরপেক্ষ' শব্দদুটি কততম সংবিধান সংশোধনের মাধ্যমে প্রস্তাবনায় যুক্ত হয়?",
                 options: ["৪২তম সংশোধন", "৪৪তম সংশোধন", "৫২তম সংশোধন", "৭৩তম সংশোধন"],
                 correct: 0
             },
@@ -257,7 +247,7 @@
                 correct: 1
             },
             {
-                question: "৬. ভারতীয় সংবিধানের কোন ধারাকে ডঃ বি. আর. আম্বেদকর 'সংবিধানের হৃদয় ও আত্মা' (Heart and Soul) বলেছেন?",
+                question: "৬. ভারতীয় সংবিধানের কোন ধারাকে ডঃ বি. আর. আম্বেদকর 'সংবিধানের হৃদয় ও আত্মা' বলেছেন?",
                 options: ["১৪ নং ধারা", "১৯ নং ধারা", "৩২ নং ধারা", "২১ নং ধারা"],
                 correct: 2
             },
@@ -277,7 +267,7 @@
                 correct: 2
             },
             {
-                question: "১০. বর্তমানে ভারতীয় সংবিধানে মৌলিক কর্তব্যের (Fundamental Duties) সংখ্যা কয়টি?",
+                question: "১০. বর্তমানে ভারতীয় সংবিধানে মৌলিক কর্তব্যের সংখ্যা কয়টি?",
                 options: ["৯টি", "১০টি", "১১টি", "১২টি"],
                 correct: 2
             },
@@ -303,7 +293,7 @@
             },
             {
                 question: "১৫. রাজ্যসভার একজন সদস্যের কার্যকালের মেয়াদ কত বছর?",
-                options: ["৫ বছর", "৬ বছর", "৭ বছর", "স্থায়ী কক্ষ (মেয়াদ নেই)"],
+                options: ["৫ বছর", "৬ বছর", "৭ বছর", "স্থায়ী কক্ষ"],
                 correct: 1
             },
             {
@@ -327,7 +317,7 @@
                 correct: 2
             },
             {
-                question: "২০. ত্রি-স্তর (Three-tier) পঞ্চায়েত ব্যবস্থার সুপারিশ করেছিল কোন কমিটি?",
+                question: "২০. ত্রি-স্তর পঞ্চায়েত ব্যবস্থার সুপারিশ করেছিল কোন কমিটি?",
                 options: ["বলবন্ত রাই মেহতা কমিটি", "অশোক মেহতা কমিটি", "সিংভি কমিটি", "সরকারিয়া কমিশন"],
                 correct: 0
             },
@@ -337,7 +327,7 @@
                 correct: 2
             },
             {
-                question: "২২. ভারতের মুখ্য নির্বাচন কমিশনারকে (Chief Election Commissioner) কে নিয়োগ করেন?",
+                question: "২২. ভারতের মুখ্য নির্বাচন কমিশনারকে কে নিয়োগ করেন?",
                 options: ["সংসদ", "ভারতের প্রধান বিচারপতি", "ভারতের রাষ্ট্রপতি", "প্রধানমন্ত্রী"],
                 correct: 2
             },
@@ -347,7 +337,7 @@
                 correct: 0
             },
             {
-                question: "২৪. সংবিধানের কোন তফসিলে (Schedule) ২২টি স্বীকৃত ভাষার উল্লেখ রয়েছে?",
+                question: "২৪. সংবিধানের কোন তফসিলে ২২টি স্বীকৃত ভাষার উল্লেখ রয়েছে?",
                 options: ["ষষ্ঠ তফসিল", "সপ্তম তফসিল", "অষ্টম তফসিল", "নবম তফসিল"],
                 correct: 2
             },
@@ -357,7 +347,6 @@
                 correct: 1
             }
         ];
-            
 
         let currentIndex = 0;
         let userScore = 0;
@@ -436,7 +425,6 @@
             currentIndex++;
             if (currentIndex < questionsList.length) {
                 renderQuestion();
-                // অটো-স্লাইড করার কোড সমূলে বিনাশ করা হয়েছে! 
             } else {
                 document.getElementById("active-quiz-portal").style.display = "none";
                 document.getElementById("result-portal").style.display = "block";
