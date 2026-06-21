@@ -2,195 +2,187 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indian Polity Mock Test - WBCS With Tanmoy</title>
     
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* =========================================
-           Stable & Premium Mock Test App Layout
-        ========================================= */
+        /* ===================================================
+           MASTER ASSESSMENT PORTAL (DESKTOP + MOBILE)
+        =================================================== */
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        .mock-test-wrapper {
-            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-            padding: 30px 15px;
-            min-height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
+        body { background: #f4f6f9; margin: 0; padding: 0; }
+
+        /* ল্যাপটপ ও ডেস্কটপের জন্য মূল কন্টেইনার (বড় ও রাজকীয়) */
+        .quiz-super-container {
+            width: 94%;
+            max-width: 980px; /* ল্যাপটপে একদম পারফেক্ট চওড়া লুক দেবে */
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e8ed;
+            overflow: hidden;
         }
 
-        .app-container { 
-            width: 100%; 
-            max-width: 480px; 
-            background: #ffffff; 
-            border-radius: 15px; 
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            border: 2px solid #ffffff;
-            overflow: hidden; 
-            height: auto; 
-        }
-
-        .quiz-top-bar {
+        /* Top Bar (Sticky) */
+        .quiz-header-bar {
             position: sticky;
             top: 0;
             z-index: 100;
+            background: #ffffff;
+            padding: 16px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 15px;
-            background: #f8fcfd;
-            border-bottom: 2px solid #dcdde1;
+            border-bottom: 2px solid #edf2f7;
         }
 
-        .timer { 
-            font-weight: bold; 
-            color: #d35400; 
-            font-size: 14px; 
-            border: 2px solid #d35400;
-            background: #fff3e0;
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
-        
-        .q-counter {
-            color: #c0392b;
-            font-weight: 900;
-            border: 2px solid #c0392b;
-            background: #fadbd8;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 14px;
-        }
-
-        .score-board { 
-            font-weight: bold; 
-            color: #27ae60; 
-            font-size: 14px; 
-            border: 2px solid #27ae60;
-            background: #d4efdf;
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
-
-        .quiz-content {
-            padding: 20px 15px;
-            background: #fafbfc; 
-            height: auto;
-        }
-
-        .question-box {
-            background: #ebf5fb;
-            border: 2px solid #2980b9;
-            border-radius: 10px;
-            padding: 15px 12px;
-            text-align: center;
-            font-size: 17px;
+        .timer-badge {
+            background: #fffaf0;
+            border: 2px solid #dd6b20;
+            color: #dd6b20;
             font-weight: 800;
-            color: #1a5276;
-            margin-bottom: 18px;
-            box-shadow: 0 3px 8px rgba(41, 128, 185, 0.1);
-        }
-
-        .options-container { display: flex; flex-direction: column; gap: 10px; }
-
-        .option-btn {
-            width: 100%;
-            background: #fdfefe; 
-            border: 2px solid #aeb6bf; 
-            padding: 12px 15px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: bold;
-            color: #2c3e50;
-            cursor: pointer;
-            transition: 0.2s;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .option-btn:active { transform: scale(0.98); }
-
-        .correct { 
-            background: #27ae60 !important; 
-            color: #ffffff !important; 
-            border: 2px solid #1e8449 !important; 
-            box-shadow: 0 3px 8px rgba(39, 174, 96, 0.3) !important;
-        }
-        
-        .wrong { 
-            background: #e74c3c !important; 
-            color: #ffffff !important; 
-            border: 2px solid #c0392b !important; 
-            box-shadow: 0 3px 8px rgba(231, 76, 60, 0.3) !important;
-        }
-        
-        .disabled { pointer-events: none; opacity: 1; }
-
-        .next-btn {
-            width: 100%;
-            background: #c0392b; 
-            color: white;
-            border: 2px solid #900c3f;
-            padding: 14px;
-            border-radius: 25px; 
+            padding: 6px 16px;
+            border-radius: 20px;
             font-size: 16px;
-            font-weight: 900;
-            cursor: pointer;
-            display: block; 
-            /* visibility: hidden;  <-- এই লাইনটা পুরোপুরি মুছে দেওয়া হলো, যাতে বাটন সব সময় থাকে */
-            margin-top: 20px; 
-            margin-bottom: 10px;
-            box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
         }
 
-        .next-btn:active { transform: scale(0.95); }
+        .question-tracker {
+            background: #ebf8ff;
+            border: 2px solid #3182ce;
+            color: #3182ce;
+            font-weight: 900;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+        }
 
-        .result-screen {
+        .score-badge {
+            background: #f0fff4;
+            border: 2px solid #38a169;
+            color: #38a169;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        /* Main Question Area */
+        .quiz-body { padding: 35px 40px; }
+
+        .question-display-card {
+            background: #f7fafc;
+            border-left: 6px solid #3182ce;
+            padding: 25px 30px;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+
+        /* অপশন গ্রিড: ল্যাপটপে ২x২, মোবাইলে ১x৪ */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* ল্যাপটপে পাশাপাশি ২টো করে অপশন */
+            gap: 20px;
+        }
+
+        .option-item {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            padding: 18px 22px;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .option-item:hover {
+            background: #ebf8ff;
+            border-color: #63b3ed;
+            color: #2b6cb0;
+            transform: translateY(-2px);
+        }
+
+        .option-item:active { transform: translateY(0); }
+
+        /* Colors for Right/Wrong */
+        .opt-correct {
+            background: #38a169 !important;
+            color: white !important;
+            border-color: #276749 !important;
+            box-shadow: 0 4px 12px rgba(56, 161, 105, 0.3);
+        }
+
+        .opt-wrong {
+            background: #e53e3e !important;
+            color: white !important;
+            border-color: #9b2c2c !important;
+            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+        }
+
+        .disabled-opt { pointer-events: none; }
+
+        /* Action Footer (স্থায়ী উচ্চতা = লাফালাফি ১০০% বন্ধ) */
+        .quiz-footer {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 2px solid #edf2f7;
+            display: flex;
+            justify-content: flex-end;
+            min-height: 85px; /* এই হাইট ফিক্সড, তাই বাটন এলে পেজ নড়বে না */
+        }
+
+        .next-action-btn {
+            background: #3182ce;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            visibility: hidden; /* ম্যাজিক: বাটন অদৃশ্য থাকবে, কিন্তু তার নিজের জায়গা ধরে রাখবে */
+            box-shadow: 0 4px 15px rgba(49, 130, 206, 0.4);
+            transition: all 0.2s;
+        }
+
+        .next-action-btn:hover { background: #2b6cb0; }
+
+        /* Result Screen */
+        .result-container {
             display: none;
             text-align: center;
-            padding: 40px 20px;
-            background: #ffffff;
-            height: auto;
+            padding: 80px 20px;
         }
-        .result-screen h2 { color: #2d3436; margin-bottom: 20px; font-size: 26px; font-weight: 900; }
-        .result-screen .final-score { font-size: 40px; color: #009432; font-weight: 900; margin-bottom: 30px; }
-        .home-btn {
-            text-decoration: none;
-            background: #2980b9;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 16px;
-            border: 2px solid #1f618d;
-            box-shadow: 0 4px 8px rgba(41, 128, 185, 0.3);
-            display: inline-block;
-        }
+        .result-container h2 { font-size: 32px; color: #2d3748; margin-bottom: 20px; }
+        .result-score-txt { font-size: 55px; font-weight: 900; color: #38a169; margin-bottom: 35px; }
 
-        @media screen and (max-width: 600px) {
-            .mock-test-wrapper { padding: 20px 10px; }
-            .app-container { border-radius: 12px; }
+        /* ===================================================
+           MOBILE VIEW ADJUSTMENTS (< 768px)
+        =================================================== */
+        @media screen and (max-width: 768px) {
+            .quiz-super-container { width: 100%; margin: 10px auto; border-radius: 0; border: none; }
+            .quiz-body { padding: 20px 15px; }
+            .question-display-card { font-size: 18px; padding: 18px 20px; margin-bottom: 25px; }
+            
+            /* মোবাইলে গ্রিড ভেঙে নিচে নিচে ১ লাইনে চলে আসবে */
+            .options-grid { grid-template-columns: 1fr; gap: 12px; }
+            .option-item { padding: 15px 18px; font-size: 15px; }
+            
+            .quiz-footer { justify-content: center; min-height: 75px; }
+            .next-action-btn { width: 100%; padding: 15px; }
         }
-        /* ল্যাপটপের জন্য অ্যাডজাস্টমেন্ট */
-    @media screen and (min-width: 769px) {
-        .app-container {
-            max-width: 500px !important; /* ল্যাপটপে বক্সটা ছোট থাকবে */
-            margin: 20px auto !important; /* মাঝখানে রাখার জন্য */
-            min-height: auto !important;
-        }
-        .mock-test-wrapper {
-            min-height: auto !important;
-            padding-top: 20px !important;
-        }
-    }
     </style>
 </head>
 <body>
@@ -215,148 +207,144 @@
         <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
     </nav>
 
-    <div class="mock-test-wrapper">
-        <div class="app-container">
-            
-            <div class="result-screen" id="result-screen">
-                <h2>টেস্ট শেষ হয়েছে! 🎉</h2>
-                <div class="final-score" id="final-score-text">0 / 0</div>
-                <a href="mocktest.html" class="home-btn">মেইন মেনুতে ফিরুন</a>
+    <div class="quiz-super-container">
+        
+        <div id="active-quiz-portal">
+            <div class="quiz-header-bar">
+                <div class="timer-badge">⏱ <span id="time-txt">30</span>s</div>
+                <div class="question-tracker" id="tracker-txt">প্রশ্ন: ১ / ৩</div>
+                <div class="score-badge">Score: <span id="score-txt">0</span></div>
             </div>
 
-            <div id="quiz-screen" style="display: flex; flex-direction: column; height: auto;">
+            <div class="quiz-body">
+                <div class="question-display-card" id="q-txt"></div>
                 
-                <div class="quiz-top-bar">
-                    <div class="timer">⏱ <span id="timer-txt">30</span>s</div>
-                    <div class="q-counter" id="q-counter-txt">১ / ৩</div>
-                    <div class="score-board">Score: <span id="score-txt">0</span></div>
-                </div>
+                <div class="options-grid" id="opts-area"></div>
 
-                <div class="quiz-content">
-                    <div class="question-box" id="question-text"></div>
-                    <div class="options-container" id="options-container"></div>
-                    
-                    <button class="next-btn" id="next-btn" onclick="goNext()">Next Question ➔</button>
+                <div class="quiz-footer">
+                    <button class="next-action-btn" id="nxt-btn" onclick="triggerNext()">পরের প্রশ্ন ➔</button>
                 </div>
-                
             </div>
         </div>
+
+        <div class="result-container" id="result-portal">
+            <h2>মক টেস্ট সমাপ্ত! 🎉</h2>
+            <div class="result-score-txt" id="final-score-display">0 / 0</div>
+            <a href="mocktest.html" style="background:#3182ce; color:white; padding:14px 35px; border-radius:30px; text-decoration:none; font-weight:bold; display:inline-block;">মেইন মেনু</a>
+        </div>
+
     </div>
 
     <script>
-        const quizData = [
+        // তোমার সব প্রশ্ন এইখানে থাকবে
+        const questionsList = [
             {
                 question: "১. গণপরিষদের প্রথম অস্থায়ী সভাপতি কে ছিলেন?",
                 options: ["ডঃ সচ্চিদানন্দ সিনহা", "ডঃ রাজেন্দ্র প্রসাদ", "ডঃ বি. আর. আম্বেদকর", "জওহরলাল নেহেরু"],
-                answer: 0 
+                correct: 0
             },
             {
                 question: "২. ভারতের সংবিধান কবে গৃহীত হয়?",
                 options: ["২৬ শে জানুয়ারি, ১৯৫০", "২৬ শে নভেম্বর, ১৯৪৯", "১৫ ই আগস্ট, ১৯৪৭", "২৪ শে জানুয়ারি, ১৯৫০"],
-                answer: 1 
+                correct: 1
             },
             {
                 question: "৩. ভারতীয় সংবিধানের খসড়া কমিটির চেয়ারম্যান কে ছিলেন?",
                 options: ["মহাত্মা গান্ধী", "সর্দার বল্লভভাই প্যাটেল", "ডঃ বি. আর. আম্বেদকর", "ডঃ রাজেন্দ্র প্রসাদ"],
-                answer: 2 
+                correct: 2
             }
         ];
 
-        let currentQIndex = 0;
-        let score = 0;
+        let currentIndex = 0;
+        let userScore = 0;
         let timeLeft = 30;
-        let timerInterval;
+        let activeTimer;
 
-        const questionEl = document.getElementById("question-text");
-        const optionsContainer = document.getElementById("options-container");
-        const nextBtn = document.getElementById("next-btn");
-        const timerTxt = document.getElementById("timer-txt");
-        const qCounterTxt = document.getElementById("q-counter-txt");
-        const scoreTxt = document.getElementById("score-txt");
+        const qTxtEl = document.getElementById("q-txt");
+        const optsAreaEl = document.getElementById("opts-area");
+        const nxtBtnEl = document.getElementById("nxt-btn");
+        const timeTxtEl = document.getElementById("time-txt");
+        const trackerTxtEl = document.getElementById("tracker-txt");
+        const scoreTxtEl = document.getElementById("score-txt");
 
-        function loadQuestion() {
-            clearInterval(timerInterval);
+        function renderQuestion() {
+            clearInterval(activeTimer);
             timeLeft = 30;
-            timerTxt.innerText = timeLeft;
-            
-            // বাটন লুকানোর কোড মুছে দেওয়া হয়েছে, বাটন সবসময় থাকবে
+            timeTxtEl.innerText = timeLeft;
+            nxtBtnEl.style.visibility = "hidden"; // অদৃশ্য থাকবে, কিন্তু জায়গা ছাড়বে না
 
-            let currentQ = quizData[currentQIndex];
-            
-            questionEl.innerText = currentQ.question;
-            qCounterTxt.innerText = `${currentQIndex + 1} / ${quizData.length}`;
+            const currentQ = questionsList[currentIndex];
+            qTxtEl.innerText = currentQ.question;
+            trackerTxtEl.innerText = `প্রশ্ন: ${currentIndex + 1} / ${questionsList.length}`;
 
-            optionsContainer.innerHTML = "";
-            currentQ.options.forEach((opt, index) => {
-                const btn = document.createElement("button");
-                btn.classList.add("option-btn");
-                btn.innerText = opt;
-                btn.onclick = () => checkAnswer(index, btn);
-                optionsContainer.appendChild(btn);
+            optsAreaEl.innerHTML = "";
+            currentQ.options.forEach((optText, i) => {
+                const optDiv = document.createElement("div");
+                optDiv.className = "option-item";
+                optDiv.innerHTML = `<span>${optText}</span> <span class="icon-holder"></span>`;
+                optDiv.onclick = () => validateAnswer(i, optDiv);
+                optsAreaEl.appendChild(optDiv);
             });
 
-            timerInterval = setInterval(() => {
+            activeTimer = setInterval(() => {
                 timeLeft--;
-                timerTxt.innerText = timeLeft;
-                
+                timeTxtEl.innerText = timeLeft;
                 if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    autoShowAnswer(); 
+                    clearInterval(activeTimer);
+                    revealCorrectOnly();
                 }
             }, 1000);
         }
 
-        function checkAnswer(selectedIndex, btnElement) {
-            clearInterval(timerInterval); 
-            
-            let correctIndex = quizData[currentQIndex].answer;
-            let allBtns = optionsContainer.children;
+        function validateAnswer(selectedIdx, clickedEl) {
+            clearInterval(activeTimer);
+            const correctIdx = questionsList[currentIndex].correct;
+            const allOptions = optsAreaEl.children;
 
-            for (let i = 0; i < allBtns.length; i++) {
-                allBtns[i].classList.add("disabled");
-                if (i === correctIndex) {
-                    allBtns[i].classList.add("correct"); 
+            for (let i = 0; i < allOptions.length; i++) {
+                allOptions[i].classList.add("disabled-opt");
+                if (i === correctIdx) {
+                    allOptions[i].classList.add("opt-correct");
+                    allOptions[i].querySelector(".icon-holder").innerText = "✔";
                 }
             }
 
-            if (selectedIndex === correctIndex) {
-                score++;
-                scoreTxt.innerText = score;
+            if (selectedIdx === correctIdx) {
+                userScore++;
+                scoreTxtEl.innerText = userScore;
             } else {
-                btnElement.classList.add("wrong");
+                clickedEl.classList.add("opt-wrong");
+                clickedEl.querySelector(".icon-holder").innerText = "✖";
             }
+
+            nxtBtnEl.style.visibility = "visible"; // বাটন দৃশ্যমান হবে, পেজ এক চুলও নড়বে না
         }
 
-        function autoShowAnswer() {
-            let correctIndex = quizData[currentQIndex].answer;
-            let allBtns = optionsContainer.children;
-
-            for (let i = 0; i < allBtns.length; i++) {
-                allBtns[i].classList.add("disabled");
-                if (i === correctIndex) {
-                    allBtns[i].classList.add("correct"); 
+        function revealCorrectOnly() {
+            const correctIdx = questionsList[currentIndex].correct;
+            const allOptions = optsAreaEl.children;
+            for (let i = 0; i < allOptions.length; i++) {
+                allOptions[i].classList.add("disabled-opt");
+                if (i === correctIdx) {
+                    allOptions[i].classList.add("opt-correct");
+                    allOptions[i].querySelector(".icon-holder").innerText = "✔";
                 }
             }
+            nxtBtnEl.style.visibility = "visible";
         }
 
-        function goNext() {
-            currentQIndex++;
-            if (currentQIndex < quizData.length) {
-                loadQuestion();
-                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        function triggerNext() {
+            currentIndex++;
+            if (currentIndex < questionsList.length) {
+                renderQuestion();
             } else {
-                showResult();
+                document.getElementById("active-quiz-portal").style.display = "none";
+                document.getElementById("result-portal").style.display = "block";
+                document.getElementById("final-score-display").innerText = `${userScore} / ${questionsList.length}`;
             }
         }
 
-        function showResult() {
-            document.getElementById("quiz-screen").style.display = "none";
-            document.getElementById("result-screen").style.display = "block";
-            document.getElementById("final-score-text").innerText = `${score} / ${quizData.length}`;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        window.onload = loadQuestion;
+        window.onload = renderQuestion;
     </script>
 </body>
 </html>
