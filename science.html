@@ -1,176 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>General Science Mock Test - WBCS PRO</title>
+    <title>WBCS Premium General Science Mock Test - WBCS With Tanmoy</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
-        .quiz-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: relative; }
-        .header-section { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #1e3c72; padding-bottom: 10px; margin-bottom: 20px; }
-        .back-btn { text-decoration: none; color: #1e3c72; font-weight: bold; }
-        
-        #timer-container { font-size: 18px; font-weight: bold; color: #e74c3c; background: #fadbd8; padding: 5px 15px; border-radius: 5px; }
-        #question-counter { font-size: 18px; font-weight: bold; color: #2c3e50; background: #e9ecef; padding: 5px 15px; border-radius: 5px; text-align: center; margin-bottom: 20px; }
-        
-        .question-block { display: none; margin-bottom: 25px; padding-bottom: 15px; }
-        .question { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #2c3e50; }
-        .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; font-size: 16px; }
-        .options label:hover { background: #dcdde1; }
-        .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
-        
-        .correct-ans { background-color: #d4edda !important; color: #155724; border: 1px solid #c3e6cb !important; font-weight: bold; }
-        .wrong-ans { background-color: #f8d7da !important; color: #721c24; border: 1px solid #f5c6cb !important; text-decoration: line-through; }
-        
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
-        .nav-btn { padding: 12px 25px; background-color: #1e3c72; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .nav-btn:hover { background-color: #2a5298; }
-        .nav-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
-        .submit-btn { background-color: #27ae60; display: none; }
-        .submit-btn:hover { background-color: #2ecc71; }
-        
-        #result { margin-bottom: 25px; font-size: 22px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; display: none; }
+        /* ===================================================
+           DEEP VIBRANT PORTAL (100% FIXED - 25 SCIENCE TOPICS)
+        =================================================== */
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+
+        body { background: #eaf0f6; }
+
+        .quiz-super-container {
+            width: 94%;
+            max-width: 960px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 4px solid #ced6e0;
+            overflow: hidden;
+        }
+
+        /* Top Bar - Deep Dark Navy */
+        .quiz-header-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #0a183d; 
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #d63031;
+        }
+
+        .timer-badge {
+            background: #ff4757;
+            color: white;
+            font-weight: 900;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .question-tracker {
+            background: #1e90ff;
+            color: white;
+            font-weight: 900;
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .score-badge {
+            background: #009432;
+            color: white;
+            font-weight: 900;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .quiz-body { padding: 35px 40px; }
+
+        .question-display-card {
+            background: #0c2461;
+            color: #ffffff;
+            border: 4px solid #4a69bd;
+            padding: 25px 30px;
+            border-radius: 16px;
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 35px;
+            line-height: 1.5;
+            box-shadow: 0 8px 20px rgba(12, 36, 97, 0.4);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px;
+        }
+
+        .option-item {
+            background: #ffffff;
+            border: 3px solid #70a1ff;
+            border-left: 8px solid #1e90ff;
+            padding: 18px 22px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #2f3542;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .opt-correct {
+            background: #009432 !important;
+            color: white !important;
+            border: 3px solid #004015 !important;
+            border-left: 8px solid #00260c !important;
+            box-shadow: 0 6px 15px rgba(0, 148, 50, 0.4) !important;
+        }
+
+        .opt-wrong {
+            background: #d63031 !important;
+            color: white !important;
+            border: 3px solid #801d1d !important;
+            border-left: 8px solid #4d1111 !important;
+            box-shadow: 0 6px 15px rgba(214, 48, 49, 0.4) !important;
+        }
+
+        .disabled-opt { pointer-events: none; }
+
+        .quiz-footer { margin-top: 40px; padding-top: 20px; }
+
+        .next-action-btn {
+            width: 100%;
+            background: #d63031;
+            color: white;
+            border: none;
+            border-bottom: 5px solid #8c1d1d; 
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            display: block; 
+            box-shadow: 0 8px 20px rgba(214, 48, 49, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .next-action-btn:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        /* Result Screen */
+        .result-container { display: none; text-align: center; padding: 80px 20px; }
+        .result-container h2 { font-size: 35px; color: #0c2461; font-weight:900; margin-bottom: 20px; }
+        .result-score-txt { font-size: 65px; font-weight: 900; color: #009432; margin-bottom: 35px; }
+
+        @media screen and (max-width: 768px) {
+            .quiz-super-container { width: 100%; margin: 0 auto; border-radius: 0; border: none; }
+            .quiz-header-bar { padding: 14px 15px; }
+            .timer-badge, .question-tracker, .score-badge { padding: 6px 12px; font-size: 15px; }
+            
+            .quiz-body { padding: 25px 18px; }
+            .question-display-card { font-size: 19px; padding: 20px; margin-bottom: 25px; }
+            
+            .options-grid { grid-template-columns: 1fr; gap: 14px; }
+            .option-item { padding: 16px 20px; font-size: 16px; }
+            
+            .next-action-btn { padding: 16px; font-size: 18px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="quiz-container">
-        <div class="header-section">
-            <a href="mocktest.html" class="back-btn">← Main Menu</a>
-            <div id="timer-container">⏱ <span id="time-left">10:00</span></div>
-        </div>
+    <header class="top-header">
+        <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo" onerror="this.style.display='none'">
+        <h1 class="main-title">WBCS WITH TANMOY</h1>
+    </header>
+
+    <div class="site-info-bar">
+        <span>📅 Estd: 19.06.2026</span>
+        <span class="separator">|</span>
+        <span>📍 Alipurduar</span>
+    </div>
+
+    <nav class="top-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html">Notes</a>
+        <a href="https://drive.google.com/drive/folders/1xMzQB4SyceBRpZ4D2lC6p97Y64Jwjamy?usp=drive_link" target="_blank">Syllabus</a>
+        <a href="https://drive.google.com/drive/folders/1nXT_2jDf4UpzG0d_zwPrDGf4nYcMUpVm?usp=sharing" target="_blank">Pyq</a>
+        <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
+        <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
+    </nav>
+
+    <div class="quiz-super-container">
         
-        <h2 style="text-align: center; color: #2c3e50; margin-top: 0;">General Science Mock Test</h2>
-        
-        <div id="result"></div>
-        <div id="question-counter">Question: 1 / 10</div>
-        
-        <div id="quiz-form">
-            <div class="question-block"><div class="question">1. Which of the following is known as the 'Powerhouse of the Cell'?</div><div class="options"><label><input type="radio" name="q1" value="a"> Mitochondria</label><label><input type="radio" name="q1" value="b"> Ribosome</label><label><input type="radio" name="q1" value="c"> Nucleus</label><label><input type="radio" name="q1" value="d"> Golgi body</label></div></div>
-            
-            <div class="question-block"><div class="question">2. What is the lightest gas?</div><div class="options"><label><input type="radio" name="q2" value="a"> Oxygen</label><label><input type="radio" name="q2" value="b"> Hydrogen</label><label><input type="radio" name="q2" value="c"> Nitrogen</label><label><input type="radio" name="q2" value="d"> Helium</label></div></div>
-            
-            <div class="question-block"><div class="question">3. The chemical name of Vitamin C is:</div><div class="options"><label><input type="radio" name="q3" value="a"> Citric Acid</label><label><input type="radio" name="q3" value="b"> Lactic Acid</label><label><input type="radio" name="q3" value="c"> Ascorbic Acid</label><label><input type="radio" name="q3" value="d"> Folic Acid</label></div></div>
-            
-            <div class="question-block"><div class="question">4. The SI unit of Work is:</div><div class="options"><label><input type="radio" name="q4" value="a"> Newton</label><label><input type="radio" name="q4" value="b"> Watt</label><label><input type="radio" name="q4" value="c"> Pascal</label><label><input type="radio" name="q4" value="d"> Joule</label></div></div>
-            
-            <div class="question-block"><div class="question">5. The study of the Universe is known as:</div><div class="options"><label><input type="radio" name="q5" value="a"> Cosmology</label><label><input type="radio" name="q5" value="b"> Astrology</label><label><input type="radio" name="q5" value="c"> Seismology</label><label><input type="radio" name="q5" value="d"> Limnology</label></div></div>
+        <div id="active-quiz-portal">
+            <div class="quiz-header-bar">
+                <div class="timer-badge">⏱ <span id="time-txt">30</span>s</div>
+                <div class="question-tracker" id="tracker-txt">প্রশ্ন: ১ / ২৫</div>
+                <div class="score-badge">Score: <span id="score-txt">0</span></div>
+            </div>
 
-            <div class="question-block"><div class="question">6. Which blood group is called the 'Universal Donor'?</div><div class="options"><label><input type="radio" name="q6" value="a"> A</label><label><input type="radio" name="q6" value="b"> O</label><label><input type="radio" name="q6" value="c"> B</label><label><input type="radio" name="q6" value="d"> AB</label></div></div>
+            <div class="quiz-body">
+                <div class="question-display-card" id="q-txt"></div>
+                
+                <div class="options-grid" id="opts-area"></div>
 
-            <div class="question-block"><div class="question">7. Which gas is mainly responsible for Global Warming?</div><div class="options"><label><input type="radio" name="q7" value="a"> Oxygen</label><label><input type="radio" name="q7" value="b"> Nitrogen</label><label><input type="radio" name="q7" value="c"> Carbon Dioxide</label><label><input type="radio" name="q7" value="d"> Argon</label></div></div>
-
-            <div class="question-block"><div class="question">8. The instrument used to measure atmospheric pressure is:</div><div class="options"><label><input type="radio" name="q8" value="a"> Thermometer</label><label><input type="radio" name="q8" value="b"> Lactometer</label><label><input type="radio" name="q8" value="c"> Hygrometer</label><label><input type="radio" name="q8" value="d"> Barometer</label></div></div>
-
-            <div class="question-block"><div class="question">9. Which of the following is a non-metal that remains liquid at room temperature?</div><div class="options"><label><input type="radio" name="q9" value="a"> Bromine</label><label><input type="radio" name="q9" value="b"> Mercury</label><label><input type="radio" name="q9" value="c"> Chlorine</label><label><input type="radio" name="q9" value="d"> Helium</label></div></div>
-
-            <div class="question-block"><div class="question">10. The planet nearest to the Sun is:</div><div class="options"><label><input type="radio" name="q10" value="a"> Venus</label><label><input type="radio" name="q10" value="b"> Mercury</label><label><input type="radio" name="q10" value="c"> Mars</label><label><input type="radio" name="q10" value="d"> Earth</label></div></div>
-
-            <div class="nav-buttons" id="nav-container">
-                <button type="button" class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
-                <button type="button" class="nav-btn" id="next-btn" onclick="nextQuestion()">Next</button>
-                <button type="button" class="nav-btn submit-btn" id="submit-btn" onclick="calculateScore()">Submit Test</button>
+                <div class="quiz-footer">
+                    <button class="next-action-btn" onclick="triggerNext()">পরের প্রশ্ন ➔</button>
+                </div>
             </div>
         </div>
+
+        <div class="result-container" id="result-portal">
+            <h2>মক টেস্ট সমাপ্ত! 🎉</h2>
+            <div class="result-score-txt" id="final-score-display">0 / 0</div>
+            <a href="mocktest.html" style="background:#0c2461; color:white; padding:16px 45px; border-radius:30px; text-decoration:none; font-weight:900; font-size:18px; display:inline-block;">মেইন মেনু</a>
+        </div>
+
     </div>
 
     <script>
-        let currentQuestion = 0;
-        let questions;
-        let timerInterval;
-        let timeLeft = 10 * 60; // 10 Minutes Timer for 10 questions
+        // ২৫টি বাছাই করা "WBCS General Science" (Physics + Chemistry + Biology)
+        const questionsList = [
+            { question: "১. কোষের 'শক্তিকেন্দ্র' (Powerhouse of the Cell) কাকে বলা হয়?", options: ["রাইবোজোম", "মাইটোকন্ড্রিয়া", "নিউক্লিয়াস", "গলগি বডি"], correct: 1 },
+            { question: "২. কাজের (Work) বা শক্তির এস.আই (SI) একক কী?", options: ["নিউটন", "ওয়াট", "পাস্কাল", "জুল"], correct: 3 },
+            { question: "৩. 'ভিটামিন সি' (Vitamin C)-এর রাসায়নিক নাম কী?", options: ["সাইট্রিক অ্যাসিড", "ল্যাকটিক অ্যাসিড", "অ্যাসকরবিক অ্যাসিড", "ফলিক অ্যাসিড"], correct: 2 },
+            { question: "৪. আলোর কোন ঘটনার জন্য আকাশের রঙ নীল দেখায়?", options: ["প্রতিসরণ", "বিক্ষেপণ (Scattering)", "বিচ্ছুরণ", "পূর্ণ প্রতিফলন"], correct: 1 },
+            { question: "৫. 'লাফিং গ্যাস' (Laughing Gas)-এর রাসায়নিক নাম কী?", options: ["নাইট্রিক অক্সাইড", "নাইট্রাস অক্সাইড", "নাইট্রোজেন ডাই-অক্সাইড", "সালফার ডাই-অক্সাইড"], correct: 1 },
+            { question: "৬. কোন রক্তগ্রুপকে 'সার্বজনীন দাতা' (Universal Donor) বলা হয়?", options: ["A", "B", "AB", "O"], correct: 3 },
+            { question: "৭. নিচের কোনটি একটি অধাতু (Non-metal) যা সাধারণ তাপমাত্রায় তরল অবস্থায় থাকে?", options: ["পারদ (Mercury)", "ব্রোমিন", "গ্যালিয়াম", "আয়োডিন"], correct: 1 },
+            { question: "৮. মানবদেহের 'মাস্টার গ্রন্থি' (Master Gland) বা প্রভুগ্রন্থি কাকে বলা হয়?", options: ["থাইরয়েড", "অগ্ন্যাশয়", "পিটুইটারি", "অ্যাড্রিনাল"], correct: 2 },
+            { question: "৯. শব্দের বেগ নিচের কোন মাধ্যমে সবচেয়ে বেশি হয়?", options: ["শূন্য মাধ্যম", "জল", "বাতাস", "কঠিন মাধ্যম (ইস্পাত)"], correct: 3 },
+            { question: "১০. মানুষের পাকস্থলীতে খাদ্য পরিপাকের জন্য কোন অ্যাসিড উৎপন্ন হয়?", options: ["সালফিউরিক অ্যাসিড", "নাইট্রিক অ্যাসিড", "হাইড্রোক্লোরিক অ্যাসিড (HCl)", "অ্যাসিটিক অ্যাসিড"], correct: 2 },
+            { question: "১১. লোহায় মরচে পড়া (Rusting of iron) আসলে কী ধরনের প্রক্রিয়া?", options: ["বিজারণ", "জারণ (Oxidation)", "পলিমারাইজেশন", "হাইড্রোজেনেশন"], correct: 1 },
+            { question: "১২. বংশগতিবিদ্যার জনক (Father of Genetics) কাকে বলা হয়?", options: ["চার্লস ডারউইন", "গ্রেগর জোহান মেন্ডেল", "ল্যামার্ক", "রবার্ট হুক"], correct: 1 },
+            { question: "১৩. পিতল (Brass) নিচের কোন দুটি ধাতুর সংকর?", options: ["তামা ও টিন", "তামা ও দস্তা (Cu + Zn)", "তামা ও নিকেল", "লোহা ও কার্বন"], correct: 1 },
+            { question: "১৪. পৃথিবী থেকে কোনো বস্তুর 'মুক্তিবেগ' (Escape Velocity) কত?", options: ["৯.৮ কিমি/সেকেন্ড", "১১.২ কিমি/সেকেন্ড", "১৪.৫ কিমি/সেকেন্ড", "৭.৯ কিমি/সেকেন্ড"], correct: 1 },
+            { question: "১৫. উদ্ভিদের সালোকসংশ্লেষকারী রঞ্জক 'ক্লোরোফিল'-এ কোন ধাতু উপস্থিত থাকে?", options: ["লোহা (Fe)", "ম্যাগনেসিয়াম (Mg)", "দস্তা (Zn)", "ক্যালসিয়াম (Ca)"], correct: 1 },
+            { question: "১৬. নন-স্টিক বাসনের প্রলেপ দিতে ব্যবহৃত 'টেফলন' (Teflon) আসলে কী?", options: ["পলিভিনাইল ক্লোরাইড", "পলিটেট্রাফ্লুরোইথিলিন", "পলিস্টাইরিন", "পলিপ্রোপিলিন"], correct: 1 },
+            { question: "১৭. 'মায়োপিয়া' বা হ্রস্বদৃষ্টি ত্রুটি দূর করতে কোন ধরনের লেন্স ব্যবহার করা হয়?", options: ["উত্তল লেন্স", "অবতল লেন্স (Concave Lens)", "বাইফোকাল লেন্স", "সিলিন্ড্রিকাল লেন্স"], correct: 1 },
+            { question: "১৮. মানবদেহে লোহিত রক্তকণিকার (RBC) গড় আয়ু কত দিন?", options: ["৬০ দিন", "৯০ দিন", "১২0 দিন", "১৮০ দিন"], correct: 2 },
+            { question: "১৯. সূর্যের বিপুল শক্তির মূল উৎস কী?", options: ["নিউক্লীয় বিভাজন", "নিউক্লীয় সংযোজন (Nuclear Fusion)", "রাসায়নিক বিক্রিয়া", "তেজস্ক্রিয় ক্ষয়"], correct: 1 },
+            { question: "২০. কোন হরমোনকে 'জরুরীকালীন হরমোন' (Emergency Hormone) বলা হয়?", options: ["ইনসুলিন", "থাইরক্সিন", "অ্যাড্রিনালিন", "টেস্টোস্টেরন"], correct: 2 },
+            { question: "২১. কোন তাপমাত্রায় সেলসিয়াস ও ফারেনহাইট স্কেলের পাঠ একদম সমান হয়?", options: ["-৪০°", "-৩২°", "৪০°", "০°"], correct: 0 },
+            { question: "২২. বিশুদ্ধ জলের পিএইচ (pH) মান কত?", options: ["৫.৪", "৬.০", "৭.০", "৭.৪"], correct: 2 },
+            { question: "২৩. মানুষের মুখের লালা (Saliva) নিচের কোনটির পরিপাকে সাহায্য করে?", options: ["প্রোটিন", "শ্বেতসার (Starch)", "ফ্যাট", "ভিটামিন"], correct: 1 },
+            { question: "২৪. 'এক্স-রে' (X-Ray) কে আবিষ্কার করেন?", options: ["জে. জে. থমসন", "উইলহেম রন্টজেন", "মাদাম কুরি", "জেমস চ্যাডউইক"], correct: 1 },
+            { question: "২৫. ডেঙ্গু জ্বর ছড়ানোর জন্য দায়ী নিচের কোন মশা?", options: ["অ্যানোফিলিস মশা", "কিউলেক্স মশা", "এডিস মশা", "মানসোনিয়া মশা"], correct: 2 }
+        ];
 
-        window.onload = function() {
-            questions = document.querySelectorAll('.question-block');
-            showQuestion(currentQuestion);
-            startTimer();
-        };
+        let currentIndex = 0;
+        let userScore = 0;
+        let timeLeft = 30;
+        let activeTimer;
 
-        function startTimer() {
-            let timerDisplay = document.getElementById('time-left');
-            timerInterval = setInterval(function() {
+        const qTxtEl = document.getElementById("q-txt");
+        const optsAreaEl = document.getElementById("opts-area");
+        const timeTxtEl = document.getElementById("time-txt");
+        const trackerTxtEl = document.getElementById("tracker-txt");
+        const scoreTxtEl = document.getElementById("score-txt");
+
+        function renderQuestion() {
+            clearInterval(activeTimer);
+            timeLeft = 30;
+            timeTxtEl.innerText = timeLeft;
+
+            const currentQ = questionsList[currentIndex];
+            qTxtEl.innerText = currentQ.question;
+            trackerTxtEl.innerText = `প্রশ্ন: ${currentIndex + 1} / ${questionsList.length}`;
+
+            optsAreaEl.innerHTML = "";
+            currentQ.options.forEach((optText, i) => {
+                const optDiv = document.createElement("div");
+                optDiv.className = "option-item";
+                optDiv.innerHTML = `<span>${optText}</span> <span class="icon-holder"></span>`;
+                optDiv.onclick = () => validateAnswer(i, optDiv);
+                optsAreaEl.appendChild(optDiv);
+            });
+
+            activeTimer = setInterval(() => {
+                timeLeft--;
+                timeTxtEl.innerText = timeLeft;
                 if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    calculateScore(); 
-                } else {
-                    timeLeft--;
-                    let m = Math.floor(timeLeft / 60);
-                    let s = timeLeft % 60;
-                    timerDisplay.innerText = m + ":" + (s < 10 ? "0" + s : s);
-                    
-                    if(timeLeft <= 60) { // Red color for last 1 minute
-                        document.getElementById('timer-container').style.background = "#e74c3c";
-                        document.getElementById('timer-container').style.color = "#fff";
-                    }
+                    clearInterval(activeTimer);
+                    revealCorrectOnly();
                 }
             }, 1000);
         }
 
-        function showQuestion(index) {
-            questions.forEach((q, i) => { q.style.display = (i === index) ? "block" : "none"; });
-            document.getElementById('question-counter').innerText = "Question: " + (index + 1) + " / " + questions.length;
-            
-            document.getElementById('prev-btn').style.display = (index === 0) ? "none" : "inline-block";
-            
-            if (index === questions.length - 1) {
-                document.getElementById('next-btn').style.display = "none";
-                document.getElementById('submit-btn').style.display = "inline-block";
-            } else {
-                document.getElementById('next-btn').style.display = "inline-block";
-                document.getElementById('submit-btn').style.display = "none";
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function validateAnswer(selectedIdx, clickedEl) {
+            clearInterval(activeTimer);
+            const correctIdx = questionsList[currentIndex].correct;
+            const allOptions = optsAreaEl.children;
 
-        function nextQuestion() { if (currentQuestion < questions.length - 1) { currentQuestion++; showQuestion(currentQuestion); } }
-        function prevQuestion() { if (currentQuestion > 0) { currentQuestion--; showQuestion(currentQuestion); } }
-
-        function calculateScore() {
-            clearInterval(timerInterval);
-            document.getElementById('timer-container').style.display = 'none';
-            document.getElementById('nav-container').style.display = 'none';
-            document.getElementById('question-counter').style.display = 'none';
-
-            let score = 0;
-            // General Science Answer Key (1-10)
-            const correctAnswers = { 
-                q1:"a", q2:"b", q3:"c", q4:"d", q5:"a", q6:"b", q7:"c", q8:"d", q9:"a", q10:"b"
-            };
-
-            questions.forEach((qBlock, index) => {
-                qBlock.style.display = "block"; 
-                let qName = "q" + (index + 1);
-                let selectedInput = document.querySelector(`input[name="${qName}"]:checked`);
-                let correctInput = document.querySelector(`input[name="${qName}"][value="${correctAnswers[qName]}"]`);
-                let allInputs = document.querySelectorAll(`input[name="${qName}"]`);
-
-                if (correctInput) { correctInput.parentElement.classList.add("correct-ans"); }
-
-                if (selectedInput) {
-                    if (selectedInput.value !== correctAnswers[qName]) {
-                        selectedInput.parentElement.classList.add("wrong-ans"); 
-                    } else { score++; }
+            for (let i = 0; i < allOptions.length; i++) {
+                allOptions[i].classList.add("disabled-opt");
+                if (i === correctIdx) {
+                    allOptions[i].classList.add("opt-correct");
+                    allOptions[i].querySelector(".icon-holder").innerText = "✔";
                 }
-
-                allInputs.forEach(input => input.disabled = true);
-            });
-
-            let resultDiv = document.getElementById("result");
-            resultDiv.style.display = "block";
-            resultDiv.innerHTML = `Your Score: ${score} / 10`;
-            
-            if(score >= 8) {
-                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
-                resultDiv.innerHTML += "<br>Excellent performance! Your Science preparation is great.";
-            } else if (score >= 5) {
-                resultDiv.style.backgroundColor = "#fff3cd"; resultDiv.style.color = "#856404";
-                resultDiv.innerHTML += "<br>Good try! But you need more revision on basic science.";
-            } else {
-                resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.color = "#721c24";
-                resultDiv.innerHTML += "<br>Please read the text books thoroughly and revise properly.";
             }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (selectedIdx === correctIdx) {
+                userScore++;
+                scoreTxtEl.innerText = userScore;
+            } else {
+                clickedEl.classList.add("opt-wrong");
+                clickedEl.querySelector(".icon-holder").innerText = "✖";
+            }
         }
+
+        function revealCorrectOnly() {
+            const correctIdx = questionsList[currentIndex].correct;
+            const allOptions = optsAreaEl.children;
+            for (let i = 0; i < allOptions.length; i++) {
+                allOptions[i].classList.add("disabled-opt");
+                if (i === correctIdx) {
+                    allOptions[i].classList.add("opt-correct");
+                    allOptions[i].querySelector(".icon-holder").innerText = "✔";
+                }
+            }
+        }
+
+        function triggerNext() {
+            currentIndex++;
+            if (currentIndex < questionsList.length) {
+                renderQuestion();
+            } else {
+                document.getElementById("active-quiz-portal").style.display = "none";
+                document.getElementById("result-portal").style.display = "block";
+                document.getElementById("final-score-display").innerText = `${userScore} / ${questionsList.length}`;
+            }
+        }
+
+        window.onload = renderQuestion;
     </script>
 </body>
 </html>
