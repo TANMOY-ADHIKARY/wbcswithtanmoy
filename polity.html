@@ -9,155 +9,168 @@
     
     <style>
         /* ===================================================
-           MASTER ASSESSMENT PORTAL (DESKTOP + MOBILE)
+           ULTRA-GLOSSY "CHOK-CHOKE" ASSESSMENT PORTAL
         =================================================== */
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        body { background: #f4f6f9; margin: 0; padding: 0; }
+        body { background: #ebf0f5; margin: 0; padding: 0; }
 
-        /* ল্যাপটপ ও ডেস্কটপের জন্য মূল কন্টেইনার (বড় ও রাজকীয়) */
+        /* মূল কন্টেইনার */
         .quiz-super-container {
             width: 94%;
-            max-width: 980px; /* ল্যাপটপে একদম পারফেক্ট চওড়া লুক দেবে */
-            margin: 40px auto;
+            max-width: 980px;
+            margin: 30px auto;
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e1e8ed;
+            border-radius: 22px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            border: 3px solid #dfe6e9;
             overflow: hidden;
         }
 
-        /* Top Bar (Sticky) */
+        /* Top Bar (Sticky & High Contrast) */
         .quiz-header-bar {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: #ffffff;
+            background: #1e272e; /* গাঢ় ডার্ক হেডার */
             padding: 16px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #edf2f7;
+            border-bottom: 4px solid #ff4757;
         }
 
+        /* চকচকে নিয়ন ব্যাজগুলো */
         .timer-badge {
-            background: #fffaf0;
-            border: 2px solid #dd6b20;
-            color: #dd6b20;
-            font-weight: 800;
-            padding: 6px 16px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+            color: white;
+            font-weight: 900;
+            padding: 8px 18px;
+            border-radius: 25px;
             font-size: 16px;
+            box-shadow: 0 0 12px rgba(255, 71, 87, 0.6);
+            letter-spacing: 1px;
         }
 
         .question-tracker {
-            background: #ebf8ff;
-            border: 2px solid #3182ce;
-            color: #3182ce;
+            background: linear-gradient(135deg, #1e90ff 0%, #70a1ff 100%);
+            color: white;
             font-weight: 900;
-            padding: 6px 20px;
-            border-radius: 20px;
+            padding: 8px 22px;
+            border-radius: 25px;
             font-size: 16px;
+            box-shadow: 0 0 12px rgba(30, 144, 255, 0.6);
         }
 
         .score-badge {
-            background: #f0fff4;
-            border: 2px solid #38a169;
-            color: #38a169;
-            font-weight: 800;
-            padding: 6px 16px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, #2ed573 0%, #7bed9f 100%);
+            color: white;
+            font-weight: 900;
+            padding: 8px 18px;
+            border-radius: 25px;
             font-size: 16px;
+            box-shadow: 0 0 12px rgba(46, 213, 115, 0.6);
         }
 
         /* Main Question Area */
         .quiz-body { padding: 35px 40px; }
 
+        /* চকচকে রয়্যাল ব্লু প্রশ্ন কার্ড */
         .question-display-card {
-            background: #f7fafc;
-            border-left: 6px solid #3182ce;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            border: 2px solid #74b9ff;
             padding: 25px 30px;
-            border-radius: 12px;
-            font-size: 22px;
-            font-weight: 800;
-            color: #2d3748;
+            border-radius: 16px;
+            font-size: 24px;
+            font-weight: 900;
             margin-bottom: 35px;
             line-height: 1.5;
+            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.35);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         /* অপশন গ্রিড: ল্যাপটপে ২x২, মোবাইলে ১x৪ */
         .options-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* ল্যাপটপে পাশাপাশি ২টো করে অপশন */
+            grid-template-columns: 1fr 1fr; 
             gap: 20px;
         }
 
+        /* গ্লসি অপশন বোতাম */
         .option-item {
             background: #ffffff;
-            border: 2px solid #e2e8f0;
+            border: 3px solid #ced6e0;
+            border-left: 8px solid #3742fa; /* সুন্দর নীল সাইডবার ল্যাম্প */
             padding: 18px 22px;
-            border-radius: 14px;
-            font-size: 17px;
-            font-weight: 700;
-            color: #4a5568;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #2f3542;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
 
         .option-item:hover {
-            background: #ebf8ff;
-            border-color: #63b3ed;
-            color: #2b6cb0;
-            transform: translateY(-2px);
+            background: #f1f2f6;
+            border-color: #3742fa;
+            transform: scale(1.01);
         }
 
-        .option-item:active { transform: translateY(0); }
-
-        /* Colors for Right/Wrong */
+        /* কড়া সবুজ ও লাল (Correct / Wrong) */
         .opt-correct {
-            background: #38a169 !important;
+            background: linear-gradient(135deg, #00b09b, #96c93d) !important;
             color: white !important;
-            border-color: #276749 !important;
-            box-shadow: 0 4px 12px rgba(56, 161, 105, 0.3);
+            border: none !important;
+            box-shadow: 0 8px 20px rgba(0, 176, 155, 0.5) !important;
         }
 
         .opt-wrong {
-            background: #e53e3e !important;
+            background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%) !important;
             color: white !important;
-            border-color: #9b2c2c !important;
-            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+            border: none !important;
+            box-shadow: 0 8px 20px rgba(255, 8, 68, 0.5) !important;
         }
 
         .disabled-opt { pointer-events: none; }
 
-        /* Action Footer (স্থায়ী উচ্চতা = লাফালাফি ১০০% বন্ধ) */
+        /* Action Footer */
         .quiz-footer {
-            margin-top: 35px;
+            margin-top: 40px;
             padding-top: 25px;
-            border-top: 2px solid #edf2f7;
+            border-top: 3px dashed #dfe6e9;
             display: flex;
             justify-content: flex-end;
-            min-height: 85px; /* এই হাইট ফিক্সড, তাই বাটন এলে পেজ নড়বে না */
         }
 
+        /* চকচকে স্থায়ী Next বাটন (কখনো গায়েব হবে না) */
         .next-action-btn {
-            background: #3182ce;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
             color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 800;
+            border: 2px solid #ffffff;
+            padding: 16px 45px;
+            border-radius: 30px;
+            font-size: 19px;
+            font-weight: 900;
             cursor: pointer;
-            visibility: hidden; /* ম্যাজিক: বাটন অদৃশ্য থাকবে, কিন্তু তার নিজের জায়গা ধরে রাখবে */
-            box-shadow: 0 4px 15px rgba(49, 130, 206, 0.4);
+            display: block; /* ম্যাজিক: সবসময় স্ক্রিনে থাকবে */
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: all 0.2s;
         }
 
-        .next-action-btn:hover { background: #2b6cb0; }
+        .next-action-btn:hover {
+            background: linear-gradient(135deg, #ff6b81 0%, #ff4757 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.7);
+        }
+
+        .next-action-btn:active { transform: translateY(1px); }
 
         /* Result Screen */
         .result-container {
@@ -165,23 +178,25 @@
             text-align: center;
             padding: 80px 20px;
         }
-        .result-container h2 { font-size: 32px; color: #2d3748; margin-bottom: 20px; }
-        .result-score-txt { font-size: 55px; font-weight: 900; color: #38a169; margin-bottom: 35px; }
+        .result-container h2 { font-size: 34px; color: #2d3748; font-weight:900; margin-bottom: 20px; }
+        .result-score-txt { font-size: 60px; font-weight: 900; color: #2ed573; margin-bottom: 35px; text-shadow: 0 4px 10px rgba(46, 213, 115, 0.3); }
 
         /* ===================================================
            MOBILE VIEW ADJUSTMENTS (< 768px)
         =================================================== */
         @media screen and (max-width: 768px) {
-            .quiz-super-container { width: 100%; margin: 10px auto; border-radius: 0; border: none; }
-            .quiz-body { padding: 20px 15px; }
-            .question-display-card { font-size: 18px; padding: 18px 20px; margin-bottom: 25px; }
+            .quiz-super-container { width: 100%; margin: 0 auto; border-radius: 0; border: none; }
+            .quiz-header-bar { padding: 14px 15px; }
+            .timer-badge, .question-tracker, .score-badge { padding: 6px 12px; font-size: 14px; }
             
-            /* মোবাইলে গ্রিড ভেঙে নিচে নিচে ১ লাইনে চলে আসবে */
-            .options-grid { grid-template-columns: 1fr; gap: 12px; }
-            .option-item { padding: 15px 18px; font-size: 15px; }
+            .quiz-body { padding: 25px 18px; }
+            .question-display-card { font-size: 20px; padding: 20px; margin-bottom: 25px; }
             
-            .quiz-footer { justify-content: center; min-height: 75px; }
-            .next-action-btn { width: 100%; padding: 15px; }
+            .options-grid { grid-template-columns: 1fr; gap: 14px; }
+            .option-item { padding: 16px 20px; font-size: 16px; border-left-width: 6px; }
+            
+            .quiz-footer { justify-content: center; }
+            .next-action-btn { width: 100%; padding: 16px; text-align: center; }
         }
     </style>
 </head>
@@ -230,13 +245,13 @@
         <div class="result-container" id="result-portal">
             <h2>মক টেস্ট সমাপ্ত! 🎉</h2>
             <div class="result-score-txt" id="final-score-display">0 / 0</div>
-            <a href="mocktest.html" style="background:#3182ce; color:white; padding:14px 35px; border-radius:30px; text-decoration:none; font-weight:bold; display:inline-block;">মেইন মেনু</a>
+            <a href="mocktest.html" style="background:linear-gradient(135deg, #1e90ff, #ff4757); color:white; padding:16px 45px; border-radius:30px; text-decoration:none; font-weight:900; font-size:18px; display:inline-block; box-shadow:0 8px 20px rgba(0,0,0,0.2);">মেইন মেনু</a>
         </div>
 
     </div>
 
     <script>
-        // তোমার সব প্রশ্ন এইখানে থাকবে
+        // তোমার প্রশ্নমালা
         const questionsList = [
             {
                 question: "১. গণপরিষদের প্রথম অস্থায়ী সভাপতি কে ছিলেন?",
@@ -262,7 +277,6 @@
 
         const qTxtEl = document.getElementById("q-txt");
         const optsAreaEl = document.getElementById("opts-area");
-        const nxtBtnEl = document.getElementById("nxt-btn");
         const timeTxtEl = document.getElementById("time-txt");
         const trackerTxtEl = document.getElementById("tracker-txt");
         const scoreTxtEl = document.getElementById("score-txt");
@@ -271,7 +285,8 @@
             clearInterval(activeTimer);
             timeLeft = 30;
             timeTxtEl.innerText = timeLeft;
-            nxtBtnEl.style.visibility = "hidden"; // অদৃশ্য থাকবে, কিন্তু জায়গা ছাড়বে না
+
+            // নেক্সট বাটন লুকানোর কোনো লজিক আর এখানে নেই! ওটা সবসময় থাকবে।
 
             const currentQ = questionsList[currentIndex];
             qTxtEl.innerText = currentQ.question;
@@ -316,8 +331,6 @@
                 clickedEl.classList.add("opt-wrong");
                 clickedEl.querySelector(".icon-holder").innerText = "✖";
             }
-
-            nxtBtnEl.style.visibility = "visible"; // বাটন দৃশ্যমান হবে, পেজ এক চুলও নড়বে না
         }
 
         function revealCorrectOnly() {
@@ -330,13 +343,13 @@
                     allOptions[i].querySelector(".icon-holder").innerText = "✔";
                 }
             }
-            nxtBtnEl.style.visibility = "visible";
         }
 
         function triggerNext() {
             currentIndex++;
             if (currentIndex < questionsList.length) {
                 renderQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 document.getElementById("active-quiz-portal").style.display = "none";
                 document.getElementById("result-portal").style.display = "block";
