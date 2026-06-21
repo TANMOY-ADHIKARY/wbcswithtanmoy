@@ -3,261 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Wbcs Geography Mock Test - PRO</title>
+    <title>WBCS Premium Geography Mock Test - WBCS With Tanmoy</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
-        .quiz-container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: relative; }
-        .header-section { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 20px; }
-        .back-btn { text-decoration: none; color: #3498db; font-weight: bold; }
-        
-        /* টাইমার এবং কাউন্টার স্টাইল */
-        #timer-container { font-size: 18px; font-weight: bold; color: #e74c3c; background: #fadbd8; padding: 5px 15px; border-radius: 5px; }
-        #question-counter { font-size: 18px; font-weight: bold; color: #2c3e50; background: #e9ecef; padding: 5px 15px; border-radius: 5px; text-align: center; margin-bottom: 20px; }
-        
-        /* প্রশ্ন স্টাইল */
-        .question-block { display: none; margin-bottom: 25px; padding-bottom: 15px; }
-        .question { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #2c3e50; }
-        .options label { display: block; background: #e9ecef; padding: 12px; margin-bottom: 8px; border-radius: 5px; cursor: pointer; transition: background 0.3s; border: 1px solid transparent; font-size: 16px; }
-        .options label:hover { background: #dcdde1; }
-        .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
-        
-        /* সঠিক ও ভুল উত্তরের স্টাইল */
-        .correct-ans { background-color: #d4edda !important; color: #155724; border: 1px solid #c3e6cb !important; font-weight: bold; }
-        .wrong-ans { background-color: #f8d7da !important; color: #721c24; border: 1px solid #f5c6cb !important; text-decoration: line-through; }
-        
-        /* নেভিগেশন বাটন */
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
-        .nav-btn { padding: 12px 25px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .nav-btn:hover { background-color: #2980b9; }
-        .nav-btn:disabled { background-color: #95a5a6; cursor: not-allowed; }
-        .submit-btn { background-color: #27ae60; display: none; }
-        .submit-btn:hover { background-color: #2ecc71; }
-        
-        #result { margin-bottom: 25px; font-size: 22px; font-weight: bold; text-align: center; padding: 15px; border-radius: 5px; display: none; }
+        /* ===================================================
+           DEEP VIBRANT PORTAL (100% FIXED - 25 GEOGRAPHY TOPICS)
+        =================================================== */
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+
+        body { background: #eaf0f6; }
+
+        .quiz-super-container {
+            width: 94%;
+            max-width: 960px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 4px solid #ced6e0;
+            overflow: hidden;
+        }
+
+        /* Top Bar - Deep Dark Navy */
+        .quiz-header-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #0a183d; 
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #d63031;
+        }
+
+        .timer-badge {
+            background: #ff4757;
+            color: white;
+            font-weight: 900;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .question-tracker {
+            background: #1e90ff;
+            color: white;
+            font-weight: 900;
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .score-badge {
+            background: #009432;
+            color: white;
+            font-weight: 900;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .quiz-body { padding: 35px 40px; }
+
+        .question-display-card {
+            background: #0c2461;
+            color: #ffffff;
+            border: 4px solid #4a69bd;
+            padding: 25px 30px;
+            border-radius: 16px;
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 35px;
+            line-height: 1.5;
+            box-shadow: 0 8px 20px rgba(12, 36, 97, 0.4);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px;
+        }
+
+        .option-item {
+            background: #ffffff;
+            border: 3px solid #70a1ff;
+            border-left: 8px solid #1e90ff;
+            padding: 18px 22px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #2f3542;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .opt-correct {
+            background: #009432 !important;
+            color: white !important;
+            border: 3px solid #004015 !important;
+            border-left: 8px solid #00260c !important;
+            box-shadow: 0 6px 15px rgba(0, 148, 50, 0.4) !important;
+        }
+
+        .opt-wrong {
+            background: #d63031 !important;
+            color: white !important;
+            border: 3px solid #801d1d !important;
+            border-left: 8px solid #4d1111 !important;
+            box-shadow: 0 6px 15px rgba(214, 48, 49, 0.4) !important;
+        }
+
+        .disabled-opt { pointer-events: none; }
+
+        .quiz-footer { margin-top: 40px; padding-top: 20px; }
+
+        .next-action-btn {
+            width: 100%;
+            background: #d63031;
+            color: white;
+            border: none;
+            border-bottom: 5px solid #8c1d1d; 
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            display: block; 
+            box-shadow: 0 8px 20px rgba(214, 48, 49, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .next-action-btn:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        /* Result Screen */
+        .result-container { display: none; text-align: center; padding: 80px 20px; }
+        .result-container h2 { font-size: 35px; color: #0c2461; font-weight:900; margin-bottom: 20px; }
+        .result-score-txt { font-size: 65px; font-weight: 900; color: #009432; margin-bottom: 35px; }
+
+        @media screen and (max-width: 768px) {
+            .quiz-super-container { width: 100%; margin: 0 auto; border-radius: 0; border: none; }
+            .quiz-header-bar { padding: 14px 15px; }
+            .timer-badge, .question-tracker, .score-badge { padding: 6px 12px; font-size: 15px; }
+            
+            .quiz-body { padding: 25px 18px; }
+            .question-display-card { font-size: 19px; padding: 20px; margin-bottom: 25px; }
+            
+            .options-grid { grid-template-columns: 1fr; gap: 14px; }
+            .option-item { padding: 16px 20px; font-size: 16px; }
+            
+            .next-action-btn { padding: 16px; font-size: 18px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="quiz-container">
-        <div class="header-section">
-            <a href="mocktest.html" class="back-btn">← মেইন মেনু</a>
-            <div id="timer-container">⏱ <span id="time-left">30:00</span></div>
-        </div>
+    <header class="top-header">
+        <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo" onerror="this.style.display='none'">
+        <h1 class="main-title">WBCS WITH TANMOY</h1>
+    </header>
+
+    <div class="site-info-bar">
+        <span>📅 Estd: 19.06.2026</span>
+        <span class="separator">|</span>
+        <span>📍 Alipurduar</span>
+    </div>
+
+    <nav class="top-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html">Notes</a>
+        <a href="https://drive.google.com/drive/folders/1xMzQB4SyceBRpZ4D2lC6p97Y64Jwjamy?usp=drive_link" target="_blank">Syllabus</a>
+        <a href="https://drive.google.com/drive/folders/1nXT_2jDf4UpzG0d_zwPrDGf4nYcMUpVm?usp=sharing" target="_blank">Pyq</a>
+        <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
+        <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
+    </nav>
+
+    <div class="quiz-super-container">
         
-        <h2 style="text-align: center; color: #2c3e50; margin-top: 0;">Geography Mock Test</h2>
-        
-        <div id="result"></div>
-        <div id="question-counter">প্রশ্ন: ১ / ৫০</div>
-        
-        <div id="quiz-form">
-            <!-- Questions 1 to 10 -->
-            <div class="question-block"><div class="question">১. ভারতের দীর্ঘতম নদী কোনটি?</div><div class="options"><label><input type="radio" name="q1" value="a"> গঙ্গা</label><label><input type="radio" name="q1" value="b"> ব্রহ্মপুত্র</label><label><input type="radio" name="q1" value="c"> গোদাবরী</label><label><input type="radio" name="q1" value="d"> যমুনা</label></div></div>
-            <div class="question-block"><div class="question">২. পশ্চিমবঙ্গের সর্বোচ্চ শৃঙ্গ কোনটি?</div><div class="options"><label><input type="radio" name="q2" value="a"> সান্দাকফু</label><label><input type="radio" name="q2" value="b"> ফালুট</label><label><input type="radio" name="q2" value="c"> সবরগ্রাম</label><label><input type="radio" name="q2" value="d"> টাংলু</label></div></div>
-            <div class="question-block"><div class="question">৩. 'সাইলেন্ট ভ্যালি' (Silent Valley) কোথায় অবস্থিত?</div><div class="options"><label><input type="radio" name="q3" value="a"> তামিলনাড়ু</label><label><input type="radio" name="q3" value="b"> কেরালা</label><label><input type="radio" name="q3" value="c"> আসাম</label><label><input type="radio" name="q3" value="d"> উত্তরাখণ্ড</label></div></div>
-            <div class="question-block"><div class="question">৪. লোকটাক হ্রদ কোন রাজ্যে অবস্থিত?</div><div class="options"><label><input type="radio" name="q4" value="a"> আসাম</label><label><input type="radio" name="q4" value="b"> মেঘালয়</label><label><input type="radio" name="q4" value="c"> মণিপুর</label><label><input type="radio" name="q4" value="d"> ত্রিপুরা</label></div></div>
-            <div class="question-block"><div class="question">৫. ভারতের দক্ষিণতম বিন্দু কোনটি?</div><div class="options"><label><input type="radio" name="q5" value="a"> কন্যাকুমারী</label><label><input type="radio" name="q5" value="b"> ইন্দিরা কল</label><label><input type="radio" name="q5" value="c"> কিবিথু</label><label><input type="radio" name="q5" value="d"> ইন্দিরা পয়েন্ট</label></div></div>
-            <div class="question-block"><div class="question">৬. মাজুলী দ্বীপ কোন নদীতে অবস্থিত?</div><div class="options"><label><input type="radio" name="q6" value="a"> ব্রহ্মপুত্র</label><label><input type="radio" name="q6" value="b"> গঙ্গা</label><label><input type="radio" name="q6" value="c"> গোদাবরী</label><label><input type="radio" name="q6" value="d"> কাবেরী</label></div></div>
-            <div class="question-block"><div class="question">৭. নাথুলা পাস কোন রাজ্যে অবস্থিত?</div><div class="options"><label><input type="radio" name="q7" value="a"> হিমাচল প্রদেশ</label><label><input type="radio" name="q7" value="b"> সিকিম</label><label><input type="radio" name="q7" value="c"> উত্তরাখণ্ড</label><label><input type="radio" name="q7" value="d"> অরুণাচল প্রদেশ</label></div></div>
-            <div class="question-block"><div class="question">৮. ভারতের প্রাচীনতম পর্বতমালা কোনটি?</div><div class="options"><label><input type="radio" name="q8" value="a"> হিমালয়</label><label><input type="radio" name="q8" value="b"> নীলগিরি</label><label><input type="radio" name="q8" value="c"> আরাবল্লী</label><label><input type="radio" name="q8" value="d"> বিন্ধ্য</label></div></div>
-            <div class="question-block"><div class="question">৯. দামোদর নদ কোথা থেকে উৎপন্ন হয়েছে?</div><div class="options"><label><input type="radio" name="q9" value="a"> অমরকণ্টক</label><label><input type="radio" name="q9" value="b"> মহাবালেশ্বর</label><label><input type="radio" name="q9" value="c"> হিমালয়</label><label><input type="radio" name="q9" value="d"> ছোটনাগপুর মালভূমি</label></div></div>
-            <div class="question-block"><div class="question">১০. ভারতের কোন রাজ্যে বনভূমির পরিমাণ সবচেয়ে বেশি?</div><div class="options"><label><input type="radio" name="q10" value="a"> মধ্যপ্রদেশ</label><label><input type="radio" name="q10" value="b"> অরুণাচল প্রদেশ</label><label><input type="radio" name="q10" value="c"> ছত্তিশগড়</label><label><input type="radio" name="q10" value="d"> মহারাষ্ট্র</label></div></div>
-
-            <!-- Questions 11 to 20 -->
-            <div class="question-block"><div class="question">১১. 'সিলিকন ভ্যালি অফ ইন্ডিয়া' কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q11" value="a"> হায়দ্রাবাদ</label><label><input type="radio" name="q11" value="b"> বেঙ্গালুরু</label><label><input type="radio" name="q11" value="c"> চেন্নাই</label><label><input type="radio" name="q11" value="d"> পুনে</label></div></div>
-            <div class="question-block"><div class="question">১২. ভারতের খনিজ ভাণ্ডার কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q12" value="a"> দাক্ষিণাত্য মালভূমি</label><label><input type="radio" name="q12" value="b"> মেঘালয় মালভূমি</label><label><input type="radio" name="q12" value="c"> ছোটনাগপুর মালভূমি</label><label><input type="radio" name="q12" value="d"> মালব মালভূমি</label></div></div>
-            <div class="question-block"><div class="question">১৩. পশ্চিমবঙ্গের কোন জেলায় সবচেয়ে বেশি চা উৎপন্ন হয়?</div><div class="options"><label><input type="radio" name="q13" value="a"> জলপাইগুড়ি</label><label><input type="radio" name="q13" value="b"> আলিপুরদুয়ার</label><label><input type="radio" name="q13" value="c"> কালিম্পং</label><label><input type="radio" name="q13" value="d"> দার্জিলিং</label></div></div>
-            <div class="question-block"><div class="question">১৪. সুন্দরবন কত সালে ইউনেস্কো ওয়ার্ল্ড হেরিটেজ সাইটের তকমা পায়?</div><div class="options"><label><input type="radio" name="q14" value="a"> ১৯৮৭</label><label><input type="radio" name="q14" value="b"> ১৯৮৯</label><label><input type="radio" name="q14" value="c"> ১৯৯৭</label><label><input type="radio" name="q14" value="d"> ২০০১</label></div></div>
-            <div class="question-block"><div class="question">১৫. ভারতের কোন রাজ্যে সবথেকে বেশি কফি উৎপাদিত হয়?</div><div class="options"><label><input type="radio" name="q15" value="a"> কেরালা</label><label><input type="radio" name="q15" value="b"> কর্ণাটক</label><label><input type="radio" name="q15" value="c"> তামিলনাড়ু</label><label><input type="radio" name="q15" value="d"> অসম</label></div></div>
-            <div class="question-block"><div class="question">১৬. নীলগিরি পর্বতের সর্বোচ্চ শৃঙ্গ কোনটি?</div><div class="options"><label><input type="radio" name="q16" value="a"> আনাইমুদি</label><label><input type="radio" name="q16" value="b"> মহেন্দ্রগিরি</label><label><input type="radio" name="q16" value="c"> দোদাবেতা</label><label><input type="radio" name="q16" value="d"> অগস্ত্যমালাই</label></div></div>
-            <div class="question-block"><div class="question">১৭. কোন নদীকে 'দক্ষিণ ভারতের গঙ্গা' বলা হয়?</div><div class="options"><label><input type="radio" name="q17" value="a"> কাবেরী</label><label><input type="radio" name="q17" value="b"> কৃষ্ণা</label><label><input type="radio" name="q17" value="c"> নর্মদা</label><label><input type="radio" name="q17" value="d"> গোদাবরী</label></div></div>
-            <div class="question-block"><div class="question">১৮. 'গোলাপি শহর' বা Pink City কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q18" value="a"> জয়পুর</label><label><input type="radio" name="q18" value="b"> যোধপুর</label><label><input type="radio" name="q18" value="c"> উদয়পুর</label><label><input type="radio" name="q18" value="d"> আজমের</label></div></div>
-            <div class="question-block"><div class="question">১৯. ভারতের ক্ষুদ্রতম রাজ্য কোনটি?</div><div class="options"><label><input type="radio" name="q19" value="a"> সিকিম</label><label><input type="radio" name="q19" value="b"> গোয়া</label><label><input type="radio" name="q19" value="c"> ত্রিপুরা</label><label><input type="radio" name="q19" value="d"> নাগাল্যান্ড</label></div></div>
-            <div class="question-block"><div class="question">২০. কর্কটক্রান্তি রেখা ভারতের কটি রাজ্যের উপর দিয়ে গেছে?</div><div class="options"><label><input type="radio" name="q20" value="a"> ৬টি</label><label><input type="radio" name="q20" value="b"> ৭টি</label><label><input type="radio" name="q20" value="c"> ৮টি</label><label><input type="radio" name="q20" value="d"> ৯টি</label></div></div>
-
-            <!-- Questions 21 to 30 -->
-            <div class="question-block"><div class="question">২১. লাক্ষাদ্বীপ কী দ্বারা গঠিত?</div><div class="options"><label><input type="radio" name="q21" value="a"> আগ্নেয়গিরি</label><label><input type="radio" name="q21" value="b"> পলি</label><label><input type="radio" name="q21" value="c"> বালি</label><label><input type="radio" name="q21" value="d"> প্রবাল</label></div></div>
-            <div class="question-block"><div class="question">২২. ভারতের দীর্ঘতম বাঁধ কোনটি?</div><div class="options"><label><input type="radio" name="q22" value="a"> হিরাকুদ</label><label><input type="radio" name="q22" value="b"> ভাকরা নাঙ্গাল</label><label><input type="radio" name="q22" value="c"> তেহরি</label><label><input type="radio" name="q22" value="d"> নাগার্জুন সাগর</label></div></div>
-            <div class="question-block"><div class="question">২৩. জওহর টানেল কোন রাজ্যে/কেন্দ্রশাসিত অঞ্চলে অবস্থিত?</div><div class="options"><label><input type="radio" name="q23" value="a"> হিমাচল প্রদেশ</label><label><input type="radio" name="q23" value="b"> জম্মু ও কাশ্মীর</label><label><input type="radio" name="q23" value="c"> লাদাখ</label><label><input type="radio" name="q23" value="d"> উত্তরাখণ্ড</label></div></div>
-            <div class="question-block"><div class="question">২৪. পশ্চিমবঙ্গের সাথে কয়টি দেশের আন্তর্জাতিক সীমানা রয়েছে?</div><div class="options"><label><input type="radio" name="q24" value="a"> ১টি</label><label><input type="radio" name="q24" value="b"> ২টি</label><label><input type="radio" name="q24" value="c"> ৩টি</label><label><input type="radio" name="q24" value="d"> ৪টি</label></div></div>
-            <div class="question-block"><div class="question">২৫. 'ভারতের রূঢ়' কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q25" value="a"> আসানসোল</label><label><input type="radio" name="q25" value="b"> জামশেদপুর</label><label><input type="radio" name="q25" value="c"> ভিলাই</label><label><input type="radio" name="q25" value="d"> দুর্গাপুর</label></div></div>
-            <div class="question-block"><div class="question">২৬. গঙ্গা নদীর উৎপত্তি কোথায়?</div><div class="options"><label><input type="radio" name="q26" value="a"> গঙ্গোত্রী হিমবাহ</label><label><input type="radio" name="q26" value="b"> যমুনোত্রী হিমবাহ</label><label><input type="radio" name="q26" value="c"> চেমায়ুংদুং হিমবাহ</label><label><input type="radio" name="q26" value="d"> জেমু হিমবাহ</label></div></div>
-            <div class="question-block"><div class="question">২৭. 'পঞ্চনদের দেশ' কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q27" value="a"> হরিয়ানা</label><label><input type="radio" name="q27" value="b"> পাঞ্জাব</label><label><input type="radio" name="q27" value="c"> গুজরাট</label><label><input type="radio" name="q27" value="d"> কাশ্মীর</label></div></div>
-            <div class="question-block"><div class="question">২৮. চিলকা হ্রদ কোন রাজ্যে অবস্থিত?</div><div class="options"><label><input type="radio" name="q28" value="a"> পশ্চিমবঙ্গ</label><label><input type="radio" name="q28" value="b"> অন্ধ্রপ্রদেশ</label><label><input type="radio" name="q28" value="c"> ওড়িশা</label><label><input type="radio" name="q28" value="d"> তামিলনাড়ু</label></div></div>
-            <div class="question-block"><div class="question">২৯. কাজিরাঙ্গা জাতীয় উদ্যান কীসের জন্য বিখ্যাত?</div><div class="options"><label><input type="radio" name="q29" value="a"> রয়্যাল বেঙ্গল টাইগার</label><label><input type="radio" name="q29" value="b"> এশীয় সিংহ</label><label><input type="radio" name="q29" value="c"> হাতি</label><label><input type="radio" name="q29" value="d"> একশৃঙ্গ গণ্ডার</label></div></div>
-            <div class="question-block"><div class="question">৩০. ভাকরা-নাঙ্গাল বাঁধ কোন নদীর উপর অবস্থিত?</div><div class="options"><label><input type="radio" name="q30" value="a"> শতদ্রু</label><label><input type="radio" name="q30" value="b"> বিপাশা</label><label><input type="radio" name="q30" value="c"> রাভী</label><label><input type="radio" name="q30" value="d"> চন্দ্রভাগা</label></div></div>
-
-            <!-- Questions 31 to 40 -->
-            <div class="question-block"><div class="question">৩১. ভারতের বৃহত্তম মিষ্টি জলের হ্রদ কোনটি?</div><div class="options"><label><input type="radio" name="q31" value="a"> ডাল</label><label><input type="radio" name="q31" value="b"> উলার</label><label><input type="radio" name="q31" value="c"> সম্বর</label><label><input type="radio" name="q31" value="d"> কোলেরু</label></div></div>
-            <div class="question-block"><div class="question">৩২. পশ্চিমবঙ্গের দীর্ঘতম নদী কোনটি?</div><div class="options"><label><input type="radio" name="q32" value="a"> তিস্তা</label><label><input type="radio" name="q32" value="b"> দামোদর</label><label><input type="radio" name="q32" value="c"> ভাগীরথী-হুগলী</label><label><input type="radio" name="q32" value="d"> সুবর্ণরেখা</label></div></div>
-            <div class="question-block"><div class="question">৩৩. 'দুঃখের নদী' কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q33" value="a"> কোশী</label><label><input type="radio" name="q33" value="b"> ব্রহ্মপুত্র</label><label><input type="radio" name="q33" value="c"> মহানদী</label><label><input type="radio" name="q33" value="d"> দামোদর</label></div></div>
-            <div class="question-block"><div class="question">৩৪. জাদুগোড়া খনি কীসের জন্য বিখ্যাত?</div><div class="options"><label><input type="radio" name="q34" value="a"> ইউরেনিয়াম</label><label><input type="radio" name="q34" value="b"> তামা</label><label><input type="radio" name="q34" value="c"> লোহা</label><label><input type="radio" name="q34" value="d"> সোনা</label></div></div>
-            <div class="question-block"><div class="question">৩৫. ভারতের প্রথম সুতাকল কোথায় স্থাপিত হয়েছিল?</div><div class="options"><label><input type="radio" name="q35" value="a"> মুম্বাই</label><label><input type="radio" name="q35" value="b"> ঘুষুড়ি (পশ্চিমবঙ্গ)</label><label><input type="radio" name="q35" value="c"> সুরাট</label><label><input type="radio" name="q35" value="d"> আহমেদাবাদ</label></div></div>
-            <div class="question-block"><div class="question">৩৬. 'ডেকান ট্র্যাপ' মূলত কোন শিলা দ্বারা গঠিত?</div><div class="options"><label><input type="radio" name="q36" value="a"> গ্রানাইট</label><label><input type="radio" name="q36" value="b"> নিস</label><label><input type="radio" name="q36" value="c"> ব্যাসল্ট</label><label><input type="radio" name="q36" value="d"> বেলেপাথর</label></div></div>
-            <div class="question-block"><div class="question">৩৭. আন্নামালাই পর্বতের সর্বোচ্চ শৃঙ্গ কোনটি?</div><div class="options"><label><input type="radio" name="q37" value="a"> দোদাবেতা</label><label><input type="radio" name="q37" value="b"> মহেন্দ্রগিরি</label><label><input type="radio" name="q37" value="c"> অগস্ত্যমালাই</label><label><input type="radio" name="q37" value="d"> আনাইমুদি</label></div></div>
-            <div class="question-block"><div class="question">৩৮. আন্দামান ও নিকোবর দ্বীপপুঞ্জকে কে পৃথক করেছে?</div><div class="options"><label><input type="radio" name="q38" value="a"> ১০ ডিগ্রি চ্যানেল</label><label><input type="radio" name="q38" value="b"> ৯ ডিগ্রি চ্যানেল</label><label><input type="radio" name="q38" value="c"> ৮ ডিগ্রি চ্যানেল</label><label><input type="radio" name="q38" value="d"> ডানকান প্যাসেজ</label></div></div>
-            <div class="question-block"><div class="question">৩৯. ভারতের প্রমাণ সময় (IST) কোন দ্রাঘিমাংশ অনুযায়ী মাপা হয়?</div><div class="options"><label><input type="radio" name="q39" value="a"> ৮২.৫° পশ্চিম</label><label><input type="radio" name="q39" value="b"> ৮২.৫° পূর্ব</label><label><input type="radio" name="q39" value="c"> ৮৮.৫° পূর্ব</label><label><input type="radio" name="q39" value="d"> ৮২.০° পূর্ব</label></div></div>
-            <div class="question-block"><div class="question">৪০. বছরে দুবার বৃষ্টিপাত হয় কোন উপকূলে?</div><div class="options"><label><input type="radio" name="q40" value="a"> মালাবার উপকূল</label><label><input type="radio" name="q40" value="b"> কঙ্কণ উপকূল</label><label><input type="radio" name="q40" value="c"> করমণ্ডল উপকূল</label><label><input type="radio" name="q40" value="d"> উত্তর সরকার উপকূল</label></div></div>
-
-            <!-- Questions 41 to 50 -->
-            <div class="question-block"><div class="question">৪১. ভারতের কোন রাজ্যে উপকূলরেখা সবচেয়ে দীর্ঘ?</div><div class="options"><label><input type="radio" name="q41" value="a"> অন্ধ্রপ্রদেশ</label><label><input type="radio" name="q41" value="b"> মহারাষ্ট্র</label><label><input type="radio" name="q41" value="c"> তামিলনাড়ু</label><label><input type="radio" name="q41" value="d"> গুজরাট</label></div></div>
-            <div class="question-block"><div class="question">৪২. পূর্বঘাট পর্বতের সর্বোচ্চ শৃঙ্গ কোনটি?</div><div class="options"><label><input type="radio" name="q42" value="a"> জিন্দাগাদা</label><label><input type="radio" name="q42" value="b"> মহেন্দ্রগিরি</label><label><input type="radio" name="q42" value="c"> দোদাবেতা</label><label><input type="radio" name="q42" value="d"> অমরকণ্টক</label></div></div>
-            <div class="question-block"><div class="question">৪৩. পশ্চিমবঙ্গের কোন জেলার জনঘনত্ব সবচেয়ে বেশি?</div><div class="options"><label><input type="radio" name="q43" value="a"> উত্তর ২৪ পরগণা</label><label><input type="radio" name="q43" value="b"> কলকাতা</label><label><input type="radio" name="q43" value="c"> হাওড়া</label><label><input type="radio" name="q43" value="d"> হুগলি</label></div></div>
-            <div class="question-block"><div class="question">৪৪. ভারতের সর্বাধিক শিক্ষিত রাজ্য কোনটি?</div><div class="options"><label><input type="radio" name="q44" value="a"> গোয়া</label><label><input type="radio" name="q44" value="b"> মিজোরাম</label><label><input type="radio" name="q44" value="c"> কেরালা</label><label><input type="radio" name="q44" value="d"> হিমাচল প্রদেশ</label></div></div>
-            <div class="question-block"><div class="question">৪৫. 'সবুজ বিপ্লব' কথাটি কোন ফসলের সাথে সবচেয়ে বেশি যুক্ত?</div><div class="options"><label><input type="radio" name="q45" value="a"> ধান</label><label><input type="radio" name="q45" value="b"> ডাল</label><label><input type="radio" name="q45" value="c"> তুলো</label><label><input type="radio" name="q45" value="d"> গম</label></div></div>
-            <div class="question-block"><div class="question">৪৬. কপিলধারা জলপ্রপাত কোন নদীর উপর অবস্থিত?</div><div class="options"><label><input type="radio" name="q46" value="a"> নর্মদা</label><label><input type="radio" name="q46" value="b"> তাপ্তী</label><label><input type="radio" name="q46" value="c"> সরাবতী</label><label><input type="radio" name="q46" value="d"> গোদাবরী</label></div></div>
-            <div class="question-block"><div class="question">৪৭. ভারতের একমাত্র সক্রিয় আগ্নেয়গিরি কোনটি?</div><div class="options"><label><input type="radio" name="q47" value="a"> নারকোন্ডাম দ্বীপ</label><label><input type="radio" name="q47" value="b"> ব্যারেন দ্বীপ</label><label><input type="radio" name="q47" value="c"> মিনিকয়</label><label><input type="radio" name="q47" value="d"> মাজুলী</label></div></div>
-            <div class="question-block"><div class="question">৪৮. খাইবার পাস কোন দুটি দেশকে যুক্ত করেছে?</div><div class="options"><label><input type="radio" name="q48" value="a"> ভারত ও চীন</label><label><input type="radio" name="q48" value="b"> ভারত ও পাকিস্তান</label><label><input type="radio" name="q48" value="c"> পাকিস্তান ও আফগানিস্তান</label><label><input type="radio" name="q48" value="d"> আফগানিস্তান ও ইরান</label></div></div>
-            <div class="question-block"><div class="question">৪৯. মায়ানমারের সাথে ভারতের কয়টি রাজ্যের সীমানা রয়েছে?</div><div class="options"><label><input type="radio" name="q49" value="a"> ২টি</label><label><input type="radio" name="q49" value="b"> ৩টি</label><label><input type="radio" name="q49" value="c"> ৫টি</label><label><input type="radio" name="q49" value="d"> ৪টি</label></div></div>
-            <div class="question-block"><div class="question">৫০. ভারতের নবীনতম রাজ্য কোনটি?</div><div class="options"><label><input type="radio" name="q50" value="a"> তেলেঙ্গানা</label><label><input type="radio" name="q50" value="b"> ঝাড়খণ্ড</label><label><input type="radio" name="q50" value="c"> ছত্তিশগড়</label><label><input type="radio" name="q50" value="d"> উত্তরাখণ্ড</label></div></div>
-
-            <!-- Navigation Buttons -->
-            <div class="nav-buttons" id="nav-container">
-                <button type="button" class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
-                <button type="button" class="nav-btn" id="next-btn" onclick="nextQuestion()">Next</button>
-                <button type="button" class="nav-btn submit-btn" id="submit-btn" onclick="calculateScore()">Submit Test</button>
+        <div id="active-quiz-portal">
+            <div class="quiz-header-bar">
+                <div class="timer-badge">⏱ <span id="time-txt">30</span>s</div>
+                <div class="question-tracker" id="tracker-txt">প্রশ্ন: ১ / ২৫</div>
+                <div class="score-badge">Score: <span id="score-txt">0</span></div>
             </div>
+
+            <div class="quiz-body">
+                <div class="question-display-card" id="q-txt"></div>
+                
+                <div class="options-grid" id="opts-area"></div>
+
+                <div class="quiz-footer">
+                    <button class="next-action-btn" onclick="triggerNext()">পরের প্রশ্ন ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-container" id="result-portal">
+            <h2>মক টেস্ট সমাপ্ত! 🎉</h2>
+            <div class="result-score-txt" id="final-score-display">0 / 0</div>
+            <a href="mocktest.html" style="background:#0c2461; color:white; padding:16px 45px; border-radius:30px; text-decoration:none; font-weight:900; font-size:18px; display:inline-block;">মেইন মেনু</a>
         </div>
 
     </div>
 
-    <!-- জাভাস্ক্রিপ্ট লজিক -->
     <script>
-        let currentQuestion = 0;
-        let questions;
-        let timerInterval;
-        let timeLeft = 30 * 60; // 30 মিনিট
+        // ২৫টি বাছাই করা "WBCS Geography" (Indian + West Bengal Geography)
+        const questionsList = [
+            { question: "১. ভারতের দীর্ঘতম নদী গঙ্গার মোট দৈর্ঘ্য কত?", options: ["২৫০০ কিমি", "২৫২৫ কিমি", "২৬০০ কিমি", "২৭২৫ কিমি"], correct: 1 },
+            { question: "২. পশ্চিমবঙ্গের সর্বোচ্চ শৃঙ্গ 'সান্দাকফু' কোন পর্বতশ্রেণীর অন্তর্গত?", options: ["দার্জিলিং", "সিঙ্গালিলা", "চোলা", "জয়ন্তী"], correct: 1 },
+            { question: "৩. কর্কটক্রান্তি রেখা (Tropic of Cancer) পশ্চিমবঙ্গের মোট কয়টি জেলার ওপর দিয়ে বিস্তৃত?", options: ["৩টি", "৪টি", "৫টি", "৬টি"], correct: 2 },
+            { question: "৪. ভারতের 'সিলিকন ভ্যালি' (Silicon Valley) কাকে বলা হয়?", options: ["হায়দরাবাদ", "বেঙ্গালুরু", "চেন্নাই", "পুনে"], correct: 1 },
+            { question: "৫. দক্ষিণ ভারতের কোন নদীকে 'বৃদ্ধ গঙ্গা' (Vridha Ganga) বা 'দক্ষিণ গঙ্গা' বলা হয়?", options: ["কৃষ্ণা", "কাবেরী", "গোদাবরী", "নর্মদা"], correct: 2 },
+            { question: "৬. পশ্চিমবঙ্গের কোথায় সর্বাধিক বৃষ্টিপাত হয়?", options: ["দার্জিলিং", "বক্সা ডুয়ার্স (আলিপুরদুয়ার)", "কালিম্পং", "শিলিগুড়ি"], correct: 1 },
+            { question: "৭. মাজুলী (Majuli) নদী-দ্বীপটি কোন রাজ্যে ও কোন নদীতে অবস্থিত?", options: ["আসাম (ব্রহ্মপুত্র)", "পশ্চিমবঙ্গ (গঙ্গা)", "কেরালা (পেরিয়ার)", "বিহার (কোশী)"], correct: 0 },
+            { question: "৮. বিখ্যাত 'নাথুলা পাস' (Nathu La Pass) ভারতের কোন রাজ্যে অবস্থিত?", options: ["হিমাচল প্রদেশ", "উত্তরাখণ্ড", "সিকিম", "অরুণাচল প্রদেশ"], correct: 2 },
+            { question: "৯. ভারতের প্রাচীনতম ভঙ্গিল পর্বতমালা (Oldest Fold Mountain) কোনটি?", options: ["হিমালয়", "বিন্ধ্য", "আরাবল্লী", "সাতপুরা"], correct: 2 },
+            { question: "১০. 'বাংলার দুঃখ' নামে পরিচিত দামোদর নদ কোথা থেকে উৎপন্ন হয়েছে?", options: ["অমরকণ্টক শৃঙ্গ", "ছোটনাগপুর মালভূমি", "মহাবালেশ্বর শৃঙ্গ", "ত্র্যম্বক উচ্চভূমি"], correct: 1 },
+            { question: "১১. ভারতের কোন রাজ্যে আয়তনের বিচারে সর্বাধিক বনভূমি (Forest cover) রয়েছে?", options: ["অরুণাচল প্রদেশ", "ছত্তিশগড়", "মধ্যপ্রদেশ", "মিজোরাম"], correct: 2 },
+            { question: "১২. সুন্দরবনকে কত সালে 'ইউনেস্কো ওয়ার্ল্ড হেরিটেজ সাইট' ঘোষণা করা হয়?", options: ["১৯৮৪ সালে", "১৯৮৭ সালে", "১৯৯২ সালে", "১৯৯৭ সালে"], correct: 1 },
+            { question: "১৩. ভারতের কোন রাজ্যে সবথেকে বেশি কফি উৎপাদিত হয়?", options: ["কেরালা", "তামিলনাড়ু", "কর্ণাটক", "আসাম"], correct: 2 },
+            { question: "১৪. দক্ষিণ ভারতের নীলগিরি পর্বতের সর্বোচ্চ শৃঙ্গ কোনটি?", options: ["আনাইমুদি", "দোদাবেতা", "মহেন্দ্রগিরি", "অগস্ত্যমালাই"], correct: 1 },
+            { question: "১৫. ভারতের 'গোলাপি শহর' (Pink City) কাকে বলা হয়?", options: ["যোধপুর", "উদয়পুর", "জয়পুর", "আজমের"], correct: 2 },
+            { question: "১৬. আরব সাগরে অবস্থিত 'লাক্ষাদ্বীপ' (Lakshadweep) মূলত কী ধরনের দ্বীপ?", options: ["আগ্নেয় দ্বীপ", "প্রবাল দ্বীপ (Coral Island)", "পলিগঠিত দ্বীপ", "বদ্বীপ"], correct: 1 },
+            { question: "১৭. মহানদীর ওপর নির্মিত ভারতের দীর্ঘতম বাঁধ (Longest Dam) কোনটি?", options: ["ভাকরা নাঙ্গাল", "তেহরি বাঁধ", "হিরাকুদ বাঁধ", "নাগার্জুন সাগর"], correct: 2 },
+            { question: "১৮. পশ্চিমবঙ্গের সাথে ভারতের মোট কয়টি রাজ্যের সীমানা যুক্ত রয়েছে?", options: ["৩টি", "৪টি", "৫টি", "৬টি"], correct: 2 },
+            { question: "১৯. খনিজ সম্পদে সমৃদ্ধ হওয়ায় কাকে 'ভারতের রূঢ়' (Ruhr of India) বলা হয়?", options: ["আসানসোল", "জামশেদপুর", "দুর্গাপুর", "ভিলাই"], correct: 2 },
+            { question: "২০. দাক্ষিণাত্য মালভূমির 'ডেকান ট্র্যাপ' মূলত কোন শিলা দ্বারা গঠিত?", options: ["গ্রানাইট", "ব্যাসল্ট", "নিস", "বেলেপাথর"], correct: 1 },
+            { question: "২১. আন্দামান ও নিকোবর দ্বীপপুঞ্জকে পরস্পর থেকে বিচ্ছিন্ন করেছে কোনটি?", options: ["৮ ডিগ্রি চ্যানেল", "৯ ডিগ্রি চ্যানেল", "১০ ডিগ্রি চ্যানেল", "ডানকান প্যাসেজ"], correct: 2 },
+            { question: "২২. ভারতের প্রমাণ সময় (IST) গ্রিনিচের প্রমাণ সময়ের (GMT) থেকে কতটা এগিয়ে?", options: ["৪ ঘণ্টা ৩০ মিনিট", "৫ ঘণ্টা", "৫ ঘণ্টা ৩০ মিনিট", "৬ ঘণ্টা"], correct: 2 },
+            { question: "২৩. বছরে দুবার বৃষ্টিপাত হয় ভারতের কোন উপকূলে?", options: ["মালাবার উপকূল", "কঙ্কণ উপকূল", "করমণ্ডল উপকূল", "উত্তর সরকার উপকূল"], correct: 2 },
+            { question: "২৪. ২০১১ সালের সেন্সাস অনুযায়ী পশ্চিমবঙ্গের কোন জেলার জনঘনত্ব সর্বাধিক?", options: ["উত্তর ২৪ পরগণা", "হাওড়া", "কলকাতা", "হুগলি"], correct: 2 },
+            { question: "২৫. আন্দামানে অবস্থিত ভারতের একমাত্র সক্রিয় আগ্নেয়গিরি (Active Volcano) কোনটি?", options: ["নারকোন্ডাম", "ব্যারেন দ্বীপ", "মিনিকয়", "পাম্বান"], correct: 1 }
+        ];
 
-        // পেজ লোড হলেই যা যা হবে
-        window.onload = function() {
-            questions = document.querySelectorAll('.question-block');
-            showQuestion(currentQuestion);
-            startTimer();
-        };
+        let currentIndex = 0;
+        let userScore = 0;
+        let timeLeft = 30;
+        let activeTimer;
 
-        // টাইমার শুরু করার ফাংশন
-        function startTimer() {
-            let timerDisplay = document.getElementById('time-left');
-            timerInterval = setInterval(function() {
+        const qTxtEl = document.getElementById("q-txt");
+        const optsAreaEl = document.getElementById("opts-area");
+        const timeTxtEl = document.getElementById("time-txt");
+        const trackerTxtEl = document.getElementById("tracker-txt");
+        const scoreTxtEl = document.getElementById("score-txt");
+
+        function renderQuestion() {
+            clearInterval(activeTimer);
+            timeLeft = 30;
+            timeTxtEl.innerText = timeLeft;
+
+            const currentQ = questionsList[currentIndex];
+            qTxtEl.innerText = currentQ.question;
+            trackerTxtEl.innerText = `প্রশ্ন: ${currentIndex + 1} / ${questionsList.length}`;
+
+            optsAreaEl.innerHTML = "";
+            currentQ.options.forEach((optText, i) => {
+                const optDiv = document.createElement("div");
+                optDiv.className = "option-item";
+                optDiv.innerHTML = `<span>${optText}</span> <span class="icon-holder"></span>`;
+                optDiv.onclick = () => validateAnswer(i, optDiv);
+                optsAreaEl.appendChild(optDiv);
+            });
+
+            activeTimer = setInterval(() => {
+                timeLeft--;
+                timeTxtEl.innerText = timeLeft;
                 if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    calculateScore(); // সময় শেষ হলে অটো সাবমিট
-                } else {
-                    timeLeft--;
-                    let m = Math.floor(timeLeft / 60);
-                    let s = timeLeft % 60;
-                    timerDisplay.innerText = m + ":" + (s < 10 ? "0" + s : s);
-                    
-                    // শেষ ৫ মিনিট লাল রঙের অ্যালার্ট
-                    if(timeLeft <= 300) {
-                        document.getElementById('timer-container').style.background = "#e74c3c";
-                        document.getElementById('timer-container').style.color = "#fff";
-                    }
+                    clearInterval(activeTimer);
+                    revealCorrectOnly();
                 }
             }, 1000);
         }
 
-        // প্রশ্ন দেখানোর লজিক
-        function showQuestion(index) {
-            questions.forEach((q, i) => {
-                q.style.display = (i === index) ? "block" : "none";
-            });
-            document.getElementById('question-counter').innerText = "প্রশ্ন: " + (index + 1) + " / " + questions.length;
-            
-            // Previous বাটন প্রথম প্রশ্নে হাইড থাকবে
-            document.getElementById('prev-btn').style.display = (index === 0) ? "none" : "inline-block";
-            
-            // শেষ প্রশ্নে Next হাইড হবে এবং Submit আসবে
-            if (index === questions.length - 1) {
-                document.getElementById('next-btn').style.display = "none";
-                document.getElementById('submit-btn').style.display = "inline-block";
-            } else {
-                document.getElementById('next-btn').style.display = "inline-block";
-                document.getElementById('submit-btn').style.display = "none";
-            }
-            
-            // স্ক্রিনের একদম উপরে নিয়ে যাওয়া
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function validateAnswer(selectedIdx, clickedEl) {
+            clearInterval(activeTimer);
+            const correctIdx = questionsList[currentIndex].correct;
+            const allOptions = optsAreaEl.children;
 
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                showQuestion(currentQuestion);
-            }
-        }
-
-        // রেজাল্ট এবং রিভিউ মোড
-        function calculateScore() {
-            clearInterval(timerInterval); // টাইমার বন্ধ
-            document.getElementById('timer-container').style.display = 'none';
-            document.getElementById('nav-container').style.display = 'none';
-            document.getElementById('question-counter').style.display = 'none';
-
-            let score = 0;
-            // ভূগোলের ৫০টি প্রশ্নের সঠিক উত্তর
-            const correctAnswers = { 
-                q1:"a", q2:"a", q3:"b", q4:"c", q5:"d", q6:"a", q7:"b", q8:"c", q9:"d", q10:"a",
-                q11:"b", q12:"c", q13:"d", q14:"a", q15:"b", q16:"c", q17:"d", q18:"a", q19:"b", q20:"c",
-                q21:"d", q22:"a", q23:"b", q24:"c", q25:"d", q26:"a", q27:"b", q28:"c", q29:"d", q30:"a",
-                q31:"b", q32:"c", q33:"d", q34:"a", q35:"b", q36:"c", q37:"d", q38:"a", q39:"b", q40:"c",
-                q41:"d", q42:"a", q43:"b", q44:"c", q45:"d", q46:"a", q47:"b", q48:"c", q49:"d", q50:"a"
-            };
-
-            // সবগুলো প্রশ্ন একসাথে দেখানো এবং রঙ পরিবর্তন
-            questions.forEach((qBlock, index) => {
-                qBlock.style.display = "block"; // শো অল
-                
-                let qName = "q" + (index + 1);
-                let selectedInput = document.querySelector(`input[name="${qName}"]:checked`);
-                let correctInput = document.querySelector(`input[name="${qName}"][value="${correctAnswers[qName]}"]`);
-                let allInputs = document.querySelectorAll(`input[name="${qName}"]`);
-
-                if (correctInput) {
-                    correctInput.parentElement.classList.add("correct-ans"); // আসল উত্তর সবুজ
+            for (let i = 0; i < allOptions.length; i++) {
+                allOptions[i].classList.add("disabled-opt");
+                if (i === correctIdx) {
+                    allOptions[i].classList.add("opt-correct");
+                    allOptions[i].querySelector(".icon-holder").innerText = "✔";
                 }
-
-                if (selectedInput) {
-                    if (selectedInput.value !== correctAnswers[qName]) {
-                        selectedInput.parentElement.classList.add("wrong-ans"); // ভুল উত্তর লাল
-                    } else {
-                        score++;
-                    }
-                }
-
-                // ইনপুটগুলো লক করে দেওয়া
-                allInputs.forEach(input => input.disabled = true);
-            });
-
-            // রেজাল্ট মেসেজ
-            let resultDiv = document.getElementById("result");
-            resultDiv.style.display = "block";
-            resultDiv.innerHTML = `তোমার প্রাপ্ত নম্বর: ${score} / 50`;
-            
-            if(score === 50) {
-                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
-                resultDiv.innerHTML += "<br>অসাধারণ! তুমি ভূগোলে একদম পারফেক্ট!";
-            } else if (score >= 40) {
-                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
-                resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স! তোমার প্রস্তুতি খুব ভালো।";
-            } else if (score >= 25) {
-                resultDiv.style.backgroundColor = "#fff3cd"; resultDiv.style.color = "#856404";
-                resultDiv.innerHTML += "<br>ভালো চেষ্টা! তবে ম্যাপ স্টাডি এবং আরও রিভিশন দরকার।";
-            } else {
-                resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.color = "#721c24";
-                resultDiv.innerHTML += "<br>নিচে থেকে ভুল উত্তরগুলো মিলিয়ে নাও এবং আরও অনেক রিভিশন দাও!";
             }
 
-            // রেজাল্ট দেখার জন্য স্ক্রিনের একদম উপরে নিয়ে যাওয়া
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (selectedIdx === correctIdx) {
+                userScore++;
+                scoreTxtEl.innerText = userScore;
+            } else {
+                clickedEl.classList.add("opt-wrong");
+                clickedEl.querySelector(".icon-holder").innerText = "✖";
+            }
         }
+
+        function revealCorrectOnly() {
+            const correctIdx = questionsList[currentIndex].correct;
+            const allOptions = optsAreaEl.children;
+            for (let i = 0; i < allOptions.length; i++) {
+                allOptions[i].classList.add("disabled-opt");
+                if (i === correctIdx) {
+                    allOptions[i].classList.add("opt-correct");
+                    allOptions[i].querySelector(".icon-holder").innerText = "✔";
+                }
+            }
+        }
+
+        function triggerNext() {
+            currentIndex++;
+            if (currentIndex < questionsList.length) {
+                renderQuestion();
+            } else {
+                document.getElementById("active-quiz-portal").style.display = "none";
+                document.getElementById("result-portal").style.display = "block";
+                document.getElementById("final-score-display").innerText = `${userScore} / ${questionsList.length}`;
+            }
+        }
+
+        window.onload = renderQuestion;
     </script>
-
 </body>
 </html>
