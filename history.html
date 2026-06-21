@@ -3,311 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History Mock Test - WBCS With Tanmoy</title>
-    <!-- তোমার ওয়েবসাইটের মূল ডিজাইন -->
+    <title>Indian History Mock Test - WBCS With Tanmoy</title>
+    
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        /* =========================================
-           PREMIUM MOCK TEST DESIGN
-        ========================================== */
-        body { background-color: #f4f7f6; }
-        
-        .quiz-container { 
-            max-width: 700px; 
-            margin: 40px auto; 
-            background: #ffffff; 
-            padding: 40px 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
-            border-top: 6px solid #00008B; /* ডার্ক ব্লু টাচ */
-            position: relative; 
+        /* ===================================================
+           DEEP VIBRANT PORTAL (100% FIXED - 25 HISTORY QUESTIONS)
+        =================================================== */
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+
+        body { background: #eaf0f6; }
+
+        .quiz-super-container {
+            width: 94%;
+            max-width: 960px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 4px solid #ced6e0;
+            overflow: hidden;
         }
 
-        .header-section { 
-            display: flex; justify-content: space-between; align-items: center; 
-            border-bottom: 2px solid #f0f0f0; 
-            padding-bottom: 15px; margin-bottom: 35px; 
+        /* Top Bar - Deep Dark Navy */
+        .quiz-header-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #0a183d; 
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #d63031;
         }
-        
-        .back-btn { text-decoration: none; color: #00008B; font-weight: bold; font-size: 16px; transition: 0.3s; }
-        .back-btn:hover { color: #e74c3c; }
-        
-        /* টাইমার এবং কাউন্টার (ব্যাজ) স্টাইল */
-        #timer-container { font-size: 18px; font-weight: 900; color: #d32f2f; background: #ffebee; padding: 8px 16px; border-radius: 8px; }
-        
-        #question-counter { 
-            position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
-            background: #00008B; color: white; font-size: 15px; font-weight: bold; 
-            padding: 6px 20px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,139,0.2); 
-            margin: 0; text-align: center;
-        }
-        
-        /* প্রশ্ন স্টাইল */
-        .question-block { display: none; margin-bottom: 25px; padding-bottom: 15px; }
-        .question { font-size: 22px; font-weight: 700; margin-bottom: 25px; color: #222; text-align: center; line-height: 1.5; }
-        
-        /* মডার্ন অপশন বাটন (রেডিও বাটন লুকানো হলো) */
-        .options label { 
-            display: flex; align-items: center; background: #ffffff; 
-            padding: 16px 20px; margin-bottom: 12px; border-radius: 10px; 
-            cursor: pointer; transition: all 0.3s ease; 
-            border: 2px solid #cfd8dc; font-size: 16px; font-weight: 600; color: #444; 
-        }
-        .options label:hover { border-color: #00008B; background: #f0f4f8; transform: translateY(-2px); }
-        .options input[type="radio"] { display: none; }
-        
-        /* ক্লিক করলে সিলেক্ট হওয়ার স্টাইল */
-        .selected-opt { border-color: #00008B !important; background-color: #e3f2fd !important; color: #00008B !important; }
 
-        /* সঠিক ও ভুল উত্তরের স্টাইল */
-        .correct-ans { background-color: #28a745 !important; color: white !important; border-color: #28a745 !important; }
-        .wrong-ans { background-color: #dc3545 !important; color: white !important; border-color: #dc3545 !important; text-decoration: none !important; }
-        
-        /* নেভিগেশন বাটন */
-        .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; }
-        .nav-btn { 
-            flex: 1; padding: 14px 20px; background-color: #00008B; color: white; 
-            border: none; border-radius: 8px; font-size: 16px; font-weight: bold; 
-            cursor: pointer; transition: 0.3s; 
+        .timer-badge {
+            background: #ff4757;
+            color: white;
+            font-weight: 900;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        .nav-btn:hover { background-color: #000066; }
-        .nav-btn:disabled { background-color: #cfd8dc; color: #78909c; cursor: not-allowed; }
-        
-        .submit-btn { background-color: #27ae60; display: none; }
-        .submit-btn:hover { background-color: #219150; }
-        
-        #result { margin-bottom: 25px; font-size: 22px; font-weight: bold; text-align: center; padding: 20px; border-radius: 8px; display: none; border: 2px dashed #27ae60; }
+
+        .question-tracker {
+            background: #1e90ff;
+            color: white;
+            font-weight: 900;
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .score-badge {
+            background: #009432;
+            color: white;
+            font-weight: 900;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .quiz-body { padding: 35px 40px; }
+
+        .question-display-card {
+            background: #0c2461;
+            color: #ffffff;
+            border: 4px solid #4a69bd;
+            padding: 25px 30px;
+            border-radius: 16px;
+            font-size: 23px;
+            font-weight: 900;
+            margin-bottom: 35px;
+            line-height: 1.5;
+            box-shadow: 0 8px 20px rgba(12, 36, 97, 0.4);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px;
+        }
+
+        .option-item {
+            background: #ffffff;
+            border: 3px solid #70a1ff;
+            border-left: 8px solid #1e90ff;
+            padding: 18px 22px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #2f3542;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .opt-correct {
+            background: #009432 !important;
+            color: white !important;
+            border: 3px solid #004015 !important;
+            border-left: 8px solid #00260c !important;
+            box-shadow: 0 6px 15px rgba(0, 148, 50, 0.4) !important;
+        }
+
+        .opt-wrong {
+            background: #d63031 !important;
+            color: white !important;
+            border: 3px solid #801d1d !important;
+            border-left: 8px solid #4d1111 !important;
+            box-shadow: 0 6px 15px rgba(214, 48, 49, 0.4) !important;
+        }
+
+        .disabled-opt { pointer-events: none; }
+
+        .quiz-footer { margin-top: 40px; padding-top: 20px; }
+
+        .next-action-btn {
+            width: 100%;
+            background: #d63031;
+            color: white;
+            border: none;
+            border-bottom: 5px solid #8c1d1d; 
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            display: block; 
+            box-shadow: 0 8px 20px rgba(214, 48, 49, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .next-action-btn:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        /* Result Screen */
+        .result-container { display: none; text-align: center; padding: 80px 20px; }
+        .result-container h2 { font-size: 35px; color: #0c2461; font-weight:900; margin-bottom: 20px; }
+        .result-score-txt { font-size: 65px; font-weight: 900; color: #009432; margin-bottom: 35px; }
+
+        @media screen and (max-width: 768px) {
+            .quiz-super-container { width: 100%; margin: 0 auto; border-radius: 0; border: none; }
+            .quiz-header-bar { padding: 14px 15px; }
+            .timer-badge, .question-tracker, .score-badge { padding: 6px 12px; font-size: 15px; }
+            
+            .quiz-body { padding: 25px 18px; }
+            .question-display-card { font-size: 20px; padding: 20px; margin-bottom: 25px; }
+            
+            .options-grid { grid-template-columns: 1fr; gap: 14px; }
+            .option-item { padding: 16px 20px; font-size: 17px; }
+            
+            .next-action-btn { padding: 16px; font-size: 18px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
     <header class="top-header">
-        <h1 class="main-title" style="margin-top: 15px;">WBCS WITH TANMOY</h1>
+        <img src="logo.png" alt="Wbcs with Tanmoy" class="top-logo" onerror="this.style.display='none'">
+        <h1 class="main-title">WBCS WITH TANMOY</h1>
     </header>
+
+    <div class="site-info-bar">
+        <span>📅 Estd: 19.06.2026</span>
+        <span class="separator">|</span>
+        <span>📍 Alipurduar</span>
+    </div>
 
     <nav class="top-nav">
         <a href="index.html">Home</a>
-        <a href="mocktest.html" style="color: #e74c3c;">⬅ Back to Menu</a>
+        <a href="index.html">Notes</a>
+        <a href="https://drive.google.com/drive/folders/1xMzQB4SyceBRpZ4D2lC6p97Y64Jwjamy?usp=drive_link" target="_blank">Syllabus</a>
+        <a href="https://drive.google.com/drive/folders/1nXT_2jDf4UpzG0d_zwPrDGf4nYcMUpVm?usp=sharing" target="_blank">Pyq</a>
+        <a href="https://drive.google.com/drive/folders/1oF85zmZwjae4ZLavy61dbq8Eda19Eksd?usp=drive_link" target="_blank">Books</a>
+        <a href="mocktest.html" style="color: #e74c3c;">Mock Test</a>
     </nav>
 
-    <!-- Main Quiz Area -->
-    <div class="quiz-container">
+    <div class="quiz-super-container">
         
-        <div id="question-counter">প্রশ্ন: ১ / ৫০</div>
-
-        <div class="header-section">
-            <h3 style="margin: 0; color: #555;">Indian History Mock Test</h3>
-            <div id="timer-container">⏱ <span id="time-left">30:00</span></div>
-        </div>
-        
-        <div id="result"></div>
-        
-        <div id="quiz-form">
-            <!-- তোমার অরিজিনাল ৫০টি প্রশ্ন -->
-            <div class="question-block"><div class="question">১. সিন্ধু সভ্যতার আবিষ্কারক কে?</div><div class="options"><label><input type="radio" name="q1" value="a"> দয়ারাম সাহানি</label><label><input type="radio" name="q1" value="b"> রাখালদাস বন্দ্যোপাধ্যায়</label><label><input type="radio" name="q1" value="c"> আলেকজান্ডার কানিংহাম</label><label><input type="radio" name="q1" value="d"> জন মার্শাল</label></div></div>
-            <div class="question-block"><div class="question">২. 'ইন্ডিকা' গ্রন্থটি কে রচনা করেন?</div><div class="options"><label><input type="radio" name="q2" value="a"> মেগাস্থিনিস</label><label><input type="radio" name="q2" value="b"> কৌটিল্য</label><label><input type="radio" name="q2" value="c"> ফাহিয়েন</label><label><input type="radio" name="q2" value="d"> হিউয়েন সাং</label></div></div>
-            <div class="question-block"><div class="question">৩. ভারতের নেপোলিয়ন কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q3" value="a"> চন্দ্রগুপ্ত মৌর্য</label><label><input type="radio" name="q3" value="b"> সমুদ্রগুপ্ত</label><label><input type="radio" name="q3" value="c"> অশোক</label><label><input type="radio" name="q3" value="d"> হর্ষবর্ধন</label></div></div>
-            <div class="question-block"><div class="question">৪. কবে বঙ্গভঙ্গ রদ করা হয়?</div><div class="options"><label><input type="radio" name="q4" value="a"> ১৯০৫ সালে</label><label><input type="radio" name="q4" value="b"> ১৯০৯ সালে</label><label><input type="radio" name="q4" value="c"> ১৯১১ সালে</label><label><input type="radio" name="q4" value="d"> ১৯১৪ সালে</label></div></div>
-            <div class="question-block"><div class="question">৫. 'স্বরাজ আমার জন্মগত অধিকার' - কার উক্তি?</div><div class="options"><label><input type="radio" name="q5" value="a"> বাল গঙ্গাধর তিলক</label><label><input type="radio" name="q5" value="b"> মহাত্মা গান্ধী</label><label><input type="radio" name="q5" value="c"> সুভাষচন্দ্র বসু</label><label><input type="radio" name="q5" value="d"> লালা লাজপত রায়</label></div></div>
-            <div class="question-block"><div class="question">৬. জাতীয় কংগ্রেসের প্রথম সভাপতি কে ছিলেন?</div><div class="options"><label><input type="radio" name="q6" value="a"> অ্যালান অক্টাভিয়ান হিউম</label><label><input type="radio" name="q6" value="b"> সুরেন্দ্রনাথ বন্দ্যোপাধ্যায়</label><label><input type="radio" name="q6" value="c"> দাদাভাই নওরোজি</label><label><input type="radio" name="q6" value="d"> উমেশচন্দ্র বন্দ্যোপাধ্যায়</label></div></div>
-            <div class="question-block"><div class="question">৭. ফরোয়ার্ড ব্লক কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q7" value="a"> সুভাষচন্দ্র বসু</label><label><input type="radio" name="q7" value="b"> চিত্তরঞ্জন দাশ</label><label><input type="radio" name="q7" value="c"> রাসবিহারী বসু</label><label><input type="radio" name="q7" value="d"> জওহরলাল নেহেরু</label></div></div>
-            <div class="question-block"><div class="question">৮. সীমান্ত গান্ধী নামে কে পরিচিত ছিলেন?</div><div class="options"><label><input type="radio" name="q8" value="a"> মহাত্মা গান্ধী</label><label><input type="radio" name="q8" value="b"> মহম্মদ আলী জিন্নাহ</label><label><input type="radio" name="q8" value="c"> খান আব্দুল গফফর খান</label><label><input type="radio" name="q8" value="d"> আবুল কালাম আজাদ</label></div></div>
-            <div class="question-block"><div class="question">৯. 'সত্যশোধক সমাজ' কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q9" value="a"> শ্রী নারায়ণ গুরু</label><label><input type="radio" name="q9" value="b"> জ্যোতিরাও ফুলে</label><label><input type="radio" name="q9" value="c"> বি. আর. আম্বেদকর</label><label><input type="radio" name="q9" value="d"> পেরিয়ার ই. ভি. রামস্বামী</label></div></div>
-            <div class="question-block"><div class="question">১০. ভারতের প্রথম ভাইসরয় কে ছিলেন?</div><div class="options"><label><input type="radio" name="q10" value="a"> লর্ড ডালহৌসি</label><label><input type="radio" name="q10" value="b"> লর্ড ক্যানিং</label><label><input type="radio" name="q10" value="c"> লর্ড মাউন্টব্যাটেন</label><label><input type="radio" name="q10" value="d"> রবার্ট ক্লাইভ</label></div></div>
-
-            <div class="question-block"><div class="question">১১. পাল বংশের প্রতিষ্ঠাতা কে?</div><div class="options"><label><input type="radio" name="q11" value="a"> ধর্মপাল</label><label><input type="radio" name="q11" value="b"> দেবপাল</label><label><input type="radio" name="q11" value="c"> গোপাল</label><label><input type="radio" name="q11" value="d"> মহীপাল</label></div></div>
-            <div class="question-block"><div class="question">১২. সেন বংশের শ্রেষ্ঠ রাজা কে ছিলেন?</div><div class="options"><label><input type="radio" name="q12" value="a"> বিজয় সেন</label><label><input type="radio" name="q12" value="b"> বল্লাল সেন</label><label><input type="radio" name="q12" value="c"> লক্ষণ সেন</label><label><input type="radio" name="q12" value="d"> সামন্ত সেন</label></div></div>
-            <div class="question-block"><div class="question">১৩. 'তহকক-ই-হিন্দ' কার রচনা?</div><div class="options"><label><input type="radio" name="q13" value="a"> অলবেরুনি</label><label><input type="radio" name="q13" value="b"> ইবন বতুতা</label><label><input type="radio" name="q13" value="c"> আবুল ফজল</label><label><input type="radio" name="q13" value="d"> বদাউনি</label></div></div>
-            <div class="question-block"><div class="question">১৪. ভারতের তোতাপাখি কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q14" value="a"> তানসেন</label><label><input type="radio" name="q14" value="b"> আমির খসরু</label><label><input type="radio" name="q14" value="c"> তুলসীদাস</label><label><input type="radio" name="q14" value="d"> কবির</label></div></div>
-            <div class="question-block"><div class="question">১৫. পানিপথের প্রথম যুদ্ধ কবে হয়?</div><div class="options"><label><input type="radio" name="q15" value="a"> ১৫২৬ সালে</label><label><input type="radio" name="q15" value="b"> ১৫৫৬ সালে</label><label><input type="radio" name="q15" value="c"> ১৭৬১ সালে</label><label><input type="radio" name="q15" value="d"> ১৫৭৬ সালে</label></div></div>
-            <div class="question-block"><div class="question">১৬. দ্বীন-ই-ইলাহী কে প্রবর্তন করেন?</div><div class="options"><label><input type="radio" name="q16" value="a"> বাবর</label><label><input type="radio" name="q16" value="b"> আকবর</label><label><input type="radio" name="q16" value="c"> জাহাঙ্গীর</label><label><input type="radio" name="q16" value="d"> শাহজাহান</label></div></div>
-            <div class="question-block"><div class="question">১৭. মুঘল সাম্রাজ্যের প্রকৃত প্রতিষ্ঠাতা কে?</div><div class="options"><label><input type="radio" name="q17" value="a"> বাবর</label><label><input type="radio" name="q17" value="b"> হুমায়ুন</label><label><input type="radio" name="q17" value="c"> আকবর</label><label><input type="radio" name="q17" value="d"> ঔরঙ্গজেব</label></div></div>
-            <div class="question-block"><div class="question">১৮. শিবাজীর রাজ্যাভিষেক কোথায় হয়েছিল?</div><div class="options"><label><input type="radio" name="q18" value="a"> পুনে</label><label><input type="radio" name="q18" value="b"> রায়গড়</label><label><input type="radio" name="q18" value="c"> সুরাট</label><label><input type="radio" name="q18" value="d"> পুরন্দর</label></div></div>
-            <div class="question-block"><div class="question">১৯. 'অষ্টপ্রধান' কোন রাজসভায় ছিল?</div><div class="options"><label><input type="radio" name="q19" value="a"> আকবর</label><label><input type="radio" name="q19" value="b"> কৃষ্ণদেবরায়</label><label><input type="radio" name="q19" value="c"> শিবাজী</label><label><input type="radio" name="q19" value="d"> হর্ষবর্ধন</label></div></div>
-            <div class="question-block"><div class="question">২০. খালসা প্রথা কে প্রবর্তন করেন?</div><div class="options"><label><input type="radio" name="q20" value="a"> গুরু নানক</label><label><input type="radio" name="q20" value="b"> গুরু তেগবাহাদুর</label><label><input type="radio" name="q20" value="c"> গুরু গোবিন্দ সিং</label><label><input type="radio" name="q20" value="d"> গুরু অর্জুন</label></div></div>
-
-            <div class="question-block"><div class="question">২১. সিপাহী বিদ্রোহ কবে শুরু হয়?</div><div class="options"><label><input type="radio" name="q21" value="a"> ১৮৫৭ সালে</label><label><input type="radio" name="q21" value="b"> ১৮৫৮ সালে</label><label><input type="radio" name="q21" value="c"> ১৯০৫ সালে</label><label><input type="radio" name="q21" value="d"> ১৯৪২ সালে</label></div></div>
-            <div class="question-block"><div class="question">২২. ব্রাহ্মসমাজ কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q22" value="a"> স্বামী বিবেকানন্দ</label><label><input type="radio" name="q22" value="b"> রাজা রামমোহন রায়</label><label><input type="radio" name="q22" value="c"> দয়ানন্দ সরস্বতী</label><label><input type="radio" name="q22" value="d"> দেবেন্দ্রনাথ ঠাকুর</label></div></div>
-            <div class="question-block"><div class="question">২৩. আর্য সমাজ কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q23" value="a"> স্বামী দয়ানন্দ সরস্বতী</label><label><input type="radio" name="q23" value="b"> কেশবচন্দ্র সেন</label><label><input type="radio" name="q23" value="c"> আত্মারাম পাণ্ডুরঙ্গ</label><label><input type="radio" name="q23" value="d"> ঈশ্বরচন্দ্র বিদ্যাসাগর</label></div></div>
-            <div class="question-block"><div class="question">২৪. রামকৃষ্ণ মিশন কবে প্রতিষ্ঠিত হয়?</div><div class="options"><label><input type="radio" name="q24" value="a"> ১৮৯৩ সালে</label><label><input type="radio" name="q24" value="b"> ১৮৯৭ সালে</label><label><input type="radio" name="q24" value="c"> ১৯০১ সালে</label><label><input type="radio" name="q24" value="d"> ১৯০৫ সালে</label></div></div>
-            <div class="question-block"><div class="question">২৫. ভারতের লৌহমানব কাকে বলা হয়?</div><div class="options"><label><input type="radio" name="q25" value="a"> জওহরলাল নেহেরু</label><label><input type="radio" name="q25" value="b"> সুভাষচন্দ্র বসু</label><label><input type="radio" name="q25" value="c"> সর্দার বল্লভভাই প্যাটেল</label><label><input type="radio" name="q25" value="d"> ভগত সিং</label></div></div>
-            <div class="question-block"><div class="question">২৬. মহাত্মা গান্ধী কবে দক্ষিণ আফ্রিকা থেকে ভারতে ফেরেন?</div><div class="options"><label><input type="radio" name="q26" value="a"> ১৯০৫ সালে</label><label><input type="radio" name="q26" value="b"> ১৯০৯ সালে</label><label><input type="radio" name="q26" value="c"> ১৯১৫ সালে</label><label><input type="radio" name="q26" value="d"> ১৯১৭ সালে</label></div></div>
-            <div class="question-block"><div class="question">২৭. জালিয়ানওয়ালাবাগ হত্যাকাণ্ড কবে ঘটে?</div><div class="options"><label><input type="radio" name="q27" value="a"> ১৯১৯ সালে</label><label><input type="radio" name="q27" value="b"> ১৯২০ সালে</label><label><input type="radio" name="q27" value="c"> ১৯২২ সালে</label><label><input type="radio" name="q27" value="d"> ১৯২৪ সালে</label></div></div>
-            <div class="question-block"><div class="question">২৮. রাওলাট আইন কবে পাস হয়?</div><div class="options"><label><input type="radio" name="q28" value="a"> ১৯০৯ সালে</label><label><input type="radio" name="q28" value="b"> ১৯১৯ সালে</label><label><input type="radio" name="q28" value="c"> ১৯৩৫ সালে</label><label><input type="radio" name="q28" value="d"> ১৯০৫ সালে</label></div></div>
-            <div class="question-block"><div class="question">২৯. 'অসহযোগ আন্দোলন' কবে শুরু হয়?</div><div class="options"><label><input type="radio" name="q29" value="a"> ১৯১৮ সালে</label><label><input type="radio" name="q29" value="b"> ১৯২০ সালে</label><label><input type="radio" name="q29" value="c"> ১৯২২ সালে</label><label><input type="radio" name="q29" value="d"> ১৯৩০ সালে</label></div></div>
-            <div class="question-block"><div class="question">৩০. চৌরিচৌরা ঘটনা কবে ঘটেছিল?</div><div class="options"><label><input type="radio" name="q30" value="a"> ১৯২০ সালে</label><label><input type="radio" name="q30" value="b"> ১৯২২ সালে</label><label><input type="radio" name="q30" value="c"> ১৯২৫ সালে</label><label><input type="radio" name="q30" value="d"> ১৯২৮ সালে</label></div></div>
-
-            <div class="question-block"><div class="question">৩১. কাকোরি ষড়যন্ত্র মামলা কবে হয়?</div><div class="options"><label><input type="radio" name="q31" value="a"> ১৯২২ সালে</label><label><input type="radio" name="q31" value="b"> ১৯২৫ সালে</label><label><input type="radio" name="q31" value="c"> ১৯২৮ সালে</label><label><input type="radio" name="q31" value="d"> ১৯৩০ সালে</label></div></div>
-            <div class="question-block"><div class="question">৩২. সাইমন কমিশন কবে ভারতে আসে?</div><div class="options"><label><input type="radio" name="q32" value="a"> ১৯২৭ সালে</label><label><input type="radio" name="q32" value="b"> ১৯২৮ সালে</label><label><input type="radio" name="q32" value="c"> ১৯২৯ সালে</label><label><input type="radio" name="q32" value="d"> ১৯৩০ সালে</label></div></div>
-            <div class="question-block"><div class="question">৩৩. 'পূর্ণ স্বরাজ'-এর দাবি কবে তোলা হয়?</div><div class="options"><label><input type="radio" name="q33" value="a"> ১৯০৬ সালে</label><label><input type="radio" name="q33" value="b"> ১৯১৬ সালে</label><label><input type="radio" name="q33" value="c"> ১৯২৯ সালে</label><label><input type="radio" name="q33" value="d"> ১৯৩০ সালে</label></div></div>
-            <div class="question-block"><div class="question">৩৪. ডান্ডি অভিযান কবে শুরু হয়?</div><div class="options"><label><input type="radio" name="q34" value="a"> ১৯২৮ সালে</label><label><input type="radio" name="q34" value="b"> ১৯৩০ সালে</label><label><input type="radio" name="q34" value="c"> ১৯৩২ সালে</label><label><input type="radio" name="q34" value="d"> ১৯৩৪ সালে</label></div></div>
-            <div class="question-block"><div class="question">৩৫. গান্ধী-আরউইন চুক্তি কবে স্বাক্ষরিত হয়?</div><div class="options"><label><input type="radio" name="q35" value="a"> ১৯৩০ সালে</label><label><input type="radio" name="q35" value="b"> ১৯৩১ সালে</label><label><input type="radio" name="q35" value="c"> ১৯৩২ সালে</label><label><input type="radio" name="q35" value="d"> ১৯৩৩ সালে</label></div></div>
-            <div class="question-block"><div class="question">৩৬. ক্রিপস মিশন কবে ভারতে আসে?</div><div class="options"><label><input type="radio" name="q36" value="a"> ১৯৪০ সালে</label><label><input type="radio" name="q36" value="b"> ১৯৪২ সালে</label><label><input type="radio" name="q36" value="c"> ১৯৪৫ সালে</label><label><input type="radio" name="q36" value="d"> ১৯৪৬ সালে</label></div></div>
-            <div class="question-block"><div class="question">৩৭. ভারত ছাড়ো আন্দোলন কবে শুরু হয়?</div><div class="options"><label><input type="radio" name="q37" value="a"> ৮ আগস্ট ১৯৪২</label><label><input type="radio" name="q37" value="b"> ৯ আগস্ট ১৯৪২</label><label><input type="radio" name="q37" value="c"> ১৫ আগস্ট ১৯৪৭</label><label><input type="radio" name="q37" value="d"> ২৬ জানুয়ারি ১৯৫০</label></div></div>
-            <div class="question-block"><div class="question">৩৮. আজাদ হিন্দ ফৌজ কে গঠন করেন?</div><div class="options"><label><input type="radio" name="q38" value="a"> সুভাষচন্দ্র বসু</label><label><input type="radio" name="q38" value="b"> রাসবিহারী বসু</label><label><input type="radio" name="q38" value="c"> মোহন সিং</label><label><input type="radio" name="q38" value="d"> চিত্তরঞ্জন দাশ</label></div></div>
-            <div class="question-block"><div class="question">৩৯. ক্যাবিনেট মিশন কবে ভারতে আসে?</div><div class="options"><label><input type="radio" name="q39" value="a"> ১৯৪২ সালে</label><label><input type="radio" name="q39" value="b"> ১৯৪৪ সালে</label><label><input type="radio" name="q39" value="c"> ১৯৪৬ সালে</label><label><input type="radio" name="q39" value="d"> ১৯৪৭ সালে</label></div></div>
-            <div class="question-block"><div class="question">৪০. ভারতের শেষ ভাইসরয় কে ছিলেন?</div><div class="options"><label><input type="radio" name="q40" value="a"> লর্ড ওয়াভেল</label><label><input type="radio" name="q40" value="b"> লর্ড লিনলিথগো</label><label><input type="radio" name="q40" value="c"> লর্ড মাউন্টব্যাটেন</label><label><input type="radio" name="q40" value="d"> চক্রবর্তী রাজাগোপালাচারী</label></div></div>
-
-            <div class="question-block"><div class="question">৪১. স্বাধীন ভারতের প্রথম গভর্নর জেনারেল কে ছিলেন?</div><div class="options"><label><input type="radio" name="q41" value="a"> জওহরলাল নেহেরু</label><label><input type="radio" name="q41" value="b"> ডঃ রাজেন্দ্র প্রসাদ</label><label><input type="radio" name="q41" value="c"> লর্ড মাউন্টব্যাটেন</label><label><input type="radio" name="q41" value="d"> চক্রবর্তী রাজাগোপালাচারী</label></div></div>
-            <div class="question-block"><div class="question">৪২. স্বাধীন ভারতের প্রথম ভারতীয় গভর্নর জেনারেল কে ছিলেন?</div><div class="options"><label><input type="radio" name="q42" value="a"> জওহরলাল নেহেরু</label><label><input type="radio" name="q42" value="b"> সর্দার প্যাটেল</label><label><input type="radio" name="q42" value="c"> চক্রবর্তী রাজাগোপালাচারী</label><label><input type="radio" name="q42" value="d"> বি. আর. আম্বেদকর</label></div></div>
-            <div class="question-block"><div class="question">৪৩. আলিগড় মুসলিম বিশ্ববিদ্যালয়ের প্রতিষ্ঠাতা কে?</div><div class="options"><label><input type="radio" name="q43" value="a"> মহম্মদ আলী জিন্নাহ</label><label><input type="radio" name="q43" value="b"> স্যার সৈয়দ আহমেদ খান</label><label><input type="radio" name="q43" value="c"> আবুল কালাম আজাদ</label><label><input type="radio" name="q43" value="d"> বদরুদ্দিন তৈয়বজি</label></div></div>
-            <div class="question-block"><div class="question">৪৪. 'বন্দেমাতরম' গানটি কোন উপন্যাসের অন্তর্গত?</div><div class="options"><label><input type="radio" name="q44" value="a"> বিষবৃক্ষ</label><label><input type="radio" name="q44" value="b"> কপালকুণ্ডলা</label><label><input type="radio" name="q44" value="c"> গোরা</label><label><input type="radio" name="q44" value="d"> আনন্দমঠ</label></div></div>
-            <div class="question-block"><div class="question">৪৫. 'নীলদর্পণ' নাটকের রচয়িতা কে?</div><div class="options"><label><input type="radio" name="q45" value="a"> বঙ্কিমচন্দ্র চট্টোপাধ্যায়</label><label><input type="radio" name="q45" value="b"> দীনবন্ধু মিত্র</label><label><input type="radio" name="q45" value="c"> মাইকেল মধুসূদন দত্ত</label><label><input type="radio" name="q45" value="d"> রবীন্দ্রনাথ ঠাকুর</label></div></div>
-            <div class="question-block"><div class="question">৪৬. 'বর্তমান ভারত' কে রচনা করেন?</div><div class="options"><label><input type="radio" name="q46" value="a"> স্বামী বিবেকানন্দ</label><label><input type="radio" name="q46" value="b"> রামমোহন রায়</label><label><input type="radio" name="q46" value="c"> ঈশ্বরচন্দ্র বিদ্যাসাগর</label><label><input type="radio" name="q46" value="d"> শ্রী অরবিন্দ</label></div></div>
-            <div class="question-block"><div class="question">৪৭. অনুশীলন সমিতি কে প্রতিষ্ঠা করেন?</div><div class="options"><label><input type="radio" name="q47" value="a"> বারীন্দ্রকুমার ঘোষ</label><label><input type="radio" name="q47" value="b"> প্রমথনাথ মিত্র</label><label><input type="radio" name="q47" value="c"> চিত্তরঞ্জন দাশ</label><label><input type="radio" name="q47" value="d"> সুরেন্দ্রনাথ বন্দ্যোপাধ্যায়</label></div></div>
-            <div class="question-block"><div class="question">৪৮. গদর পার্টি কোথায় প্রতিষ্ঠিত হয়?</div><div class="options"><label><input type="radio" name="q48" value="a"> লন্ডন</label><label><input type="radio" name="q48" value="b"> প্যারিস</label><label><input type="radio" name="q48" value="c"> সান ফ্রান্সিসকো</label><label><input type="radio" name="q48" value="d"> বার্লিন</label></div></div>
-            <div class="question-block"><div class="question">৪৯. মুসলিম লীগ কবে প্রতিষ্ঠিত হয়?</div><div class="options"><label><input type="radio" name="q49" value="a"> ১৯০৫ সালে</label><label><input type="radio" name="q49" value="b"> ১৯০৬ সালে</label><label><input type="radio" name="q49" value="c"> ১৯০৯ সালে</label><label><input type="radio" name="q49" value="d"> ১৯১১ সালে</label></div></div>
-            <div class="question-block"><div class="question">৫০. চট্টগ্রাম অস্ত্রাগার লুণ্ঠনের নেতৃত্ব কে দেন?</div><div class="options"><label><input type="radio" name="q50" value="a"> ভগত সিং</label><label><input type="radio" name="q50" value="b"> চন্দ্রশেখর আজাদ</label><label><input type="radio" name="q50" value="c"> সূর্য সেন</label><label><input type="radio" name="q50" value="d"> রাসবিহারী বসু</label></div></div>
-
-            <!-- Navigation Buttons -->
-            <div class="nav-buttons" id="nav-container">
-                <button type="button" class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
-                <button type="button" class="nav-btn" id="next-btn" onclick="nextQuestion()">Next</button>
-                <button type="button" class="nav-btn submit-btn" id="submit-btn" onclick="calculateScore()">Submit Test</button>
+        <div id="active-quiz-portal">
+            <div class="quiz-header-bar">
+                <div class="timer-badge">⏱ <span id="time-txt">30</span>s</div>
+                <div class="question-tracker" id="tracker-txt">প্রশ্ন: ১ / ২৫</div>
+                <div class="score-badge">Score: <span id="score-txt">0</span></div>
             </div>
+
+            <div class="quiz-body">
+                <div class="question-display-card" id="q-txt"></div>
+                
+                <div class="options-grid" id="opts-area"></div>
+
+                <div class="quiz-footer">
+                    <button class="next-action-btn" onclick="triggerNext()">Next Question ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-container" id="result-portal">
+            <h2>মক টেস্ট সমাপ্ত! 🎉</h2>
+            <div class="result-score-txt" id="final-score-display">0 / 0</div>
+            <a href="mocktest.html" style="background:#0c2461; color:white; padding:16px 45px; border-radius:30px; text-decoration:none; font-weight:900; font-size:18px; display:inline-block;">মেইন মেনু</a>
         </div>
 
     </div>
 
-    <!-- জাভাস্ক্রিপ্ট লজিক -->
     <script>
-        let currentQuestion = 0;
-        let questions;
-        let timerInterval;
-        let timeLeft = 30 * 60; // 30 মিনিট
+        // ২৫টি বাছাই করা WBCS Indian History প্রশ্ন (Ancient + Medieval + Modern)
+        const questionsList = [
+            {
+                question: "১. সিন্ধু সভ্যতার কোন কেন্দ্রটি একটি কৃত্রিম পোতাশ্রয় (Dockyard) ছিল?",
+                options: ["কালিবঙ্গান", "লোথাল", "ধোলাভিরা", "বনওয়ালি"],
+                correct: 1
+            },
+            {
+                question: "২. 'সত্যমেব জয়তে' (Satyameva Jayate) কথাটি কোন উপনিষদ থেকে নেওয়া হয়েছে?",
+                options: ["কঠ উপনিষদ", "ছান্দোগ্য উপনিষদ", "মুণ্ডক উপনিষদ", "ঈশ উপনিষদ"],
+                correct: 2
+            },
+            {
+                question: "৩. গৌতম বুদ্ধ তাঁর প্রথম বাণী কোথায় প্রচার করেছিলেন?",
+                options: ["বোধগয়া", "সারনাথ", "কুশীনগর", "লুম্বিনী"],
+                correct: 1
+            },
+            {
+                question: "৪. সম্রাট অশোকের শিলালিপিগুলি ১৮৩৭ সালে প্রথম কে পাঠোদ্ধার করেন?",
+                options: ["আলেকজান্ডার কানিংহাম", "জেমস প্রিন্সেপ", "ম্যাক্স মুলার", "উইলিয়াম জোন্স"],
+                correct: 1
+            },
+            {
+                question: "৫. গুপ্ত বংশের কোন সম্রাট 'শকারি' উপাধি ধারণ করেছিলেন?",
+                options: ["সমুদ্রগুপ্ত", "প্রথম চন্দ্রগুপ্ত", "দ্বিতীয় চন্দ্রগুপ্ত", "স্কন্দগুপ্ত"],
+                correct: 2
+            },
+            {
+                question: "৬. 'হর্ষচরিত' ও 'কাদম্বরী' গ্রন্থের রচয়িতা কে ছিলেন?",
+                options: ["হর্ষবর্ধন", "বাণভট্ট", "রবীকীর্তি", "ভারবি"],
+                correct: 1
+            },
+            {
+                question: "৭. দিল্লির কোন সুলতান 'বাজার দর নিয়ন্ত্রণ নীতি' (Market Control Policy) প্রবর্তন করেছিলেন?",
+                options: ["ইলতুৎমিস", "বলবন", "আলাউদ্দিন খিলজী", "মুহম্মদ বিন তুঘলক"],
+                correct: 2
+            },
+            {
+                question: "৮. পর্যটক 'ইবন বতুতা' কোন সুলতানের রাজত্বকালে ভারতে এসেছিলেন?",
+                options: ["কুতুবউদ্দিন আইবক", "আলাউদ্দিন খিলজী", "মুহম্মদ বিন তুঘলক", "ফিরোজ শাহ তুঘলক"],
+                correct: 2
+            },
+            {
+                question: "৯. বিজয়নগর সাম্রাজ্যের শ্রেষ্ঠ শাসক কৃষ্ণদেবরায় কোন রাজবংশের অন্তর্গত ছিলেন?",
+                options: ["সঙ্গম বংশ", "সালুভ বংশ", "তুলুভ বংশ", "আরাভিডু বংশ"],
+                correct: 2
+            },
+            {
+                question: "১০. ১৫৫৬ সালের পানিপথের দ্বিতীয় যুদ্ধে আকবরের প্রধান সেনাপতি কে ছিলেন?",
+                options: ["মানসিংহ", "টোডরমল", "বৈরাম খাঁ", "আবুল ফজল"],
+                correct: 2
+            },
+            {
+                question: "১১. মুঘল যুগে রাজস্ব আদায়ের 'জাবতি' (Zabti) প্রথা কে প্রবর্তন করেন?",
+                options: ["টোডরমল", "বীরবল", "মানসিংহ", "মুজাফফর খাঁ"],
+                correct: 0
+            },
+            {
+                question: "১২. ১৭৬১ সালে পানিপথের তৃতীয় যুদ্ধের সময় মারাঠা পেশোয়া কে ছিলেন?",
+                options: ["বালাজী বিশ্বনাথ", "প্রথম বাজীরাও", "বালাজী বাজীরাও", "মাধব রাও"],
+                correct: 2
+            },
+            {
+                question: "১৩. ভাস্কো দা গামা ১৪৯৮ সালে ভারতের কোন বন্দরে এসে পৌঁছেছিলেন?",
+                options: ["সুরাট", "কালিকট", "কোচিন", "গোয়া"],
+                correct: 1
+            },
+            {
+                question: "১৪. ১৭৫৭ সালের পলাশীর যুদ্ধে ইংরেজদের প্রধান সেনাপতি কে ছিলেন?",
+                options: ["রবার্ট ক্লাইভ", "ওয়ারেন হেস্টিংস", "লর্ড কর্নওয়ালিস", "স্যার আয়ার কুট"],
+                correct: 0
+            },
+            {
+                question: "১৫. ১৭৯৩ সালে বাংলায় 'চিরস্থায়ী বন্দোবস্ত' (Permanent Settlement) কে প্রবর্তন করেন?",
+                options: ["ওয়ারেন হেস্টিংস", "লর্ড কর্নওয়ালিস", "লর্ড ওয়েলেসলি", "লর্ড উইলিয়াম বেন্টিঙ্ক"],
+                correct: 1
+            },
+            {
+                question: "১৬. ১৮২৯ সালে 'সতীদাহ প্রথা রদ' করার সময় ভারতের গভর্নর জেনারেল কে ছিলেন?",
+                options: ["লর্ড ডালহৌসি", "লর্ড উইলিয়াম বেন্টিঙ্ক", "লর্ড ক্যানিং", "লর্ড আমহার্স্ট"],
+                correct: 1
+            },
+            {
+                question: "১৭. ১৮৫৭ সালের মহাবিদ্রোহকে কে 'ভারতের প্রথম স্বাধীনতা যুদ্ধ' বলে অভিহিত করেছিলেন?",
+                options: ["ভি. ডি. সাভারকর", "আর. সি. মজুমদার", "এস. এন. সেন", "অশোক মেহতা"],
+                correct: 0
+            },
+            {
+                question: "১৮. ১৮৮৫ সালে জাতীয় কংগ্রেসের প্রথম অধিবেশনে মোট কতজন প্রতিনিধি (Delegates) উপস্থিত ছিলেন?",
+                options: ["৫৪ জন", "৬২ জন", "৭২ জন", "৮২ জন"],
+                correct: 2
+            },
+            {
+                question: "১৯. বিখ্যাত 'মারাঠা' এবং 'কেশরী' পত্রিকা দুটির সম্পাদক কে ছিলেন?",
+                options: ["গোপালকৃষ্ণ গোখলে", "বাল গঙ্গাধর তিলক", "লালা লাজপত রায়", "অরবিন্দ ঘোষ"],
+                correct: 1
+            },
+            {
+                question: "২০. ১৯০৫ সালের ১৬ অক্টোবর বঙ্গভঙ্গ কার্যকর হওয়ার দিন রবীন্দ্রনাথ ঠাকুর কোন উৎসবের সূচনা করেন?",
+                options: ["রাখীবন্ধন", "অরন্ধন", "বন্দে মাতরম দিবস", "জাতীয় শোক দিবস"],
+                correct: 0
+            },
+            {
+                question: "২১. ১৯১১ সালে দিল্লির চাঁদনি চকে ভাইসরয় লর্ড হার্ডিঞ্জের ওপর বোমা নিক্ষেপের মূল পরিকল্পনাকারী কে ছিলেন?",
+                options: ["ভগত সিং", "রাসবিহারী বসু", "সূর্য সেন", "ক্ষুদিরাম বসু"],
+                correct: 1
+            },
+            {
+                question: "২২. মহাত্মা গান্ধীর রাজনৈতিক গুরু (Political Guru) কাকে বলা হয়?",
+                options: ["দাদাভাই নওরোজি", "ফিরোজশাহ মেহতা", "গোপালকৃষ্ণ গোখলে", "লিও টলস্টয়"],
+                correct: 2
+            },
+            {
+                question: "২৩. ১৯৩২ সালের ঐতিহাসিক 'পুনা চুক্তি' (Poona Pact) কাদের মধ্যে স্বাক্ষরিত হয়েছিল?",
+                options: ["গান্ধী ও আম্বেদকর", "গান্ধী ও আরউইন", "গান্ধী ও জিন্নাহ", "নেহেরু ও আম্বেদকর"],
+                correct: 0
+            },
+            {
+                question: "২৪. ১৯৩৯ সালে ত্রিপুরী কংগ্রেসের সভাপতি নির্বাচনে সুভাষচন্দ্র বসু কাকে পরাজিত করেছিলেন?",
+                options: ["জওহরলাল নেহেরু", "পট্টভি সীতারামাইয়া", "আবুল কালাম আজাদ", "বল্লভভাই প্যাটেল"],
+                correct: 1
+            },
+            {
+                question: "২৫. ১৯৪৭ সালের ১৫ আগস্ট ভারত স্বাধীন হওয়ার সময় ব্রিটেনের প্রধানমন্ত্রী কে ছিলেন?",
+                options: ["উইনস্টন চার্চিল", "ক্লেমেন্ট এটলি", "লর্ড মাউন্টব্যাটেন", "র্যামসে ম্যাকডোনাল্ড"],
+                correct: 1
+            }
+        ];
 
-        window.onload = function() {
-            questions = document.querySelectorAll('.question-block');
-            showQuestion(currentQuestion);
-            startTimer();
+        let currentIndex = 0;
+        let userScore = 0;
+        let timeLeft = 30;
+        let activeTimer;
 
-            // অপশন সিলেক্ট করার সময় সুন্দর নীল রঙ করার কোড
-            document.querySelectorAll('.options label').forEach(label => {
-                label.addEventListener('click', function() {
-                    let parent = this.closest('.options');
-                    parent.querySelectorAll('label').forEach(l => l.classList.remove('selected-opt'));
-                    this.classList.add('selected-opt');
-                });
+        const qTxtEl = document.getElementById("q-txt");
+        const optsAreaEl = document.getElementById("opts-area");
+        const timeTxtEl = document.getElementById("time-txt");
+        const trackerTxtEl = document.getElementById("tracker-txt");
+        const scoreTxtEl = document.getElementById("score-txt");
+
+        function renderQuestion() {
+            clearInterval(activeTimer);
+            timeLeft = 30;
+            timeTxtEl.innerText = timeLeft;
+
+            const currentQ = questionsList[currentIndex];
+            qTxtEl.innerText = currentQ.question;
+            trackerTxtEl.innerText = `প্রশ্ন: ${currentIndex + 1} / ${questionsList.length}`;
+
+            optsAreaEl.innerHTML = "";
+            currentQ.options.forEach((optText, i) => {
+                const optDiv = document.createElement("div");
+                optDiv.className = "option-item";
+                optDiv.innerHTML = `<span>${optText}</span> <span class="icon-holder"></span>`;
+                optDiv.onclick = () => validateAnswer(i, optDiv);
+                optsAreaEl.appendChild(optDiv);
             });
-        };
 
-        function startTimer() {
-            let timerDisplay = document.getElementById('time-left');
-            timerInterval = setInterval(function() {
+            activeTimer = setInterval(() => {
+                timeLeft--;
+                timeTxtEl.innerText = timeLeft;
                 if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    calculateScore(); 
-                } else {
-                    timeLeft--;
-                    let m = Math.floor(timeLeft / 60);
-                    let s = timeLeft % 60;
-                    timerDisplay.innerText = m + ":" + (s < 10 ? "0" + s : s);
-                    
-                    if(timeLeft <= 300) {
-                        document.getElementById('timer-container').style.background = "#e74c3c";
-                        document.getElementById('timer-container').style.color = "#fff";
-                    }
+                    clearInterval(activeTimer);
+                    revealCorrectOnly();
                 }
             }, 1000);
         }
 
-        function showQuestion(index) {
-            questions.forEach((q, i) => {
-                q.style.display = (i === index) ? "block" : "none";
-            });
-            document.getElementById('question-counter').innerText = "Q. " + (index + 1) + " / " + questions.length;
-            
-            document.getElementById('prev-btn').style.display = (index === 0) ? "none" : "inline-block";
-            
-            if (index === questions.length - 1) {
-                document.getElementById('next-btn').style.display = "none";
-                document.getElementById('submit-btn').style.display = "inline-block";
-            } else {
-                document.getElementById('next-btn').style.display = "inline-block";
-                document.getElementById('submit-btn').style.display = "none";
-            }
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function validateAnswer(selectedIdx, clickedEl) {
+            clearInterval(activeTimer);
+            const correctIdx = questionsList[currentIndex].correct;
+            const allOptions = optsAreaEl.children;
 
-        function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                showQuestion(currentQuestion);
-            }
-        }
-
-        function calculateScore() {
-            clearInterval(timerInterval);
-            document.getElementById('timer-container').style.display = 'none';
-            document.getElementById('nav-container').style.display = 'none';
-            document.getElementById('question-counter').style.display = 'none';
-
-            let score = 0;
-            const correctAnswers = { 
-                q1:"b", q2:"a", q3:"b", q4:"c", q5:"a", q6:"d", q7:"a", q8:"c", q9:"b", q10:"b",
-                q11:"c", q12:"b", q13:"a", q14:"b", q15:"a", q16:"b", q17:"c", q18:"b", q19:"c", q20:"c",
-                q21:"a", q22:"b", q23:"a", q24:"b", q25:"c", q26:"c", q27:"a", q28:"b", q29:"b", q30:"b",
-                q31:"b", q32:"b", q33:"c", q34:"b", q35:"b", q36:"b", q37:"a", q38:"b", q39:"c", q40:"c",
-                q41:"c", q42:"c", q43:"b", q44:"d", q45:"b", q46:"a", q47:"b", q48:"c", q49:"b", q50:"c"
-            };
-
-            questions.forEach((qBlock, index) => {
-                qBlock.style.display = "block";
-                qBlock.style.marginBottom = "40px";
-                qBlock.style.borderBottom = "2px dashed #cfd8dc";
-                
-                let qName = "q" + (index + 1);
-                let selectedInput = document.querySelector(`input[name="${qName}"]:checked`);
-                let correctInput = document.querySelector(`input[name="${qName}"][value="${correctAnswers[qName]}"]`);
-                let allInputs = document.querySelectorAll(`input[name="${qName}"]`);
-
-                // নীল সিলেকশন রিমুভ করা
-                qBlock.querySelectorAll('label').forEach(l => l.classList.remove('selected-opt'));
-
-                if (correctInput) {
-                    correctInput.parentElement.classList.add("correct-ans");
+            for (let i = 0; i < allOptions.length; i++) {
+                allOptions[i].classList.add("disabled-opt");
+                if (i === correctIdx) {
+                    allOptions[i].classList.add("opt-correct");
+                    allOptions[i].querySelector(".icon-holder").innerText = "✔";
                 }
-
-                if (selectedInput) {
-                    if (selectedInput.value !== correctAnswers[qName]) {
-                        selectedInput.parentElement.classList.add("wrong-ans");
-                    } else {
-                        score++;
-                    }
-                }
-
-                allInputs.forEach(input => input.disabled = true);
-            });
-
-            let resultDiv = document.getElementById("result");
-            resultDiv.style.display = "block";
-            resultDiv.innerHTML = `তোমার প্রাপ্ত নম্বর: ${score} / 50`;
-            
-            if(score === 50) {
-                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
-                resultDiv.innerHTML += "<br>অবিশ্বাস্য! তুমি ইতিহাসে একদম পারফেক্ট!";
-            } else if (score >= 40) {
-                resultDiv.style.backgroundColor = "#d4edda"; resultDiv.style.color = "#155724";
-                resultDiv.innerHTML += "<br>দুর্দান্ত পারফরম্যান্স! তোমার প্রস্তুতি খুব ভালো।";
-            } else if (score >= 25) {
-                resultDiv.style.backgroundColor = "#fff3cd"; resultDiv.style.color = "#856404";
-                resultDiv.innerHTML += "<br>ভালো চেষ্টা! তবে আরও একটু পড়তে হবে।";
-            } else {
-                resultDiv.style.backgroundColor = "#f8d7da"; resultDiv.style.color = "#721c24";
-                resultDiv.innerHTML += "<br>নিচে থেকে ভুল উত্তরগুলো মিলিয়ে নাও এবং আরও রিভিশন দাও!";
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (selectedIdx === correctIdx) {
+                userScore++;
+                scoreTxtEl.innerText = userScore;
+            } else {
+                clickedEl.classList.add("opt-wrong");
+                clickedEl.querySelector(".icon-holder").innerText = "✖";
+            }
         }
+
+        function revealCorrectOnly() {
+            const correctIdx = questionsList[currentIndex].correct;
+            const allOptions = optsAreaEl.children;
+            for (let i = 0; i < allOptions.length; i++) {
+                allOptions[i].classList.add("disabled-opt");
+                if (i === correctIdx) {
+                    allOptions[i].classList.add("opt-correct");
+                    allOptions[i].querySelector(".icon-holder").innerText = "✔";
+                }
+            }
+        }
+
+        function triggerNext() {
+            currentIndex++;
+            if (currentIndex < questionsList.length) {
+                renderQuestion();
+            } else {
+                document.getElementById("active-quiz-portal").style.display = "none";
+                document.getElementById("result-portal").style.display = "block";
+                document.getElementById("final-score-display").innerText = `${userScore} / ${questionsList.length}`;
+            }
+        }
+
+        window.onload = renderQuestion;
     </script>
 </body>
 </html>
