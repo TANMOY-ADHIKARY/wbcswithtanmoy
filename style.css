@@ -349,3 +349,36 @@ div.option-item.opt-wrong:active {
     .option-item { padding: 16px 20px !important; font-size: 16px !important; }
     .next-action-btn { padding: 16px !important; font-size: 18px !important; }
 }
+
+/* ===================================================
+   ULTIMATE "NEXT BUTTON" (১০০% স্থির + অপশনের ঠিক নিচে)
+=================================================== */
+
+/* ১. অপশন শেষ হওয়ার ঠিক ২২ পিক্সেল নিচেই বাটনটাকে টেনে তোলা হলো */
+.quiz-body .quiz-footer {
+    margin-top: 22px !important; 
+    padding-top: 0 !important;
+    border-top: none !important; 
+}
+
+/* ২. ফিজিক্যাল বর্ডার জিরো করে 3D শ্যাডো ট্রিক (০% লাফানো) */
+button.next-action-btn {
+    background: #d35400 !important;
+    color: #ffffff !important;
+    border: none !important; /* আসল ম্যাজিক: কোনো ফিজিক্যাল বর্ডার নেই */
+    border-radius: 16px !important;
+    padding: 16px 24px !important;
+    font-size: 19px !important;
+    font-weight: 900 !important;
+    box-shadow: 0 6px 0 #873600, 0 10px 20px rgba(211, 84, 0, 0.25) !important;
+    transition: transform 0.08s ease, box-shadow 0.08s ease !important;
+    display: block !important;
+    width: 100% !important;
+    cursor: pointer;
+}
+
+/* ট্যাপ করলে বাটন ৪ পিক্সেল নিচে নামবে, শ্যাডো ৪ পিক্সেল কমবে = ব্যালেন্স ১০০% সমান */
+button.next-action-btn:active {
+    transform: translateY(4px) !important;
+    box-shadow: 0 2px 0 #873600, 0 4px 10px rgba(211, 84, 0, 0.4) !important;
+}
