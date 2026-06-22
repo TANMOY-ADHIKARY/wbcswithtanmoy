@@ -299,6 +299,9 @@ button.next-action-btn:active { transform: translateY(4px) !important; box-shado
 /* ==========================================================================
    ৮. ULTIMATE UNIFIED MOBILE OVERRIDES (MAX-WIDTH: 850px)
    ========================================================================== */
+/* ==========================================================================
+   ৮. ULTIMATE UNIFIED MOBILE OVERRIDES (MAX-WIDTH: 850px) - THE REAL FIX
+   ========================================================================== */
 @media screen and (max-width: 850px) {
     /* A. Notes Container Mobile Fix */
     .notes-container {
@@ -312,40 +315,50 @@ button.next-action-btn:active { transform: translateY(4px) !important; box-shado
     .top-nav { justify-content: flex-start !important; gap: 15px !important; padding: 12px 15px !important; }
     .top-nav a { font-size: 15px !important; }
 
-    /* C. The "Sunglass / Dual-Chip" Top Header Fix */
+    /* C. THE REAL "PERFECT GRID" TOP HEADER (যেটা আমি গিলে ফেলেছিলাম) */
     .top-header {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        row-gap: 8px !important;
-        padding: 14px 10px 10px 10px !important;
+        grid-template-areas: 
+            "brand brand"
+            "badge1 badge2" !important;
+        gap: 10px !important;
+        padding: 16px 10px 12px 10px !important;
+        width: 100% !important;
     }
 
     .header-center {
-        grid-column: 1 / span 2 !important; 
+        grid-area: brand !important; 
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         width: 100% !important;
     }
 
-    .header-side {
-        display: block !important; 
+    .header-side.left-wing {
+        grid-area: badge1 !important;
+        display: block !important;
+        text-align: right !important;
         width: 100% !important;
     }
 
-    /* চিপ দুটোকে মাঝখানে টেনে আনার চুম্বক */
-    .left-wing { text-align: right !important; padding-right: 5px !important; }
-    .right-wing { text-align: left !important; padding-left: 5px !important; }
-
-    .target-badge, .free-badge {
-        font-size: 11px !important;
-        padding: 4px 10px !important;
-        letter-spacing: 0px !important;
-        white-space: nowrap !important; 
+    .header-side.right-wing {
+        grid-area: badge2 !important;
+        display: block !important;
+        text-align: left !important;
+        width: 100% !important;
     }
 
-    .top-logo { width: 50px !important; } 
-    .main-title { font-size: 26px !important; margin-top: 4px !important; }
+    .target-badge, .free-badge {
+        font-size: 11.5px !important;
+        padding: 5px 12px !important;
+        display: inline-block !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    .top-logo { width: 52px !important; } 
+    .main-title { font-size: 26px !important; margin-top: 5px !important; line-height: 1.1 !important; }
 
     /* D. Mock Test Mobile Fix */
     .quiz-super-container { width: 100%; margin: 0 auto; border-radius: 0; border: none !important; }
