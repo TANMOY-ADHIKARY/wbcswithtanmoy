@@ -382,3 +382,101 @@ button.next-action-btn:active {
     transform: translateY(4px) !important;
     box-shadow: 0 2px 0 #873600, 0 4px 10px rgba(211, 84, 0, 0.4) !important;
 }
+
+/* --- site-info-bar Fix: Removing Borders and Formatting Text --- */
+.site-info-bar {
+    background-color: #fae5d3; /* keep existing peach background */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: 700; /* making it bold like previous successful design */
+    color: #793c05; /* default text color */
+    border-top: none !important; /* Forces top border away */
+    border-bottom: none !important; /* Forces bottom border away */
+}
+
+/* Span colors to make them "work" as requested */
+.info-name {
+    color: #9b2226; /* Deep Maroon for name */
+}
+
+.info-date {
+    color: #1e3799; /* Royal Blue for date */
+}
+
+.info-place {
+    color: #009432; /* Rich Green for place */
+}
+
+/* Pipes styling */
+.separator {
+    color: #d35400; /* Original orange color for pipes to match original separators */
+    margin: 0 10px; /* adding spacing around pipes */
+}
+
+/* ==========================================
+   ৩-খণ্ডের ব্যালেন্সড টপ হেডার (v2.0)
+========================================== */
+.top-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 12px 40px 8px 40px;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* দুপাশের উইং-এর মাপ একদম কাঁটায় কাঁটায় সমান (200px) */
+.header-side {
+    width: 200px; 
+}
+
+.left-wing { text-align: left; }
+.right-wing { text-align: right; }
+
+/* বাঁ-দিকের মিশন ব্যাজের ডিজাইন (ওয়ার্ম রেড-গেরুয়া) */
+.target-badge {
+    background: linear-gradient(135deg, #78281f 0%, #ba4a00 100%);
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(120, 40, 31, 0.15);
+    letter-spacing: 0.5px;
+    display: inline-block;
+    border: 1.5px solid #f1c40f;
+}
+
+/* ডানদিকের 100% ফ্রি ব্যাজের ডিজাইন (সলিড পান্না সবুজ) */
+.free-badge {
+    background: #e8f8f5;
+    color: #117a65; /* ডিপ এমেরাল্ড গ্রিন */
+    font-size: 13.5px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid #2ecc71;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.15);
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+/* মোবাইল ভিউ সেফটি লক (মোবাইলে এই দুই সাইডের ব্যাজ অদৃশ্য থাকবে) */
+@media screen and (max-width: 850px) {
+    .top-header {
+        justify-content: center;
+        padding: 15px 10px;
+    }
+    .header-side {
+        display: none !important; 
+    }
+}
