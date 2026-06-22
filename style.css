@@ -1,6 +1,8 @@
-/* ---------------------------------
-   Reset & Body
------------------------------------- */
+/* ==========================================================================
+   WBCS WITH TANMOY - THE ULTIMATE MASTER STYLE SHEET (v3.0 - PURGED & FIXED)
+   ========================================================================== */
+
+/* --- ১. RESET & WARM MORNING GLOSS BODY --- */
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +10,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ১. বডির ওয়ার্ম ক্রিম-গেরুয়া মর্নিং গ্লস ব্যাকগ্রাউন্ড */
 body {
     display: flex;
     flex-direction: column;
@@ -19,25 +20,26 @@ body {
     padding-bottom: 50px;
 }
 
-/* ---------------------------------
-   Top Header (Logo & Title)
------------------------------------- */
+/* --- ২. THE 3-PART BALANCED TOP HEADER (DESKTOP VIEW) --- */
 .top-header {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center;
-    justify-content: center;
-    padding: 20px 0 10px 0;
+    justify-content: space-between; 
+    padding: 12px 40px 8px 40px;
     background-color: #ffffff;
     width: 100%;
 }
 
-.top-logo {
-    width: 60px;
-    height: auto;
+.header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-/* ১. মেইন টাইটেল (WBCS WITH TANMOY) - রাজকীয় পোড়ামাটির গাঢ় গেরুয়া */
+.top-logo { width: 60px; height: auto; }
+
 .main-title {
     margin-top: 10px;
     font-size: 32px;
@@ -49,29 +51,60 @@ body {
     text-align: center;
 }
 
-/* ---------------------------------
-   Website Info Bar (Estd & Location)
------------------------------------- */
-.site-info-bar {
-    background: #fae5d3 !important;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 15px;
-    color: #ba4a00 !important;
+/* দুপাশের উইং-এর মাপ কাঁটায় কাঁটায় সমান (200px) যাতে লোগো সেন্টারে লক থাকে */
+.header-side { width: 200px; }
+.left-wing { text-align: left; }
+.right-wing { text-align: right; }
+
+.target-badge {
+    background: linear-gradient(135deg, #78281f 0%, #ba4a00 100%);
+    color: #ffffff;
+    font-size: 13.5px;
     font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(120, 40, 31, 0.15);
     letter-spacing: 0.5px;
-    border-top: 2px solid #e67e22 !important;
-    border-bottom: 2px solid #e67e22 !important;
+    display: inline-block;
+    border: 1.5px solid #f1c40f;
 }
+
+.free-badge {
+    background: #e8f8f5;
+    color: #117a65; 
+    font-size: 13.5px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid #2ecc71;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.15);
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+/* --- ৩. WEBSITE INFO BAR (BORDER-FREE & COLORFUL SPANS) --- */
+.site-info-bar {
+    background-color: #fae5d3 !important;
+    text-align: center;
+    padding: 10px 0 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #793c05; 
+    border-top: none !important; /* কমলা বর্ডার গায়েব */
+    border-bottom: none !important; /* কমলা বর্ডার গায়েব */
+    box-shadow: 0 4px 12px rgba(211, 84, 0, 0.08);
+}
+
+.info-name { color: #9b2226 !important; font-weight: 900; }
+.info-date { color: #1e3799 !important; font-weight: 900; }
+.info-place { color: #009432 !important; font-weight: 900; }
 
 .site-info-bar .separator {
-    margin: 0 10px;
-    color: #d35400;
+    color: #d35400 !important;
+    margin: 0 10px !important;
 }
 
-/* ---------------------------------
-   Top Navigation (Deep Royal Saffron Menu)
------------------------------------- */
+/* --- ৪. TOP NAVIGATION MENU --- */
 .top-nav {
     display: flex;
     justify-content: center;
@@ -95,19 +128,14 @@ body {
     transition: all 0.3s ease;
 }
 
-/* মেনুর যে পেজে আছো সেটা সলিড গাঢ় গেরুয়া হয়ে জ্বলবে */
 .top-nav a:hover, .top-nav a[style*="e74c3c"] {
     color: #d35400 !important;
     text-shadow: 0 0 8px rgba(211, 84, 0, 0.4);
 }
 
-.top-nav::-webkit-scrollbar {
-    display: none;
-}
+.top-nav::-webkit-scrollbar { display: none; }
 
-/* ---------------------------------
-   Layout Container (Notes Page)
------------------------------------- */
+/* --- ৫. NOTES PAGE (CONTAINER & SIDEBAR) --- */
 .notes-container {
     display: flex;
     flex-direction: row;
@@ -120,9 +148,6 @@ body {
     gap: 40px; 
 }
 
-/* ---------------------------------
-   Sidebar Styling (বাঁ-দিকের মেনু)
------------------------------------- */
 .sidebar {
     flex: 0 0 280px;
     width: 280px;
@@ -134,69 +159,50 @@ body {
 }
 
 .sidebar-title {
-    font-size: 22px;
-    color: #9b2226;
-    margin-top: 0;
-    margin-bottom: 20px;
+    font-size: 22px; color: #9b2226;
+    margin-top: 0; margin-bottom: 20px;
     border-bottom: 2px dashed #d35400;
-    padding-bottom: 10px;
-    font-weight: 800;
+    padding-bottom: 10px; font-weight: 800;
 }
 
 .subject-list { list-style: none; padding: 0; margin: 0; }
 
 .subject-list li {
-    padding: 15px 20px;
-    margin-bottom: 12px;
-    background: #fdf2e9;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ba4a00;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 15px 20px; margin-bottom: 12px;
+    background: #fdf2e9; border-radius: 10px;
+    font-size: 16px; font-weight: bold; color: #ba4a00;
+    cursor: pointer; transition: all 0.3s ease;
     border-left: 4px solid transparent;
 }
 
 .subject-list li:hover {
-    background: #fae5d3;
-    color: #9b2226;
-    transform: translateX(8px);
-    border-left: 4px solid #d35400;
+    background: #fae5d3; color: #9b2226;
+    transform: translateX(8px); border-left: 4px solid #d35400;
     box-shadow: 0 4px 10px rgba(211, 84, 0, 0.2);
 }
 
 .subject-list li.active {
     background: linear-gradient(135deg, #d35400 0%, #9b2226 100%);
-    color: white;
-    border-left: 4px solid #f39c12;
+    color: white; border-left: 4px solid #f39c12;
     box-shadow: 0 6px 15px rgba(155, 34, 38, 0.4);
 }
 
-/* ---------------------------------
-   Main Content Area (Notes Chapter)
------------------------------------- */
 .content-area { flex: 1 1 0; min-width: 0; padding-left: 40px; }
 
 .subject-heading {
-    font-size: 34px;
-    color: #9b2226;
+    font-size: 34px; color: #9b2226;
     margin-top: 0; margin-bottom: 30px; font-weight: 800; text-align: left;
 }
 
 .chapter-card {
     background: linear-gradient(to right, #ffffff, #fdf2e9);
-    border-left: 6px solid #d35400;
-    padding: 25px 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(211, 84, 0, 0.15);
-    transition: transform 0.3s ease;
-    max-width: 850px; margin: 0 0 25px 0;
+    border-left: 6px solid #d35400; padding: 25px 30px;
+    border-radius: 12px; box-shadow: 0 5px 15px rgba(211, 84, 0, 0.15);
+    transition: transform 0.3s ease; max-width: 850px; margin: 0 0 25px 0;
 }
 
 .chapter-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(211, 84, 0, 0.3);
+    transform: translateY(-5px); box-shadow: 0 10px 25px rgba(211, 84, 0, 0.3);
 }
 
 .chapter-title { margin: 0 0 15px 0; font-size: 24px; color: #9b2226; font-weight: 800; }
@@ -204,100 +210,68 @@ body {
 .coming-soon {
     background: linear-gradient(135deg, #f39c12 0%, #d35400 100%);
     color: white; display: inline-block; padding: 6px 18px; border-radius: 20px;
-    font-weight: bold; font-size: 14px; margin: 0;
-    box-shadow: 0 3px 8px rgba(211, 84, 0, 0.3);
+    font-weight: bold; font-size: 14px; margin: 0; box-shadow: 0 3px 8px rgba(211, 84, 0, 0.3);
 }
 
-/* ---------------------------------
-   MOCK TEST PORTAL "ROYAL GERUIA" OVERRIDE
------------------------------------- */
-/* ২. মূল কন্টেইনারের বর্ডার (গাঢ় সলিড ব্রোঞ্জ গেরুয়া) */
+/* --- ৬. MOCK TEST PORTAL "ROYAL GERUIA" OVERRIDE --- */
 .quiz-super-container {
     border: 4px solid #b9770e !important;
     box-shadow: 0 15px 35px rgba(185, 119, 14, 0.3) !important;
     background: #fffcf9 !important;
 }
 
-/* ৩. Top Header Bar - গাঢ় পোড়ামাটির খয়েরি-গেরুয়া */
 .quiz-header-bar {
     background: #78281f !important; 
     border-bottom: 4px solid #d35400 !important;
 }
 
-/* ৪. ওপরের চকচকে ব্যাজগুলো */
 .timer-badge { background: #ba4a00 !important; color: white !important; border-color: #fff !important; }
 .question-tracker { background: #b9770e !important; color: white !important; border-color: #fff !important; }
 .score-badge { background: #1e8449 !important; color: white !important; border-color: #fff !important; }
 
-/* ৫. প্রশ্ন কার্ড - রয়্যাল ডিপ ব্লু থেকে নেভি ব্লু গ্রেডিয়েন্ট */
 .question-display-card {
     background: linear-gradient(135deg, #1e3799 0%, #0c2461 100%) !important;
-    border: 3px solid #f39c12 !important;
-    color: #ffffff !important;
-    box-shadow: 0 10px 25px rgba(12, 36, 97, 0.4) !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    border: 3px solid #f39c12 !important; color: #ffffff !important;
+    box-shadow: 0 10px 25px rgba(12, 36, 97, 0.4) !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-/* ৬. সাধারণ অপশন বোতাম (সাদা বডির ওপর গাঢ় গেরুয়া বর্ডার) */
 .option-item {
-    background: #ffffff !important;
-    border: 3px solid #d35400 !important;
-    border-left: 8px solid #9b2226 !important;
-    color: #1c2833 !important;
-    font-weight: 800 !important;
+    background: #ffffff !important; border: 3px solid #d35400 !important;
+    border-left: 8px solid #9b2226 !important; color: #1c2833 !important; font-weight: 800 !important;
 }
 
-/* ম্যাজিক ১: বোতাম লক না থাকা অবস্থায় হোভার করলে ডিপ ক্রিম হবে */
-.option-item:not(.disabled-opt):hover {
-    background: #fae5d3 !important;
-    border-color: #9b2226 !important;
+.option-item:not(.disabled-opt):hover { background: #fae5d3 !important; border-color: #9b2226 !important; }
+
+div.option-item.opt-correct, div.option-item.opt-correct:hover, div.option-item.opt-correct:active {
+    background: #009432 !important; border-color: #004015 !important;
+    border-left: 8px solid #00260c !important; color: #ffffff !important; box-shadow: 0 6px 15px rgba(0, 148, 50, 0.5) !important;
 }
 
-/* ম্যাজিক ২: সঠিক উত্তর (১০০% সলিড কড়া সবুজ, হোভার একে সরাতে পারবেবিধা নেই) */
-div.option-item.opt-correct,
-div.option-item.opt-correct:hover,
-div.option-item.opt-correct:active {
-    background: #009432 !important;
-    border-color: #004015 !important;
-    border-left: 8px solid #00260c !important;
-    color: #ffffff !important;
-    box-shadow: 0 6px 15px rgba(0, 148, 50, 0.5) !important;
+div.option-item.opt-wrong, div.option-item.opt-wrong:hover, div.option-item.opt-wrong:active {
+    background: #c0392b !important; border-color: #801d1d !important;
+    border-left: 8px solid #4d1111 !important; color: #ffffff !important; box-shadow: 0 6px 15px rgba(192, 57, 43, 0.5) !important;
 }
 
-/* ম্যাজিক ৩: ভুল উত্তর (১০০% সলিড কড়া লাল, হোভার একে সরাতে পারবে না) */
-div.option-item.opt-wrong,
-div.option-item.opt-wrong:hover,
-div.option-item.opt-wrong:active {
-    background: #c0392b !important;
-    border-color: #801d1d !important;
-    border-left: 8px solid #4d1111 !important;
-    color: #ffffff !important;
-    box-shadow: 0 6px 15px rgba(192, 57, 43, 0.5) !important;
-}
-
-/* উত্তর দেওয়ার পর সব অপশনকে লক করে দেওয়া */
 .disabled-opt { pointer-events: none !important; }
 
-/* ৭. স্থায়ী Next বাটন - গাঢ় গেরুয়া আগুন */
-.next-action-btn {
-    background: #ba4a00 !important;
-    border-bottom: 5px solid #78281f !important;
-    color: white !important;
-    box-shadow: 0 8px 20px rgba(186, 74, 0, 0.4) !important;
+.quiz-body .quiz-footer { margin-top: 22px !important; padding-top: 0 !important; border-top: none !important; }
+
+button.next-action-btn {
+    background: #d35400 !important; color: #ffffff !important; border: none !important; 
+    border-radius: 16px !important; padding: 16px 24px !important; font-size: 19px !important;
+    font-weight: 900 !important; box-shadow: 0 6px 0 #873600, 0 10px 20px rgba(211, 84, 0, 0.25) !important;
+    transition: transform 0.08s ease, box-shadow 0.08s ease !important; display: block !important; width: 100% !important; cursor: pointer;
 }
 
-.next-action-btn:hover { background: #d35400 !important; }
+button.next-action-btn:active { transform: translateY(4px) !important; box-shadow: 0 2px 0 #873600, 0 4px 10px rgba(211, 84, 0, 0.4) !important; }
 
 .result-container h2 { color: #9b2226 !important; }
 
-/* ---------------------------------
-   Scrolling Notification Ticker
------------------------------------- */
+/* --- ৭. SCROLLING TICKER & FOOTER --- */
 .scrolling-ticker {
     position: fixed; bottom: 0; left: 0; width: 100%;
     background: linear-gradient(90deg, #9b2226 0%, #d35400 100%);
-    color: #fff; padding: 10px 0; overflow: hidden; z-index: 1000;
-    box-shadow: 0 -3px 10px rgba(0,0,0,0.4);
+    color: #fff; padding: 10px 0; overflow: hidden; z-index: 1000; box-shadow: 0 -3px 10px rgba(0,0,0,0.4);
 }
 
 .ticker-text {
@@ -306,17 +280,13 @@ div.option-item.opt-wrong:active {
 }
 
 .new-badge {
-    background-color: #f1c40f; color: #9b2226; padding: 3px 8px;
-    border-radius: 4px; font-size: 14px; margin-right: 10px; font-weight: 900;
-    animation: blink 1s infinite alternate; 
+    background-color: #f1c40f; color: #9b2226; padding: 3px 8px; border-radius: 4px;
+    font-size: 14px; margin-right: 10px; font-weight: 900; animation: blink 1s infinite alternate; 
 }
 
 @keyframes scrollText { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
 @keyframes blink { 0% { opacity: 1; box-shadow: 0 0 8px #f1c40f; } 100% { opacity: 0.6; box-shadow: none; } }
 
-/* ---------------------------------
-   Footer Styling
------------------------------------- */
 .site-footer {
     background: #fae5d3; color: #ba4a00; text-align: center;
     padding: 20px 0; margin-top: 40px; border-top: 2px solid #e67e22; font-size: 14px;
@@ -326,20 +296,58 @@ div.option-item.opt-wrong:active {
 .social-links a { color: #9b2226; text-decoration: none; margin: 0 10px; font-weight: 800; }
 .social-links a:hover { color: #d35400; text-decoration: underline; }
 
-/* ---------------------------------
-   Responsive Design (মোবাইলের জন্য)
------------------------------------- */
+/* ==========================================================================
+   ৮. ULTIMATE UNIFIED MOBILE OVERRIDES (MAX-WIDTH: 850px)
+   ========================================================================== */
 @media screen and (max-width: 850px) {
+    /* A. Notes Container Mobile Fix */
     .notes-container {
         flex-direction: column !important; width: 100% !important;
         margin: 15px auto !important; padding: 0 20px !important; gap: 20px !important;
         box-sizing: border-box !important;
     }
     .sidebar, .content-area { width: 100% !important; flex: auto !important; padding-left: 0 !important; box-sizing: border-box !important; }
-    .main-title { font-size: 26px; }
+    
+    /* B. Top Navigation Mobile Fix */
     .top-nav { justify-content: flex-start !important; gap: 15px !important; padding: 12px 15px !important; }
     .top-nav a { font-size: 15px !important; }
-    
+
+    /* C. The "Sunglass / Dual-Chip" Top Header Fix */
+    .top-header {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        row-gap: 8px !important;
+        padding: 14px 10px 10px 10px !important;
+    }
+
+    .header-center {
+        grid-column: 1 / span 2 !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .header-side {
+        display: block !important; 
+        width: 100% !important;
+    }
+
+    /* চিপ দুটোকে মাঝখানে টেনে আনার চুম্বক */
+    .left-wing { text-align: right !important; padding-right: 5px !important; }
+    .right-wing { text-align: left !important; padding-left: 5px !important; }
+
+    .target-badge, .free-badge {
+        font-size: 11px !important;
+        padding: 4px 10px !important;
+        letter-spacing: 0px !important;
+        white-space: nowrap !important; 
+    }
+
+    .top-logo { width: 50px !important; } 
+    .main-title { font-size: 26px !important; margin-top: 4px !important; }
+
+    /* D. Mock Test Mobile Fix */
     .quiz-super-container { width: 100%; margin: 0 auto; border-radius: 0; border: none !important; }
     .quiz-header-bar { padding: 14px 15px !important; }
     .timer-badge, .question-tracker, .score-badge { padding: 6px 12px !important; font-size: 15px !important; }
@@ -348,135 +356,4 @@ div.option-item.opt-wrong:active {
     .options-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     .option-item { padding: 16px 20px !important; font-size: 16px !important; }
     .next-action-btn { padding: 16px !important; font-size: 18px !important; }
-}
-
-/* ===================================================
-   ULTIMATE "NEXT BUTTON" (১০০% স্থির + অপশনের ঠিক নিচে)
-=================================================== */
-
-/* ১. অপশন শেষ হওয়ার ঠিক ২২ পিক্সেল নিচেই বাটনটাকে টেনে তোলা হলো */
-.quiz-body .quiz-footer {
-    margin-top: 22px !important; 
-    padding-top: 0 !important;
-    border-top: none !important; 
-}
-
-/* ২. ফিজিক্যাল বর্ডার জিরো করে 3D শ্যাডো ট্রিক (০% লাফানো) */
-button.next-action-btn {
-    background: #d35400 !important;
-    color: #ffffff !important;
-    border: none !important; /* আসল ম্যাজিক: কোনো ফিজিক্যাল বর্ডার নেই */
-    border-radius: 16px !important;
-    padding: 16px 24px !important;
-    font-size: 19px !important;
-    font-weight: 900 !important;
-    box-shadow: 0 6px 0 #873600, 0 10px 20px rgba(211, 84, 0, 0.25) !important;
-    transition: transform 0.08s ease, box-shadow 0.08s ease !important;
-    display: block !important;
-    width: 100% !important;
-    cursor: pointer;
-}
-
-/* ট্যাপ করলে বাটন ৪ পিক্সেল নিচে নামবে, শ্যাডো ৪ পিক্সেল কমবে = ব্যালেন্স ১০০% সমান */
-button.next-action-btn:active {
-    transform: translateY(4px) !important;
-    box-shadow: 0 2px 0 #873600, 0 4px 10px rgba(211, 84, 0, 0.4) !important;
-}
-
-/* --- site-info-bar Fix: Removing Borders and Formatting Text --- */
-.site-info-bar {
-    background-color: #fae5d3; /* keep existing peach background */
-    text-align: center;
-    padding: 10px 0;
-    font-size: 15px;
-    font-weight: 700; /* making it bold like previous successful design */
-    color: #793c05; /* default text color */
-    border-top: none !important; /* Forces top border away */
-    border-bottom: none !important; /* Forces bottom border away */
-}
-
-/* Span colors to make them "work" as requested */
-.info-name {
-    color: #9b2226; /* Deep Maroon for name */
-}
-
-.info-date {
-    color: #1e3799; /* Royal Blue for date */
-}
-
-.info-place {
-    color: #009432; /* Rich Green for place */
-}
-
-/* Pipes styling */
-.separator {
-    color: #d35400; /* Original orange color for pipes to match original separators */
-    margin: 0 10px; /* adding spacing around pipes */
-}
-
-/* ==========================================
-   ৩-খণ্ডের ব্যালেন্সড টপ হেডার (v2.0)
-========================================== */
-.top-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between; 
-    padding: 12px 40px 8px 40px;
-    background-color: #ffffff;
-    width: 100%;
-}
-
-.header-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-/* দুপাশের উইং-এর মাপ একদম কাঁটায় কাঁটায় সমান (200px) */
-.header-side {
-    width: 200px; 
-}
-
-.left-wing { text-align: left; }
-.right-wing { text-align: right; }
-
-/* বাঁ-দিকের মিশন ব্যাজের ডিজাইন (ওয়ার্ম রেড-গেরুয়া) */
-.target-badge {
-    background: linear-gradient(135deg, #78281f 0%, #ba4a00 100%);
-    color: #ffffff;
-    font-size: 13.5px;
-    font-weight: 800;
-    padding: 6px 14px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(120, 40, 31, 0.15);
-    letter-spacing: 0.5px;
-    display: inline-block;
-    border: 1.5px solid #f1c40f;
-}
-
-/* ডানদিকের 100% ফ্রি ব্যাজের ডিজাইন (সলিড পান্না সবুজ) */
-.free-badge {
-    background: #e8f8f5;
-    color: #117a65; /* ডিপ এমেরাল্ড গ্রিন */
-    font-size: 13.5px;
-    font-weight: 800;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1.5px solid #2ecc71;
-    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.15);
-    display: inline-block;
-    letter-spacing: 0.5px;
-}
-
-/* মোবাইল ভিউ সেফটি লক (মোবাইলে এই দুই সাইডের ব্যাজ অদৃশ্য থাকবে) */
-@media screen and (max-width: 850px) {
-    .top-header {
-        justify-content: center;
-        padding: 15px 10px;
-    }
-    .header-side {
-        display: none !important; 
-    }
 }
